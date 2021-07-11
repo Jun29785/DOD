@@ -245,6 +245,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fc837ab547fe4148bfe2f5b90d269eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MonsterName: Goblin
+  AttackDelay: 3
+  MaxHp: 5
+  Hp: 5
+  Speed: 4
+  currentDelay: 0
+  StrikingPower: 1
 --- !u!1 &248346992
 GameObject:
   m_ObjectHideFlags: 0
@@ -572,7 +579,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e662677991df86f40ab02eaf06b921f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  character: {fileID: 0}
 --- !u!4 &756781419
 Transform:
   m_ObjectHideFlags: 0
@@ -717,7 +724,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56ce70a80ce775241879a14a2c22ffa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1642648739}
+  character: {fileID: 1642648743}
   Hp: {fileID: 1305694291}
 --- !u!4 &1057568664
 Transform:
@@ -908,6 +915,7 @@ GameObject:
   - component: {fileID: 1642648740}
   - component: {fileID: 1642648739}
   - component: {fileID: 1642648742}
+  - component: {fileID: 1642648744}
   - component: {fileID: 1642648743}
   m_Layer: 0
   m_Name: Player
@@ -928,8 +936,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87b6a81a7fd32f14c8b77eb824b9bc0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackTransform: {fileID: 653913538}
-  AttackRange: 0.8
 --- !u!212 &1642648740
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1024,10 +1030,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 1642648738}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd4788d31e8233b4694f5564fc4f2560, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterName: Knight
+  MaxHp: 5
+  Hp: 0
+  attackTransform: {fileID: 653913538}
+  AttackRange: 0.8
+  AttackDelay: 0.2
+  StrikingPower: 1
+--- !u!114 &1642648744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1642648738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 80a176a08ce77204fb2d55d3e28fea2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackDelay: 2
 --- !u!1 &1647972439
 GameObject:
   m_ObjectHideFlags: 0

@@ -19,6 +19,10 @@ public class BackgroundScrolling : MonoBehaviour
         {
             offset += Time.deltaTime * speed;
             render.material.mainTextureOffset = new Vector2(offset, 0);
+            if(offset >= 100)
+            {
+                offset = 0;
+            }
         }
     }
 }

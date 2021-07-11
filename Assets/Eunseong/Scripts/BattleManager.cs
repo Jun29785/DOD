@@ -19,21 +19,18 @@ public class BattleManager : MonoBehaviour
             isBattle = value;
         }
     }
-    public Player player;
+
+    public Character character;
     void Start()
     {
         instance = this;
-        player = GetComponentInChildren<Player>();
+        character = GetComponentInChildren<Character>();
     }
 
-    void Update()
-    {
-        
-    }
 
     public void PlayerDamage(float value)
     {
 
-        player.Damage(value);
+        character.Damage(value);
     }
 }

@@ -5,13 +5,15 @@ using UnityEngine;
 public class KnightAnimatorController : MonoBehaviour
 {
     Animator anim;
+    Character character;
 
-    [SerializeField]
-    float AttackDelay = 0.2f;
+    float AttackDelay;
     float currentAttackDelay = 0;
     void Start()
     {
+        character = GetComponent<Character>();
         anim = GetComponent<Animator>();
+        AttackDelay = character.AttackDelay;
     }
 
     void Update()

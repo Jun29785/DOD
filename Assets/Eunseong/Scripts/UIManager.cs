@@ -5,17 +5,17 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public Player player;
+    public Character character;
     public Slider Hp;
     void Start()
     {
-        Hp.maxValue = player.MaxHpP;
+        Hp.maxValue = character.MaxHp;
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        Hp.value = player.HpP;
+        Hp.value = character.Hp;
     }
 }

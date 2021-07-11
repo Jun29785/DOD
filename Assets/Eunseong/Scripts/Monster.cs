@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
-    float AttackDelay = 3;
-    float currentDelay;
-    float Hp = 5;
-    float Speed = 4f;
+    public string MonsterName;
+    public float AttackDelay;
+    public float MaxHp;
+    public float Hp;
+    public float Speed;
+    public float currentDelay;
+    public float StrikingPower;
     void Start()
     {
-        
+        currentDelay = AttackDelay;
+        Hp = MaxHp;
     }
 
-    // Update is called once per frame
     void Update()
     {
         currentDelay += Time.deltaTime;
@@ -22,13 +25,13 @@ public class Monster : MonoBehaviour
         if (BattleManager.instance.isBattleP) {
             if (currentDelay >= AttackDelay)
             {
-                BattleManager.instance.PlayerDamage(1);
+                BattleManager.instance.PlayerDamage(StrikingPower);
                 currentDelay = 0;
             }
         }
 
         Move();
-        Die();
+        DieCheck();
     }
 
     public void Monster_Damage(float value)
@@ -45,9 +48,9 @@ public class Monster : MonoBehaviour
         }
     }
 
-    public void Die()
+    public void DieCheck()
     {
-        if(Hp <= 0)
+        if (Hp <= 0)
         {
             Destroy(gameObject);
         }
