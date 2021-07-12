@@ -46,11 +46,11 @@ public class Knight : MonoBehaviour
 
         if (hitinfo.collider != null)
         {
-            BattleManager.instance.isBattleP = true;
+            BattleManager.Instance.isContactP = true;
         }
         else
         {
-            BattleManager.instance.isBattleP = false;
+            BattleManager.Instance.isContactP = false;
         }
     }
 

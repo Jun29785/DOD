@@ -2,29 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BattleManager : MonoBehaviour
+public class BattleManager : Singleton<BattleManager>
 {
 
-    public static BattleManager instance;
-    bool isBattle = false;
+    bool isContact = false;
 
-    public bool isBattleP
+    public bool isContactP
     {
         get
         {
-            return isBattle;
+            return isContact;
         }
         set
         {
-            isBattle = value;
+            isContact = value;
         }
     }
 
     public Character character;
     void Start()
     {
-        instance = this;
-        character = GetComponentInChildren<Character>();
+        character = GameObject.FindWithTag("Player").GetComponent<Character>();
     }
 
 

@@ -24,14 +24,14 @@ public class KnightAnimatorController : MonoBehaviour
 
     void BattleCheck()
     {
-        anim.SetBool("isBattle", BattleManager.instance.isBattleP);
+        anim.SetBool("isBattle", BattleManager.Instance.isContactP);
     }
 
     void AttackCheck()
     {
         currentAttackDelay += Time.deltaTime;
 
-        if (BattleManager.instance.isBattleP == true)
+        if (BattleManager.Instance.isContactP == true)
         {
             if (currentAttackDelay >= AttackDelay)
             {

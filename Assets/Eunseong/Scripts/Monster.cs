@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Monster : MonoBehaviour
 {
@@ -11,10 +12,18 @@ public class Monster : MonoBehaviour
     public float Speed;
     public float currentDelay;
     public float StrikingPower;
+
+
+    private BattleManager BattleManager;
+
+    public GameObject Hpbarbackground;
+    public Image Hpbar;
     void Start()
     {
         currentDelay = AttackDelay;
         Hp = MaxHp;
+        Hpbar.fillAmount = 1f;
+        
     }
 
     void Update()
@@ -22,14 +31,8 @@ public class Monster : MonoBehaviour
         currentDelay += Time.deltaTime;
 
 
-        if (BattleManager.instance.isBattleP) {
-            if (currentDelay >= AttackDelay)
-            {
-                BattleManager.instance.PlayerDamage(StrikingPower);
-                currentDelay = 0;
-            }
-        }
-
+        HpUI_Update();
+        TryAttack();
         Move();
         DieCheck();
     }
@@ -39,10 +42,24 @@ public class Monster : MonoBehaviour
         Hp -= value;
     }
 
-
+    void HpUI_Update()
+    {
+        Hpbar.fillAmount = Hp / MaxHp;
+    }
+    void TryAttack()
+    {
+        if (BattleManager.Instance.isContactP)
+        {
+            if (currentDelay >= AttackDelay)
+            {
+                BattleManager.Instance.PlayerDamage(StrikingPower);
+                currentDelay = 0;
+            }
+        }
+    }
     public void Move()
     {
-        if (BattleManager.instance.isBattleP == false)
+        if (BattleManager.Instance.isContactP == false)
         {
             transform.Translate(Vector2.left * Speed * Time.deltaTime);
         }
@@ -52,6 +69,7 @@ public class Monster : MonoBehaviour
     {
         if (Hp <= 0)
         {
+            UIManager.Instance.ScoreP++;
             Destroy(gameObject);
         }
     }
