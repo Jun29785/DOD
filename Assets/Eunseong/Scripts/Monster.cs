@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Monster : MonoBehaviour
 {
+
     public string MonsterName;
     public float AttackDelay;
     public float MaxHp;
@@ -12,7 +13,8 @@ public class Monster : MonoBehaviour
     public float Speed;
     public float currentDelay;
     public float StrikingPower;
-
+    public float AddScore;
+    public bool Stop;
 
     private BattleManager BattleManager;
 
@@ -37,11 +39,15 @@ public class Monster : MonoBehaviour
         DieCheck();
     }
 
+    
+    
+
+
     public void Monster_Damage(float value)
     {
         Hp -= value;
     }
-
+        
     void HpUI_Update()
     {
         Hpbar.fillAmount = Hp / MaxHp;
@@ -59,7 +65,7 @@ public class Monster : MonoBehaviour
     }
     public void Move()
     {
-        if (BattleManager.Instance.isContactP == false)
+        if (!Stop)
         {
             transform.Translate(Vector2.left * Speed * Time.deltaTime);
         }
@@ -69,7 +75,7 @@ public class Monster : MonoBehaviour
     {
         if (Hp <= 0)
         {
-            UIManager.Instance.ScoreP++;
+            UIManager.Instance.GetScore(AddScore);
             Destroy(gameObject);
         }
     }

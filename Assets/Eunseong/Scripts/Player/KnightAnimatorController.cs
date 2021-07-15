@@ -18,26 +18,34 @@ public class KnightAnimatorController : MonoBehaviour
 
     void Update()
     {
-        AttackCheck(); 
+        Attack(); 
         BattleCheck();
     }
 
     void BattleCheck()
     {
-        anim.SetBool("isBattle", BattleManager.Instance.isContactP);
+        anim.SetBool("isContact", BattleManager.Instance.isContactP);
     }
 
-    void AttackCheck()
+    void Attack()
     {
-        currentAttackDelay += Time.deltaTime;
+        currentAttackDelay += Time.deltaTime; 
 
         if (BattleManager.Instance.isContactP == true)
         {
-            if (currentAttackDelay >= AttackDelay)
+            if (BattleManager.Instance.isDash == false)
             {
-                anim.SetTrigger("Attack");
-                currentAttackDelay = 0;
+                if (currentAttackDelay >= AttackDelay)
+                {
+                    anim.SetTrigger("Attack");
+                    currentAttackDelay = 0;
+                }
             }
         }
+    }
+
+    public void SetDash(bool _value)
+    {
+        anim.SetBool("isDash", _value);
     }
 }

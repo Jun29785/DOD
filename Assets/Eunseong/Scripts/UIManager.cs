@@ -44,4 +44,9 @@ public class UIManager : Singleton<UIManager>
     {
         ScoreText.text = Score.ToString();
     }
+
+    public void GetScore(float _score)
+    {
+        Score += _score;
+    }
 }
