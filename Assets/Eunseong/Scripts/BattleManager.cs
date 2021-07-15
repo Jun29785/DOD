@@ -5,8 +5,8 @@ using UnityEngine;
 public class BattleManager : Singleton<BattleManager>
 {
 
-    bool isContact = false;
-
+    public bool isContact = false;
+    public bool isDash = false;
     public bool isContactP
     {
         get
