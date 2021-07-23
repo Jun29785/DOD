@@ -6,7 +6,11 @@ public class Character : MonoBehaviour
 {
     public string characterName;
     public float MaxHp;
+    [HideInInspector]
     public float Hp;
+    public float MaxMp;
+    [HideInInspector]
+    public float Mp;
     public Transform attackTransform; //공격 위치
     public float AttackRange; // 공걱 범위
     public float AttackDelay;
@@ -14,6 +18,7 @@ public class Character : MonoBehaviour
     private void Start()
     {
         Hp = MaxHp;
+        Mp = MaxMp;
     }
 
 
@@ -21,5 +26,11 @@ public class Character : MonoBehaviour
     {
         Hp -= value;
         Debug.Log(this.Hp);
+    }
+
+    public void UseMp(float value) //마나 깎는 함수
+    {
+        Mp -= value;
+
     }
 }

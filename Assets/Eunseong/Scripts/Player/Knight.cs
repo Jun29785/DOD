@@ -96,7 +96,10 @@ public class Knight : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.G))
         {
+            if(character.Mp - 20 >=0/*스킬 정보에서 가져오기*/ && isDash == false)
             Debug.Log("Dash");
+            isDash = true;
+            BattleManager.Instance.isDash = true;
             StartCoroutine(DashCroutine());
             
         }
@@ -105,9 +108,8 @@ public class Knight : MonoBehaviour
 
     IEnumerator DashCroutine()
     {
+        character.UseMp(20 /*스킬 정보에서 mp값 가져오기*/);
         animController.SetDash(true);
-        BattleManager.Instance.isDash = true;
-        isDash = true;
         while (transform.position.x < DashTransform.position.x-0.2f)
         {
             Collider2D[] hitEnemy = Physics2D.OverlapCircleAll(character.attackTransform.position, character.AttackRange, LayerMask.GetMask("Monster"));
@@ -115,7 +117,9 @@ public class Knight : MonoBehaviour
             foreach (Collider2D enemy in hitEnemy)
             {
                 enemy.transform.position = new Vector2(transform.position.x + 0.6f, enemy.transform.position.y);
+                    enemy.GetComponent<Monster>().Monster_Damage(character.StrikingPower /* 스킬 데미지 가져오기*/);
             }
+
             transform.position = Vector2.Lerp(transform.position, DashTransform.position, 0.02f);
 
             yield return null;
@@ -128,7 +132,6 @@ public class Knight : MonoBehaviour
             
             transform.position = Vector2.Lerp(transform.position, originPos.transform.position, 0.08f);
             yield return null;
-            
         }
         
         

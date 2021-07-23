@@ -7,10 +7,15 @@ public class UIManager : Singleton<UIManager>
 {
 
     public Character character;
-    public Slider Hp;
+    public Slider Hpbar;
+    public Slider Mpbar;
     public Text ScoreText;
+    public Text Hpstate;
+    public Text Mpstate;
     float Score;
 
+
+    
     public float ScoreP {
         get
         {
@@ -21,22 +26,32 @@ public class UIManager : Singleton<UIManager>
             Score = value;
         }
     }
+
     void Start()
     {
-        Hp.maxValue = character.MaxHp;
+        Hpbar.maxValue = character.MaxHp;
         Score = 0;
+        Mpbar.maxValue = character.MaxMp;
     }
 
     // Update is called once per frame
     void Update()
     {
-        HpBarUpdate();
+        HpUpdate();
+        MpUpdate();
         ScoreUpdate();
     }
 
-    void HpBarUpdate()
+    void HpUpdate()
     {
-        Hp.value = character.Hp;
+        Hpbar.value = character.Hp;
+        Hpstate.text = character.Hp + " / " + character.MaxHp;
+    }
+
+    void MpUpdate()
+    {
+        Mpbar.value = character.Mp;
+        Mpstate.text = character.Mp + " / " + character.MaxMp;
 
     }
 
