@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class UIManager : Singleton<UIManager>
 {
+    float Score;
+
 
     public Character character;
     public Slider Hpbar;
@@ -12,10 +14,8 @@ public class UIManager : Singleton<UIManager>
     public Text ScoreText;
     public Text Hpstate;
     public Text Mpstate;
-    float Score;
+    public GameObject GameOverPanel;
 
-
-    
     public float ScoreP {
         get
         {
@@ -40,6 +40,7 @@ public class UIManager : Singleton<UIManager>
         HpUpdate();
         MpUpdate();
         ScoreUpdate();
+        GameOverCheck();
     }
 
     void HpUpdate()
@@ -63,5 +64,14 @@ public class UIManager : Singleton<UIManager>
     public void GetScore(float _score)
     {
         Score += _score;
+    }
+
+    void GameOverCheck()
+    {
+        if(character.Hp <= 0)
+        {
+            Time.timeScale = 0;
+            GameOverPanel.SetActive(true);
+        }
     }
 }

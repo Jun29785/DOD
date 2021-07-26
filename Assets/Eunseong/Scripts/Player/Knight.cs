@@ -20,7 +20,7 @@ public class Knight : MonoBehaviour
 
     void Update()
     {
-        DieCheck();
+        character.DieCheck();
         Skill_Dash();
     }
 
@@ -83,14 +83,7 @@ public class Knight : MonoBehaviour
         Gizmos.DrawWireSphere(character.attackTransform.position, character.AttackRange);
     }
 
-    public void DieCheck() //죽는거 체크
-    {
-        if(character.Hp <= 0)
-        {
-            Debug.Log("Die!");
-            return;
-        }
-    }
+    
 
     public void Skill_Dash()
     {

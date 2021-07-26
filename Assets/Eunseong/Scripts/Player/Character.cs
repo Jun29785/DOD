@@ -33,4 +33,14 @@ public class Character : MonoBehaviour
         Mp -= value;
 
     }
+
+
+    public void DieCheck() //죽는거 체크
+    {
+        if (Hp <= 0)
+        {
+            Debug.Log("Die!");
+            return;
+        }
+    }
 }

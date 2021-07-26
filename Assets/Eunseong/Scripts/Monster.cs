@@ -14,11 +14,14 @@ public class Monster : MonoBehaviour
     public float currentDelay;
     public float StrikingPower;
     public float AddScore;
+    public float DropCoinAmount;
     public bool Stop;
+    
 
     private BattleManager BattleManager;
 
     public GameObject Hpbarbackground;
+    public GameObject CoinPrefab;
     public Image Hpbar;
     void Start()
     {
@@ -76,6 +79,9 @@ public class Monster : MonoBehaviour
         if (Hp <= 0)
         {
             UIManager.Instance.GetScore(AddScore);
+            Instantiate(CoinPrefab,new Vector2(transform.position.x,transform.position.y + 0.6f) ,transform.rotation);
+            Instantiate(CoinPrefab,new Vector2(transform.position.x,transform.position.y + 0.6f) ,transform.rotation);
+            Instantiate(CoinPrefab,new Vector2(transform.position.x,transform.position.y + 0.6f) ,transform.rotation);
             Destroy(gameObject);
         }
     }
