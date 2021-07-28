@@ -13,6 +13,7 @@ public class Character : MonoBehaviour
     public float Mp;
     public Transform attackTransform; //공격 위치
     public float AttackRange; // 공걱 범위
+    public float AttackDistance; // 공격 거리
     public float AttackDelay;
     public float StrikingPower;
     private void Start()

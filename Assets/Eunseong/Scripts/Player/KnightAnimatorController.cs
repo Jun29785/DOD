@@ -38,6 +38,7 @@ public class KnightAnimatorController : MonoBehaviour
                 if (currentAttackDelay >= AttackDelay)
                 {
                     anim.SetTrigger("Attack");
+                    Debug.Log("ATK");
                     currentAttackDelay = 0;
                 }
             }

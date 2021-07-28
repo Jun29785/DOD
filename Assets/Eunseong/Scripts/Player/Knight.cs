@@ -34,7 +34,7 @@ public class Knight : MonoBehaviour
 
 
 
-    void ATK() // 공격 판정
+    void ATK() // 기본공격 판정
     {
         Collider2D[] hitEnemy = Physics2D.OverlapCircleAll(character.attackTransform.position, character.AttackRange, LayerMask.GetMask("Monster"));
         
@@ -57,22 +57,22 @@ public class Knight : MonoBehaviour
 
     void ConcactCheck() // 배틀상태 감지
     {
-        RaycastHit2D hitinfo = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 0.5f), Vector2.right, 0.5f);
+        RaycastHit2D hitinfo = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 0.5f), Vector2.right, character.AttackDistance,LayerMask.GetMask("Monster"));
 
         if (hitinfo.collider != null && isDash == false)
         {
             BattleManager.Instance.isContactP = true;
-            hitinfo.collider.GetComponent<Monster>().Stop = true;
-        }
+/*            hitinfo.collider.GetComponent<Monster>().Stop = true;
+*/        }
         else
         {
             BattleManager.Instance.isContactP = false;
-            GameObject[] Monsters = GameObject.FindGameObjectsWithTag("Monster");
+ /*           GameObject[] Monsters = GameObject.FindGameObjectsWithTag("Monster");
 
             foreach (GameObject monster in Monsters)
             {
-                monster.GetComponent<Monster>().Stop = false;
-            }
+                //              monster.GetComponent<Monster>().Stop = false;
+            }*/
         }
     }
 
@@ -87,51 +87,61 @@ public class Knight : MonoBehaviour
 
     public void Skill_Dash()
     {
+
         if (Input.GetKeyDown(KeyCode.G))
         {
-            if(character.Mp - 20 >=0/*스킬 정보에서 가져오기*/ && isDash == false)
-            Debug.Log("Dash");
-            isDash = true;
-            BattleManager.Instance.isDash = true;
-            StartCoroutine(DashCroutine());
-            
+            if (isDash == false)
+            {
+                Debug.Log("Dash");
+                StartCoroutine(DashCroutine());
+            }
         }
     }
 
 
     IEnumerator DashCroutine()
     {
-        character.UseMp(20 /*스킬 정보에서 mp값 가져오기*/);
-        animController.SetDash(true);
-        while (transform.position.x < DashTransform.position.x-0.2f)
+        if (character.Mp - 20 >= 0/*스킬 정보에서 가져오기*/)
         {
-            Collider2D[] hitEnemy = Physics2D.OverlapCircleAll(character.attackTransform.position, character.AttackRange, LayerMask.GetMask("Monster"));
+            isDash = true;
             BattleManager.Instance.isDash = true;
-            foreach (Collider2D enemy in hitEnemy)
+
+            character.UseMp(20 /*스킬 정보에서 가져오기*/);
+            animController.SetDash(true);
+            while (transform.position.x < DashTransform.position.x - 0.2f)
             {
-                enemy.transform.position = new Vector2(transform.position.x + 0.6f, enemy.transform.position.y);
+                Collider2D[] hitEnemy = Physics2D.OverlapCircleAll(character.attackTransform.position, character.AttackRange, LayerMask.GetMask("Monster"));
+                BattleManager.Instance.isDash = true;
+                foreach (Collider2D enemy in hitEnemy)
+                {
+                    enemy.transform.position = new Vector2(transform.position.x + 0.6f, enemy.transform.position.y);
                     enemy.GetComponent<Monster>().Monster_Damage(character.StrikingPower /* 스킬 데미지 가져오기*/);
+                }
+
+                transform.position = Vector2.Lerp(transform.position, DashTransform.position, 0.02f);
+
+                yield return null;
             }
 
-            transform.position = Vector2.Lerp(transform.position, DashTransform.position, 0.02f);
+            yield return new WaitForSeconds(0.1f);
 
-            yield return null;
+            while (transform.position.x > originPos.transform.position.x + 0.1f)
+            {
+
+                transform.position = Vector2.Lerp(transform.position, originPos.transform.position, 0.08f);
+                yield return null;
+            }
+
+
+            BattleManager.Instance.isDash = false;
+            transform.position = originPos.position;
+            animController.SetDash(false);
+            isDash = false;
+            StopAllCoroutines();
         }
-
-        yield return new WaitForSeconds(0.1f);
-        
-        while (transform.position.x > originPos.transform.position.x + 0.1f)
+        else
         {
-            
-            transform.position = Vector2.Lerp(transform.position, originPos.transform.position, 0.08f);
-            yield return null;
+            StopAllCoroutines();
         }
-        
-        
-        BattleManager.Instance.isDash = false;
-        transform.position = originPos.position;
-        animController.SetDash(false);
-        isDash = false;
-        StopAllCoroutines();
     }
 }

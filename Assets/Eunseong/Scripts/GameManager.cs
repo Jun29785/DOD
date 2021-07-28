@@ -7,6 +7,6 @@ public class GameManager : MonoBehaviour
 {
     public void ToLobby()
     {
-        SceneManager.LoadScene("LobbyScene");
+        SceneManager.LoadScene("Lobby");
     }
 }
