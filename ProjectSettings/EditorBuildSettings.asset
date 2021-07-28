@@ -9,6 +9,11 @@ EditorBuildSettings:
     path: Assets/Project/Scenes/Lobby.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
+<<<<<<< Updated upstream
     path: Assets/Eunseong/Eunseong.unity
     guid: cc08b7ee7f1b43043b7b81e91056b7af
+=======
+    path: Assets/Project/Scenes/Game.unity
+    guid: fd0b998150911b843ae2d2f49d7480e8
+>>>>>>> Stashed changes
   m_configObjects: {}
