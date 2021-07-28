@@ -6,8 +6,9 @@ public class BattleManager : Singleton<BattleManager>
 {
 
     public bool isContact = false;
-    public bool isDash = false;
+    public bool isUseSkill = false;
     public bool isStop = false;
+    public bool isEnd = false;
     public bool isContactP
     {
         get

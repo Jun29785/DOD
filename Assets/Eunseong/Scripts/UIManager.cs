@@ -68,7 +68,7 @@ public class UIManager : Singleton<UIManager>
 
     void GameOverCheck()
     {
-        if(character.Hp <= 0)
+        if(BattleManager.Instance.isEnd)
         {
             Time.timeScale = 0;
             GameOverPanel.SetActive(true);

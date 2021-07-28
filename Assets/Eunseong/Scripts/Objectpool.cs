@@ -81,7 +81,7 @@ public class Objectpool : MonoBehaviour
 
     public static Monster GetGoblinobject(Vector2 pos)
     {
-        if (Instance.CoinQueue.Count > 0)
+        if (Instance.GoblinQueue.Count > 0)
         {
             var obj = Instance.GoblinQueue.Dequeue();
             obj.transform.SetParent(null);
@@ -95,6 +95,9 @@ public class Objectpool : MonoBehaviour
             newObj.transform.SetParent(null);
             newObj.gameObject.SetActive(true);
             return newObj;
+
+
+
         }
     }
 
@@ -108,3 +111,4 @@ public class Objectpool : MonoBehaviour
     #endregion
 }
 
+    

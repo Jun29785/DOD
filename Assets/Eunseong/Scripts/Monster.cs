@@ -84,7 +84,7 @@ public class Monster : MonoBehaviour
         else
         {
             Stop = false;
-            BattleManager.Instance.isContactP = false;
+            BattleManager.Instance.isContact = false;
         }
     }
     public void Move()

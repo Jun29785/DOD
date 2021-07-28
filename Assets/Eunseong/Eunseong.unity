@@ -760,8 +760,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isContact: 0
-  isDash: 0
+  isUseSkill: 0
   isStop: 0
+  isEnd: 0
   character: {fileID: 0}
 --- !u!4 &756781419
 Transform:
@@ -1912,7 +1913,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Knight
-  MaxHp: 8
+  MaxHp: 100
   Hp: 0
   MaxMp: 10000
   Mp: 0
@@ -1933,6 +1934,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80a176a08ce77204fb2d55d3e28fea2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+  currentAttackDelay: 0
 --- !u!61 &1642648745
 BoxCollider2D:
   m_ObjectHideFlags: 0

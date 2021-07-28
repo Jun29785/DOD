@@ -26,7 +26,6 @@ public class Character : MonoBehaviour
     public void Damage(float value) // 데미지 입는함수
     {
         Hp -= value;
-        Debug.Log(this.Hp);
     }
 
     public void UseMp(float value) //마나 깎는 함수
@@ -40,8 +39,9 @@ public class Character : MonoBehaviour
     {
         if (Hp <= 0)
         {
+            BattleManager.Instance.isEnd = true;    
             Debug.Log("Die!");
-            return;
+            return; 
         }
     }
 }
