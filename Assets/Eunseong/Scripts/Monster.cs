@@ -72,7 +72,7 @@ public class Monster : MonoBehaviour
         if (rayhit.collider != null)
         {
             Debug.Log(rayhit.collider.name);
-
+            Debug.Log("Check3");
             Stop = true;
             BattleManager.Instance.isContact = true;
             if (currentDelay >= AttackDelay)

@@ -23,6 +23,7 @@ public class Knight : MonoBehaviour
         character.DieCheck();
         Skill_Dash();
         Skill_Sting();
+        BattleCheck();
     }
 
     private void FixedUpdate()
@@ -31,7 +32,10 @@ public class Knight : MonoBehaviour
         ConcactCheck();
     }
 
-
+    private void BattleCheck()
+    {
+       // animController.SetBool("isContact", BattleManager.Instance.isContact);
+    }
 
 
     #region 판정
