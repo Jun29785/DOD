@@ -10,6 +10,7 @@ public class KnightAnimatorController : MonoBehaviour
 
     float AttackDelay;
     public float currentAttackDelay = 0;
+    bool CONTACT;
     void Start()
     {
         Debug.Log("Start");
@@ -22,38 +23,38 @@ public class KnightAnimatorController : MonoBehaviour
 
     void Update()
     {
-        Attack();
         BattleCheck();
-
+        Attack();
     }
+ 
 
     void BattleCheck()
     {
+
         anim.SetBool("isContact", BattleManager.Instance.isContact);
+        
     }
 
     void Attack()
     {
         currentAttackDelay += Time.deltaTime;
 
+        
+       if (BattleManager.Instance.isContact == true)
+        {
 
-        /*if (BattleManager.Instance.isContact)
-        {*/
-
-            Debug.Log("CHECK1");
 
             if (!BattleManager.Instance.isUseSkill)
             {
-                Debug.Log("CHECK2");
 
                 if (currentAttackDelay >= AttackDelay)
                 {
-                    Debug.Log("CHECK3");
-                    anim.SetTrigger("Attack");
+                     anim.SetTrigger("Attack");
+
                     currentAttackDelay = 0;
                 }
             }
-      //  }
+        }
     }
 
     public void SetSkillBool(string name, bool _value)

@@ -27,8 +27,8 @@ public class Knight : MonoBehaviour
 
     private void FixedUpdate()
     {
-
         ConcactCheck();
+        
     }
 
 
@@ -41,16 +41,22 @@ public class Knight : MonoBehaviour
         
         foreach (Collider2D enemy in hitEnemy)
         {
-            if(target == null)
+
+            
+            if (FirstTargetcount == 0)
+            {
+
+                target = enemy;
+            }
+
+            FirstTargetcount++;
+
+            if (target.gameObject.activeSelf == false)
             {
                 FirstTargetcount = 0;
             }
-            if (FirstTargetcount == 0)
-            {
-                
-                target = enemy;
-            }
-            FirstTargetcount++;
+
+
             target.GetComponent<Monster>().Monster_Damage(character.StrikingPower);
             break;
         }
@@ -74,15 +80,15 @@ public class Knight : MonoBehaviour
 
         if (hitinfo.collider != null && isDash == false)
         {
-            BattleManager.Instance.isContactP = true;
-/*            hitinfo.collider.GetComponent<Monster>().Stop = true;
-*/        }
+            BattleManager.Instance.isContact = true;
+    //      hitinfo.collider.GetComponent<Monster>().Stop = true;
+        }
         else
         {
-            BattleManager.Instance.isContactP = false;
- /*           GameObject[] Monsters = GameObject.FindGameObjectsWithTag("Monster");
+            BattleManager.Instance.isContact = false;
+ /*           GameObject[] Monsters = GameObject.FindGameObjectsWithTag("Monster");*/
 
-            foreach (GameObject monster in Monsters)
+            /*foreach (GameObject monster in Monsters)
             {
                 //              monster.GetComponent<Monster>().Stop = false;
             }*/
@@ -136,7 +142,7 @@ public class Knight : MonoBehaviour
             animController.SetSkillBool("isDash",true);
             while (transform.position.x < DashTransform.position.x - 0.2f)
             {
-                Collider2D[] hitEnemy = Physics2D.OverlapCircleAll(character.attackTransform.position, character.AttackRange, LayerMask.GetMask("Monster"));
+                Collider2D[] hitEnemy = Physics2D.OverlapCircleAll(character.attackTransform.position, 0.2f, LayerMask.GetMask("Monster"));
                 BattleManager.Instance.isUseSkill = true;
                 foreach (Collider2D enemy in hitEnemy)
                 {

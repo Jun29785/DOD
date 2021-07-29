@@ -1,64 +1,37 @@
 fileFormatVersion: 2
-guid: 2674d036b3f50ba468d566e4c65b0baf
+guid: 46745de4a74d23c40bd731c371a33d82
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1878138470819070236
-    second: goble_Running_0
+      213: 8771508825791823746
+    second: _oble_at_0
   - first:
-      213: 1944359925994548414
-    second: goble_Running_1
+      213: -3586315649906248383
+    second: _oble_at_1
   - first:
-      213: 6755700464871619430
-    second: goble_Running_2
+      213: -8816287609682442912
+    second: _oble_at_2
   - first:
-      213: 589320663947634752
-    second: goble_Running_3
+      213: 9053763772543750457
+    second: _oble_at_3
   - first:
-      213: -4815540834593835018
-    second: goble_Running_4
+      213: -4750491563370026871
+    second: _oble_at_4
   - first:
-      213: 6286694153528563280
-    second: goble_Running_5
+      213: -5960697331360633777
+    second: _oble_at_5
   - first:
-      213: -1955055192080534426
-    second: goble_Running_6
+      213: -3502693056724538950
+    second: _oble_at_6
   - first:
-      213: 4570076716131739754
-    second: goble_Running_7
+      213: 1120797591109856796
+    second: _oble_at_7
   - first:
-      213: 1894638635924754210
-    second: goble_Running_8
+      213: -6970419653309803401
+    second: _oble_at_8
   - first:
-      213: 1819590264553637591
-    second: goble_Running_9
-  - first:
-      213: -2091119144135895079
-    second: goble_Running_10
-  - first:
-      213: 3200522445181320221
-    second: goble_Running_11
-  - first:
-      213: -60616172400230621
-    second: goble_Running_0
-  - first:
-      213: 1236743226376849051
-    second: goble_Running_1
-  - first:
-      213: 5085262166180638229
-    second: goble_Running_2
-  - first:
-      213: 819418303286315872
-    second: goble_Running_3
-  - first:
-      213: 2690223733455854366
-    second: goble_Running_4
-  - first:
-      213: -7368258881354456093
-    second: goble_Running_5
-  - first:
-      213: -1969498105168682563
-    second: goble_Running_6
+      213: -4088545743669092738
+    second: _oble_at_9
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -170,13 +143,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: goble_Running_1
+      name: _oble_at_0
       rect:
         serializedVersion: 2
-        x: 122
-        y: 706
-        width: 360
-        height: 460
+        x: 73
+        y: 65
+        width: 36
+        height: 46
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,20 +157,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b96009e696bc92110800000000000000
-      internalID: 1236743226376849051
+      spriteID: 28f7689bdc8aab970800000000000000
+      internalID: 8771508825791823746
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: goble_Running_3
+      name: _oble_at_1
       rect:
         serializedVersion: 2
-        x: 621
-        y: 706
-        width: 349
-        height: 460
+        x: 269
+        y: 65
+        width: 43
+        height: 46
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -205,20 +178,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 06b85d9fa982f5b00800000000000000
-      internalID: 819418303286315872
+      spriteID: 145f9e2eae8da3ec0800000000000000
+      internalID: -3586315649906248383
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: goble_Running_4
+      name: _oble_at_3
       rect:
         serializedVersion: 2
-        x: 1130
-        y: 706
-        width: 310
-        height: 460
+        x: 478
+        y: 65
+        width: 37
+        height: 47
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -226,20 +199,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e1b16fe6b38955520800000000000000
-      internalID: 2690223733455854366
+      spriteID: 93155c6ae2e65ad70800000000000000
+      internalID: 9053763772543750457
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: goble_Running_6
+      name: _oble_at_4
       rect:
         serializedVersion: 2
-        x: 1580
-        y: 706
-        width: 350
-        height: 460
+        x: 651
+        y: 63
+        width: 49
+        height: 45
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -247,20 +220,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: db1ad9f78efeaa4e0800000000000000
-      internalID: -1969498105168682563
+      spriteID: 988e6d0a71dd21eb0800000000000000
+      internalID: -4750491563370026871
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: goble_Running_8
+      name: _oble_at_5
       rect:
         serializedVersion: 2
-        x: 141
-        y: 68
-        width: 349
-        height: 460
+        x: 851
+        y: 63
+        width: 49
+        height: 45
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -268,50 +241,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 22f86081dcb1b4a10800000000000000
-      internalID: 1894638635924754210
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: goble_Running_9
-      rect:
-        serializedVersion: 2
-        x: 650
-        y: 66
-        width: 310
-        height: 460
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7d68a7b74bb704910800000000000000
-      internalID: 1819590264553637591
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: goble_Running_11
-      rect:
-        serializedVersion: 2
-        x: 1098
-        y: 66
-        width: 345
-        height: 460
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d1c72b0f43a8a6c20800000000000000
-      internalID: 3200522445181320221
+      spriteID: f4c61a6bb59574da0800000000000000
+      internalID: -5960697331360633777
       vertices: []
       indices: 
       edges: []

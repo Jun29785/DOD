@@ -25,13 +25,14 @@ public class Monster : MonoBehaviour
     public GameObject Hpbarbackground;
     public GameObject CoinPrefab;
     public Image Hpbar;
-    Rigidbody2D rigid;
+    Animator anim;
+    public Text DamageText;
     void Start()
     {
         currentDelay = AttackDelay;
         Hp = MaxHp;
         Hpbar.fillAmount = 1f;
-        rigid = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     private void OnEnable()
@@ -42,7 +43,7 @@ public class Monster : MonoBehaviour
     {
         currentDelay += Time.deltaTime;
 
-
+        isContactCheck();
         HpUI_Update();
         Move();
         DieCheck();
@@ -71,20 +72,18 @@ public class Monster : MonoBehaviour
         
         if (rayhit.collider != null)
         {
-            Debug.Log(rayhit.collider.name);
 
             Stop = true;
-            BattleManager.Instance.isContact = true;
+
             if (currentDelay >= AttackDelay)
             {
-                BattleManager.Instance.PlayerDamage(StrikingPower);
+                anim.SetTrigger("Attack");
                 currentDelay = 0;
             }
         }
         else
         {
             Stop = false;
-            BattleManager.Instance.isContact = false;
         }
     }
     public void Move()
@@ -113,5 +112,13 @@ public class Monster : MonoBehaviour
     }
 
 
-   
+    public void Attack()
+    {
+        BattleManager.Instance.PlayerDamage(StrikingPower);
+    }
+
+    public void isContactCheck()
+    {
+        anim.SetBool("isContact", BattleManager.Instance.isContact);
+    }
 }

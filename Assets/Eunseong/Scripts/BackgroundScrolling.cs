@@ -15,7 +15,7 @@ public class BackgroundScrolling : MonoBehaviour
 
     private void Update()
     {
-        if (!BattleManager.Instance.isContactP && !BattleManager.Instance.isStop && !BattleManager.Instance.isUseSkill)
+        if (!BattleManager.Instance.isContact && !BattleManager.Instance.isStop && !BattleManager.Instance.isUseSkill)
         {
             offset += Time.deltaTime * speed;
             render.material.mainTextureOffset = new Vector2(offset, 0);
