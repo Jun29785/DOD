@@ -72,7 +72,12 @@ public class Monster : MonoBehaviour
         
         if (rayhit.collider != null)
         {
+<<<<<<< HEAD:Assets/Eunseong/Scripts/Monster/Monster.cs
 
+=======
+            Debug.Log(rayhit.collider.name);
+            Debug.Log("Check3");
+>>>>>>> 1c0f28ca1ea061502c3d0de1f9fc7c1f6714a43d:Assets/Eunseong/Scripts/Monster.cs
             Stop = true;
 
             if (currentDelay >= AttackDelay)
