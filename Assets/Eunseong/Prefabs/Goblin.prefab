@@ -36,7 +36,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -4.14}
   m_SizeDelta: {x: 720, y: 1280}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &5600907065261024002
@@ -129,7 +129,7 @@ Transform:
   m_GameObject: {fileID: 5600907066082015851}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 14.416759, y: -0.402353, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children:
   - {fileID: 5600907065261024001}
   m_Father: {fileID: 0}
@@ -175,7 +175,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1944359925994548414, guid: 2674d036b3f50ba468d566e4c65b0baf, type: 3}
+  m_Sprite: {fileID: -2898184906952680768, guid: eafd74ad791bf874c8c0c9994958b1be, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -199,18 +199,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.01615715, y: 2.3581789}
+  m_Offset: {x: 0.00004515052, y: 0.22783676}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
-    oldSize: {x: 3.6, y: 4.6}
+    oldSize: {x: 0.36, y: 0.46}
     newSize: {x: 3.6, y: 4.6}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.6292534, y: 4.7372193}
+  m_Size: {x: 0.36175722, y: 0.46705854}
   m_EdgeRadius: 0
 --- !u!114 &5600907066082015847
 MonoBehaviour:
@@ -226,7 +226,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MonsterName: Goblin
   AttackDelay: 3
-  AttackDistance: 0.1
+  AttackDistance: 0.5
   MaxHp: 8
   Hp: 8
   Speed: 4
@@ -305,8 +305,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.01, y: 1.3}
-  m_SizeDelta: {x: 500, y: 100}
+  m_AnchoredPosition: {x: -0.002, y: 1.169}
+  m_SizeDelta: {x: 45.88, y: 12.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5600907066847247586
 CanvasRenderer:
@@ -381,7 +381,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 550, y: 100}
+  m_SizeDelta: {x: 45.88, y: 12.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5600907067104392576
 CanvasRenderer:

@@ -11,11 +11,18 @@ public class Knight : MonoBehaviour
     Collider2D target;// 공격타겟
     KnightAnimatorController animController;
 
+    Dictionary<string,float> SkillcoolTimeDic = new Dictionary<string,float>();
+    Dictionary<string,float> SkillcoolTimeDic2 = new Dictionary<string,float>();
     bool isDash = false;
     void Awake()
     {
         character = GetComponent<Character>();
         animController = GetComponent<KnightAnimatorController>();
+        SkillcoolTimeDic.Add("Dash", 0);
+        SkillcoolTimeDic.Add("Sting", 0);
+
+        SkillcoolTimeDic2.Add("Dash", 4);
+        SkillcoolTimeDic2.Add("Sting", 6);
     }
 
     void Update()
@@ -29,7 +36,8 @@ public class Knight : MonoBehaviour
     private void FixedUpdate()
     {
         ConcactCheck();
-        
+        Debug.DrawRay(new Vector2(transform.position.x, transform.position.y + 0.5f), Vector2.right);
+
     }
 
     private void BattleCheck()
@@ -99,6 +107,10 @@ public class Knight : MonoBehaviour
         }
     }
 
+    void SetUseSkillFalse()
+    {
+        BattleManager.Instance.isUseSkill = false;
+    }
 
 
 
@@ -111,30 +123,54 @@ public class Knight : MonoBehaviour
 
     }
 
+
+    #region 스킬
+
+
+    /// <summary>
+    /// 돌진
+    /// </summary>
     public void Skill_Dash()
-    {   
+    {
+        SkillcoolTimeDic["Dash"] -= Time.deltaTime;
 
         if (Input.GetKeyDown(KeyCode.G))
         {
-            if (isDash == false && !BattleManager.Instance.isUseSkill)
+            if (SkillcoolTimeDic["Dash"] <= 0)
             {
-                Debug.Log("Dash");
-                StartCoroutine(DashCroutine());
+                if (isDash == false && !BattleManager.Instance.isUseSkill)
+                {
+                    Debug.Log("Dash");
+                    StartCoroutine(DashCroutine());
+                }
             }
         }
     }
+    
 
+    /// <summary>
+    /// 연속 찌르기
+    /// </summary>
     public void Skill_Sting()
     {
+        SkillcoolTimeDic["Sting"] -= Time.deltaTime;
+        Debug.Log(SkillcoolTimeDic["Sting"]);
         if (Input.GetKeyDown(KeyCode.F) && !BattleManager.Instance.isUseSkill && character.Mp - 40 >= 0)
         {
-            character.Mp -= 40;
-            BattleManager.Instance.isUseSkill = true;
-            animController.SetSkillTrigger("Sting");
+            if (SkillcoolTimeDic["Sting"] <= 0)
+            {
+                character.Mp -= 40;
+                BattleManager.Instance.isUseSkill = true;
+                animController.SetSkillTrigger("Sting");
+                SkillcoolTimeDic["Sting"] = SkillcoolTimeDic2["Sting"];
+            }
         }
         
     }
 
+    /// <summary>
+    /// 돌진 판정
+    /// </summary>
     IEnumerator DashCroutine()
     {
         float currentTime = 1;
@@ -170,6 +206,8 @@ public class Knight : MonoBehaviour
 
             yield return new WaitForSeconds(0.1f);
 
+            animController.SetSkillBool("isDash", false);
+
             while (transform.position.x > originPos.transform.position.x + 0.1f)
             {
 
@@ -180,8 +218,8 @@ public class Knight : MonoBehaviour
 
             BattleManager.Instance.isUseSkill = false;
             transform.position = originPos.position;
-            animController.SetSkillBool("isDash", false);
             isDash = false;
+            SkillcoolTimeDic["Dash"] = SkillcoolTimeDic2["Dash"];
             StopAllCoroutines();
         }
         else
@@ -190,9 +228,5 @@ public class Knight : MonoBehaviour
         }
     }
 
-    
-    void SetUseSkillFalse()
-    {
-        BattleManager.Instance.isUseSkill = false;
-    }
+    #endregion
 }

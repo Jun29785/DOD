@@ -18,7 +18,7 @@ public class Monster : MonoBehaviour
     public float AddScore;
     public int CoinAmount;
     public bool Stop;
-    bool Die;
+    bool isDie = false;
 
     private BattleManager BattleManager;
 
@@ -96,22 +96,29 @@ public class Monster : MonoBehaviour
 
     public void DieCheck()
     {
-
         if (Hp <= 0)
         {
-            GameSceneUIManager.Instance.GetScore(AddScore);
-            for (int i = 0; i < 3; i++)
+            anim.SetBool("isDie",true);
+            if (!isDie)
             {
-                Objectpool.GetCoinobject(new Vector2(transform.position.x, transform.position.y + 0.5f));
-                //Instantiate(CoinPrefab, new Vector2(transform.position.x, transform.position.y + 0.6f), transform.rotation);
+                Invoke("Die", 1);
+                isDie = true;
             }
-
-            BattleManager.Instance.GetGold(CoinAmount);
-            Objectpool.ReturnGoblin(this);
-
         }
     }
 
+    public void Die()
+    {
+        GameSceneUIManager.Instance.GetScore(AddScore);
+        for (int i = 0; i < 3; i++)
+        {
+            Objectpool.GetCoinobject(new Vector2(transform.position.x, transform.position.y + 0.5f));
+            //Instantiate(CoinPrefab, new Vector2(transform.position.x, transform.position.y + 0.6f), transform.rotation);
+        }
+
+        BattleManager.Instance.GetGold(CoinAmount);
+        Objectpool.ReturnGoblin(this);
+    }
 
     public void Attack()
     {

@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Knight_Attack
+  m_Name: Knight_Die
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,18 +20,16 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 7442079067065649627, guid: 8a86f12d44ab60c429cc33891df9fb23, type: 3}
-    - time: 0.125
-      value: {fileID: 4754036034325592855, guid: 8a86f12d44ab60c429cc33891df9fb23, type: 3}
-    - time: 0.25
-      value: {fileID: -908522120702514673, guid: 8a86f12d44ab60c429cc33891df9fb23, type: 3}
-    - time: 0.375
-      value: {fileID: 8154952217615005867, guid: 8a86f12d44ab60c429cc33891df9fb23, type: 3}
+      value: {fileID: 4017237045738901956, guid: 9e64dee6b2a951f489f404252d09bff4, type: 3}
+    - time: 0.2
+      value: {fileID: 5240170111840064599, guid: 9e64dee6b2a951f489f404252d09bff4, type: 3}
+    - time: 0.4
+      value: {fileID: -2999880281860978651, guid: 9e64dee6b2a951f489f404252d09bff4, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
-  m_SampleRate: 8
+  m_SampleRate: 5
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -46,16 +44,15 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 7442079067065649627, guid: 8a86f12d44ab60c429cc33891df9fb23, type: 3}
-    - {fileID: 4754036034325592855, guid: 8a86f12d44ab60c429cc33891df9fb23, type: 3}
-    - {fileID: -908522120702514673, guid: 8a86f12d44ab60c429cc33891df9fb23, type: 3}
-    - {fileID: 8154952217615005867, guid: 8a86f12d44ab60c429cc33891df9fb23, type: 3}
+    - {fileID: 4017237045738901956, guid: 9e64dee6b2a951f489f404252d09bff4, type: 3}
+    - {fileID: 5240170111840064599, guid: 9e64dee6b2a951f489f404252d09bff4, type: 3}
+    - {fileID: -2999880281860978651, guid: 9e64dee6b2a951f489f404252d09bff4, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.5
+    m_StopTime: 0.6
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -74,18 +71,4 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events:
-  - time: 0
-    functionName: SetUseSkillFalse
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.375
-    functionName: SingleATK
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
+  m_Events: []

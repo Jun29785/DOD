@@ -78,9 +78,17 @@ public class GameSceneUIManager : MonoBehaviour
     {
         if(BattleManager.Instance.isEnd)
         {
-            Time.timeScale = 0;
-            getCoinAmountText.text = "+ " + BattleManager.Instance.getGold;
-            GameOverPanel.SetActive(true);
+            Invoke("Gameover", 1);
+            
+            
         }
+    }
+
+
+    void Gameover()
+    {
+        Time.timeScale = 0;
+        getCoinAmountText.text = "+ " + BattleManager.Instance.getGold;
+        GameOverPanel.SetActive(true);
     }
 }

@@ -24,7 +24,7 @@ public class BattleManager : MonoBehaviour
 
     public void PlayerDamage(float value)
     {
-
+        
         character.Damage(value);
     }
 

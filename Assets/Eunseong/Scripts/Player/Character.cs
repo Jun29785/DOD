@@ -29,8 +29,14 @@ public class Character : MonoBehaviour
 
     public void Damage(float value) // 데미지 입는함수
     {
-        anim.SetTrigger("Damaged");
-        Hp -= value;
+        if (Hp > 0)
+        {
+            if (!BattleManager.Instance.isUseSkill)
+            {
+                anim.SetTrigger("Damaged");
+            }
+            Hp -= value;
+        }
     }
 
     public void UseMp(float value) //마나 깎는 함수
@@ -44,7 +50,8 @@ public class Character : MonoBehaviour
     {
         if (Hp <= 0)
         {
-            BattleManager.Instance.isEnd = true;    
+            BattleManager.Instance.isEnd = true;
+            anim.SetBool("isDie", true);
             Debug.Log("Die!");
             return; 
         }

@@ -559,7 +559,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 653913537}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.13, y: 3.05, z: 0}
+  m_LocalPosition: {x: 0.22, y: 0.19, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1642648741}
@@ -1933,7 +1933,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -5109943016842536188, guid: 56a83122658e6e2459fa06c8115bee28, type: 3}
+  m_Sprite: {fileID: -4116724067120597897, guid: 1ddbf171316618d4eb4406722f03a289, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1953,7 +1953,7 @@ Transform:
   m_GameObject: {fileID: 1642648738}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1.8800004, y: -0.16, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children:
   - {fileID: 653913538}
   m_Father: {fileID: 0}
@@ -1997,7 +1997,7 @@ MonoBehaviour:
   Mp: 0
   attackTransform: {fileID: 653913538}
   AttackRange: 0.8
-  AttackDistance: 0.5
+  AttackDistance: 0.6
   AttackDelay: 0.2
   StrikingPower: 1
 --- !u!114 &1642648744
@@ -2027,18 +2027,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.060838103, y: 2.2183123}
+  m_Offset: {x: 0.006278977, y: 0.22599356}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
-    oldSize: {x: 0.66, y: 0.47}
+    oldSize: {x: 0.39, y: 0.45}
     newSize: {x: 7.2, y: 8.360156}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.5665734, y: 4.296213}
+  m_Size: {x: 0.39938465, y: 0.45225552}
   m_EdgeRadius: 0
 --- !u!1 &1647972439
 GameObject:
