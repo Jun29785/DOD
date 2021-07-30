@@ -16,15 +16,20 @@ public class Character : MonoBehaviour
     public float AttackDistance; // 공격 거리
     public float AttackDelay;
     public float StrikingPower;
+
+
+    Animator anim;
     private void Start()
     {
         Hp = MaxHp;
         Mp = MaxMp;
+        anim = GetComponent<Animator>();
     }
 
 
     public void Damage(float value) // 데미지 입는함수
     {
+        anim.SetTrigger("Damaged");
         Hp -= value;
     }
 
@@ -44,4 +49,5 @@ public class Character : MonoBehaviour
             return; 
         }
     }
+
 }

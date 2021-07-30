@@ -14,6 +14,7 @@ public class BattleManager : MonoBehaviour
     public static BattleManager Instance;
 
     public Character character;
+    
     void Start()
     {
         character = GameObject.FindWithTag("Player").GetComponent<Character>();
