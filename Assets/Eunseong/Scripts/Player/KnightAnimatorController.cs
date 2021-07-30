@@ -13,13 +13,12 @@ public class KnightAnimatorController : MonoBehaviour
     bool CONTACT;
     void Start()
     {
-        Debug.Log("Start");
         character = GetComponent<Character>();
         anim = GetComponent<Animator>();
         AttackDelay = character.AttackDelay;
     }
 
-
+        
 
     void Update()
     {
@@ -40,7 +39,7 @@ public class KnightAnimatorController : MonoBehaviour
         currentAttackDelay += Time.deltaTime;
 
         
-       if (BattleManager.Instance.isContact == true)
+       if (BattleManager.Instance.isContact)
         {
 
 
