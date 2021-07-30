@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIManager : Singleton<UIManager>
+public class GameSceneUIManager : MonoBehaviour
 {
     float Score;
+
+    public static GameSceneUIManager Instance;
 
 
     public Character character;
@@ -14,9 +16,9 @@ public class UIManager : Singleton<UIManager>
     public Text ScoreText;
     public Text Hpstate;
     public Text Mpstate;
-    public GameObject GameOverPanel;
 
-    public float ScoreP {
+    public float ScoreP
+    {
         get
         {
             return Score;
@@ -27,11 +29,17 @@ public class UIManager : Singleton<UIManager>
         }
     }
 
+
+    // 겜 오버 시 나오는것
+    public GameObject GameOverPanel;
+    public Text getCoinAmountText;
+
     void Start()
     {
         Hpbar.maxValue = character.MaxHp;
         Score = 0;
         Mpbar.maxValue = character.MaxMp;
+        Instance = this;
     }
 
     // Update is called once per frame
@@ -71,6 +79,7 @@ public class UIManager : Singleton<UIManager>
         if(BattleManager.Instance.isEnd)
         {
             Time.timeScale = 0;
+            getCoinAmountText.text = "+ " + BattleManager.Instance.getGold;
             GameOverPanel.SetActive(true);
         }
     }

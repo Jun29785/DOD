@@ -16,7 +16,7 @@ public class Monster : MonoBehaviour
     public float currentDelay;
     public float StrikingPower;
     public float AddScore;
-    public float DropCoinAmount;
+    public int CoinAmount;
     public bool Stop;
     bool Die;
 
@@ -99,13 +99,14 @@ public class Monster : MonoBehaviour
 
         if (Hp <= 0)
         {
-            UIManager.Instance.GetScore(AddScore);
-            for (int i = 0; i < DropCoinAmount; i++)
+            GameSceneUIManager.Instance.GetScore(AddScore);
+            for (int i = 0; i < 3; i++)
             {
                 Objectpool.GetCoinobject(new Vector2(transform.position.x, transform.position.y + 0.5f));
                 //Instantiate(CoinPrefab, new Vector2(transform.position.x, transform.position.y + 0.6f), transform.rotation);
             }
 
+            BattleManager.Instance.GetGold(CoinAmount);
             Objectpool.ReturnGoblin(this);
 
         }

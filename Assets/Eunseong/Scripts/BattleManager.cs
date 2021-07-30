@@ -9,6 +9,7 @@ public class BattleManager : MonoBehaviour
     public bool isUseSkill = false;
     public bool isStop = false;
     public bool isEnd = false;
+    public int getGold = 0;
 
     public static BattleManager Instance;
 
@@ -24,5 +25,10 @@ public class BattleManager : MonoBehaviour
     {
 
         character.Damage(value);
+    }
+
+    public void GetGold(int value)
+    {
+        getGold += value;
     }
 }

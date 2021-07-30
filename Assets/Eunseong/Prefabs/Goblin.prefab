@@ -233,11 +233,12 @@ MonoBehaviour:
   currentDelay: 0
   StrikingPower: 1
   AddScore: 3
-  DropCoinAmount: 3
+  CoinAmount: 3
   Stop: 0
   Hpbarbackground: {fileID: 5600907066847247584}
   CoinPrefab: {fileID: 8737653804221628634, guid: 46fcd275790f82949b1cdf293acd71de, type: 3}
   Hpbar: {fileID: 5600907067104392577}
+  DamageText: {fileID: 0}
 --- !u!114 &5600907066082015846
 MonoBehaviour:
   m_ObjectHideFlags: 0

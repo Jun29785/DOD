@@ -5,13 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
-    public void ToLobby()
+    int gold = 0;
+    
+    public void GetGold(int value)
     {
-        SceneManager.LoadScene("Lobby");
+        gold += value;
     }
 
-    public void InGame()
-    {
-        SceneManager.LoadScene("EunSeong");
-    }
 }

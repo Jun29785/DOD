@@ -137,6 +137,7 @@ public class Knight : MonoBehaviour
 
     IEnumerator DashCroutine()
     {
+        float currentTime = 1;
         if (character.Mp - 20 >= 0/*스킬 정보에서 가져오기*/)
         {
             isDash = true;
@@ -146,16 +147,24 @@ public class Knight : MonoBehaviour
             animController.SetSkillBool("isDash",true);
             while (transform.position.x < DashTransform.position.x - 0.2f)
             {
-                Collider2D[] hitEnemy = Physics2D.OverlapCircleAll(character.attackTransform.position, 0.2f, LayerMask.GetMask("Monster"));
+                currentTime += Time.deltaTime;
                 BattleManager.Instance.isUseSkill = true;
+                Collider2D[] hitEnemy = Physics2D.OverlapCircleAll(character.attackTransform.position, 0.2f, LayerMask.GetMask("Monster"));
                 foreach (Collider2D enemy in hitEnemy)
                 {
                     enemy.transform.position = new Vector2(transform.position.x + 0.6f, enemy.transform.position.y);
-                    enemy.GetComponent<Monster>().Monster_Damage(character.StrikingPower /* 스킬 데미지 가져오기*/);
+                    if (currentTime >= 0.2f)
+                    {
+                        enemy.GetComponent<Monster>().Monster_Damage(character.StrikingPower /* 스킬 데미지 가져오기*/);
+                    }
+
                 }
-
                 transform.position = Vector2.Lerp(transform.position, DashTransform.position, 0.02f);
+                if (currentTime >= 0.2f)
+                {
 
+                    currentTime = 0;
+                }
                 yield return null;
             }
 
@@ -181,7 +190,7 @@ public class Knight : MonoBehaviour
         }
     }
 
-
+    
     void SetUseSkillFalse()
     {
         BattleManager.Instance.isUseSkill = false;
