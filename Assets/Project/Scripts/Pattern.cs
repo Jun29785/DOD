@@ -43,7 +43,7 @@ public class Pattern : MonoBehaviour
         if (unlocking)
         {
             Vector3 _mousePos = canvas.transform.InverseTransformPoint(Input.mousePosition);
-            Vector3 mousePos = new Vector3(_mousePos.x, _mousePos.y + 360, _mousePos.z);
+            Vector3 mousePos = new Vector3(_mousePos.x, _mousePos.y + 380, _mousePos.z);
 
             lineOnEditrcTs.sizeDelta = new Vector2(lineOnEditrcTs.sizeDelta.x, Vector3.Distance(mousePos, circleOnEdit.transform.localPosition));
 
@@ -100,7 +100,7 @@ public class Pattern : MonoBehaviour
                 return;
             }
         }
-        Vector3 circlePosition = new Vector3(circle.transform.localPosition.x, circle.transform.localPosition.y - 360, circle.transform.localPosition.z);
+        Vector3 circlePosition = new Vector3(circle.transform.localPosition.x, circle.transform.localPosition.y - 380, circle.transform.localPosition.z);
 
         lineOnEdit = CreateLine(circlePosition, circle.id);
         lineOnEditrcTs = lineOnEdit.GetComponent<RectTransform>();
