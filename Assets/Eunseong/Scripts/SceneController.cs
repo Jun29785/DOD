@@ -14,11 +14,13 @@ public class SceneController : MonoBehaviour
     public void ToLobbyScene()
     {
         SceneManager.LoadScene(Scene.LobbyScene.ToString());
+        Time.timeScale = 1;
     }
 
     public void ToGameScene()
     {
         SceneManager.LoadScene(Scene.GameScene.ToString());
+        Time.timeScale = 1;
 
     }
 }

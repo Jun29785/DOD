@@ -20,6 +20,7 @@ public class Pattern : MonoBehaviour
 
     new bool enabled = true;
 
+    
     void Start()
     {
         circles = new Dictionary<int, CircleIdentifier>();
@@ -53,6 +54,7 @@ public class Pattern : MonoBehaviour
 
     IEnumerator Release()
     {
+        BattleManager.Instance.PatternInputEnd = true;
         enabled = false;
 
         yield return new WaitForSeconds(1);
@@ -62,12 +64,15 @@ public class Pattern : MonoBehaviour
         //    circle.Value.GetComponent<Animator>().enabled = false;
         //}
 
+        BattleManager.Instance.PatternInputEnd = false;
+
         foreach (var line in lines)
         {
             Destroy(line.gameObject);
         }
 
         lines.Clear();
+        BattleManager.Instance.Pattern_id.Clear();
 
         lineOnEdit = null;
         lineOnEditrcTs = null;
@@ -79,6 +84,8 @@ public class Pattern : MonoBehaviour
 
     GameObject CreateLine(Vector3 pos, int id)
     {
+
+
         var line = GameObject.Instantiate(LinePrefab, canvas.transform);
 
         line.transform.localPosition = pos;
@@ -116,6 +123,7 @@ public class Pattern : MonoBehaviour
     #region 마우스 이벤트
     public void OnMouseEnterCircle(CircleIdentifier idf)
     {
+
         var id = idf.id;
         //Debug.Log(idf.id);
         if (enabled == false)
@@ -126,6 +134,11 @@ public class Pattern : MonoBehaviour
             lineOnEditrcTs.sizeDelta = new Vector2(lineOnEditrcTs.sizeDelta.x, Vector3.Distance(circleOnEdit.transform.localPosition, idf.transform.localPosition));
             lineOnEditrcTs.rotation = Quaternion.FromToRotation(Vector3.up, (idf.transform.localPosition - circleOnEdit.transform.localPosition).normalized);
 
+
+            if (!BattleManager.Instance.Pattern_id.Contains(id))
+            {
+                BattleManager.Instance.Pattern_id.Add(id);
+            }
             TrySetLineEdit(idf);
         }
     }
@@ -154,8 +167,12 @@ public class Pattern : MonoBehaviour
             lines.RemoveAt(lines.Count - 1);
 
             StartCoroutine(Release());
+
+
+
         }
         unlocking = false;
+        
     }
     #endregion
 }

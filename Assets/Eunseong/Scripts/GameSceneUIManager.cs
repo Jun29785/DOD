@@ -9,7 +9,7 @@ public class GameSceneUIManager : MonoBehaviour
 
     public static GameSceneUIManager Instance;
 
-
+    public RectTransform PlayerTransform;
     public Character character;
     public Slider Hpbar;
     public Slider Mpbar;
@@ -53,6 +53,7 @@ public class GameSceneUIManager : MonoBehaviour
 
     void HpUpdate()
     {
+       // Hpbar.gameObject.transform.position =  new Vector2 (PlayerTransform.position.x, PlayerTransform.position.y + 0.6f);
         Hpbar.value = character.Hp;
         Hpstate.text = character.Hp + " / " + character.MaxHp;
     }

@@ -38,6 +38,7 @@ public class Monster : MonoBehaviour
     private void OnEnable()
     {
         Hp = MaxHp;
+        isDie = false;
     }
     void Update()
     {

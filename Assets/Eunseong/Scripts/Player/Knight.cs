@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System.Linq;
 public class Knight : MonoBehaviour
 {
     public Transform originPos; //원래 위치(돌진)
@@ -21,8 +21,8 @@ public class Knight : MonoBehaviour
         SkillcoolTimeDic.Add("Dash", 0);
         SkillcoolTimeDic.Add("Sting", 0);
 
-        SkillcoolTimeDic2.Add("Dash", 4);
-        SkillcoolTimeDic2.Add("Sting", 6);
+        SkillcoolTimeDic2.Add("Dash", 3);
+        SkillcoolTimeDic2.Add("Sting", 5);
     }
 
     void Update()
@@ -31,6 +31,12 @@ public class Knight : MonoBehaviour
         Skill_Dash();
         Skill_Sting();
         BattleCheck();
+
+/*        for (int i = 0; i < BattleManager.Instance.Pattern_id.Count; i++)
+        {
+            print(i + "   "+BattleManager.Instance.Pattern_id[i]);
+
+        }*/
     }
 
     private void FixedUpdate()
@@ -134,14 +140,19 @@ public class Knight : MonoBehaviour
     {
         SkillcoolTimeDic["Dash"] -= Time.deltaTime;
 
-        if (Input.GetKeyDown(KeyCode.G))
+        if (BattleManager.Instance.Pattern_id.SequenceEqual( new List<int>(){3,4,5} ))
         {
-            if (SkillcoolTimeDic["Dash"] <= 0)
-            {
-                if (isDash == false && !BattleManager.Instance.isUseSkill)
+
+            if (BattleManager.Instance.PatternInputEnd){
+
+                if (SkillcoolTimeDic["Dash"] <= 0)
                 {
-                    Debug.Log("Dash");
-                    StartCoroutine(DashCroutine());
+
+                    if (isDash == false && !BattleManager.Instance.isUseSkill)
+                    {
+                        Debug.Log("Dash");
+                        StartCoroutine(DashCroutine());
+                    }
                 }
             }
         }
@@ -154,8 +165,8 @@ public class Knight : MonoBehaviour
     public void Skill_Sting()
     {
         SkillcoolTimeDic["Sting"] -= Time.deltaTime;
-        Debug.Log(SkillcoolTimeDic["Sting"]);
-        if (Input.GetKeyDown(KeyCode.F) && !BattleManager.Instance.isUseSkill && character.Mp - 40 >= 0)
+
+        if (BattleManager.Instance.Pattern_id.SequenceEqual(new List<int>() { 0,1,2 }) && !BattleManager.Instance.isUseSkill && character.Mp - 40 >= 0)
         {
             if (SkillcoolTimeDic["Sting"] <= 0)
             {
