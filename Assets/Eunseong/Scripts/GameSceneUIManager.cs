@@ -35,6 +35,7 @@ public class GameSceneUIManager : MonoBehaviour
     // 겜 오버 시 나오는것
     public GameObject GameOverPanel;
     public Text getCoinAmountText;
+    public Text LastScore;
 
     void Start()
     {
@@ -92,6 +93,7 @@ public class GameSceneUIManager : MonoBehaviour
     {
         Time.timeScale = 0;
         getCoinAmountText.text = "+ " + BattleManager.Instance.getGold;
+        LastScore.text = "Score : " + Score;
         GameOverPanel.SetActive(true);
     }
 
