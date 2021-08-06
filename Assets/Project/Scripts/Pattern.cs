@@ -57,7 +57,9 @@ public class Pattern : MonoBehaviour
         BattleManager.Instance.PatternInputEnd = true;
         enabled = false;
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.1f);
+        BattleManager.Instance.Pattern_id.Clear();
+        yield return new WaitForSeconds(0.9f);
         //foreach (var circle in circles)
         //{
         //    circle.Value.GetComponent<UnityEngine.UI.Image>().color = Color.white;
@@ -72,7 +74,6 @@ public class Pattern : MonoBehaviour
         }
 
         lines.Clear();
-        BattleManager.Instance.Pattern_id.Clear();
 
         lineOnEdit = null;
         lineOnEditrcTs = null;

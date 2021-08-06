@@ -17,6 +17,8 @@ public class GameSceneUIManager : MonoBehaviour
     public Text Hpstate;
     public Text Mpstate;
 
+    public Text WarningText;
+    
     public float ScoreP
     {
         get
@@ -91,5 +93,35 @@ public class GameSceneUIManager : MonoBehaviour
         Time.timeScale = 0;
         getCoinAmountText.text = "+ " + BattleManager.Instance.getGold;
         GameOverPanel.SetActive(true);
+    }
+
+    public void ApearWarningText(int index)
+    {
+        switch (index)
+        {
+            case 1:
+                StartCoroutine(SetWarningText("마나가 부족합니다."));
+                break;
+
+            case 2:
+                StartCoroutine(SetWarningText("스킬이 쿨타임입니다."));
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    IEnumerator SetWarningText(string str)
+    {
+        WarningText.text = str;
+
+        WarningText.gameObject.SetActive(true);
+        WarningText.gameObject.GetComponent<Animator>().SetTrigger("Set");
+
+
+        yield return new WaitForSeconds(0.9f);
+
+        WarningText.gameObject.SetActive(false);
     }
 }

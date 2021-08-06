@@ -232,7 +232,7 @@ MonoBehaviour:
   Speed: 4
   currentDelay: 0
   StrikingPower: 1
-  AddScore: 3
+  AddScore: 1
   CoinAmount: 3
   Stop: 0
   Hpbarbackground: {fileID: 5600907066847247584}

@@ -24,6 +24,7 @@ public class Character : MonoBehaviour
         Hp = MaxHp;
         Mp = MaxMp;
         anim = GetComponent<Animator>();
+        StartCoroutine(HpMpRecovery());
     }
 
 
@@ -54,6 +55,23 @@ public class Character : MonoBehaviour
             anim.SetBool("isDie", true);
             Debug.Log("Die!");
             return; 
+        }
+    }
+
+
+    IEnumerator HpMpRecovery()
+    {
+        while (!BattleManager.Instance.isEnd)
+        {
+            yield return new WaitForSeconds(1);
+            if (Hp < MaxHp)
+            {
+                Hp += 1;
+            }
+            if (Mp < MaxMp)
+            {
+                Mp += 3;
+            }
         }
     }
 

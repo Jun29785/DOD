@@ -20,9 +20,10 @@ public class Knight : MonoBehaviour
         animController = GetComponent<KnightAnimatorController>();
         SkillcoolTimeDic.Add("Dash", 0);
         SkillcoolTimeDic.Add("Sting", 0);
-
-        SkillcoolTimeDic2.Add("Dash", 3);
-        SkillcoolTimeDic2.Add("Sting", 5);
+        SkillcoolTimeDic.Add("SpinAttack", 0);
+        SkillcoolTimeDic2.Add("Dash", 6);
+        SkillcoolTimeDic2.Add("Sting", 3);
+        SkillcoolTimeDic2.Add("SpinAttack", 4);
     }
 
     void Update()
@@ -31,6 +32,7 @@ public class Knight : MonoBehaviour
         Skill_Dash();
         Skill_Sting();
         BattleCheck();
+        Skill_SpinAttack();
 
 /*        for (int i = 0; i < BattleManager.Instance.Pattern_id.Count; i++)
         {
@@ -42,11 +44,11 @@ public class Knight : MonoBehaviour
     private void FixedUpdate()
     {
         ConcactCheck();
-        Debug.DrawRay(new Vector2(transform.position.x, transform.position.y + 0.5f), Vector2.right);
+        //Debug.DrawRay(new Vector2(transform.position.x, transform.position.y + 0.5f), Vector2.right);
 
     }
 
-    private void BattleCheck()
+    private void BattleCheck() // 없애도될듯
     {
        // animController.SetBool("isContact", BattleManager.Instance.isContact);
     }
@@ -90,6 +92,16 @@ public class Knight : MonoBehaviour
         }
     }
 
+    void MultiATK(float value) // 다중공격 판정 
+    {
+        Collider2D[] hitEnemy = Physics2D.OverlapCircleAll(character.attackTransform.position, character.AttackRange /*스킬 정보에서 빼오기 */, LayerMask.GetMask("Monster"));
+
+        foreach (Collider2D enemy in hitEnemy)
+        {
+
+            enemy.GetComponent<Monster>().Monster_Damage(value);
+        }
+    }
 
     #endregion
     void ConcactCheck() // 배틀상태 감지
@@ -133,6 +145,10 @@ public class Knight : MonoBehaviour
     #region 스킬
 
 
+
+
+    #region 돌진
+
     /// <summary>
     /// 돌진
     /// </summary>
@@ -140,53 +156,46 @@ public class Knight : MonoBehaviour
     {
         SkillcoolTimeDic["Dash"] -= Time.deltaTime;
 
-        if (BattleManager.Instance.Pattern_id.SequenceEqual( new List<int>(){3,4,5} ))
+        if (BattleManager.Instance.Pattern_id.SequenceEqual(new List<int>() { 3, 4, 5 }))
         {
 
-            if (BattleManager.Instance.PatternInputEnd){
+            if (BattleManager.Instance.PatternInputEnd)
+            {
 
-                if (SkillcoolTimeDic["Dash"] <= 0)
+                if (isDash == false && !BattleManager.Instance.isUseSkill)
                 {
+                   
 
-                    if (isDash == false && !BattleManager.Instance.isUseSkill)
+                    if (character.Mp - 20 >= 0/*스킬 정보에서 가져오기*/)
                     {
-                        Debug.Log("Dash");
-                        StartCoroutine(DashCroutine());
+                        
+                        if (SkillcoolTimeDic["Dash"] <= 0)
+                        {
+                            Debug.Log("Dash");
+                            StartCoroutine(DashCroutine());
+                        }
+                        else
+                        {
+                            GameSceneUIManager.Instance.ApearWarningText(2);
+                        }
+                    }
+                    else
+                    {
+                        GameSceneUIManager.Instance.ApearWarningText(1);
                     }
                 }
             }
         }
     }
-    
-
-    /// <summary>
-    /// 연속 찌르기
-    /// </summary>
-    public void Skill_Sting()
-    {
-        SkillcoolTimeDic["Sting"] -= Time.deltaTime;
-
-        if (BattleManager.Instance.Pattern_id.SequenceEqual(new List<int>() { 0,1,2 }) && !BattleManager.Instance.isUseSkill && character.Mp - 40 >= 0)
-        {
-            if (SkillcoolTimeDic["Sting"] <= 0)
-            {
-                character.Mp -= 40;
-                BattleManager.Instance.isUseSkill = true;
-                animController.SetSkillTrigger("Sting");
-                SkillcoolTimeDic["Sting"] = SkillcoolTimeDic2["Sting"];
-            }
-        }
-        
-    }
-
     /// <summary>
     /// 돌진 판정
     /// </summary>
     IEnumerator DashCroutine()
     {
+        SkillcoolTimeDic["Dash"] = SkillcoolTimeDic2["Dash"];
+
         float currentTime = 1;
-        if (character.Mp - 20 >= 0/*스킬 정보에서 가져오기*/)
-        {
+        
             isDash = true;
             BattleManager.Instance.isUseSkill = true;
 
@@ -230,14 +239,101 @@ public class Knight : MonoBehaviour
             BattleManager.Instance.isUseSkill = false;
             transform.position = originPos.position;
             isDash = false;
-            SkillcoolTimeDic["Dash"] = SkillcoolTimeDic2["Dash"];
-            StopAllCoroutines();
-        }
-        else
+        
+
+    }
+
+    #endregion
+
+    #region 연속찌르기
+
+    /// <summary>
+    /// 연속 찌르기
+    /// </summary>
+    public void Skill_Sting()
+    {
+        SkillcoolTimeDic["Sting"] -= Time.deltaTime;
+
+        if (BattleManager.Instance.PatternInputEnd)
         {
-            StopAllCoroutines();
+            if (BattleManager.Instance.Pattern_id.SequenceEqual(new List<int>() { 0, 1, 2 }))
+            {
+                if (!BattleManager.Instance.isUseSkill)
+                {
+                    if (character.Mp - 40 >= 0)
+                    {
+                        
+                        if (SkillcoolTimeDic["Sting"] <= 0)
+                        {
+                            character.Mp -= 40;
+                            BattleManager.Instance.isUseSkill = true;
+                            animController.SetSkillTrigger("Sting");
+                            SkillcoolTimeDic["Sting"] = SkillcoolTimeDic2["Sting"];
+
+                        }
+                        else
+                        {
+                            GameSceneUIManager.Instance.ApearWarningText(2);
+                        }
+                    }
+                    else
+                    {
+                        GameSceneUIManager.Instance.ApearWarningText(1);
+                    }
+                }
+            }
+        }
+
+    }
+    #endregion
+
+    #region 회전공격
+    public void Skill_SpinAttack()
+    {
+
+        SkillcoolTimeDic["Dash"] -= Time.deltaTime;
+
+        if (BattleManager.Instance.Pattern_id.SequenceEqual(new List<int>() { 6,7,8 }))
+        {
+            if (BattleManager.Instance.PatternInputEnd)
+            {
+                if(!BattleManager.Instance.isUseSkill)
+                {
+                    if (character.Mp - 30 >= 0)
+                    {
+                        
+                        if (SkillcoolTimeDic["SpinAttack"] <= 0)
+                        {
+                            StartCoroutine(SpinAttack());
+                        }
+                        else
+                        {
+                            GameSceneUIManager.Instance.ApearWarningText(2);
+                        }
+                    }
+                    else
+                    {
+                        GameSceneUIManager.Instance.ApearWarningText(1);
+
+                    }
+                }
+            }
         }
     }
+
+    IEnumerator SpinAttack()
+    {
+        SkillcoolTimeDic["SpinAttack"] = SkillcoolTimeDic2["SpinAttack"];
+
+        BattleManager.Instance.isUseSkill = true;
+        animController.SetSkillBool("isSpinAttack",true);
+
+        yield return new WaitForSeconds(3f);
+    
+        animController.SetSkillBool("isSpinAttack",false);
+        BattleManager.Instance.isUseSkill = false;
+    }
+    #endregion
 
     #endregion
 }
