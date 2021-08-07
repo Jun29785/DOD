@@ -60,6 +60,7 @@ public class Monster : MonoBehaviour
     public void Monster_Damage(float value)
     {
         Hp -= value;
+        anim.SetTrigger("Damaged");
     }
         
     void HpUI_Update()

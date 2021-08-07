@@ -92,6 +92,7 @@ public class GameSceneUIManager : MonoBehaviour
     void Gameover()
     {
         Time.timeScale = 0;
+        WarningText.gameObject.SetActive(false);
         getCoinAmountText.text = "+ " + BattleManager.Instance.getGold;
         LastScore.text = "Score : " + Score;
         GameOverPanel.SetActive(true);
