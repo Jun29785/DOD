@@ -119,7 +119,7 @@ public class Monster : MonoBehaviour
         }
 
         BattleManager.Instance.GetGold(CoinAmount);
-        Objectpool.ReturnGoblin(this);
+        Objectpool.ReturnMonster(this);
     }
 
     public void Attack()

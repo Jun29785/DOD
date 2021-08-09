@@ -53,7 +53,6 @@ public class Character : MonoBehaviour
         {
             BattleManager.Instance.isEnd = true;
             anim.SetBool("isDie", true);
-            Debug.Log("Die!");
             return; 
         }
     }

@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class GameSceneUIManager : MonoBehaviour
 {
-    float Score;
 
     public static GameSceneUIManager Instance;
 
@@ -19,17 +18,7 @@ public class GameSceneUIManager : MonoBehaviour
 
     public Text WarningText;
     
-    public float ScoreP
-    {
-        get
-        {
-            return Score;
-        }
-        set
-        {
-            Score = value;
-        }
-    }
+    
 
 
     // 겜 오버 시 나오는것
@@ -40,7 +29,6 @@ public class GameSceneUIManager : MonoBehaviour
     void Start()
     {
         Hpbar.maxValue = character.MaxHp;
-        Score = 0;
         Mpbar.maxValue = character.MaxMp;
         Instance = this;
     }
@@ -70,12 +58,12 @@ public class GameSceneUIManager : MonoBehaviour
 
     void ScoreUpdate()
     {
-        ScoreText.text = Score.ToString();
+        ScoreText.text = BattleManager.Instance.Score.ToString();
     }
 
     public void GetScore(float _score)
     {
-        Score += _score;
+        BattleManager.Instance.Score += _score;
     }
 
     void GameOverCheck()
@@ -94,7 +82,7 @@ public class GameSceneUIManager : MonoBehaviour
         Time.timeScale = 0;
         WarningText.gameObject.SetActive(false);
         getCoinAmountText.text = "+ " + BattleManager.Instance.getGold;
-        LastScore.text = "Score : " + Score;
+        LastScore.text = "Score : " + BattleManager.Instance.Score;
         GameOverPanel.SetActive(true);
     }
 
