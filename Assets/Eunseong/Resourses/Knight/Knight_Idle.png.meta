@@ -149,6 +149,33 @@ TextureImporter:
   - first:
       213: 1594739051614029117
     second: Knight_Idle_48
+  - first:
+      213: -6108292884089352476
+    second: Knight_Idle_0
+  - first:
+      213: 6173392839653268231
+    second: Knight_Idle_1
+  - first:
+      213: 2626099426065569335
+    second: Knight_Idle_2
+  - first:
+      213: -259659236539372674
+    second: Knight_Idle_3
+  - first:
+      213: 242672029200050130
+    second: Knight_Idle_4
+  - first:
+      213: 7603280559291151638
+    second: Knight_Idle_5
+  - first:
+      213: -4477786589970431134
+    second: Knight_Idle_6
+  - first:
+      213: -3992200357897714495
+    second: Knight_Idle_49
+  - first:
+      213: 7047725614017039443
+    second: Knight_Idle_50
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -179,7 +206,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -100
     wrapU: 1
