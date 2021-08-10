@@ -172,8 +172,9 @@ public class Knight : MonoBehaviour
                         if (SkillcoolTimeDic["Dash"] <= 0)
                         {
                             Debug.Log("Dash");
-                            GameSceneUIManager.Instance.Create_SkillCoolTimeObject("돌진", SkillcoolTimeDic2["Dash"]);
                             StartCoroutine(DashCroutine());
+                            GameSceneUIManager.Instance.Create_SkillCoolTimeObject("돌진", SkillcoolTimeDic2["Dash"]);
+
                         }
                         else
                         {
@@ -268,9 +269,9 @@ public class Knight : MonoBehaviour
                         {
                             character.Mp -= 40;
                             BattleManager.Instance.isUseSkill = true;
-                            GameSceneUIManager.Instance.Create_SkillCoolTimeObject("연속 찌르기", SkillcoolTimeDic2["Sting"]);
                             animController.SetSkillTrigger("Sting");
                             SkillcoolTimeDic["Sting"] = SkillcoolTimeDic2["Sting"];
+                            GameSceneUIManager.Instance.Create_SkillCoolTimeObject("연속 찌르기", SkillcoolTimeDic2["Sting"]);
 
                         }
                         else
@@ -306,8 +307,8 @@ public class Knight : MonoBehaviour
                         
                         if (SkillcoolTimeDic["SpinAttack"] <= 0)
                         {
-                            GameSceneUIManager.Instance.Create_SkillCoolTimeObject("회전 공격", SkillcoolTimeDic2["SpinAttack"]);
                             StartCoroutine(SpinAttack());
+                            GameSceneUIManager.Instance.Create_SkillCoolTimeObject("회전 공격", SkillcoolTimeDic2["SpinAttack"]);
                         }
                         else
                         {
