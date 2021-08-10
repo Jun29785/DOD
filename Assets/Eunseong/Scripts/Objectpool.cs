@@ -84,7 +84,7 @@ public class Objectpool : MonoBehaviour
 
 
 
-    public static Monster GetGoblinobject(Vector2 pos)
+    public static Monster GetMonsterobject(Vector2 pos/*, BattleManager.Monster type*/)
     {
         if (Instance.GoblinQueue.Count > 0)
         {
@@ -106,7 +106,7 @@ public class Objectpool : MonoBehaviour
         }
     }
 
-    public static void ReturnGoblin(Monster Obj)
+    public static void ReturnMonster(Monster Obj)
     {
         Obj.gameObject.SetActive(false);
         Obj.transform.SetParent(Instance.transform);

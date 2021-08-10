@@ -19,7 +19,7 @@ public class MonsterGenerater : MonoBehaviour
 
         if(currentTime >= SpawnInterval)
         {
-            Objectpool.GetGoblinobject(new Vector2(transform.position.x, Random.Range(-0.35f,0.05f)));  
+            Objectpool.GetMonsterobject(new Vector2(transform.position.x, Random.Range(-0.35f,0.05f)));  
             currentTime = 0;
         }
     }

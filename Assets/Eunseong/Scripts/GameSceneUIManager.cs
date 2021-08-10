@@ -5,42 +5,32 @@ using UnityEngine.UI;
 
 public class GameSceneUIManager : MonoBehaviour
 {
-    float Score;
 
     public static GameSceneUIManager Instance;
 
-    public RectTransform PlayerTransform;
-    public Character character;
-    public Slider Hpbar;
-    public Slider Mpbar;
-    public Text ScoreText;
-    public Text Hpstate;
-    public Text Mpstate;
+    public Character character; // 캐릭터 스크립트
+    public Slider Hpbar; // 플레이어 HP
+    public Slider Mpbar; // 플레이어 MP
+    public Text ScoreText; // 점수
+    public Text Hpstate; // HP 텍스트
+    public Text Mpstate; // MP 텍스트
 
-    public Text WarningText;
+    public Text WarningText; // 마나없습니다 등등 표기 텍스트
+    public GameObject Content; // 스킬 쿨타임오브젝트의 부모객체
+
+    public GameObject Skill_CoolTime_Prefab;
     
-    public float ScoreP
-    {
-        get
-        {
-            return Score;
-        }
-        set
-        {
-            Score = value;
-        }
-    }
 
 
     // 겜 오버 시 나오는것
     public GameObject GameOverPanel;
+    public GameObject SkillCoolTimePanel;
     public Text getCoinAmountText;
     public Text LastScore;
-
+    
     void Start()
     {
         Hpbar.maxValue = character.MaxHp;
-        Score = 0;
         Mpbar.maxValue = character.MaxMp;
         Instance = this;
     }
@@ -70,12 +60,12 @@ public class GameSceneUIManager : MonoBehaviour
 
     void ScoreUpdate()
     {
-        ScoreText.text = Score.ToString();
+        ScoreText.text = BattleManager.Instance.Score.ToString();
     }
 
     public void GetScore(float _score)
     {
-        Score += _score;
+        BattleManager.Instance.Score += _score;
     }
 
     void GameOverCheck()
@@ -86,6 +76,7 @@ public class GameSceneUIManager : MonoBehaviour
             
             
         }
+        
     }
 
 
@@ -93,11 +84,12 @@ public class GameSceneUIManager : MonoBehaviour
     {
         Time.timeScale = 0;
         WarningText.gameObject.SetActive(false);
+        SkillCoolTimePanel.gameObject.SetActive(false);
         getCoinAmountText.text = "+ " + BattleManager.Instance.getGold;
-        LastScore.text = "Score : " + Score;
+        LastScore.text = "Score : " + BattleManager.Instance.Score;
         GameOverPanel.SetActive(true);
     }
-
+    
     public void ApearWarningText(int index)
     {
         switch (index)
@@ -115,13 +107,22 @@ public class GameSceneUIManager : MonoBehaviour
         }
     }
 
+    public void Create_SkillCoolTimeObject(string name, float cooltime)
+    {
+        var obj = Instantiate(Skill_CoolTime_Prefab);
+        obj.GetComponent<SkillCoolTimeObject>().skillName = name;
+        obj.GetComponent<SkillCoolTimeObject>().CoolTime = cooltime;
+        obj.gameObject.transform.parent = Content.transform;
+        obj.gameObject.transform.localPosition = Vector2.zero;
+    }
+
     IEnumerator SetWarningText(string str)
     {
         WarningText.text = str;
 
         WarningText.gameObject.SetActive(true);
         WarningText.gameObject.GetComponent<Animator>().SetTrigger("Set");
-
+        
 
         yield return new WaitForSeconds(0.9f);
 
