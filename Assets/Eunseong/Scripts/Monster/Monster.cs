@@ -17,16 +17,27 @@ public class Monster : MonoBehaviour
     public float StrikingPower;
     public float AddScore;
     public int CoinAmount;
+    public AttackType atkType;
+
+
     public bool Stop;
     bool isDie = false;
 
-    private BattleManager BattleManager;
+    public enum AttackType
+    {
+        meleeAttack,
+        projectileAttack,
+    }
+
 
     public GameObject Hpbarbackground;
     public GameObject CoinPrefab;
     public Image Hpbar;
     Animator anim;
     public Text DamageText;
+
+    public GameObject projectilePrefab;
+
     void Start()
     {
         currentDelay = AttackDelay;
@@ -52,7 +63,17 @@ public class Monster : MonoBehaviour
 
     private void FixedUpdate()
     {
-        TryAttack();
+        switch (atkType)
+        {
+            case AttackType.meleeAttack:
+                meleeTryAttack();
+                break;
+            case AttackType.projectileAttack:
+                projectileTryAttack();
+                break;
+            default:
+                break;
+        }
     }
 
 
@@ -67,27 +88,7 @@ public class Monster : MonoBehaviour
     {
         Hpbar.fillAmount = Hp / MaxHp;
     }
-    void TryAttack()
-    {
-        Debug.DrawRay(new Vector2(transform.position.x, transform.position.y + 0.6f), Vector2.left);
-        RaycastHit2D rayhit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 0.6f), Vector2.left, AttackDistance, LayerMask.GetMask("Player"));
-        
-        if (rayhit.collider != null)
-        {
-
-            Stop = true;
-
-            if (currentDelay >= AttackDelay)
-            {
-                anim.SetTrigger("Attack");
-                currentDelay = 0;
-            }
-        }
-        else
-        {
-            Stop = false;
-        }
-    }
+    
     public void Move()
     {
         if (!Stop)
@@ -131,4 +132,55 @@ public class Monster : MonoBehaviour
     {
         anim.SetBool("isContact", Stop);
     }
+
+
+
+    // 근접 공격
+
+    void meleeTryAttack()
+    {
+        Debug.DrawRay(new Vector2(transform.position.x, transform.position.y + 0.6f), Vector2.left);
+        RaycastHit2D rayhit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 0.6f), Vector2.left, AttackDistance, LayerMask.GetMask("Player"));
+
+        if (rayhit.collider != null)
+        {
+
+            Stop = true;
+
+            if (currentDelay >= AttackDelay)
+            {
+                anim.SetTrigger("Attack");
+                currentDelay = 0;
+            }
+        }
+        else
+        {
+            Stop = false;
+        }
+    }
+
+    void projectileTryAttack()
+    {
+        Debug.DrawRay(new Vector2(transform.position.x, transform.position.y + 0.6f), Vector2.left);
+        RaycastHit2D rayhit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 0.6f), Vector2.left, AttackDistance, LayerMask.GetMask("Player"));
+
+        if (rayhit.collider != null)
+        {
+
+            Stop = true;
+
+            if (currentDelay >= AttackDelay)
+            {
+                anim.SetTrigger("Attack");
+                var obj = Instantiate(projectilePrefab,transform.position,transform.rotation);
+                obj.GetComponent<MonsterProjectileAttck>().StrikingPower = this.StrikingPower;
+                currentDelay = 0;
+            }
+        }
+        else
+        {
+            Stop = false;
+        }
+    }
 }
+
