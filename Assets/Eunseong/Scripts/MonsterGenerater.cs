@@ -19,7 +19,7 @@ public class MonsterGenerater : MonoBehaviour
 
         if(currentTime >= SpawnInterval)
         {
-            Objectpool.GetMonsterobject(new Vector2(transform.position.x, Random.Range(-0.35f,0.05f)));  
+            Objectpool.GetMonsterobject(new Vector2(transform.position.x, Random.Range(0.1f, 0.5f)));  
             currentTime = 0;
         }
     }

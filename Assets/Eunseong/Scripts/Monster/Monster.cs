@@ -129,6 +129,6 @@ public class Monster : MonoBehaviour
 
     public void isContactCheck()
     {
-        anim.SetBool("isContact", BattleManager.Instance.isContact);
+        anim.SetBool("isContact", Stop);
     }
 }
