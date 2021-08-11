@@ -233,8 +233,8 @@ MonoBehaviour:
   currentDelay: 0
   StrikingPower: 2
   AddScore: 1
+  AddCoin: 1
   CoinAmount: 3
-  atkType: 0
   Stop: 0
   Hpbarbackground: {fileID: 5600907066847247584}
   CoinPrefab: {fileID: 8737653804221628634, guid: 46fcd275790f82949b1cdf293acd71de, type: 3}

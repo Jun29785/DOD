@@ -15,19 +15,20 @@ public class Monster : MonoBehaviour
     [HideInInspector]
     public float currentDelay;
     public float StrikingPower;
-    public float AddScore;
+    public float AddScore;      
+    public int AddCoin;
     public int CoinAmount;
-    public AttackType atkType;
+//    public AttackType atkType;
 
 
     public bool Stop;
     bool isDie = false;
 
-    public enum AttackType
+  /*  public enum AttackType
     {
         meleeAttack,
         projectileAttack,
-    }
+    }*/
 
 
     public GameObject Hpbarbackground;
@@ -63,19 +64,10 @@ public class Monster : MonoBehaviour
 
     private void FixedUpdate()
     {
-        switch (atkType)
-        {
-            case AttackType.meleeAttack:
-                meleeTryAttack();
-                break;
-            case AttackType.projectileAttack:
-                projectileTryAttack();
-                break;
-            default:
-                break;
-        }
-    }
 
+        TryAttack();
+
+    }
 
 
     public void Monster_Damage(float value)
@@ -119,7 +111,7 @@ public class Monster : MonoBehaviour
             //Instantiate(CoinPrefab, new Vector2(transform.position.x, transform.position.y + 0.6f), transform.rotation);
         }
 
-        BattleManager.Instance.GetGold(CoinAmount);
+        BattleManager.Instance.GetGold(AddCoin);
         Objectpool.ReturnMonster(this);
     }
 
@@ -137,7 +129,7 @@ public class Monster : MonoBehaviour
 
     // 근접 공격
 
-    void meleeTryAttack()
+    void TryAttack()
     {
         Debug.DrawRay(new Vector2(transform.position.x, transform.position.y + 0.6f), Vector2.left);
         RaycastHit2D rayhit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 0.6f), Vector2.left, AttackDistance, LayerMask.GetMask("Player"));
@@ -172,8 +164,7 @@ public class Monster : MonoBehaviour
             if (currentDelay >= AttackDelay)
             {
                 anim.SetTrigger("Attack");
-                var obj = Instantiate(projectilePrefab,transform.position,transform.rotation);
-                obj.GetComponent<MonsterProjectileAttck>().StrikingPower = this.StrikingPower;
+                
                 currentDelay = 0;
             }
         }
@@ -181,6 +172,12 @@ public class Monster : MonoBehaviour
         {
             Stop = false;
         }
+    }
+
+    public void Create_projectile()
+    {
+        var obj = Instantiate(projectilePrefab, transform.position, transform.rotation);
+        obj.GetComponent<MonsterProjectileAttck>().StrikingPower = this.StrikingPower;
     }
 }
 
