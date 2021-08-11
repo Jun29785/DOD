@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
-    int gold = 0;
+    public int gold = 0;
 
     private void Awake()
     {
@@ -17,4 +17,17 @@ public class GameManager : Singleton<GameManager>
         gold += value;
     }
 
+    public void SaveGameData()
+    {
+        SaveData save = new SaveData();
+        save.coin = gold;
+
+        SaveManager.Save(save);
+    }
+
+    public void LoadGameData()
+    {
+        SaveData save = SaveManager.Load();
+        gold = save.coin;
+    }
 }

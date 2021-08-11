@@ -17,7 +17,7 @@ public static class SaveManager
         stream.Close();
     }
 
-    public static void Load()
+    public static SaveData Load()
     {
         try
         {
@@ -26,10 +26,12 @@ public static class SaveManager
             FileStream stream = File.OpenRead(path);
             SaveData data = (SaveData)formatter.Deserialize(stream);
             stream.Close();
+            return data;
         }
         catch(Exception e)
         {
             Debug.Log(e.Message);
+            return default;
         }
     }
 }
