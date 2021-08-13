@@ -1,0 +1,66 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ProjectileMonster : Monster
+{
+    public GameObject projectilePrefab;
+    bool isBattle;
+    bool isContact;
+    public override void Start()
+    {
+        base.Start();
+    }
+
+
+
+    public override void Update()
+    {
+        base.Update();
+
+    }
+
+    public void FixedUpdate()
+    {
+        BattleCheck();
+        ContactCheck();
+    }
+    public virtual void BattleCheck() // 배틀 감지
+    {
+        RaycastHit2D rayhit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 0.6f), Vector2.left, AttackDistance, LayerMask.GetMask("Player"));
+        if (rayhit.collider != null)
+        {
+            isBattle = true;
+            TryAttack();
+        }
+        else
+        {
+            isBattle = false;
+        }
+
+
+    }
+
+    public override void Move()
+    {
+        isContact = (BattleManager.Instance.isContact && !isBattle || !BattleManager.Instance.isContact && !Stop);
+        if(isContact)
+        {
+            
+            transform.Translate(Vector2.left * Speed * Time.deltaTime);
+        }
+
+
+    }
+
+    public override void animUpdate()
+    {
+        anim.SetBool("isContact", !isContact);
+
+    }
+    public virtual void Create_projectile()
+    {
+        var obj = Instantiate(projectilePrefab, transform.position, transform.rotation);
+        obj.GetComponent<MonsterProjectile>().StrikingPower = Power;
+    }
+}

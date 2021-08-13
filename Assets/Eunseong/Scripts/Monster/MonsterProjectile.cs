@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterProjectileAttck : MonoBehaviour
+public class MonsterProjectile : MonoBehaviour
 {
 
     public float Speed;
@@ -12,7 +12,6 @@ public class MonsterProjectileAttck : MonoBehaviour
         
     }
 
-    // Update is called once per frame
     void Update()
     {
 

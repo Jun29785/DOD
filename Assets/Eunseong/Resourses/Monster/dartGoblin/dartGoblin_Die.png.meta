@@ -1,22 +1,22 @@
 fileFormatVersion: 2
-guid: 8300265cd6f9e2445bafc41254acd8a2
+guid: 2d5dd9a755ae58f4ca00d5afc9e82209
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8147944231807513042
-    second: Knight_SpinAttack_0
+      213: 1376550213474392315
+    second: dartGoblin_Die_0
   - first:
-      213: -7211131313900846711
-    second: Knight_SpinAttack_1
+      213: 3379652419968236054
+    second: dartGoblin_Die_1
   - first:
-      213: 1036950627873001704
-    second: Knight_SpinAttack_2
+      213: 7634707764804775949
+    second: dartGoblin_Die_2
   - first:
-      213: -7987485473140362075
-    second: Knight_SpinAttack_3
+      213: -4644513529165789028
+    second: dartGoblin_Die_3
   - first:
-      213: -7364313688084350439
-    second: Knight_SpinAttack_4
+      213: 5036310880820263728
+    second: dartGoblin_Die_4
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -128,106 +128,64 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Knight_SpinAttack_0
+      name: dartGoblin_Die_1
       rect:
         serializedVersion: 2
-        x: 13
-        y: 47
-        width: 56
-        height: 45
+        x: 20
+        y: 43
+        width: 33
+        height: 37
       alignment: 9
-      pivot: {x: 0.3766448, y: 0}
+      pivot: {x: 0.61, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e2e8b6d04efacee80800000000000000
-      internalID: -8147944231807513042
+      spriteID: 61afe7448ffe6ee20800000000000000
+      internalID: 3379652419968236054
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Knight_SpinAttack_1
+      name: dartGoblin_Die_3
       rect:
         serializedVersion: 2
-        x: 87
-        y: 46
-        width: 52
-        height: 45
+        x: 73
+        y: 43
+        width: 33
+        height: 37
       alignment: 9
-      pivot: {x: 0.34417182, y: 0.00000008477105}
+      pivot: {x: 0.6, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9818e36b64aeceb90800000000000000
-      internalID: -7211131313900846711
+      spriteID: c98c39b8d8f5b8fb0800000000000000
+      internalID: -4644513529165789028
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Knight_SpinAttack_2
+      name: dartGoblin_Die_4
       rect:
         serializedVersion: 2
-        x: 140
-        y: 46
-        width: 57
-        height: 45
-      alignment: 9
-      pivot: {x: 0.6319636, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8e01dff1a1df36e00800000000000000
-      internalID: 1036950627873001704
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Knight_SpinAttack_3
-      rect:
-        serializedVersion: 2
-        x: 5
+        x: 0
         y: 0
         width: 46
-        height: 44
-      alignment: 9
-      pivot: {x: 0.6535089, y: 0}
+        height: 24
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5a430ec1840c62190800000000000000
-      internalID: -7987485473140362075
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Knight_SpinAttack_4
-      rect:
-        serializedVersion: 2
-        x: 84
-        y: 0
-        width: 56
-        height: 45
-      alignment: 9
-      pivot: {x: 0.37664482, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 91a7f2fe7b3bcc990800000000000000
-      internalID: -7364313688084350439
+      spriteID: 03bf9b5001294e540800000000000000
+      internalID: 5036310880820263728
       vertices: []
       indices: 
       edges: []

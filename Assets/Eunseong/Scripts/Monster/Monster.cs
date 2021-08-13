@@ -3,147 +3,95 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Monster : MonoBehaviour
+public abstract class Monster : Actor
 {
 
-    public string MonsterName;
-    public float AttackDelay;
-    public float AttackDistance;
-    public float MaxHp;
-    public float Hp;
     public float Speed;
-    [HideInInspector]
-    public float currentDelay;
-    public float StrikingPower;
-    public float AddScore;      
+    public float AddScore;
     public int AddCoin;
     public int CoinAmount;
-//    public AttackType atkType;
-
-
     public bool Stop;
     bool isDie = false;
 
-  /*  public enum AttackType
-    {
-        meleeAttack,
-        projectileAttack,
-    }*/
 
 
     public GameObject Hpbarbackground;
     public GameObject CoinPrefab;
     public Image Hpbar;
-    Animator anim;
     public Text DamageText;
 
-    public GameObject projectilePrefab;
 
-    void Start()
+    public override void Start()
     {
-        currentDelay = AttackDelay;
-        Hp = MaxHp;
+        base.Start();
         Hpbar.fillAmount = 1f;
-        anim = GetComponent<Animator>();
+
     }
 
-    private void OnEnable()
+    public virtual void OnEnable()
     {
         Hp = MaxHp;
         isDie = false;
     }
-    void Update()
-    {
-        currentDelay += Time.deltaTime;
 
-        isContactCheck();
+    public override void Update()
+    {
+        base.Update();
+        DieCheck();
         HpUI_Update();
         Move();
-        DieCheck();
-    }
-
-    private void FixedUpdate()
-    {
-
-        TryAttack();
-
     }
 
 
-    public void Monster_Damage(float value)
-    {
-        Hp -= value;
-        anim.SetTrigger("Damaged");
-    }
-        
+
     void HpUI_Update()
     {
         Hpbar.fillAmount = Hp / MaxHp;
     }
-    
-    public void Move()
-    {
-        if (!Stop)
-        {
-            transform.Translate(Vector2.left * Speed * Time.deltaTime);
-        }
-    }
 
-    public void DieCheck()
+    public abstract void Move();
+
+    public override void DieCheck()
     {
         if (Hp <= 0)
         {
-            anim.SetBool("isDie",true);
+            anim.SetBool("isDie", true);
             if (!isDie)
             {
-                Invoke("Die", 1);
+                Invoke("Die", 0.5f);
                 isDie = true;
             }
         }
     }
 
-    public void Die()
+    public virtual void Die()
     {
         GameSceneUIManager.Instance.GetScore(AddScore);
         for (int i = 0; i < 3; i++)
         {
             Objectpool.GetCoinobject(new Vector2(transform.position.x, transform.position.y + 0.5f));
-            //Instantiate(CoinPrefab, new Vector2(transform.position.x, transform.position.y + 0.6f), transform.rotation);
         }
 
         BattleManager.Instance.GetGold(AddCoin);
         Objectpool.ReturnMonster(this);
     }
 
-    public void Attack()
-    {
-        BattleManager.Instance.PlayerDamage(StrikingPower);
-    }
 
-    public void isContactCheck()
+
+    public override void animUpdate()
     {
+
         anim.SetBool("isContact", Stop);
     }
 
-
-
-    // 근접 공격
-
-    void TryAttack()
+    public virtual void ContactCheck() // 맞닿음 감지
     {
-        Debug.DrawRay(new Vector2(transform.position.x, transform.position.y + 0.6f), Vector2.left);
-        RaycastHit2D rayhit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 0.6f), Vector2.left, AttackDistance, LayerMask.GetMask("Player"));
-
+        RaycastHit2D rayhit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 0.6f), Vector2.left, 0.5f, LayerMask.GetMask("Player"));
         if (rayhit.collider != null)
         {
 
             Stop = true;
 
-            if (currentDelay >= AttackDelay)
-            {
-                anim.SetTrigger("Attack");
-                currentDelay = 0;
-            }
         }
         else
         {
@@ -151,33 +99,24 @@ public class Monster : MonoBehaviour
         }
     }
 
-    void projectileTryAttack()
+    public virtual void TryAttack()
     {
-        Debug.DrawRay(new Vector2(transform.position.x, transform.position.y + 0.6f), Vector2.left);
-        RaycastHit2D rayhit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 0.6f), Vector2.left, AttackDistance, LayerMask.GetMask("Player"));
-
-        if (rayhit.collider != null)
+        if (CurrentAttackDelay >= AttackDelay)
         {
-
-            Stop = true;
-
-            if (currentDelay >= AttackDelay)
-            {
-                anim.SetTrigger("Attack");
-                
-                currentDelay = 0;
-            }
-        }
-        else
-        {
-            Stop = false;
+            anim.SetTrigger("Attack");
+            CurrentAttackDelay = 0;
         }
     }
 
-    public void Create_projectile()
+    public virtual void Attack()
     {
-        var obj = Instantiate(projectilePrefab, transform.position, transform.rotation);
-        obj.GetComponent<MonsterProjectileAttck>().StrikingPower = this.StrikingPower;
+        BattleManager.Instance.PlayerDamage(Power);
     }
+
 }
+
+
+
+    
+
 

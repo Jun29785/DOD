@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Goblin : MeleeMonster
+public class dartGoblin : ProjectileMonster
 {
     public override void Start()
     {

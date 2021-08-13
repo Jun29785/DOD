@@ -30,13 +30,14 @@ public class BattleManager : MonoBehaviour
     {
         character = GameObject.FindWithTag("Player").GetComponent<Character>();
         Instance = this;
+        Pattern_id.Clear();
     }
 
 
     public void PlayerDamage(float value)
     {
         
-        character.Damage(value);
+        character.Damaged(value);
     }
 
     public void GetGold(int value)
