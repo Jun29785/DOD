@@ -41,10 +41,10 @@ public class Character : Actor
         DieCheck();
     }
 
-    public virtual void FixedUpdate()
+    public override void FixedUpdate()
     {
+        base.FixedUpdate();
         AttackStateCheck();
-        ConcactCheck();
 
     }
     public override void Damaged(float value) // 데미지 입는함수
@@ -72,6 +72,11 @@ public class Character : Actor
             return false;
         }
 
+    }
+
+    public void UseMp(float value)
+    {
+        Mp -= value;
     }
 
 
@@ -112,19 +117,14 @@ public virtual void SetisUseSkillFalse()
         BattleManager.Instance.isUseSkill = false;
     }
 
-    public virtual void ConcactCheck() // 맞닿음 감지
-    {
-        RaycastHit2D hitinfo = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 0.5f), Vector2.right, 1, LayerMask.GetMask("Monster"));
-
-        BattleManager.Instance.isContact = (hitinfo.collider != null) ? true : false;
-
-    }
+    
 
     public virtual void AttackStateCheck() // 공격가능 상태 판별
     {
         RaycastHit2D hitinfo = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 0.5f), Vector2.right, AttackDistance, LayerMask.GetMask("Monster"));
 
-        isAttack = (hitinfo.collider != null) ? true : false;
+        isAttack = (hitinfo.collider != null && !BattleManager.Instance.isUseSkill) ? true : false;
+        BattleManager.Instance.isContact = (hitinfo.collider != null &&!BattleManager.Instance.isUseSkill) ? true : false;
 
     }
 
@@ -140,7 +140,7 @@ public virtual void SetisUseSkillFalse()
             if (!BattleManager.Instance.isUseSkill)
             {
 
-                if (CurrentAttackDelay >= AttackDelay)
+                if (CurrentAttackDelay >= ApplyAttackDelay)
                 {
                     anim.SetTrigger("Attack");
 

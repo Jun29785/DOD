@@ -9,6 +9,7 @@ public abstract class Actor : MonoBehaviour
     public float Hp;
     public float AttackDistance; // 공격 거리
     public float AttackDelay;
+    public float ApplyAttackDelay;
     public float CurrentAttackDelay;
     public float Power;
 
@@ -18,13 +19,27 @@ public abstract class Actor : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         CurrentAttackDelay = AttackDelay;
+        ApplyAttackDelay = AttackDelay;
     }
 
     public virtual void Update()
     {
+        if (BattleManager.Instance.isEnd)
+        {
+            return;
+        }
         CurrentAttackDelay += Time.deltaTime;
         animUpdate();
     }
+
+    public virtual void FixedUpdate()
+    {
+        if (BattleManager.Instance.isEnd)
+        {
+            return;
+        }
+    }
+
 
 
     public virtual void DieCheck()

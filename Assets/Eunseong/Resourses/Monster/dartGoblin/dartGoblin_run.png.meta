@@ -1,16 +1,19 @@
 fileFormatVersion: 2
-guid: fdf0037cbf17a9c4a93b0f0b23f291c6
+guid: cea676c62b55a084f894684ac1c9aa6c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1376550213474392315
-    second: dartGoblin_Die_0
+      213: 9022202626007526362
+    second: dartGoblin_run_0
   - first:
-      213: 3379652419968236054
-    second: dartGoblin_Die_1
+      213: -8108141729809036367
+    second: dartGoblin_run_1
   - first:
-      213: 7634707764804775949
-    second: dartGoblin_Die_2
+      213: 6934987166739525170
+    second: dartGoblin_run_2
+  - first:
+      213: -9085169878303703620
+    second: dartGoblin_run_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -53,8 +56,8 @@ TextureImporter:
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 7
-  spritePivot: {x: 0.5, y: 0}
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -122,64 +125,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: dartGoblin_Die_0
+      name: dartGoblin_run_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 43
-        width: 53
+        y: 37
+        width: 33
         height: 37
       alignment: 9
-      pivot: {x: 0.75, y: 0}
+      pivot: {x: 0.6, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bf811a9302d7a1310800000000000000
-      internalID: 1376550213474392315
+      spriteID: adb66c69c7d453d70800000000000000
+      internalID: 9022202626007526362
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dartGoblin_Die_1
+      name: dartGoblin_run_1
       rect:
         serializedVersion: 2
-        x: 53
-        y: 40
-        width: 46
-        height: 24
+        x: 33
+        y: 37
+        width: 33
+        height: 37
       alignment: 9
-      pivot: {x: 0.5, y: 0}
+      pivot: {x: 0.6, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 61afe7448ffe6ee20800000000000000
-      internalID: 3379652419968236054
+      spriteID: 1bb06363e081a7f80800000000000000
+      internalID: -8108141729809036367
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dartGoblin_Die_2
+      name: dartGoblin_run_2
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 46
-        height: 24
+        width: 33
+        height: 37
       alignment: 9
-      pivot: {x: 0.5, y: 0}
+      pivot: {x: 0.6, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d00fa1df24ee3f960800000000000000
-      internalID: 7634707764804775949
+      spriteID: 23ee663c5160e3060800000000000000
+      internalID: 6934987166739525170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dartGoblin_run_3
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 0
+        width: 33
+        height: 37
+      alignment: 9
+      pivot: {x: 0.6, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbdf0a7812efae180800000000000000
+      internalID: -9085169878303703620
       vertices: []
       indices: 
       edges: []

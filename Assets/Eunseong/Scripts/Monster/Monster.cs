@@ -7,6 +7,7 @@ public abstract class Monster : Actor
 {
 
     public float Speed;
+    public float applySpeed;
     public float AddScore;
     public int AddCoin;
     public int CoinAmount;
@@ -18,14 +19,15 @@ public abstract class Monster : Actor
     public GameObject Hpbarbackground;
     public GameObject CoinPrefab;
     public Image Hpbar;
+    public Image BackHpbar;
     public Text DamageText;
-
+    bool isBackHp;
 
     public override void Start()
     {
         base.Start();
         Hpbar.fillAmount = 1f;
-
+        applySpeed = Speed;
     }
 
     public virtual void OnEnable()
@@ -42,13 +44,37 @@ public abstract class Monster : Actor
         Move();
     }
 
-
+    public override void FixedUpdate()
+    {
+        base.FixedUpdate();
+    }
 
     void HpUI_Update()
     {
-        Hpbar.fillAmount = Hp / MaxHp;
+        Hpbar.fillAmount = Mathf.Lerp(Hpbar.fillAmount, Hp / MaxHp, 8f * Time.deltaTime);
+
+        if (isBackHp)
+        {
+            BackHpbar.fillAmount = Mathf.Lerp(BackHpbar.fillAmount, Hp / MaxHp, 10f * Time.deltaTime);
+
+            if (Hpbar.fillAmount >=BackHpbar.fillAmount - 0.001f)
+            {
+                isBackHp = false;
+                BackHpbar.fillAmount = Hpbar.fillAmount;
+            }
+        }
     }
 
+    void BackHpFunc()
+    {
+        isBackHp = true;
+    }
+
+    public override void Damaged(float value)
+    {
+        base.Damaged(value);
+        Invoke("BackHpFunc", 0.01f);
+    }
     public abstract void Move();
 
     public override void DieCheck()
@@ -63,7 +89,7 @@ public abstract class Monster : Actor
             }
         }
     }
-
+    
     public virtual void Die()
     {
         GameSceneUIManager.Instance.GetScore(AddScore);
@@ -101,7 +127,7 @@ public abstract class Monster : Actor
 
     public virtual void TryAttack()
     {
-        if (CurrentAttackDelay >= AttackDelay)
+        if (CurrentAttackDelay >= ApplyAttackDelay)
         {
             anim.SetTrigger("Attack");
             CurrentAttackDelay = 0;

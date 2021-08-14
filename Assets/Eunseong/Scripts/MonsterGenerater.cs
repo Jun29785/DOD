@@ -15,6 +15,10 @@ public class MonsterGenerater : MonoBehaviour
 
     void Update()
     {
+        if (BattleManager.Instance.isEnd)
+        {
+            return;
+        }
         currentTime += Time.deltaTime;
 
         if(currentTime >= SpawnInterval)

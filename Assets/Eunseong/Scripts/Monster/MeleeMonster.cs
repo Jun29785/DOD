@@ -18,8 +18,9 @@ public class MeleeMonster : Monster
 
     }
 
-    public void FixedUpdate()
+    public override void FixedUpdate()
     {
+        base.FixedUpdate();
         ContactCheck();
     }
 
@@ -27,7 +28,7 @@ public class MeleeMonster : Monster
     {
         if (!Stop)
         {
-            transform.Translate(Vector2.left * Speed * Time.deltaTime);
+            transform.Translate(Vector2.left * applySpeed * Time.deltaTime);
         }
     }
     public override void ContactCheck() // 공격 감지

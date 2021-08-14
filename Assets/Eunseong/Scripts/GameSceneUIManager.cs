@@ -19,12 +19,12 @@ public class GameSceneUIManager : MonoBehaviour
     public GameObject Content; // 스킬 쿨타임오브젝트의 부모객체
 
     public GameObject Skill_CoolTime_Prefab;
-    
 
+
+    public GameObject UI; // 전체 UI
 
     // 겜 오버 시 나오는것
     public GameObject GameOverPanel;
-    public GameObject SkillCoolTimePanel;
     public Text getCoinAmountText;
     public Text LastScore;
     
@@ -72,7 +72,8 @@ public class GameSceneUIManager : MonoBehaviour
     {
         if(BattleManager.Instance.isEnd)
         {
-            Invoke("Gameover", 1);
+
+            Invoke("Gameover", 0.7f);
             
             
         }
@@ -82,14 +83,13 @@ public class GameSceneUIManager : MonoBehaviour
 
     void Gameover()
     {
-        Time.timeScale = 0;
-        WarningText.gameObject.SetActive(false);
-        SkillCoolTimePanel.gameObject.SetActive(false);
+        UI.SetActive(false);
         getCoinAmountText.text = "+ " + BattleManager.Instance.getGold;
         LastScore.text = "Score : " + BattleManager.Instance.Score;
         GameOverPanel.SetActive(true);
+
     }
-    
+
     public void ApearWarningText(int index)
     {
         switch (index)

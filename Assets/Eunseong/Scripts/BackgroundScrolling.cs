@@ -15,6 +15,10 @@ public class BackgroundScrolling : MonoBehaviour
 
     private void Update()
     {
+        if (BattleManager.Instance.isEnd)
+        {
+            return;
+        }
         if (!BattleManager.Instance.isContact && !BattleManager.Instance.isStop && !BattleManager.Instance.isUseSkill)
         {
             offset += Time.deltaTime * speed;

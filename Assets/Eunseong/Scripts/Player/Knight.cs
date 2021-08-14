@@ -22,6 +22,7 @@ public class Knight : MeleeCharacter
     public override void Start()
     {
         base.Start();
+       StartCoroutine(HpMpRecovery(1,1, 3));
     }
     public override void Update()
     {
@@ -46,7 +47,8 @@ public class Knight : MeleeCharacter
             {
                 ATKDamage = 5;
                 Debug.Log("Dash");
-                StartCoroutine(DashCroutine());
+                UseMp(40);
+            StartCoroutine(DashCroutine());
                 GameSceneUIManager.Instance.Create_SkillCoolTimeObject("돌진", SkillcoolTimeDic2["Dash"]);
             }
 
@@ -107,10 +109,14 @@ public class Knight : MeleeCharacter
                 }
 
 
-                BattleManager.Instance.isUseSkill = false;
                 transform.position = originPos.position;
-                isDash = false;
-        
+
+
+             yield return new WaitForSeconds(0.4f);
+             BattleManager.Instance.isUseSkill = false;
+            
+        isDash = false;
+                
 
         }
 
@@ -130,7 +136,8 @@ public class Knight : MeleeCharacter
             {
                 ATKDamage = 5;
                 BattleManager.Instance.isUseSkill = true;
-                anim.SetTrigger("Sting");
+                UseMp(40);
+            anim.SetTrigger("Sting");
                 SkillcoolTimeDic["Sting"] = SkillcoolTimeDic2["Sting"];
                 GameSceneUIManager.Instance.Create_SkillCoolTimeObject("연속 찌르기", SkillcoolTimeDic2["Sting"]);
             }
@@ -147,6 +154,7 @@ public class Knight : MeleeCharacter
         if (UseSkill(SkillcoolTimeDic["SpinAttack"], 40, new List<int>() { 6, 7, 8 }))
         {
             ATKDamage = 5;
+            UseMp(40);
             StartCoroutine(SpinAttack());
             GameSceneUIManager.Instance.Create_SkillCoolTimeObject("회전공격", SkillcoolTimeDic2["SpinAttack"]);
 

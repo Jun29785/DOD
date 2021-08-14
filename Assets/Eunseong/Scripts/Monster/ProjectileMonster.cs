@@ -20,7 +20,7 @@ public class ProjectileMonster : Monster
 
     }
 
-    public void FixedUpdate()
+    public override void FixedUpdate()
     {
         BattleCheck();
         ContactCheck();
@@ -47,7 +47,7 @@ public class ProjectileMonster : Monster
         if(isContact)
         {
             
-            transform.Translate(Vector2.left * Speed * Time.deltaTime);
+            transform.Translate(Vector2.left * applySpeed * Time.deltaTime);
         }
 
 
