@@ -12,7 +12,7 @@ public class BattleManager : MonoBehaviour
     public bool isStop = false;
     public bool isEnd = false;
     public bool PatternInputEnd = false;
-    public int getGold = 0;
+    public int getGold = 0; 
     public float Score;
 
     public enum Monster

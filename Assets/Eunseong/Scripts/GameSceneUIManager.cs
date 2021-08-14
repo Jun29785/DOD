@@ -9,11 +9,7 @@ public class GameSceneUIManager : MonoBehaviour
     public static GameSceneUIManager Instance;
 
     public Character character; // 캐릭터 스크립트
-    public Slider Hpbar; // 플레이어 HP
-    public Slider Mpbar; // 플레이어 MP
     public Text ScoreText; // 점수
-    public Text Hpstate; // HP 텍스트
-    public Text Mpstate; // MP 텍스트
 
     public Text WarningText; // 마나없습니다 등등 표기 텍스트
     public GameObject Content; // 스킬 쿨타임오브젝트의 부모객체
@@ -30,33 +26,17 @@ public class GameSceneUIManager : MonoBehaviour
     
     void Start()
     {
-        Hpbar.maxValue = character.MaxHp;
-        Mpbar.maxValue = character.MaxMp;
         Instance = this;
     }
 
     // Update is called once per frame
     void Update()
     {
-        HpUpdate();
-        MpUpdate();
         ScoreUpdate();
         GameOverCheck();
     }
 
-    void HpUpdate()
-    {
-       // Hpbar.gameObject.transform.position =  new Vector2 (PlayerTransform.position.x, PlayerTransform.position.y + 0.6f);
-        Hpbar.value = character.Hp;
-        Hpstate.text = character.Hp + " / " + character.MaxHp;
-    }
 
-    void MpUpdate()
-    {
-        Mpbar.value = character.Mp;
-        Mpstate.text = character.Mp + " / " + character.MaxMp;
-
-    }
 
     void ScoreUpdate()
     {
@@ -113,7 +93,7 @@ public class GameSceneUIManager : MonoBehaviour
         obj.GetComponent<SkillCoolTimeObject>().skillName = name;
         obj.GetComponent<SkillCoolTimeObject>().CoolTime = cooltime;
         obj.gameObject.transform.parent = Content.transform;
-        obj.gameObject.transform.localPosition = Vector2.zero;
+        obj.gameObject.transform.localPosition = Vector2.zero;  
     }
 
     IEnumerator SetWarningText(string str)

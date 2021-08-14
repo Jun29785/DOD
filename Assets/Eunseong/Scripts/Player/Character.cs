@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-
+using UnityEngine.UI;
+using TMPro;
 public class Character : Actor
 {
     /* public string characterName;
@@ -23,9 +24,13 @@ public class Character : Actor
 
     [HideInInspector]
     public float Mp;
-
-    int Mpcnt;
+    
     public bool isAttack;
+
+    public Slider hpSlider;
+    public Slider mpSlider;
+    public TextMeshProUGUI HpText;
+
     public override void Start()
     {
         base.Start();
@@ -39,6 +44,7 @@ public class Character : Actor
         animUpdate();
         Attack();
         DieCheck();
+        hp_mp_UIUpdate();
     }
 
     public override void FixedUpdate()
@@ -128,7 +134,13 @@ public virtual void SetisUseSkillFalse()
 
     }
 
-    
+    public virtual void hp_mp_UIUpdate()
+    {
+        hpSlider.value = Mathf.Lerp(hpSlider.value, Hp/MaxHp, 8f * Time.deltaTime);
+        mpSlider.value = Mathf.Lerp(mpSlider.value, Mp / MaxMp, 8f * Time.deltaTime);
+        HpText.text = Hp.ToString();
+
+    }
 
     public virtual void Attack()
     {
