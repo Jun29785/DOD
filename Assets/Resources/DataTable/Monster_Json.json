@@ -1,0 +1,31 @@
+{
+     "20001": {
+          "Name": "Goblin",
+          "Hp": "16",
+          "Power": "2",
+          "Speed": "5",
+          "AttackDelay": "2"
+   },
+     "20002": {
+          "Name": "DartGoblin",
+          "Hp": "15",
+          "Power": "4",
+          "Speed": "7",
+          "AttackDelay": "3"
+   },
+     "20003": {
+          "Name": "BigGoblin",
+          "Hp": "100",
+          "Power": "8",
+          "Speed": "3",
+          "AttackDelay": "3"
+   },
+     "20004": {
+          "Name": "ShamanGoblin",
+          "Hp": "10",
+          "Power": "5",
+          "Speed": "4",
+          "AttackDelay": "5"
+   }
+    
+}

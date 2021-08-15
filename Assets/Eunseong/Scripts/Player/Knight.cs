@@ -9,8 +9,8 @@ public class Knight : MeleeCharacter
 
     Dictionary<string,float> SkillcoolTimeDic = new Dictionary<string,float>();
     Dictionary<string,float> SkillcoolTimeDic2 = new Dictionary<string,float>();
-    bool isDash = false;
-    void Awake()
+
+    public override void Awake()
     {
         SkillcoolTimeDic.Add("Dash", 0);
         SkillcoolTimeDic.Add("Sting", 0);
@@ -69,7 +69,6 @@ public class Knight : MeleeCharacter
 
             float currentTime = 1;
         
-                isDash = true;
                 BattleManager.Instance.isUseSkill = true;
 
             
@@ -88,7 +87,7 @@ public class Knight : MeleeCharacter
                         }
 
                     }
-                    transform.position = Vector2.Lerp(transform.position, DashTransform.position, 0.02f);
+                    transform.position = Vector2.Lerp(transform.position, DashTransform.position, 2.2f * Time.deltaTime);
                     if (currentTime >= 0.2f)
                     {
 
@@ -104,7 +103,7 @@ public class Knight : MeleeCharacter
                 while (transform.position.x > originPos.transform.position.x + 0.1f)
                 {
 
-                    transform.position = Vector2.Lerp(transform.position, originPos.transform.position, 0.08f);
+                    transform.position = Vector2.Lerp(transform.position, originPos.transform.position, 6 * Time.deltaTime);
                     yield return null;
                 }
 
@@ -115,7 +114,6 @@ public class Knight : MeleeCharacter
              yield return new WaitForSeconds(0.4f);
              BattleManager.Instance.isUseSkill = false;
             
-        isDash = false;
                 
 
         }

@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using DB;
 public abstract class Monster : Actor
 {
-
+    public int unitNo;
     public float Speed;
     public float applySpeed;
     public float AddScore;
@@ -23,6 +23,11 @@ public abstract class Monster : Actor
     public Text DamageText;
     bool isBackHp;
 
+    public override void Awake()
+    {
+        base.Awake();
+
+    }
     public override void Start()
     {
         base.Start();
@@ -49,6 +54,19 @@ public abstract class Monster : Actor
         base.FixedUpdate();
     }
 
+    public override void SetData(int Key)
+    {
+        unitNo = DataBaseManager.Instance.tdMonsterDict[Key].unitNo;
+        Name = DataBaseManager.Instance.tdMonsterDict[Key].Name;
+        MaxHp = DataBaseManager.Instance.tdMonsterDict[Key].Hp;
+        Power = DataBaseManager.Instance.tdMonsterDict[Key].Power;
+        Speed = DataBaseManager.Instance.tdMonsterDict[Key].Speed;
+        AttackDelay = DataBaseManager.Instance.tdMonsterDict[Key].AttackDelay;
+        AttackDistance = DataBaseManager.Instance.tdMonsterDict[Key].AttackDistance;
+        AddScore = DataBaseManager.Instance.tdMonsterDict[Key].AddScore;
+        AddCoin = DataBaseManager.Instance.tdMonsterDict[Key].AddCoin;
+        
+    }
     void HpUI_Update()
     {
         Hpbar.fillAmount = Mathf.Lerp(Hpbar.fillAmount, Hp / MaxHp, 8f * Time.deltaTime);

@@ -53,6 +53,10 @@ public class Character : Actor
         AttackStateCheck();
 
     }
+
+    public override void SetData(int Key)
+    {
+    }
     public override void Damaged(float value) // 데미지 입는함수
     {
         if (Hp > 0)

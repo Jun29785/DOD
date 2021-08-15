@@ -15,6 +15,12 @@ public abstract class Actor : MonoBehaviour
 
     public Animator anim;
 
+    public virtual void Awake()
+    {
+    }
+
+
+    public abstract void SetData(int Key);
     public virtual void Start()
     {
         anim = GetComponent<Animator>();

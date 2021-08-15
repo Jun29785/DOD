@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class BackgroundScrolling : MonoBehaviour
 {
-    MeshRenderer render;
-    float offset;
+    public MeshRenderer render;
+    public float offset;
     public float speed;
+    public float of;
+    public Material[] mats;
     private void Start()
     {
-        render = GetComponent<MeshRenderer>();
         speed = 0.7f;
     }
 
@@ -22,8 +23,13 @@ public class BackgroundScrolling : MonoBehaviour
         if (!BattleManager.Instance.isContact && !BattleManager.Instance.isStop && !BattleManager.Instance.isUseSkill)
         {
             offset += Time.deltaTime * speed;
-            render.material.mainTextureOffset = new Vector2(offset, 0);
-            if(offset >= 100)
+
+            foreach (Material i in mats)
+            {
+                i.mainTextureOffset = new Vector2(offset, 0);
+
+            }
+            if (offset >= 100)
             {
                 offset = 0;
             }
