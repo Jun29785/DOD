@@ -34,10 +34,7 @@ namespace DB
             {
                 TDMonster tdMonster = new TDMonster();
 
-                Debug.Log("key : " + pair.Key);
-                Debug.Log("value : " + pair.Value);
                 tdMonster.SetJsonData(pair.Key, pair.Value.ToObject<JObject>());
-                Debug.Log("Test1");
                 tdMonsterDict.Add(tdMonster.unitNo, tdMonster);
             }
 
