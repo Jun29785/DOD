@@ -10,7 +10,7 @@ public class SceneController : MonoBehaviour
     {
         LobbyScene,
         GameScene,
-        InventoryScene
+        InventoryScene,
     }
     public void ToLobbyScene()
     {

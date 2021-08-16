@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Eunseong/GameScene.unity
     guid: cc08b7ee7f1b43043b7b81e91056b7af
+  - enabled: 1
+    path: Assets/Project/Scenes/InventoryScene.unity
+    guid: 4a672c32ad7f32e499cfbede0756a144
   m_configObjects: {}

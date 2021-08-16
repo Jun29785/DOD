@@ -1363,9 +1363,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1835391891}
-          m_TargetAssemblyTypeName: LobbyUIManager, Assembly-CSharp
-          m_MethodName: PointerUpInventoryButton
+        - m_Target: {fileID: 1835391890}
+          m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
+          m_MethodName: ToInventoryScene
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
