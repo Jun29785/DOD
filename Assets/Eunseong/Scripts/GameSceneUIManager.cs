@@ -92,7 +92,7 @@ public class GameSceneUIManager : MonoBehaviour
         var obj = Instantiate(Skill_CoolTime_Prefab);
         obj.GetComponent<SkillCoolTimeObject>().skillName = name;
         obj.GetComponent<SkillCoolTimeObject>().CoolTime = cooltime;
-        obj.gameObject.transform.parent = Content.transform;
+    
         obj.gameObject.transform.localPosition = Vector2.zero;  
     }
 

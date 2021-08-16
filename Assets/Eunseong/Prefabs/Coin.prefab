@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8737653804221628647}
   - component: {fileID: 8737653804221628646}
   m_Layer: 0
-  m_Name: Gold
+  m_Name: Coin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -117,3 +117,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea6df5983e6a9aa4e900355801e17ab9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goldPanel: {fileID: 8737653804221628634}
