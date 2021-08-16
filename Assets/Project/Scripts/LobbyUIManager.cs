@@ -11,6 +11,8 @@ public class LobbyUIManager : MonoBehaviour
 
     public Text Coin;
 
+    public Animator InventoryAnim;
+    public GameObject InventoryIcon;
     private void Update()
     {
         UpdateText();    
@@ -29,5 +31,19 @@ public class LobbyUIManager : MonoBehaviour
     public void UpdateText()
     {
         Coin.text = GameManager.Instance.gold.ToString("0");
+    }
+
+    public void PointerDownInventoryButton()
+    {
+        InventoryAnim.SetTrigger("down");
+        InventoryAnim.SetBool("IsClick", true);
+        InventoryIcon.transform.localScale = new Vector3(1.1f, 1.1f, 1f);
+    }
+
+    public void PointerUpInventoryButton()
+    {
+        InventoryAnim.SetTrigger("up");
+        InventoryAnim.SetBool("IsClick", false);
+        InventoryIcon.transform.localScale = new Vector3(1f, 1f, 1f);
     }
 }

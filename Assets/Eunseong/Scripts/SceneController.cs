@@ -10,6 +10,7 @@ public class SceneController : MonoBehaviour
     {
         LobbyScene,
         GameScene,
+        InventoryScene
     }
     public void ToLobbyScene()
     {
@@ -22,5 +23,11 @@ public class SceneController : MonoBehaviour
         SceneManager.LoadScene(Scene.GameScene.ToString());
         Time.timeScale = 1;
 
+    }
+
+    public void ToInventoryScene()
+    {
+        SceneManager.LoadScene(Scene.InventoryScene.ToString());
+        Time.timeScale = 1;
     }
 }
