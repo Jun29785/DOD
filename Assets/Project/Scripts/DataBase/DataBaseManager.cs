@@ -12,8 +12,9 @@ namespace DB
     {
         public Dictionary<int, TDMonster> tdMonsterDict = new Dictionary<int, TDMonster>();
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             LoadMonsterTable();
         }
 
@@ -28,7 +29,6 @@ namespace DB
 
             parsedObj = JObject.Parse(jsonText.text);  //제이슨 파싱
 
-            Debug.Log(parsedObj);
 
             foreach (KeyValuePair<string, JToken> pair in parsedObj)
             {
@@ -38,7 +38,6 @@ namespace DB
                 tdMonsterDict.Add(tdMonster.unitNo, tdMonster);
             }
 
-            Debug.Log("test1");
         }
     }
 }

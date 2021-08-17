@@ -15,19 +15,16 @@ public class Coin : MonoBehaviour
 
     private void OnEnable()
     {
-        if (rigid == null)
-        {
-            this.gameObject.AddComponent<Rigidbody2D>();
-        }
-            rigid.GetComponent<Rigidbody2D>();
-        StartCoroutine(CoinCroutine());
+        rigid.AddForce(new Vector2(Random.Range(20, 120), Random.Range(100, 200)));
+
+        Invoke("Coindestroy", 0.6f);
     }
     void Coindestroy()
     {
         Objectpool.ReturnCoin(this);
     }
 
-    IEnumerator CoinCroutine()
+    /*IEnumerator CoinCroutine()
     {
         rigid.AddForce(new Vector2(Random.Range(20, 120), Random.Range(100, 200)));
         yield return new WaitForSeconds(0.3f);
@@ -38,5 +35,5 @@ public class Coin : MonoBehaviour
             
         }
 
-    }
+    }*/
 }

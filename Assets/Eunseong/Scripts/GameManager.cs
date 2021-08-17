@@ -7,10 +7,18 @@ public class GameManager : Singleton<GameManager>
 {
     public int gold = 0;
 
-    private void Awake()
+    protected override void Awake()
+    {
+        base.Awake();
+        ApplicationSetting();
+    }
+
+
+    void ApplicationSetting()
     {
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
-        Screen.SetResolution(720, 1280, true);
+        Screen.orientation = ScreenOrientation.Portrait;
+
     }
     public void GetGold(int value)
     {
@@ -30,4 +38,6 @@ public class GameManager : Singleton<GameManager>
         SaveData save = SaveManager.Load();
         gold = save.coin;
     }
+
 }
+

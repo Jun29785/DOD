@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ButtonScript : MonoBehaviour
+public class Button : MonoBehaviour
 {
 
     enum Scene
@@ -12,6 +12,7 @@ public class ButtonScript : MonoBehaviour
         GameScene,
         InventoryScene,
     }
+
     public void ToLobbyScene()
     {
         SceneManager.LoadScene(Scene.LobbyScene.ToString());

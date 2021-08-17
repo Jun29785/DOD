@@ -166,7 +166,7 @@ public virtual void SetisUseSkillFalse()
         }
     }
 
-    public bool UseSkill(float CoolTimeCheck, float MPCheck , List<int> list)
+    public bool UseSkill(string Name, float CoolTime, float CoolTimeCheck, float MPCheck , List<int> list )
     {
 
 
@@ -186,6 +186,7 @@ public virtual void SetisUseSkillFalse()
                     {
                         if (CoolTimeCheck <= 0)
                         {
+                            GameSceneUIManager.Instance.Create_SkillCoolTimeObject(Name, CoolTime);
                             return true;
                         }
                         else

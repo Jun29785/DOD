@@ -63,11 +63,7 @@ public class GameSceneUIManager : MonoBehaviour
 
     void Gameover()
     {
-        UI.SetActive(false);
-        getCoinAmountText.text = "+ " + BattleManager.Instance.getGold;
-        LastScore.text = "Score : " + BattleManager.Instance.Score;
-        GameOverPanel.SetActive(true);
-
+        LoadingSceneController.LoadScene("ResultScene");
     }
 
     public void ApearWarningText(int index)
@@ -92,7 +88,7 @@ public class GameSceneUIManager : MonoBehaviour
         var obj = Instantiate(Skill_CoolTime_Prefab);
         obj.GetComponent<SkillCoolTimeObject>().skillName = name;
         obj.GetComponent<SkillCoolTimeObject>().CoolTime = cooltime;
-    
+        obj.transform.parent = Content.transform;
         obj.gameObject.transform.localPosition = Vector2.zero;  
     }
 
@@ -100,7 +96,7 @@ public class GameSceneUIManager : MonoBehaviour
     {
         WarningText.text = str;
 
-        WarningText.gameObject.SetActive(true);
+
         WarningText.gameObject.GetComponent<Animator>().SetTrigger("Set");
         
 
