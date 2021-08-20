@@ -10,17 +10,22 @@ namespace DB
 
     public class DataBaseManager : Singleton<DataBaseManager>
     {
+
+
+
         public Dictionary<int, TDMonster> tdMonsterDict = new Dictionary<int, TDMonster>();
 
         protected override void Awake()
         {
             base.Awake();
             LoadMonsterTable();
+
         }
 
 
         void LoadMonsterTable()
         {
+            
             TextAsset jsonText = Resources.Load<TextAsset>("DataTable/Monster_Json"); // Json 불러오기  
 
             tdMonsterDict.Clear();

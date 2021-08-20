@@ -41,17 +41,18 @@ public class Knight : MeleeCharacter
         /// </summary>
         public void Skill_Dash()
         {
+        
             SkillcoolTimeDic["Dash"] -= Time.deltaTime;
 
-            if(UseSkill("돌진", SkillcoolTimeDic2["Dash"], SkillcoolTimeDic["Dash"],40 ,new List<int>() { 3, 4, 5 }))
+        
+            if (UseSkill("돌진", SkillcoolTimeDic2["Dash"], SkillcoolTimeDic["Dash"], 40, new List<int>() { 3, 4, 5 }))
             {
                 ATKDamage = 5;
                 Debug.Log("Dash");
                 UseMp(40);
                 StartCoroutine(DashCroutine());
-                GameSceneUIManager.Instance.Create_SkillCoolTimeObject("돌진", SkillcoolTimeDic2["Dash"]);
             }
-
+        
 
           
                         
@@ -70,6 +71,7 @@ public class Knight : MeleeCharacter
             float currentTime = 1;
         
                 BattleManager.Instance.isUseSkill = true;
+                BattleManager.Instance.isDash = true;
 
             
                 anim.SetBool("isDash",true);
@@ -113,29 +115,30 @@ public class Knight : MeleeCharacter
 
              yield return new WaitForSeconds(0.4f);
              BattleManager.Instance.isUseSkill = false;
-            
-                
+             BattleManager.Instance.isDash = false;
 
-        }
 
-        #endregion
+
+
+    }
+
+    #endregion
 
     #region 연속찌르기
 
-        /// <summary>
-        /// 연속 찌르기
-        /// </summary>
-        public void Skill_Sting()
+    /// <summary>
+    /// 연속 찌르기
+    /// </summary>
+    public void Skill_Sting()
         {
             SkillcoolTimeDic["Sting"] -= Time.deltaTime;
 
-
-            if(UseSkill("연속 찌르기", SkillcoolTimeDic2["Sting"], SkillcoolTimeDic["Sting"],40 , new List<int>() { 0, 1, 2 }))
+            if (UseSkill("연속 찌르기", SkillcoolTimeDic2["Sting"], SkillcoolTimeDic["Sting"], 40, new List<int>() { 0, 1, 2 }))
             {
                 ATKDamage = 5;
                 BattleManager.Instance.isUseSkill = true;
                 UseMp(40);
-            anim.SetTrigger("Sting");
+                anim.SetTrigger("Sting");
                 SkillcoolTimeDic["Sting"] = SkillcoolTimeDic2["Sting"];
             }
  
@@ -153,7 +156,7 @@ public class Knight : MeleeCharacter
             ATKDamage = 5;
             UseMp(40);
             StartCoroutine(SpinAttack());
-
+            
         }
     }
     

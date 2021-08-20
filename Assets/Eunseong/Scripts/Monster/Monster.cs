@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DB;
+using TMPro;
+
 public abstract class Monster : Actor
 {
     public int unitNo;
@@ -13,24 +15,25 @@ public abstract class Monster : Actor
     public int CoinAmount;
     public bool Stop;
     bool isDie = false;
-
-
-
+    
     public GameObject Hpbarbackground;
     public GameObject CoinPrefab;
     public Image Hpbar;
     public Image BackHpbar;
-    public Text DamageText;
+    public Transform DamageText_SpawnPoint;
+    public GameObject canvas;
     bool isBackHp;
 
     public override void Awake()
     {
         base.Awake();
+        DamageText_SpawnPoint.position = new Vector2(DamageText_SpawnPoint.position.x + Random.Range(-0.2f, 0.2f), DamageText_SpawnPoint.position.y);
 
     }
     public override void Start()
     {
         base.Start();
+            
         Hpbar.fillAmount = 1f;
         applySpeed = Speed;
     }
@@ -91,7 +94,7 @@ public abstract class Monster : Actor
     public override void Damaged(float value)
     {
         base.Damaged(value);
-        Invoke("BackHpFunc", 0.01f);
+        Objectpool.GetDamageText(canvas, DamageText_SpawnPoint.position, ((int)value).ToString());
     }
     public abstract void Move();
 
@@ -145,7 +148,7 @@ public abstract class Monster : Actor
 
     public virtual void TryAttack()
     {
-        if (CurrentAttackDelay >= ApplyAttackDelay)
+        if (CurrentAttackDelay >= ApplyAttackDelay && !BattleManager.Instance.isDash)
         {
             anim.SetTrigger("Attack");
             CurrentAttackDelay = 0;

@@ -12,14 +12,9 @@ public class BattleManager : MonoBehaviour
     public bool isStop = false;
     public bool isEnd = false;
     public bool PatternInputEnd = false;
-    public int getGold = 0; 
-    public float Score = 0;
-
-    public enum Monster
-    {
-        Goblin,
-        Monster1,
-    }
+    public static int getGold = 0; 
+    public static float Score = 0;
+    public bool isDash;
 
     public List<int> Pattern_id = new List<int>();
 
@@ -31,6 +26,8 @@ public class BattleManager : MonoBehaviour
         character = GameObject.FindWithTag("Player").GetComponent<Character>();
         Instance = this;
         Pattern_id.Clear();
+        Score = 0;
+        getGold = 0;
     }
 
 

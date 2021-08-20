@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,15 +13,20 @@ public class Objectpool : MonoBehaviour
     [SerializeField]
     private GameObject GoblinPrefabs;
     [SerializeField]
-  ///  private Text DamageText;
+    private GameObject DamageText;
 
     private Queue<Coin>CoinQueue = new Queue<Coin>();
     private Queue<Monster> GoblinQueue = new Queue<Monster>();
-   // private Queue<Text> DamageTextQueue = new Queue<Text>();
+    private Queue<DamageText> DamageTextQueue = new Queue<DamageText>();
     void Start()
     {
         Instance = this;
-        Initialize(12);
+        Initialize(50);
+    }
+
+    void Update()
+    {
+        print(DamageTextQueue.Count);
     }
     private void Initialize(int count)
     {
@@ -28,7 +34,11 @@ public class Objectpool : MonoBehaviour
         {
             CoinQueue.Enqueue(CreateNewCoin());
             GoblinQueue.Enqueue(CreateNewGoblin());
-        //    DamageTextQueue.Enqueue(CreateNewDamageText());
+        }
+
+        for (int i = 0; i < 1000; i++)
+        {
+            DamageTextQueue.Enqueue(CreateNewDamageText());
         }
     }
 
@@ -37,6 +47,7 @@ public class Objectpool : MonoBehaviour
     private Coin CreateNewCoin()
     {
         var newObj = Instantiate(CoinPrefabs).GetComponent<Coin>();
+        newObj.transform.parent = Instance.transform;
         newObj.gameObject.SetActive(false);
         return newObj;
 
@@ -49,7 +60,6 @@ public class Objectpool : MonoBehaviour
         if (Instance.CoinQueue.Count > 0)
         {
             var obj = Instance.CoinQueue.Dequeue();
-            obj.transform.SetParent(null);
             obj.transform.position = pos;
             obj.gameObject.SetActive(true);
             return obj;
@@ -57,7 +67,6 @@ public class Objectpool : MonoBehaviour
         else
         {
             var newObj = Instance.CreateNewCoin();
-            newObj.transform.SetParent(null);
             newObj.gameObject.SetActive(true);
             return newObj;
         }
@@ -77,6 +86,7 @@ public class Objectpool : MonoBehaviour
     private Monster CreateNewGoblin()
     {
         var newObj = Instantiate(GoblinPrefabs).GetComponent<Monster>();
+        newObj.transform.parent = Instance.transform;
         newObj.gameObject.SetActive(false);
         return newObj;
 
@@ -89,7 +99,6 @@ public class Objectpool : MonoBehaviour
         if (Instance.GoblinQueue.Count > 0)
         {
             var obj = Instance.GoblinQueue.Dequeue();
-            obj.transform.SetParent(null);
             obj.transform.position = pos;
             obj.gameObject.SetActive(true);
             return obj;
@@ -97,7 +106,6 @@ public class Objectpool : MonoBehaviour
         else
         {
             var newObj = Instance.CreateNewGoblin();
-            newObj.transform.SetParent(null);
             newObj.gameObject.SetActive(true);
             return newObj;
 
@@ -117,9 +125,10 @@ public class Objectpool : MonoBehaviour
 
     #region DamageText
 
-    /*private Text CreateNewDamageText()
+    private DamageText CreateNewDamageText()
     {
-        var newObj = Instantiate(GoblinPrefabs).GetComponent<Text>();
+        var newObj = Instantiate(DamageText).GetComponent<DamageText>();
+        newObj.transform.parent = Instance.transform;
         newObj.gameObject.SetActive(false);
         return newObj;
 
@@ -127,20 +136,23 @@ public class Objectpool : MonoBehaviour
 
 
 
-    public static Text GetDamageText(Vector2 pos)
+    public static DamageText GetDamageText(GameObject parent, Vector2 pos, string content)
     {
         if (Instance.GoblinQueue.Count > 0)
         {
             var obj = Instance.DamageTextQueue.Dequeue();
-            obj.transform.SetParent(null);
+            obj.transform.SetParent(parent.transform);
             obj.transform.position = pos;
+            obj.text.text = content;
             obj.gameObject.SetActive(true);
             return obj;
         }
         else
         {
-            var newObj = Instance.CreateNewGoblin();
-            newObj.transform.SetParent(null);
+            var newObj = Instance.CreateNewDamageText();
+            newObj.transform.SetParent(parent.transform);
+            newObj.transform.position = pos;
+            newObj.text.text = content;
             newObj.gameObject.SetActive(true);
             return newObj;
 
@@ -149,13 +161,13 @@ public class Objectpool : MonoBehaviour
         }
     }
 
-    public static void ReturnDamageText(Text Obj)
+    public static void ReturnDamageText(DamageText Obj)
     {
         Obj.gameObject.SetActive(false);
         Obj.transform.SetParent(Instance.transform);
         Instance.DamageTextQueue.Enqueue(Obj);
     }
-*/
+
 
     #endregion
 }

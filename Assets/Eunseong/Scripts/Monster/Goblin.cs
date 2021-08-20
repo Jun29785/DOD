@@ -9,6 +9,7 @@ public class Goblin : MeleeMonster
     {
         base.Awake();
         SetData(20001);
+
     }
     public override void Start()
     {

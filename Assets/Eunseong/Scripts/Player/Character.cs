@@ -156,7 +156,7 @@ public virtual void SetisUseSkillFalse()
             if (!BattleManager.Instance.isUseSkill)
             {
 
-                if (CurrentAttackDelay >= ApplyAttackDelay)
+                if (CurrentAttackDelay >= ApplyAttackDelay && !BattleManager.Instance.isDash)
                 {
                     anim.SetTrigger("Attack");
 
@@ -165,8 +165,16 @@ public virtual void SetisUseSkillFalse()
             }
         }
     }
-
-    public bool UseSkill(string Name, float CoolTime, float CoolTimeCheck, float MPCheck , List<int> list )
+    /// <summary>
+    /// 스킬 사용 함수
+    /// </summary>
+    /// <param name="Name">스킬이름</param>
+    /// <param name="CoolTime">스킬쿨타임</param>
+    /// <param name="CoolTimeCheck">현재 스킬쿨타임</param>
+    /// <param name="MPCheck">사용MP</param>
+    /// <param name="list">패턴 커맨드</param>
+    /// <returns></returns>
+    public bool UseSkill(string Name, float CoolTime, float CoolTimeCheck, float MPCheck, List<int> list)
     {
 
 
@@ -180,7 +188,7 @@ public virtual void SetisUseSkillFalse()
 
                 if (UseMpCheck(MPCheck))
                 {
-                    
+
 
                     if (BattleManager.Instance.Pattern_id.SequenceEqual(list))
                     {
@@ -196,8 +204,13 @@ public virtual void SetisUseSkillFalse()
                     }
                 }
             }
+            /*else
+            {
+                GameSceneUIManager.Instance.ApearWarningText(3);
+            }*/
 
         }
+        
 
         return false;
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameSceneUIManager : MonoBehaviour
+public class GameSceneUIManager : UIManager
 {
 
     public static GameSceneUIManager Instance;
@@ -17,12 +17,7 @@ public class GameSceneUIManager : MonoBehaviour
     public GameObject Skill_CoolTime_Prefab;
 
 
-    public GameObject UI; // 전체 UI
 
-    // 겜 오버 시 나오는것
-    public GameObject GameOverPanel;
-    public Text getCoinAmountText;
-    public Text LastScore;
     
     void Start()
     {
@@ -40,12 +35,12 @@ public class GameSceneUIManager : MonoBehaviour
 
     void ScoreUpdate()
     {
-        ScoreText.text = BattleManager.Instance.Score.ToString();
+        SetText<float>(ScoreText, BattleManager.Score);
     }
 
     public void GetScore(float _score)
     {
-        BattleManager.Instance.Score += _score;
+        BattleManager.Score += _score;
     }
 
     void GameOverCheck()
@@ -53,7 +48,7 @@ public class GameSceneUIManager : MonoBehaviour
         if(BattleManager.Instance.isEnd)
         {
 
-            Invoke("Gameover", 0.7f);
+            Invoke("Gameover", 1);
             
             
         }
@@ -77,7 +72,9 @@ public class GameSceneUIManager : MonoBehaviour
             case 2:
                 StartCoroutine(SetWarningText("스킬이 쿨타임입니다."));
                 break;
-
+            case 3:
+                StartCoroutine(SetWarningText("스킬을 이미 사용중입니다."));
+                break;
             default:
                 break;
         }
@@ -88,14 +85,15 @@ public class GameSceneUIManager : MonoBehaviour
         var obj = Instantiate(Skill_CoolTime_Prefab);
         obj.GetComponent<SkillCoolTimeObject>().skillName = name;
         obj.GetComponent<SkillCoolTimeObject>().CoolTime = cooltime;
-        obj.transform.parent = Content.transform;
+        obj.gameObject.transform.parent = Content.transform;
         obj.gameObject.transform.localPosition = Vector2.zero;  
     }
 
     IEnumerator SetWarningText(string str)
     {
-        WarningText.text = str;
 
+        WarningText.text = str;
+        WarningText.gameObject.SetActive(true);
 
         WarningText.gameObject.GetComponent<Animator>().SetTrigger("Set");
         
