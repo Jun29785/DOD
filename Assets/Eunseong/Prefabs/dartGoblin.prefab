@@ -481,10 +481,13 @@ MonoBehaviour:
   Hp: 0
   AttackDistance: 3
   AttackDelay: 2
+  ApplyAttackDelay: 0
   CurrentAttackDelay: 0
   Power: 3
   anim: {fileID: 0}
+  unitNo: 0
   Speed: 5
+  applySpeed: 0
   AddScore: 2
   AddCoin: 2
   CoinAmount: 3
@@ -492,6 +495,6 @@ MonoBehaviour:
   Hpbarbackground: {fileID: 4283522872295307094}
   CoinPrefab: {fileID: 8737653804221628634, guid: 46fcd275790f82949b1cdf293acd71de, type: 3}
   Hpbar: {fileID: 476685968329706799}
-  BackHpbar: {fileID: 0}
-  DamageText: {fileID: 0}
+  DamageText_SpawnPoint: {fileID: 7691615809364386527, guid: 19abcd0f40f2fd346a70a609ef5418ea, type: 3}
+  canvas: {fileID: 7542338389324673991}
   projectilePrefab: {fileID: 1404083872797110678, guid: 3adf1da9f93b89e42a35c41f0a55a282, type: 3}
