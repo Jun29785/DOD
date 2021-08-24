@@ -16,6 +16,7 @@ namespace DB
         {
             base.Awake();
             LoadMonsterTable();
+
         }
 
         void LoadMonsterTable()

@@ -19,7 +19,6 @@ public abstract class Monster : Actor
     public GameObject Hpbarbackground;
     public GameObject CoinPrefab;
     public Image Hpbar;
-    public Image BackHpbar;
     public Transform DamageText_SpawnPoint;
     public GameObject canvas;
     bool isBackHp;
@@ -74,22 +73,8 @@ public abstract class Monster : Actor
     {
         Hpbar.fillAmount = Mathf.Lerp(Hpbar.fillAmount, Hp / MaxHp, 8f * Time.deltaTime);
 
-        if (isBackHp)
-        {
-            BackHpbar.fillAmount = Mathf.Lerp(BackHpbar.fillAmount, Hp / MaxHp, 10f * Time.deltaTime);
-
-            if (Hpbar.fillAmount >=BackHpbar.fillAmount - 0.001f)
-            {
-                isBackHp = false;
-                BackHpbar.fillAmount = Hpbar.fillAmount;
-            }
-        }
     }
 
-    void BackHpFunc()
-    {
-        isBackHp = true;
-    }
 
     public override void Damaged(float value)
     {

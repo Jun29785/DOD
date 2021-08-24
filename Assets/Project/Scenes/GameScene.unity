@@ -2078,6 +2078,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpawnInterval: 1
+  spawnAmount: 0
+  currentTime: 0
 --- !u!1 &748881765
 GameObject:
   m_ObjectHideFlags: 0
@@ -3531,7 +3533,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CoinPrefabs: {fileID: 8737653804221628634, guid: 46fcd275790f82949b1cdf293acd71de, type: 3}
-  GoblinPrefabs: {fileID: 5600907066082015851, guid: 5cf55265b6be1f548bba8c8976f3443d, type: 3}
+  MonsterPrefabs:
+  - {fileID: 5600907066082015851, guid: 5cf55265b6be1f548bba8c8976f3443d, type: 3}
+  - {fileID: 7542338389770186863, guid: be5080856b0503a41a5c70fb61fe9072, type: 3}
+  - {fileID: 5600907066082015851, guid: b57fd598ee32d824385c84b264089902, type: 3}
   DamageText: {fileID: 7691615809364386524, guid: 19abcd0f40f2fd346a70a609ef5418ea, type: 3}
 --- !u!1 &1466018960
 GameObject:
@@ -4169,7 +4174,7 @@ MonoBehaviour:
   CurrentAttackDelay: 0
   Power: 3
   anim: {fileID: 0}
-  MaxMp: 200
+  MaxMp: 20000
   Mp: 0
   isAttack: 0
   hpSlider: {fileID: 1474086296}

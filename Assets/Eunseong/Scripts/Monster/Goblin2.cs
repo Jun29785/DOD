@@ -2,18 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class dartGoblin : ProjectileMonster
+public class Goblin2 : MeleeMonster
 {
-
 
     public override void Awake()
     {
         base.Awake();
-        SetData(20002);
 
     }
-
-
     public override void Start()
     {
         base.Start();
