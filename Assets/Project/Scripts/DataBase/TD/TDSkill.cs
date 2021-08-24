@@ -25,9 +25,7 @@ public class TDSkill : TableBase
         Command = new List<int>(Array.ConvertAll(Command_string.Split(','), int.Parse));
         Fmana = info["Fmana"].Value<int>();
         Lmana = info["Lmana"].Value<int>();
-        Debug.Log(Command[0]);
-        Debug.Log(Command[1]);
-        Debug.Log(Command[2]);
+        Debug.Log(SKey);
     }
     
 }
