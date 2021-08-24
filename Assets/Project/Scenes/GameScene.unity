@@ -2078,6 +2078,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpawnInterval: 1
+  spawnAmount: 0
+  currentTime: 0
 --- !u!1 &748881765
 GameObject:
   m_ObjectHideFlags: 0
@@ -4172,7 +4174,7 @@ MonoBehaviour:
   CurrentAttackDelay: 0
   Power: 3
   anim: {fileID: 0}
-  MaxMp: 200
+  MaxMp: 20000
   Mp: 0
   isAttack: 0
   hpSlider: {fileID: 1474086296}

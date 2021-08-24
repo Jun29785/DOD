@@ -48,6 +48,7 @@ public class MeleeCharacter : Character
             if (target.gameObject.activeSelf == false)
             {
                 FirstTargetcount = 0;
+                target = enemy;
             }
 
 

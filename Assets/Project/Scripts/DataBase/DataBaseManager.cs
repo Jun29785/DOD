@@ -15,8 +15,8 @@ namespace DB
         protected override void Awake()
         {
             base.Awake();
-            //LoadMonsterTable();
-            LoadSkillTable();
+            LoadMonsterTable();
+            //LoadSkillTable();
         }
 
         void LoadMonsterTable()

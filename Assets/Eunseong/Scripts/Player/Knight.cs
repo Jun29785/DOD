@@ -48,7 +48,6 @@ public class Knight : MeleeCharacter
             if (UseSkill("돌진", SkillcoolTimeDic2["Dash"], SkillcoolTimeDic["Dash"], 40, new List<int>() { 3, 4, 5 }))
             {
                 ATKDamage = 5;
-                Debug.Log("Dash");
                 UseMp(40);
                 StartCoroutine(DashCroutine());
             }

@@ -24,10 +24,6 @@ public class Objectpool : MonoBehaviour
         Initialize(50);
     }
 
-    void Update()
-    {
-        print(DamageTextQueue.Count);
-    }
     private void Initialize(int count)
     {
         for (int i = 0; i < count; i++)
@@ -36,7 +32,7 @@ public class Objectpool : MonoBehaviour
             CreateNewMonsters();
         }
 
-        for (int i = 0; i < 1000; i++)
+        for (int i = 0; i < 10000; i++)
         {
             DamageTextQueue.Enqueue(CreateNewDamageText());
         }
@@ -109,6 +105,8 @@ public class Objectpool : MonoBehaviour
                 Instance.MonsterQueue.Enqueue(obj);
                 obj = Instance.MonsterQueue.Dequeue();
             }
+            obj.transform.position = pos;
+            obj.gameObject.SetActive(true);
 
             return obj;
         }
@@ -120,7 +118,11 @@ public class Objectpool : MonoBehaviour
             {
                 Instance.MonsterQueue.Enqueue(newObj);
                 newObj = Instance.MonsterQueue.Dequeue();
+                newObj.transform.position = pos;
+            
             }
+                newObj.transform.position = pos;
+
             newObj.gameObject.SetActive(true);
             return newObj;
 

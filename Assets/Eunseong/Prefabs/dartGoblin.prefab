@@ -1,5 +1,40 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &733672963076572474
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3394003115358485325}
+  m_Layer: 8
+  m_Name: DamageText_Pos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &3394003115358485325
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 733672963076572474}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7542338389324673988}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0.002}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2916614360786098617
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,6 +299,7 @@ RectTransform:
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children:
   - {fileID: 5813564914995745061}
+  - {fileID: 3394003115358485325}
   m_Father: {fileID: 7542338389770186834}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -495,6 +531,6 @@ MonoBehaviour:
   Hpbarbackground: {fileID: 4283522872295307094}
   CoinPrefab: {fileID: 8737653804221628634, guid: 46fcd275790f82949b1cdf293acd71de, type: 3}
   Hpbar: {fileID: 476685968329706799}
-  DamageText_SpawnPoint: {fileID: 7691615809364386527, guid: 19abcd0f40f2fd346a70a609ef5418ea, type: 3}
+  DamageText_SpawnPoint: {fileID: 3394003115358485325}
   canvas: {fileID: 7542338389324673991}
   projectilePrefab: {fileID: 1404083872797110678, guid: 3adf1da9f93b89e42a35c41f0a55a282, type: 3}

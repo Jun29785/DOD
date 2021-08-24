@@ -287,7 +287,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: -2898184906952680768, guid: eafd74ad791bf874c8c0c9994958b1be, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -373,9 +373,8 @@ MonoBehaviour:
   Hpbarbackground: {fileID: 5600907066847247584}
   CoinPrefab: {fileID: 8737653804221628634, guid: 46fcd275790f82949b1cdf293acd71de, type: 3}
   Hpbar: {fileID: 5600907067104392577}
-  BackHpbar: {fileID: 568795538738759591}
   DamageText_SpawnPoint: {fileID: 7691615809364386527, guid: 19abcd0f40f2fd346a70a609ef5418ea, type: 3}
-  canvas: {fileID: 5600907065261024006}
+  canvas: {fileID: 1804211516877100932}
 --- !u!1 &5600907066847247584
 GameObject:
   m_ObjectHideFlags: 0

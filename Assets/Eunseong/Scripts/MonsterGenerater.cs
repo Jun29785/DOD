@@ -20,7 +20,7 @@ public class MonsterGenerater : MonoBehaviour
         PrevPosindex = 99;
         Posindex = 0;
         spawnAmount = 1;
-        SpawnInterval = 0;
+        SpawnInterval = 1;
         monsterNo = 20001;
 
 
@@ -30,109 +30,67 @@ public class MonsterGenerater : MonoBehaviour
     void Update()
     {
         currentTime += Time.deltaTime;
-        if (BattleManager.Score < 10)
+
+        if (currentTime >= SpawnInterval)
         {
-            if (currentTime >= SpawnInterval)
+            for (int i = 0; i < spawnAmount; i++)
             {
-                for (int i = 0; i < spawnAmount; i++)
+
+
+                switch (Posindex)
                 {
+                    case 0:
+                        Objectpool.GetMonsterobject(monsterNo, new Vector2(transform.position.x, 0.51f));
+                        break;
+                    case 1:
+                        Objectpool.GetMonsterobject(monsterNo, new Vector2(transform.position.x, 0.35f));
+                        break;
+                    case 2:
+                        Objectpool.GetMonsterobject(monsterNo, new Vector2(transform.position.x, 0.123f));
+                        break;
+
+                    default:
+                        Objectpool.GetMonsterobject(monsterNo, new Vector2(transform.position.x, Random.Range(0.09f, 0.51f)));
+                        break;
+                }
+                        //Objectpool.GetMonsterobject(monsterNo,new Vector2(transform.position.x, Random.Range(0.09f, 0.51f)));
+                        if (ScoreCheck(0, 10))
+                        {
+                            currentTime = 0;
+                            Randomindex();
+                            monsterNo = 20001;
+                            spawnAmount = Random.Range(1, 3);
+                            SpawnInterval = Random.Range(4, 7);
 
 
-                    switch (Posindex)
-                    {
-                        case 0:
-                            Objectpool.GetMonsterobject(monsterNo, new Vector2(transform.position.x, 0.51f));
-                            break;
-                        case 1:
-                            Objectpool.GetMonsterobject(monsterNo, new Vector2(transform.position.x, 0.35f));
-                            break;
-                        case 2:
-                            Objectpool.GetMonsterobject(monsterNo, new Vector2(transform.position.x, 0.123f));
-                            break;
+                        }
+                        else if (ScoreCheck(10, 40))
+                        {
+                            currentTime = 0;
+                            Randomindex();
+                            RandomMonsterNo(20001, 20003);
+                            spawnAmount = Random.Range(1, 4);
+                            SpawnInterval = Random.Range(3, 6);
+                        }
 
-                        default:
-                            Objectpool.GetMonsterobject(monsterNo, new Vector2(transform.position.x, Random.Range(0.09f, 0.51f)));
-                            break;
-                    }
-                    //Objectpool.GetMonsterobject(monsterNo,new Vector2(transform.position.x, Random.Range(0.09f, 0.51f)));
-                    currentTime = 0;
-                    Randomindex();
-                    monsterNo = 20001;
-                    spawnAmount = Random.Range(1, 3);
-                    SpawnInterval = Random.Range(4, 7);
+                        else if (ScoreCheck(40, 100))
+                        {
+                            if (currentTime >= SpawnInterval)
+                            {
+                                currentTime = 0;
+                                Randomindex();
+                                RandomMonsterNo(20001, 20004);
+                                spawnAmount = Random.Range(2, 4);
+                                SpawnInterval = Random.Range(3, 6);
 
-
+                            }
+                        }
                 }
 
             }
         }
-        else if (ScoreCheck(10, 40))
-        {
-            if (currentTime >= SpawnInterval)
-            {
-                for (int i = 0; i < spawnAmount; i++)
-                {
-
-
-                    switch (Posindex)
-                    {
-                        case 0:
-                            Objectpool.GetMonsterobject(monsterNo, new Vector2(transform.position.x, 0.51f));
-                            break;
-                        case 1:
-                            Objectpool.GetMonsterobject(monsterNo, new Vector2(transform.position.x, 0.35f));
-                            break;
-                        case 2:
-                            Objectpool.GetMonsterobject(monsterNo, new Vector2(transform.position.x, 0.123f));
-                            break;
-
-                        default:
-                            Objectpool.GetMonsterobject(monsterNo, new Vector2(transform.position.x, Random.Range(0.09f, 0.51f)));
-                            break;
-                    }
-                    //Objectpool.GetMonsterobject(monsterNo,new Vector2(transform.position.x, Random.Range(0.09f, 0.51f)));
-                    currentTime = 0;
-                    Randomindex();
-                    RandomMonsterNo(20001, 20003);
-                    spawnAmount = Random.Range(1, 4);
-                    SpawnInterval = Random.Range(3, 6);
-                }
-
-            }
-        }
-        else if (ScoreCheck(40, 100))
-        {
-            if (currentTime >= SpawnInterval)
-            {
-                for (int i = 0; i < spawnAmount; i++)
-                {
-
-
-                    switch (Posindex)
-                    {
-                        case 0:
-                            Objectpool.GetMonsterobject(monsterNo, new Vector2(transform.position.x, 0.51f));
-                            break;
-                        case 1:
-                            Objectpool.GetMonsterobject(monsterNo, new Vector2(transform.position.x, 0.35f));
-                            break;
-                        case 2:
-                            Objectpool.GetMonsterobject(monsterNo, new Vector2(transform.position.x, 0.123f));
-                            break;
-
-                        default:
-                            Objectpool.GetMonsterobject(monsterNo, new Vector2(transform.position.x, Random.Range(0.09f, 0.51f)));
-                            break;
-                    }
-                    //Objectpool.GetMonsterobject(monsterNo,new Vector2(transform.position.x, Random.Range(0.09f, 0.51f)));
-                    currentTime = 0;
-                    Randomindex();
-                    RandomMonsterNo(20001, 20004);
-                    spawnAmount = Random.Range(2, 4);
-                    SpawnInterval = Random.Range(3, 6);
-
-                }
-            }
+        
+        
 
             /*if(BattleManager.Score < 200 + purpose )
             {
@@ -150,8 +108,6 @@ public class MonsterGenerater : MonoBehaviour
             {
 
             }*/
-        }
-    }
 
     public void Randomindex()
     {
@@ -165,7 +121,7 @@ public class MonsterGenerater : MonoBehaviour
 
     public void RandomMonsterNo(int min, int max)
     {
-        Posindex = Random.Range(20001, 20004);
+        monsterNo = Random.Range(20001, 20004);
 
 
     }
