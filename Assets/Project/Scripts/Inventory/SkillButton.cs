@@ -6,6 +6,10 @@ using UnityEngine.UI;
 public class SkillButton : MonoBehaviour
 {
     private int SKey;
+    private string Name;
+    private List<int> Command;
+    private int Mana;
+    public GameObject SkillPanel;
 
     [SerializeField]
     private Text buttonText;
@@ -23,9 +27,9 @@ public class SkillButton : MonoBehaviour
 
     public void OnClick()
     {
-        List<int> decCommand = SkillDataBaseManager.Instance.tdSkillDict[this.SKey].Command;
-        int decFmana = SkillDataBaseManager.Instance.tdSkillDict[this.SKey].Fmana;
-
-        Debug.Log("Command"+ decCommand+ "FMana"+ decFmana);
+        this.Name = SkillDataBaseManager.Instance.tdSkillDict[this.SKey].Name;
+        this.Command = SkillDataBaseManager.Instance.tdSkillDict[this.SKey].Command;
+        this.Mana = SkillDataBaseManager.Instance.tdSkillDict[this.SKey].Fmana + SkillDataBaseManager.Instance.tdSkillDict[this.SKey].Lmana /* * PlayerLevel */;
+        SkillPanel.SetActive(true);
     }
 }
