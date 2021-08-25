@@ -6,7 +6,7 @@ public class BattleManager : MonoBehaviour
 {
     public static BattleManager Instance;
 
-    
+    public bool isBoss;
     public bool isContact = false;
     public bool isUseSkill = false;
     public bool isStop = false;

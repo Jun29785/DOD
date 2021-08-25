@@ -7,12 +7,14 @@ using TMPro;
 
 public abstract class Monster : Actor
 {
-    public int unitNo;
+    [Header("State")]
     public float Speed;
     public float applySpeed;
     public float AddScore;
     public int AddCoin;
     public int CoinAmount;
+
+
     public bool Stop;
     bool isDie = false;
     
