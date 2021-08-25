@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System.Linq;
 public class Pattern : MonoBehaviour
 {
     private CircleIdentifier idf;
@@ -9,9 +9,8 @@ public class Pattern : MonoBehaviour
     public Canvas canvas;
 
     private Dictionary<int,CircleIdentifier> circles;
-
+    private List<int> circleList;
     private List<CircleIdentifier> lines;
-
     private GameObject lineOnEdit;
     private RectTransform lineOnEditrcTs;
     private CircleIdentifier circleOnEdit;
@@ -20,7 +19,7 @@ public class Pattern : MonoBehaviour
 
     new bool enabled = true;
 
-    
+    public Animator[] circleAnim;
     void Start()
     {
         circles = new Dictionary<int, CircleIdentifier>();
@@ -54,9 +53,14 @@ public class Pattern : MonoBehaviour
 
     IEnumerator Release()
     {
+        
         BattleManager.Instance.PatternInputEnd = true;
         enabled = false;
-
+        circleList = BattleManager.Instance.Pattern_id.ToList<int>();
+        foreach (int circle in BattleManager.Instance.Pattern_id)
+        {
+            circleAnim[circle].SetBool("finish", true);
+        }
         yield return new WaitForSeconds(0.1f);
         BattleManager.Instance.Pattern_id.Clear();
         yield return new WaitForSeconds(0.9f);
@@ -68,12 +72,22 @@ public class Pattern : MonoBehaviour
 
         BattleManager.Instance.PatternInputEnd = false;
 
+        foreach (int circle in circleList)
+        {
+            circleAnim[circle].SetBool("finish", false);
+        }
+
         foreach (var line in lines)
         {
             Destroy(line.gameObject);
         }
 
+
+
+        circleList.Clear();
         lines.Clear();
+
+        
 
         lineOnEdit = null;
         lineOnEditrcTs = null;
@@ -140,6 +154,7 @@ public class Pattern : MonoBehaviour
             {
                 BattleManager.Instance.Pattern_id.Add(id);
             }
+
             TrySetLineEdit(idf);
         }
     }

@@ -14,9 +14,10 @@ public class MonsterGenerater : MonoBehaviour
     int monsterNo;
     int Posindex;
     int PrevPosindex;
+    bool isBoss;
     void Start()
     {
-        purpose = 200;
+        purpose = 20;
         PrevPosindex = 99;
         Posindex = 0;
         spawnAmount = 1;
@@ -29,9 +30,16 @@ public class MonsterGenerater : MonoBehaviour
 
     void Update()
     {
+        if(purpose == BattleManager.Score)
+        {
+            BattleManager.Instance.isBoss = true;
+
+        }
+
+
         currentTime += Time.deltaTime;
 
-        if (currentTime >= SpawnInterval)
+        if (currentTime >= SpawnInterval && !BattleManager.Instance.isBoss)
         {
             for (int i = 0; i < spawnAmount; i++)
             {
@@ -128,7 +136,7 @@ public class MonsterGenerater : MonoBehaviour
 
     public bool ScoreCheck(int min, int max)
     {
-        if (BattleManager.Score >= min && BattleManager.Score < max)
+        if (BattleManager.Score >= min && BattleManager.Score < max && !BattleManager.Instance.isBoss)
         {
             return true;
         }

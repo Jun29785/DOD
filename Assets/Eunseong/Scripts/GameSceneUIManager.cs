@@ -16,7 +16,7 @@ public class GameSceneUIManager : UIManager
 
     public GameObject Skill_CoolTime_Prefab;
 
-
+    public Slider BossHp;
 
     
     void Start()

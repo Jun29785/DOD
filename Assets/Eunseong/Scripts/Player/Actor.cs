@@ -4,12 +4,15 @@ using UnityEngine;
 
 public abstract class Actor : MonoBehaviour
 {
+    [Header("State")]
+    public int unitNo;
     public string Name;
     public float MaxHp;
     public float Hp;
     public float AttackDistance; // 공격 거리
     public float AttackDelay;
     public float ApplyAttackDelay;
+    [HideInInspector]
     public float CurrentAttackDelay;
     public float Power;
 

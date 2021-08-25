@@ -19,9 +19,7 @@ public class Character : Actor
 
 
      Animator anim;*/
-
     public float MaxMp;
-
     [HideInInspector]
     public float Mp;
     
@@ -40,6 +38,7 @@ public class Character : Actor
 
     public override void Update()
     {
+        
         base.Update();
         animUpdate();
         Attack();
@@ -215,4 +214,6 @@ public virtual void SetisUseSkillFalse()
         return false;
 
     }
+
+    
 }
