@@ -12,11 +12,7 @@ public class LoadingSceneController : MonoBehaviour
     [SerializeField]
     Image Loadingbar;
 
-    static void LoadSceneb(string name)
-    {
-        nextScene = name;
-        SceneManager.LoadScene("LoadingScene");
-    }
+    
     public static void LoadScene(string name)
     {
         nextScene = name;
@@ -34,6 +30,7 @@ public class LoadingSceneController : MonoBehaviour
         AsyncOperation op = SceneManager.LoadSceneAsync(nextScene);
         op.allowSceneActivation = false;
 
+        yield return new WaitForSeconds(3);
         float timer = 0;
         while (!op.isDone)
         {

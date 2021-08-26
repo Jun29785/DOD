@@ -18,7 +18,6 @@ public class BattleManager : MonoBehaviour
 
     public List<int> Pattern_id = new List<int>();
 
-
     public Character character;
     
     void Start()
@@ -30,10 +29,8 @@ public class BattleManager : MonoBehaviour
         getGold = 0;
     }
 
-
     public void PlayerDamage(float value)
     {
-        
         character.Damaged(value);
     }
 

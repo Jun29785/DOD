@@ -11,6 +11,7 @@ public class Button : MonoBehaviour
         LobbyScene,
         GameScene,
         InventoryScene,
+        LoadingScene
     }
 
     public void ToLobbyScene()
@@ -21,7 +22,7 @@ public class Button : MonoBehaviour
 
     public void ToGameScene()
     {
-        SceneManager.LoadScene(Scene.GameScene.ToString());
+        LoadingSceneController.LoadScene(Scene.GameScene.ToString());
         Time.timeScale = 1;
 
     }

@@ -1842,7 +1842,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1835391890}
-          m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
+          m_TargetAssemblyTypeName: ButtonScript, Assembly-CSharp
           m_MethodName: ToGameScene
           m_Mode: 1
           m_Arguments:

@@ -14,6 +14,9 @@ public class TDSkill : TableBase
     public List<int> Command;
     public int Fmana;
     public int Lmana;
+    public int Fdmg;
+    public int Ldmg;
+    public int Ctime;
 
     public override void SetJsonData(string key, JObject info)
     {
@@ -25,6 +28,9 @@ public class TDSkill : TableBase
         Command = new List<int>(Array.ConvertAll(Command_string.Split(','), int.Parse));
         Fmana = info["Fmana"].Value<int>();
         Lmana = info["Lmana"].Value<int>();
+        Fdmg = info["Fdmg"].Value<int>();
+        Ldmg = info["Ldmg"].Value<int>();
+        Ctime = info["Ctime"].Value<int>();
         Debug.Log(SKey);
     }
     
