@@ -45,7 +45,7 @@ public class ProjectileMonster : Monster
     {
 
         
-            if (!BattleManager.Instance.isContact && !isBattle && !Stop)
+            if (!BattleManager.Instance.isContact && !isBattle && !Stop || BattleManager.Instance.isContact && !isBattle && !Stop)
             {
                 if (!BattleManager.Instance.isUseSkill)
                 {

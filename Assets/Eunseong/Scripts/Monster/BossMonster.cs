@@ -27,11 +27,14 @@ public class BossMonster : Monster
     {
         anim = GetComponent<Animator>();
         applySpeed = Speed;
+        ApplyAttackDelay = AttackDelay;
     }
 
 
     public override void Update()
     {
+        CurrentAttackDelay += Time.deltaTime;
+
         if (isApear)
         {
             SetHp(Hp, MaxHp);
