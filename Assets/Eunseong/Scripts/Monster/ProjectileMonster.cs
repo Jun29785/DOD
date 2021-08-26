@@ -43,13 +43,25 @@ public class ProjectileMonster : Monster
 
     public override void Move()
     {
-        isContact = (BattleManager.Instance.isContact && !isBattle || !BattleManager.Instance.isContact && !Stop);
-        if(isContact)
-        {
-            
-            transform.Translate(Vector2.left * applySpeed * Time.deltaTime);
-        }
 
+        
+            if (!BattleManager.Instance.isContact && !isBattle && !Stop)
+            {
+                if (!BattleManager.Instance.isUseSkill)
+                {
+                    transform.Translate(Vector2.left * applySpeed * Time.deltaTime);
+                }
+
+            }
+        else if (isBattle && !BattleManager.Instance.isContact && !Stop)
+            {
+
+            if (!BattleManager.Instance.isUseSkill)
+            {
+                transform.Translate(Vector2.left * 5 * Time.deltaTime);
+            }
+        }
+        
 
     }
 
