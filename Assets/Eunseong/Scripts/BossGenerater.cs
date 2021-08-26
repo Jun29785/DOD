@@ -16,10 +16,10 @@ public class BossGenerater : MonoBehaviour
     {
         if (BattleManager.Score >= 10)
         {
-            BattleManager.Instance.isBoss = true;
         }
-        if (BattleManager.Instance.isBoss && cnt <= 0)
+        if (BattleManager.Score >= 10 && cnt <= 0)
         {
+            BattleManager.Instance.isBoss = true;
             Instantiate(BossPrefab);
             cnt++;
         }

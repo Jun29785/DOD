@@ -45,12 +45,12 @@ public class MeleeCharacter : Character
 
             FirstTargetcount++;
 
-            if (target.gameObject.activeSelf == false)
+            if (target.gameObject.activeSelf == false || target.gameObject == null)
             {
                 FirstTargetcount = 0;
                 target = enemy;
             }
-
+    
 
             target.GetComponent<Monster>().Damaged(Power);
             break;

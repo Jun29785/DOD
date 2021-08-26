@@ -278,7 +278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3127e1aca6c73d743b0f752c1047ff0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitNo: 20001
+  unitNo: 20005
   Name: BossGoblin
   MaxHp: 100
   Hp: 0
@@ -299,7 +299,11 @@ MonoBehaviour:
   Hpbar: {fileID: 0}
   DamageText_SpawnPoint: {fileID: 9124838273541261563}
   canvas: {fileID: 5600907065261024006}
-  UI: {fileID: 0}
+  BossState: {fileID: 0}
+  bossHpbar: {fileID: 0}
+  bossName: {fileID: 0}
+  BossUIPos: {fileID: 0}
+  BossUIPos2: {fileID: 0}
 --- !u!1 &7916751278224681720
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,7 +16,7 @@ public abstract class Monster : Actor
 
 
     public bool Stop;
-    bool isDie = false;
+    public bool isDie = false;
     
     public GameObject Hpbarbackground;
     public GameObject CoinPrefab;
@@ -34,8 +34,11 @@ public abstract class Monster : Actor
     public override void Start()
     {
         base.Start();
-            
-        Hpbar.fillAmount = 1f;
+
+        if (Hpbar != null)
+        {
+            Hpbar.fillAmount = 1f;
+        }
         applySpeed = Speed;
     }
 
