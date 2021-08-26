@@ -9,7 +9,6 @@ public class Coin : MonoBehaviour
     private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
-        goldPanel = GameObject.FindGameObjectWithTag("GoldPanel");
     }
     
 

@@ -9,7 +9,6 @@ public class BossMonsterStateUI : MonoBehaviour
     public Slider Hp;
     private void Awake()
     {
-        Hp = GetComponentInChildren<Slider>();
     }
     void Start()
     {

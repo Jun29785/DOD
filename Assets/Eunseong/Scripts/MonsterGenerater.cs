@@ -30,15 +30,11 @@ public class MonsterGenerater : MonoBehaviour
 
     void Update()
     {
-        if(purpose == BattleManager.Score)
-        {
-            BattleManager.Instance.isBoss = true;
-
-        }
+        
 
 
         currentTime += Time.deltaTime;
-
+            
         if (currentTime >= SpawnInterval && !BattleManager.Instance.isBoss)
         {
             for (int i = 0; i < spawnAmount; i++)

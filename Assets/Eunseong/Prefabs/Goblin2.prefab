@@ -222,7 +222,7 @@ GameObject:
   - component: {fileID: 5600907066082015850}
   - component: {fileID: 5600907066082015844}
   - component: {fileID: 7162969204856486999}
-  - component: {fileID: 4636073271282736948}
+  - component: {fileID: 5689208701578824739}
   m_Layer: 8
   m_Name: Goblin2
   m_TagString: Monster
@@ -342,7 +342,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &4636073271282736948
+--- !u!114 &5689208701578824739
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -354,6 +354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3810cb24c6b779c4d96539d1c8a9d2ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unitNo: 20003
   Name: Goblin2
   MaxHp: 12
   Hp: 0
@@ -363,18 +364,17 @@ MonoBehaviour:
   CurrentAttackDelay: 0
   Power: 2
   anim: {fileID: 0}
-  unitNo: 20003
   Speed: 5
   applySpeed: 0
   AddScore: 1
-  AddCoin: 1
+  AddCoin: 2
   CoinAmount: 3
   Stop: 0
   Hpbarbackground: {fileID: 5600907066847247584}
   CoinPrefab: {fileID: 8737653804221628634, guid: 46fcd275790f82949b1cdf293acd71de, type: 3}
   Hpbar: {fileID: 5600907067104392577}
-  DamageText_SpawnPoint: {fileID: 7691615809364386527, guid: 19abcd0f40f2fd346a70a609ef5418ea, type: 3}
-  canvas: {fileID: 1804211516877100932}
+  DamageText_SpawnPoint: {fileID: 9124838273541261563}
+  canvas: {fileID: 5600907065261024006}
 --- !u!1 &5600907066847247584
 GameObject:
   m_ObjectHideFlags: 0

@@ -71,7 +71,7 @@ public abstract class Monster : Actor
         AddCoin = DataBaseManager.Instance.tdMonsterDict[Key].AddCoin;
         
     }
-    void HpUI_Update()
+    public virtual void HpUI_Update()
     {
         Hpbar.fillAmount = Mathf.Lerp(Hpbar.fillAmount, Hp / MaxHp, 8f * Time.deltaTime);
 
