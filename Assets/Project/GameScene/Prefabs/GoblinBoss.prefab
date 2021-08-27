@@ -282,7 +282,7 @@ MonoBehaviour:
   Name: BossGoblin
   MaxHp: 100
   Hp: 0
-  AttackDistance: 0.5
+  AttackDistance: 1.2
   AttackDelay: 6
   ApplyAttackDelay: 0
   CurrentAttackDelay: 0
@@ -294,6 +294,7 @@ MonoBehaviour:
   AddCoin: 50
   CoinAmount: 3
   Stop: 0
+  isDie: 0
   Hpbarbackground: {fileID: 0}
   CoinPrefab: {fileID: 8737653804221628634, guid: 46fcd275790f82949b1cdf293acd71de, type: 3}
   Hpbar: {fileID: 0}
@@ -302,8 +303,8 @@ MonoBehaviour:
   BossState: {fileID: 0}
   bossHpbar: {fileID: 0}
   bossName: {fileID: 0}
-  BossUIPos: {fileID: 0}
-  BossUIPos2: {fileID: 0}
+  BossUIPos:
+  - {fileID: 0}
 --- !u!1 &7916751278224681720
 GameObject:
   m_ObjectHideFlags: 0
