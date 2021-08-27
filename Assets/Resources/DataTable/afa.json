@@ -3,27 +3,18 @@
           "Name": "연속찌르기",
           "Command": "0,1,2",
           "Fmana": "50",
-          "Lmana": "3",
-          "Fdmg": "20",
-          "Ldmg": "2",
-          "Ctime": "15"
+          "Lmana": "3"
    },
      "10002": {
           "Name": "돌진",
           "Command": "3,4,5",
           "Fmana": "50",
-          "Lmana": "3",
-          "Fdmg": "25",
-          "Ldmg": "2.5",
-          "Ctime": "20"
+          "Lmana": "3"
    },
      "10003": {
           "Name": "회전공격",
           "Command": "6,7,8",
           "Fmana": "50",
-          "Lmana": "3",
-          "Fdmg": "40",
-          "Ldmg": "4",
-          "Ctime": "30"
+          "Lmana": "3"
    }
 }

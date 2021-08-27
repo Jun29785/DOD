@@ -15,7 +15,7 @@ public class TDSkill : TableBase
     public int Fmana;
     public int Lmana;
     public int Fdmg;
-    public int Ldmg;
+    public float Ldmg;
     public int Ctime;
 
     public override void SetJsonData(string key, JObject info)
@@ -29,7 +29,7 @@ public class TDSkill : TableBase
         Fmana = info["Fmana"].Value<int>();
         Lmana = info["Lmana"].Value<int>();
         Fdmg = info["Fdmg"].Value<int>();
-        Ldmg = info["Ldmg"].Value<int>();
+        Ldmg = info["Ldmg"].Value<float>();
         Ctime = info["Ctime"].Value<int>();
         Debug.Log(SKey);
     }
