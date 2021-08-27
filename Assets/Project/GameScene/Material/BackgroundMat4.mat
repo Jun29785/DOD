@@ -42,11 +42,15 @@ Material:
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 8bcefd9ed6fdf8546820d43e5d130dff, type: 3}
         m_Scale: {x: 1, y: 1}
+<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Eunseong/Material/BackgroundMat4.mat
         m_Offset: {x: 0.36849278, y: 0}
 =======
         m_Offset: {x: 13.379269, y: 0}
 >>>>>>> fc2b738154872a50b534785d5c8781c3161ae905:Assets/Project/GameScene/Material/BackgroundMat4.mat
+=======
+        m_Offset: {x: 2.2598965, y: 0}
+>>>>>>> eae6008f2ef96325464a1f98e1db2636bd6cff64
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
