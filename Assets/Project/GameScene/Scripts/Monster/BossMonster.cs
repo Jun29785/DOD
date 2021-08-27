@@ -153,6 +153,7 @@ public class BossMonster : Monster
     {
         BossState.transform.position = BossUIPos[1].transform.position;
         BattleManager.Instance.isBoss = false;
+        BattleManager.Instance.purpose += BattleManager.Instance.BossInterval;
 
     }
 }

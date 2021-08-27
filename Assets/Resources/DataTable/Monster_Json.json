@@ -1,46 +1,48 @@
 {
-     "20001": {
-          "Name": "Goblin",
-          "Hp": "16",
-          "Power": "2",
-          "Speed": "5",
-          "AttackDelay": "2",
-          "AttackDistance": "0.6",
-          "AddScore": "1",
-          "AddCoin": "1",
-          "CoinAmount": "3"
-   },
-     "20002": {
-          "Name": "DartGoblin",
-          "Hp": "15",
-          "Power": "4",
-          "Speed": "7",
-          "AttackDelay": "3",
-          "AttackDistance": "3",
-          "AddScore": "1",
-          "AddCoin": "2",
-          "CoinAmount": "3"
-   },
-     "20003": {
-          "Name": "gainetGoblin",
-          "Hp": "35",
-          "Power": "8",
-          "Speed": "4",
-          "AttackDelay": "4",
-          "AttackDistance": "0.6",
-          "AddScore": "3",
-          "AddCoin": "3",
-          "CoinAmount": "3"
-   },
-     "20004": {
-          "Name": "ShamanGoblin",
-          "Hp": "10",
-          "Power": "5",
-          "Speed": "4",
-          "AttackDelay": "5",
-          "AttackDistance": "4",
-          "AddScore": "3",
-          "AddCoin": "2",
-          "CoinAmount": "3"
-   }
+  "20001": {
+    "Name": "Goblin",
+    "Hp": "16",
+    "Power": "2",
+    "Speed": "5",
+    "AttackDelay": "2",
+    "AttackDistance": "0.6",
+    "AddScore": "1",
+    "AddCoin": "1",
+    "CoinAmount": "3"
+  },
+  "20002": {
+    "Name": "DartGoblin",
+    "Hp": "15",
+    "Power": "4",
+    "Speed": "7",
+    "AttackDelay": "3",
+    "AttackDistance": "3",
+    "AddScore": "1",
+    "AddCoin": "2",
+    "CoinAmount": "3"
+  },
+  "20003": {
+    "Name": "ShamanGoblin",
+    "Hp": "10",
+    "Power": "5",
+    "Speed": "4",
+    "AttackDelay": "5",
+    "AttackDistance": "4",
+    "AddScore": "3",
+    "AddCoin": "2",
+    "CoinAmount": "3"
+
+  },
+  "20004": {
+
+    "Name": "gainetGoblin",
+    "Hp": "35",
+    "Power": "8",
+    "Speed": "4",
+    "AttackDelay": "4",
+    "AttackDistance": "0.6",
+    "AddScore": "3",
+    "AddCoin": "3",
+    "CoinAmount": "3"
+  }
 }
