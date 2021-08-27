@@ -22,11 +22,11 @@
           "CoinAmount": "3"
    },
      "20003": {
-          "Name": "BigGoblin",
-          "Hp": "100",
+          "Name": "gainetGoblin",
+          "Hp": "35",
           "Power": "8",
-          "Speed": "3",
-          "AttackDelay": "3",
+          "Speed": "4",
+          "AttackDelay": "4",
           "AttackDistance": "0.6",
           "AddScore": "3",
           "AddCoin": "3",
