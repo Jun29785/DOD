@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using DB;
 public class SkillButton : MonoBehaviour
 {
     private int SKey;

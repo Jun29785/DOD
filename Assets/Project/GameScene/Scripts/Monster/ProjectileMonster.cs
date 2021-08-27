@@ -6,7 +6,6 @@ public class ProjectileMonster : Monster
 {
     public GameObject projectilePrefab;
     bool isBattle;
-    bool isContact;
     public override void Start()
     {
         base.Start();
@@ -67,7 +66,7 @@ public class ProjectileMonster : Monster
 
     public override void animUpdate()
     {
-        anim.SetBool("isContact", !isContact);
+        anim.SetBool("isContact", isBattle);
 
     }
     public virtual void Create_projectile()

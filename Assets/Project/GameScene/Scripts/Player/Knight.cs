@@ -82,14 +82,14 @@ public class Knight : MeleeCharacter
                     foreach (Collider2D enemy in hitEnemy)
                     {
                         enemy.transform.position = new Vector2(transform.position.x + 0.6f, enemy.transform.position.y);
-                        if (currentTime >= 0.2f)
+                        if (currentTime >= 0.4f)
                         {
                             enemy.GetComponent<Monster>().Damaged(5);
                         }
 
                     }
                     transform.position = Vector2.Lerp(transform.position, DashTransform.position, 2.2f * Time.deltaTime);
-                    if (currentTime >= 0.2f)
+                    if (currentTime >= 0.4f)
                     {
 
                         currentTime = 0;

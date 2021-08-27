@@ -354,6 +354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea95d6fbc9baa5448af8902f9537942f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unitNo: 0
   Name: 
   MaxHp: 0
   Hp: 0
@@ -363,17 +364,16 @@ MonoBehaviour:
   CurrentAttackDelay: 0
   Power: 0
   anim: {fileID: 0}
-  unitNo: 0
   Speed: 0
   applySpeed: 0
   AddScore: 0
   AddCoin: 0
   CoinAmount: 0
   Stop: 0
+  isDie: 0
   Hpbarbackground: {fileID: 5600907066847247584}
   CoinPrefab: {fileID: 8737653804221628634, guid: 46fcd275790f82949b1cdf293acd71de, type: 3}
   Hpbar: {fileID: 5600907067104392577}
-  BackHpbar: {fileID: 568795538738759591}
   DamageText_SpawnPoint: {fileID: 9124838273541261563}
   canvas: {fileID: 5600907065261024006}
 --- !u!1 &5600907066847247584

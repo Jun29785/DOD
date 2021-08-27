@@ -14,14 +14,16 @@ public class BossGenerater : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (BattleManager.Score >= 10)
-        {
-        }
-        if (BattleManager.Score >= 10 && cnt <= 0)
+        
+        if (BattleManager.Score >= BattleManager.Instance.purpose && cnt <= 0)
         {
             BattleManager.Instance.isBoss = true;
-            Instantiate(BossPrefab);
+            Instantiate(BossPrefab,transform.position,Quaternion.identity);
             cnt++;
+        }
+        if (!BattleManager.Instance.isBoss)
+        {
+            cnt = 0;
         }
     }
 }
