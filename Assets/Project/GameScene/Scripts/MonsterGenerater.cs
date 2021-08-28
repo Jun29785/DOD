@@ -19,7 +19,7 @@ public class MonsterGenerater : MonoBehaviour
         PrevPosindex = 99;
         Posindex = 0;
         spawnAmount = 1;
-        SpawnInterval = 1;
+        SpawnInterval = 3;
         monsterNo = 20001;
     }
 
@@ -28,92 +28,94 @@ public class MonsterGenerater : MonoBehaviour
     {
         currentTime += Time.deltaTime;
         Spawn();
-        Debug.Log(BattleManager.Score + (BattleManager.Instance.purpose - 100));
+
     }
 
     void Spawn()
     {
-        if (currentTime >= SpawnInterval && !BattleManager.Instance.isBoss)
+        if (BattleManager.Instance.isStart)
         {
-            for (int i = 0; i < spawnAmount; i++)
+            if (currentTime >= SpawnInterval && !BattleManager.Instance.isBoss)
             {
-                switch (Posindex) // 몬스터 위치 인덱스의 위치
+                for (int i = 0; i < spawnAmount; i++)
                 {
-                    case 0:
-                        Objectpool.GetMonsterobject(monsterNo, new Vector2(transform.position.x, 0.51f));
-                        break;
-                    case 1:
-                        Objectpool.GetMonsterobject(monsterNo, new Vector2(transform.position.x, 0.35f));
-                        break;
-                    case 2:
-                        Objectpool.GetMonsterobject(monsterNo, new Vector2(transform.position.x, 0.123f));
-                        break;
+                    switch (Posindex) // 몬스터 위치 인덱스의 위치
+                    {
+                        case 0:
+                            Objectpool.GetMonsterobject(monsterNo, new Vector2(transform.position.x, 0.51f));
+                            break;
+                        case 1:
+                            Objectpool.GetMonsterobject(monsterNo, new Vector2(transform.position.x, 0.35f));
+                            break;
+                        case 2:
+                            Objectpool.GetMonsterobject(monsterNo, new Vector2(transform.position.x, 0.123f));
+                            break;
 
-                    default:
-                        Objectpool.GetMonsterobject(monsterNo, new Vector2(transform.position.x, Random.Range(0.09f, 0.51f)));
-                        break;
-                }
-                //Objectpool.GetMonsterobject(monsterNo,new Vector2(transform.position.x, Random.Range(0.09f, 0.51f)));
-                if (ScoreCheck(0, 10))
-                {
-                    currentTime = 0;
-                    Randomindex();
-                    monsterNo = 20001;
-                    spawnAmount = Random.Range(1, 3);
-                    SpawnInterval = Random.Range(4, 7);
-                }
-                else if (ScoreCheck(10, 15))
-                {
-                    currentTime = 0;
-                    Randomindex();
-                    monsterNo = 20002;
-                    RandomMonsterNo(20001, 20003);
-                    spawnAmount = Random.Range(1, 4);
-                    SpawnInterval = Random.Range(3, 6);
-                }
-
-                else if (ScoreCheck(15, 30))
-                {
-                    if (currentTime >= SpawnInterval)
+                        default:
+                            Objectpool.GetMonsterobject(monsterNo, new Vector2(transform.position.x, Random.Range(0.09f, 0.51f)));
+                            break;
+                    }
+                    //Objectpool.GetMonsterobject(monsterNo,new Vector2(transform.position.x, Random.Range(0.09f, 0.51f)));
+                    if (ScoreCheck(0, 10))
                     {
                         currentTime = 0;
                         Randomindex();
-                        monsterNo = 20003;
-                        RandomMonsterNo(20001, 20004);
-                        spawnAmount = Random.Range(2, 4);
-                        SpawnInterval = Random.Range(3, 6);
-
+                        monsterNo = 20001;
+                        spawnAmount = Random.Range(1, 3);
+                        SpawnInterval = Random.Range(4, 7);
                     }
-                }
-                else if (ScoreCheck(30, 100))
-                {
-                    if (currentTime >= SpawnInterval)
+                    else if (ScoreCheck(10, 15))
                     {
                         currentTime = 0;
                         Randomindex();
-                        RandomMonsterNo(20001, 20005);
-                        spawnAmount = Random.Range(2, 4);
+                        monsterNo = 20002;
+                        RandomMonsterNo(20001, 20003);
+                        spawnAmount = Random.Range(1, 4);
                         SpawnInterval = Random.Range(3, 6);
-
                     }
-                }
-                else
-                {
-                    if (currentTime >= SpawnInterval)
+
+                    else if (ScoreCheck(15, 30))
                     {
-                        currentTime = 0;
+                        if (currentTime >= SpawnInterval)
+                        {
+                            currentTime = 0;
+                            Randomindex();
+                            monsterNo = 20003;
+                            RandomMonsterNo(20001, 20004);
+                            spawnAmount = Random.Range(2, 4);
+                            SpawnInterval = Random.Range(3, 6);
 
-                        Randomindex();
-                        RandomMonsterNo(20001, 20005);
-                        spawnAmount = Random.Range(2, 4);
-                        SpawnInterval = Random.Range(3, 6);
+                        }
+                    }
+                    else if (ScoreCheck(30, 100))
+                    {
+                        if (currentTime >= SpawnInterval)
+                        {
+                            currentTime = 0;
+                            Randomindex();
+                            RandomMonsterNo(20001, 20005);
+                            spawnAmount = Random.Range(2, 4);
+                            SpawnInterval = Random.Range(3, 6);
+
+                        }
+                    }
+                    else
+                    {
+                        if (currentTime >= SpawnInterval)
+                        {
+                            currentTime = 0;
+
+                            Randomindex();
+                            RandomMonsterNo(20001, 20005);
+                            spawnAmount = Random.Range(2, 4);
+                            SpawnInterval = Random.Range(3, 6);
+                        }
                     }
                 }
+
             }
-
         }
     }
-
     public void Randomindex() // 몬스터 위치 인덱스 설정 
     {
         Posindex = Random.Range(0, 3);

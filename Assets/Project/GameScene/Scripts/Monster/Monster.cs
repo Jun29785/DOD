@@ -18,9 +18,8 @@ public abstract class Monster : Actor
     public bool Stop;
     public bool isDie = false;
     
-    public GameObject Hpbarbackground;
     public GameObject CoinPrefab;
-    public Image Hpbar;
+    public Slider Hpbar;
     public Transform DamageText_SpawnPoint;
     public GameObject canvas;
     bool isBackHp;
@@ -37,7 +36,7 @@ public abstract class Monster : Actor
 
         if (Hpbar != null)
         {
-            Hpbar.fillAmount = 1f;
+            Hpbar.value = 1f;
         }
         applySpeed = Speed;
     }
@@ -76,7 +75,7 @@ public abstract class Monster : Actor
     }
     public virtual void HpUI_Update()
     {
-        Hpbar.fillAmount = Mathf.Lerp(Hpbar.fillAmount, Hp / MaxHp, 8f * Time.deltaTime);
+        Hpbar.value = Mathf.Lerp(Hpbar.value, Hp / MaxHp, 8f * Time.deltaTime);
 
     }
 

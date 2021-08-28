@@ -13,7 +13,6 @@ public class MeleeCharacter : Character
     Collider2D target;// 공격타겟
 
     [HideInInspector]
-    public float ATKDamage;
     public override void Start()
     {
         base.Start();
@@ -70,6 +69,8 @@ public class MeleeCharacter : Character
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(AttackTransform.position, AttackRange);
+        Gizmos.DrawWireCube(AllAttackPosition.position, AllAttackRange);
+
     }
 
 }

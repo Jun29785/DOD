@@ -18,16 +18,16 @@ public class BattleManager : MonoBehaviour
     public bool isStop = false;
     public bool isEnd = false;
     public bool PatternInputEnd = false;
+    public bool isStart;
 
     public bool isDash;
     public List<int> Pattern_id = new List<int>();
 
     public Character character;
-    
+    public GameObject Panel;
 
     void Awake()
     {
-        Score = 18;
         purpose = 20;
         BossInterval = purpose;
     }
@@ -35,9 +35,7 @@ public class BattleManager : MonoBehaviour
     {
         character = GameObject.FindWithTag("Player").GetComponent<Character>();
         Instance = this;
-        Pattern_id.Clear();
-        Score = 0;
-        getGold = 0;
+        StartPanel();
     }
 
     public void PlayerDamage(float value)
@@ -49,4 +47,19 @@ public class BattleManager : MonoBehaviour
     {
         getGold += value;
     }
+
+    public void StartPanel()
+    {
+        isStart = false;
+        purpose = 20;
+        Pattern_id.Clear();
+        Score = 0;
+        getGold = 0;
+        character.GetComponent<Animator>().SetTrigger("isStart");
+        Panel.GetComponent<Animator>().SetTrigger("isStart");
+        isStart = true;
+
+    }
+
+    
 }

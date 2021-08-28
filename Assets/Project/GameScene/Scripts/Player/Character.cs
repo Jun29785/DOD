@@ -29,6 +29,11 @@ public class Character : Actor
     public Slider mpSlider;
     public TextMeshProUGUI HpText;
 
+    public float ATKDamage;
+
+    public Transform AllAttackPosition;
+
+    public Vector2 AllAttackRange;
     public override void Start()
     {
         base.Start();
@@ -141,7 +146,7 @@ public virtual void SetisUseSkillFalse()
     {
         hpSlider.value = Mathf.Lerp(hpSlider.value, Hp/MaxHp, 8f * Time.deltaTime);
         mpSlider.value = Mathf.Lerp(mpSlider.value, Mp / MaxMp, 8f * Time.deltaTime);
-        HpText.text = Hp.ToString();
+        HpText.text = Hp.ToString() + " / " + MaxHp.ToString();
 
     }
 
@@ -215,5 +220,5 @@ public virtual void SetisUseSkillFalse()
 
     }
 
-    
+
 }

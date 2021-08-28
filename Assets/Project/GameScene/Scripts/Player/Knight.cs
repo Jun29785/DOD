@@ -15,9 +15,11 @@ public class Knight : MeleeCharacter
         SkillcoolTimeDic.Add("Dash", 0);
         SkillcoolTimeDic.Add("Sting", 0);
         SkillcoolTimeDic.Add("SpinAttack", 0);
+        SkillcoolTimeDic.Add("BigSword", 0);
         SkillcoolTimeDic2.Add("Dash", 6);
         SkillcoolTimeDic2.Add("Sting", 3);
         SkillcoolTimeDic2.Add("SpinAttack", 7);
+        SkillcoolTimeDic2.Add("BigSword", 8);
     }
     public override void Start()
     {
@@ -30,16 +32,29 @@ public class Knight : MeleeCharacter
         Skill_Dash();
         Skill_Sting();
         Skill_SpinAttack();
+        Skill_BigSword();
     }
 
-#region 스킬
+    #region 판정
+    public void BigSwordATK() // 검이커져! 판정
+    {
+        Collider2D[] hitEnemy = Physics2D.OverlapBoxAll(AllAttackPosition.position, AllAttackRange, 0, LayerMask.GetMask("Monster"));
+
+        foreach (Collider2D enemy in hitEnemy)
+        {
+            enemy.GetComponent<Monster>().Damaged(ATKDamage);
+        }
+    }
+
+    #endregion
+    #region 스킬
 
     #region 돌진
 
-        /// <summary>
-        /// 돌진
-        /// </summary>
-        public void Skill_Dash()
+    /// <summary>
+    /// 돌진
+    /// </summary>
+    public void Skill_Dash()
         {
         
             SkillcoolTimeDic["Dash"] -= Time.deltaTime;
@@ -176,6 +191,28 @@ public class Knight : MeleeCharacter
     }
     #endregion
 
+    #region 검이커져!
+
+    public void Skill_BigSword()
+    {
+        SkillcoolTimeDic["BigSword"] -= Time.deltaTime;
+
+
+        if (UseSkill("검이커져!", SkillcoolTimeDic2["BigSword"], SkillcoolTimeDic["BigSword"], 40, new List<int>() { 0,1,2,5 }))
+        {
+            ATKDamage = 20;
+            BattleManager.Instance.isUseSkill = true;
+            anim.SetTrigger("BigSword");
+            UseMp(40);
+
+            SkillcoolTimeDic["BigSword"] = SkillcoolTimeDic2["BigSword"];
+        }
+    }
+
+
+    
+
+    #endregion
 #endregion
 
 
