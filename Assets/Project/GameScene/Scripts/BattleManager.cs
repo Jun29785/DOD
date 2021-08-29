@@ -25,6 +25,7 @@ public class BattleManager : MonoBehaviour
 
     public Character character;
     public GameObject Panel;
+    public GameObject gameoverPanel;
 
     void Awake()
     {
@@ -50,6 +51,9 @@ public class BattleManager : MonoBehaviour
 
     public void StartPanel()
     {
+        BattleManager.Instance.isEnd = false;
+        character.Hp = character.MaxHp;
+        character.Mp = character.MaxMp;
         isStart = false;
         purpose = 20;
         Pattern_id.Clear();
@@ -58,6 +62,7 @@ public class BattleManager : MonoBehaviour
         character.GetComponent<Animator>().SetTrigger("isStart");
         Panel.GetComponent<Animator>().SetTrigger("isStart");
         isStart = true;
+        gameoverPanel.SetActive(false);
 
     }
 
