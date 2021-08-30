@@ -24,7 +24,7 @@ public class Knight : MeleeCharacter
     public override void Start()
     {
         base.Start();
-       StartCoroutine(HpMpRecovery(1,1, 3));
+       StartCoroutine(HpMpRecovery(1.5f,1, 3));
     }
     public override void Update()
     {
@@ -75,61 +75,62 @@ public class Knight : MeleeCharacter
 
         
         }
-        /// <summary>
-        /// 돌진 판정
-        /// </summary>
-        IEnumerator DashCroutine()
+    /// <summary>
+    /// 돌진 판정
+    /// </summary>
+    IEnumerator DashCroutine()
+    {
+        SkillcoolTimeDic["Dash"] = SkillcoolTimeDic2["Dash"];
+
+        float currentTime = 1;
+
+        BattleManager.Instance.isUseSkill = true;
+        BattleManager.Instance.isDash = true;
+
+
+        anim.SetBool("isDash", true);
+        while (transform.position.x < DashTransform.position.x - 0.2f)
         {
-            SkillcoolTimeDic["Dash"] = SkillcoolTimeDic2["Dash"];
-
-            float currentTime = 1;
-        
-                BattleManager.Instance.isUseSkill = true;
-                BattleManager.Instance.isDash = true;
-
-            
-                anim.SetBool("isDash",true);
-                while (transform.position.x < DashTransform.position.x - 0.2f)
+            currentTime += Time.deltaTime;
+            BattleManager.Instance.isUseSkill = true;
+            Collider2D[] hitEnemy = Physics2D.OverlapCircleAll(AttackTransform.position, 0.2f, LayerMask.GetMask("Monster"));
+            foreach (Collider2D enemy in hitEnemy)
+            {
+                enemy.transform.position = new Vector2(transform.position.x + 0.6f, enemy.transform.position.y);
+                if (currentTime >= 0.4f)
                 {
-                    currentTime += Time.deltaTime;
-                    BattleManager.Instance.isUseSkill = true;
-                    Collider2D[] hitEnemy = Physics2D.OverlapCircleAll(AttackTransform.position, 0.2f, LayerMask.GetMask("Monster"));
-                    foreach (Collider2D enemy in hitEnemy)
-                    {
-                        enemy.transform.position = new Vector2(transform.position.x + 0.6f, enemy.transform.position.y);
-                        if (currentTime >= 0.4f)
-                        {
-                            enemy.GetComponent<Monster>().Damaged(5);
-                        }
-
-                    }
-                    transform.position = Vector2.Lerp(transform.position, DashTransform.position, 2.2f * Time.deltaTime);
-                    if (currentTime >= 0.4f)
-                    {
-
-                        currentTime = 0;
-                    }
-                    yield return null;
+                    enemy.GetComponent<Monster>().Damaged(5);
                 }
 
-                yield return new WaitForSeconds(0.1f);
+            }
 
-                anim.SetBool("isDash", false);
+            transform.position = Vector2.Lerp(transform.position, DashTransform.position, 2.2f * Time.deltaTime);
+            if (currentTime >= 0.4f)
+            {
 
-                while (transform.position.x > originPos.transform.position.x + 0.1f)
-                {
+                currentTime = 0;
+            }
+            yield return null;
+        }
 
-                    transform.position = Vector2.Lerp(transform.position, originPos.transform.position, 6 * Time.deltaTime);
-                    yield return null;
-                }
+        yield return new WaitForSeconds(0.1f);
+
+        anim.SetBool("isDash", false);
+
+        while (transform.position.x > originPos.transform.position.x + 0.1f)
+        {
+
+            transform.position = Vector2.Lerp(transform.position, originPos.transform.position, 6 * Time.deltaTime);
+            yield return null;
+        }
 
 
-                transform.position = originPos.position;
+        transform.position = originPos.position;
 
 
-             yield return new WaitForSeconds(0.4f);
-             BattleManager.Instance.isUseSkill = false;
-             BattleManager.Instance.isDash = false;
+        yield return new WaitForSeconds(0.1f);
+        BattleManager.Instance.isUseSkill = false;
+        BattleManager.Instance.isDash = false;
 
 
 

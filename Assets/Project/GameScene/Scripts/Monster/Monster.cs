@@ -84,6 +84,13 @@ public abstract class Monster : Actor
     {
         base.Damaged(value);
         Objectpool.GetDamageText(canvas, DamageText_SpawnPoint.position, ((int)value).ToString());
+
+        /*Vector2 pos = new Vector2(transform.position.x + 0.2f, transform.position.y);
+
+        while(transform.position.x <= pos.x - 0.01f)
+        {
+            transform.position = Vector2.Lerp(transform.position, pos, 3 * Time.deltaTime);
+        }*/
     }
     public abstract void Move();
 
@@ -149,6 +156,7 @@ public abstract class Monster : Actor
         BattleManager.Instance.PlayerDamage(Power);
     }
 
+    
 }
 
 

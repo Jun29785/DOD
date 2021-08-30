@@ -8,20 +8,23 @@ public class GameSceneUIManager : UIManager
 
     public static GameSceneUIManager Instance;
 
+    [Header("GamePlaying")]
     public Character character; // 캐릭터 스크립트
     public Text ScoreText; // 점수
-
     public Text WarningText; // 마나없습니다 등등 표기 텍스트
     public GameObject Content; // 스킬 쿨타임오브젝트의 부모객체
+    public GameObject Skill_CoolTime_Prefab; // 스킬쿨타임 오브젝트 프리팹
 
-    public GameObject Skill_CoolTime_Prefab;
-
-    public Slider BossHp;
+    [Header("GameOVerPanel")]
+    public GameObject GameoverPanel;
+    public Text GOScoreText;
+    public Text GetGoldText;
 
     
     void Start()
     {
         Instance = this;
+        character = GameObject.FindGameObjectWithTag("Player").GetComponent<Character>();
     }
 
     // Update is called once per frame
@@ -47,7 +50,7 @@ public class GameSceneUIManager : UIManager
     {
         if(BattleManager.Instance.isEnd)
         {
-
+            character.Hp = 0;
             Invoke("Gameover", 1);
             
             
@@ -58,7 +61,9 @@ public class GameSceneUIManager : UIManager
 
     void Gameover()
     {
-        LoadingSceneController.LoadScene("ResultScene");
+        GOScoreText.text = BattleManager.Score.ToString();
+        GetGoldText.text = BattleManager.getGold.ToString();
+        GameoverPanel.SetActive(true);
     }
 
     public void ApearWarningText(int index)

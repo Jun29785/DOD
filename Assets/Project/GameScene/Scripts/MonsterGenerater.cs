@@ -33,6 +33,10 @@ public class MonsterGenerater : MonoBehaviour
 
     void Spawn()
     {
+        if (BattleManager.Instance.isEnd)
+        {
+            return;
+        }
         if (BattleManager.Instance.isStart)
         {
             if (currentTime >= SpawnInterval && !BattleManager.Instance.isBoss)

@@ -14,6 +14,8 @@ public class Button : MonoBehaviour
         LoadingScene
     }
 
+
+    
     public void ToLobbyScene()
     {
         SceneManager.LoadScene(Scene.LobbyScene.ToString());
@@ -31,5 +33,28 @@ public class Button : MonoBehaviour
     {
         SceneManager.LoadScene(Scene.InventoryScene.ToString());
         Time.timeScale = 1;
+    }
+
+
+    public void Pause(GameObject viewObject)
+    {
+        Time.timeScale = 0;
+        viewObject.SetActive(true);
+    }
+
+    public void Pose(GameObject viewObject)
+    {
+        Time.timeScale = 1;
+        viewObject.SetActive(false);
+    }
+
+
+    //겜씬
+
+    public void gameSceneQuit(GameObject viewObject)
+    {
+        Time.timeScale = 1;
+        viewObject.SetActive(false);
+        BattleManager.Instance.isEnd = true;
     }
 }
