@@ -23,7 +23,7 @@ public class DamageText : MonoBehaviour
 
     private void OnEnable()
     {
-        text.fontSize = 0.03f;
+        //text.fontSize = 0.03f;
         alpha.a = 1;
         text.color = alpha; 
     }
@@ -32,7 +32,7 @@ public class DamageText : MonoBehaviour
         transform.Translate(new Vector2(0, speed * Time.deltaTime));
         alpha.a = Mathf.Lerp(alpha.a, 0, Time.deltaTime * alphaSpeed);
         text.color = alpha;
-        text.fontSize += 0.0006f;
+        //text.fontSize += 0.0002f;
 
     }
 

@@ -24,7 +24,7 @@ public class Knight : MeleeCharacter
     public override void Start()
     {
         base.Start();
-       StartCoroutine(HpMpRecovery(1,1, 3));
+       StartCoroutine(HpMpRecovery(1.5f,1, 3));
     }
     public override void Update()
     {
