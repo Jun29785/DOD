@@ -13,6 +13,25 @@ public class LobbyUIManager : MonoBehaviour
 
     public Animator InventoryAnim;
     public GameObject InventoryIcon;
+
+    public Animator Canvas;
+    public GameObject Leave;
+    public Animator Character;
+
+    private void Awake()
+    {
+        StartCoroutine("StartScene");
+    }
+
+    IEnumerator StartScene()
+    {
+        Canvas.SetTrigger("LeaveOpen");
+        yield return new WaitForSeconds(1.5f);
+        Leave.SetActive(false);
+        Character.SetBool("IDLE", true);
+        
+    }
+
     private void Update()
     {
         UpdateText();    

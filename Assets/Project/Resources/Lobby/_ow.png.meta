@@ -1,28 +1,55 @@
 fileFormatVersion: 2
-guid: 1ddbf171316618d4eb4406722f03a289
+guid: 90d880566778ba948815cb62009bd920
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4116724067120597897
-    second: _night_Idle_0
+      213: 2840416420536448025
+    second: _ow_0
   - first:
-      213: 3824305848274928884
-    second: _night_Idle_1
+      213: -4518078781677644466
+    second: _ow_1
   - first:
-      213: -2886439635895616770
-    second: _night_Idle_2
+      213: -6356728736706485433
+    second: _ow_2
   - first:
-      213: -4709001831019032927
-    second: _night_Idle_3
+      213: -7128325793158910696
+    second: _ow_3
   - first:
-      213: 872059582269379958
-    second: _night_Idle_4
+      213: 2469454156991966467
+    second: _ow_4
   - first:
-      213: 5063532298254289540
-    second: _night_Idle_5
+      213: 1958794953396721883
+    second: _ow_5
   - first:
-      213: -5986755774673695064
-    second: _night_Idle_6
+      213: -8691079528649360987
+    second: _ow_6
+  - first:
+      213: -2912932490142753375
+    second: _ow_7
+  - first:
+      213: -6916683291502494288
+    second: _ow_8
+  - first:
+      213: -2858570429496626599
+    second: _ow_9
+  - first:
+      213: -2882792369914484211
+    second: _ow_10
+  - first:
+      213: -7740610054962550469
+    second: _ow_11
+  - first:
+      213: -1101306639378802442
+    second: _ow_12
+  - first:
+      213: 7257949775213490374
+    second: _ow_13
+  - first:
+      213: -4648772882417618242
+    second: _ow_14
+  - first:
+      213: -7384942165589574972
+    second: _ow_15
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -107,18 +134,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
     buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -134,148 +149,106 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: _night_Idle_0
+      name: _ow_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 112
-        width: 39
-        height: 45
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 0
+        y: 0
+        width: 120
+        height: 190
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 774b9f4b5457ed6c0800000000000000
-      internalID: -4116724067120597897
+      spriteID: 914f2407faf2b6720800000000000000
+      internalID: 2840416420536448025
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _night_Idle_1
+      name: _ow_1
       rect:
         serializedVersion: 2
-        x: 48
-        y: 112
-        width: 42
-        height: 44
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 144
+        y: 0
+        width: 96
+        height: 190
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4f440ee28e9a21530800000000000000
-      internalID: 3824305848274928884
+      spriteID: e45dfde294f8c41c0800000000000000
+      internalID: -4518078781677644466
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _night_Idle_2
+      name: _ow_2
       rect:
         serializedVersion: 2
-        x: 97
-        y: 112
-        width: 40
-        height: 44
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 360
+        y: 0
+        width: 120
+        height: 190
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: efa75d4b17e41f7d0800000000000000
-      internalID: -2886439635895616770
+      spriteID: 743a713b4ec58c7a0800000000000000
+      internalID: -6356728736706485433
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _night_Idle_3
+      name: _ow_15
       rect:
         serializedVersion: 2
-        x: 2
-        y: 59
-        width: 39
-        height: 44
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 720
+        y: 0
+        width: 93
+        height: 190
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1ae4277b8c346aeb0800000000000000
-      internalID: -4709001831019032927
+      spriteID: 4caba3d3a3a638990800000000000000
+      internalID: -7384942165589574972
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _night_Idle_4
+      name: _ow_3
       rect:
         serializedVersion: 2
-        x: 49
-        y: 59
-        width: 40
-        height: 44
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 607
+        y: 62
+        width: 108
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6755428d19d2a1c00800000000000000
-      internalID: 872059582269379958
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: _night_Idle_5
-      rect:
-        serializedVersion: 2
-        x: 98
-        y: 59
-        width: 39
-        height: 44
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 48a0a2a2cc7454640800000000000000
-      internalID: 5063532298254289540
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: _night_Idle_6
-      rect:
-        serializedVersion: 2
-        x: 2
-        y: 6
-        width: 39
-        height: 45
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8ae4e859755caeca0800000000000000
-      internalID: -5986755774673695064
+      spriteID: 81d22876579131d90800000000000000
+      internalID: -7128325793158910696
       vertices: []
       indices: 
       edges: []
