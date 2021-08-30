@@ -47,4 +47,14 @@ public class Button : MonoBehaviour
         Time.timeScale = 1;
         viewObject.SetActive(false);
     }
+
+
+    //겜씬
+
+    public void gameSceneQuit(GameObject viewObject)
+    {
+        Time.timeScale = 1;
+        viewObject.SetActive(false);
+        BattleManager.Instance.isEnd = true;
+    }
 }

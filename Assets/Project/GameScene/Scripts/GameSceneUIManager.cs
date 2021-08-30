@@ -24,6 +24,7 @@ public class GameSceneUIManager : UIManager
     void Start()
     {
         Instance = this;
+        character = GameObject.FindGameObjectWithTag("Player").GetComponent<Character>();
     }
 
     // Update is called once per frame
@@ -49,7 +50,7 @@ public class GameSceneUIManager : UIManager
     {
         if(BattleManager.Instance.isEnd)
         {
-
+            character.Hp = 0;
             Invoke("Gameover", 1);
             
             
