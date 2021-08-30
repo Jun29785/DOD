@@ -30,4 +30,9 @@ public class shamanGoblin : ProjectileMonster
 
         }
     }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireCube(transform.position, healArea);
+    }
 }
