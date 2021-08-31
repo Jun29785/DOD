@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class InventoryUIManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject SkillPanel;
+
+    public void OnClickBackArrow()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnClickSkillIcon()
     {
-        
+        SkillPanel.SetActive(true);
     }
 }
