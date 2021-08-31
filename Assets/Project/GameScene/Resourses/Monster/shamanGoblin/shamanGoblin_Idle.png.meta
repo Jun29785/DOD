@@ -1,34 +1,16 @@
 fileFormatVersion: 2
-guid: f1d33378e1ab8a042a99ae98b8963d8b
+guid: c7ed5ab3613c83c46873a10aea2dc8d9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2043298574524828718
-    second: shamanGoblin_Heal_0
+      213: 5031976677377362125
+    second: shamanGoblin_Idle_0
   - first:
-      213: 7105973633336241302
-    second: shamanGoblin_Heal_1
+      213: -3131057824066002794
+    second: shamanGoblin_Idle_1
   - first:
-      213: -3351560796053475345
-    second: shamanGoblin_Heal_2
-  - first:
-      213: 3978658154376734175
-    second: shamanGoblin_Heal_3
-  - first:
-      213: 3908434815902707596
-    second: shamanGoblin_Heal_4
-  - first:
-      213: -6572140171178341035
-    second: shamanGoblin_Heal_5
-  - first:
-      213: 518959839446692037
-    second: shamanGoblin_Heal_6
-  - first:
-      213: 1290622791596207676
-    second: shamanGoblin_Heal_7
-  - first:
-      213: -5641073594590959634
-    second: shamanGoblin_Heal_8
+      213: 13090784422857528
+    second: shamanGoblin_Idle_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -140,169 +122,64 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: shamanGoblin_Heal_0
+      name: shamanGoblin_Idle_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 102
-        width: 63
+        y: 48
+        width: 55
         height: 48
       alignment: 9
-      pivot: {x: 0.5260754, y: 0.02113851}
+      pivot: {x: 0.45189485, y: 0.03191177}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2d3b267b5ceb4a3e0800000000000000
-      internalID: -2043298574524828718
+      spriteID: dc8c025a02c25d540800000000000000
+      internalID: 5031976677377362125
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shamanGoblin_Heal_1
+      name: shamanGoblin_Idle_1
       rect:
         serializedVersion: 2
-        x: 63
-        y: 102
-        width: 63
+        x: 55
+        y: 48
+        width: 55
         height: 48
       alignment: 9
-      pivot: {x: 0.5223674, y: 0.02113851}
+      pivot: {x: 0.45442268, y: 0.04062255}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 69c6c46de5d7d9260800000000000000
-      internalID: 7105973633336241302
+      spriteID: 690a6518f7f3c84d0800000000000000
+      internalID: -3131057824066002794
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shamanGoblin_Heal_2
-      rect:
-        serializedVersion: 2
-        x: 126
-        y: 102
-        width: 63
-        height: 48
-      alignment: 9
-      pivot: {x: 0.5212492, y: 0.02113851}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fef6b1c963ddc71d0800000000000000
-      internalID: -3351560796053475345
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: shamanGoblin_Heal_3
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 52
-        width: 63
-        height: 48
-      alignment: 9
-      pivot: {x: 0.52124906, y: 0.02113851}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fd52656f288073730800000000000000
-      internalID: 3978658154376734175
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: shamanGoblin_Heal_4
-      rect:
-        serializedVersion: 2
-        x: 63
-        y: 52
-        width: 63
-        height: 48
-      alignment: 9
-      pivot: {x: 0.52701074, y: 0.02113851}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c8f66add1cc8d3630800000000000000
-      internalID: 3908434815902707596
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: shamanGoblin_Heal_5
-      rect:
-        serializedVersion: 2
-        x: 126
-        y: 52
-        width: 63
-        height: 48
-      alignment: 9
-      pivot: {x: 0.5222614, y: 0.02113851}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 55d07d2c5511bc4a0800000000000000
-      internalID: -6572140171178341035
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: shamanGoblin_Heal_6
+      name: shamanGoblin_Idle_2
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 63
-        height: 50
+        width: 55
+        height: 48
       alignment: 9
-      pivot: {x: 0.52490926, y: 0.059632674}
+      pivot: {x: 0.45189485, y: 0.03191188}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5c0f9e27937b33700800000000000000
-      internalID: 518959839446692037
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: shamanGoblin_Heal_7
-      rect:
-        serializedVersion: 2
-        x: 63
-        y: 0
-        width: 63
-        height: 50
-      alignment: 9
-      pivot: {x: 0.52615464, y: 0.061201952}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c3e6d18479639e110800000000000000
-      internalID: 1290622791596207676
+      spriteID: 83b0b53cff18e2000800000000000000
+      internalID: 13090784422857528
       vertices: []
       indices: 
       edges: []

@@ -64,7 +64,7 @@ public class MonsterGenerater : MonoBehaviour
                     {
                         currentTime = 0;
                         Randomindex();
-                        monsterNo = 20003;
+                        monsterNo = 20005;
                         spawnAmount = Random.Range(1, 3);
                         SpawnInterval = Random.Range(4, 7);
                     }
@@ -105,6 +105,7 @@ public class MonsterGenerater : MonoBehaviour
                     }
                     else
                     {
+                        print("hello world");
                         if (currentTime >= SpawnInterval)
                         {
                             currentTime = 0;
@@ -114,7 +115,7 @@ public class MonsterGenerater : MonoBehaviour
                             spawnAmount = Random.Range(2, 4);
                             SpawnInterval = Random.Range(3, 6);
                         }
-                    }
+                    } 
                 }
 
             }
@@ -141,7 +142,7 @@ public class MonsterGenerater : MonoBehaviour
 
     public bool ScoreCheck(int min, int max) 
     {
-        if (BattleManager.Score + (BattleManager.Instance.purpose-BattleManager.Instance.BossInterval)>= min && BattleManager.Score + (BattleManager.Instance.purpose - BattleManager.Instance.BossInterval) < max && !BattleManager.Instance.isBoss)
+        if (BattleManager.Score /*+ (BattleManager.Instance.purpose-BattleManager.Instance.BossInterval)*/>= min && BattleManager.Score /*+ (BattleManager.Instance.purpose - BattleManager.Instance.BossInterval)*/ < max && !BattleManager.Instance.isBoss)
         {
             return true;
         }

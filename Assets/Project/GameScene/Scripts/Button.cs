@@ -35,7 +35,14 @@ public class Button : MonoBehaviour
         Time.timeScale = 1;
     }
 
-
+    public void Viewit(GameObject viewObj)
+    {
+        viewObj.SetActive(true);
+    }
+    public void Hideit(GameObject viewObj)
+    {
+        viewObj.SetActive(false);
+    }
     public void Pause(GameObject viewObject)
     {
         Time.timeScale = 0;
@@ -57,4 +64,6 @@ public class Button : MonoBehaviour
         viewObject.SetActive(false);
         BattleManager.Instance.isEnd = true;
     }
+
+
 }

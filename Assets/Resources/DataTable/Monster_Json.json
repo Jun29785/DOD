@@ -51,7 +51,7 @@
     "Hp": "10",
     "Power": "1",
     "Speed": "3",
-    "AttackDelay": "5",
+    "AttackDelay": "2",
     "AttackDistance": "2.5",
     "AddScore": "3",
     "AddCoin": "2",

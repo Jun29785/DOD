@@ -2709,7 +2709,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e662677991df86f40ab02eaf06b921f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  purpose: 0
+  purpose: 100
   BossInterval: 0
   isBoss: 0
   isContact: 0

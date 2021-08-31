@@ -32,8 +32,7 @@ public class shamanGoblin : ProjectileMonster
     {
         if (CurrentAttackDelay >= ApplyAttackDelay && !BattleManager.Instance.isDash)
         {
-            //anim.SetTrigger("Attack"); // 힐 (어택 X)
-            //shamanHeal();
+            anim.SetTrigger("Attack"); // 힐 (어택 X)
             CurrentAttackDelay = 0;
         }
     }
@@ -48,10 +47,8 @@ public class shamanGoblin : ProjectileMonster
         {
             foreach (Collider2D monster in healMonster)
             {
-                Debug.Log("힐 전 HP : " + monster.GetComponent<Monster>().Hp);
-                monster.GetComponent<Monster>().Hp += 4;
-                Debug.Log(monster.name + "Heal!");
-                Debug.Log("힐 후 HP : " + monster.GetComponent<Monster>().Hp);
+                monster.GetComponent<Monster>().Hp = monster.GetComponent<Monster>().MaxHp;
+                monster.GetComponent<Monster>().getHealed();
             }
         }
     }
