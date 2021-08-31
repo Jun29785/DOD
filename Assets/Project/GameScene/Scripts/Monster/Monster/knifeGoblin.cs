@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class knifeGoblin : MeleeMonster
 {
+
+
+    public override void Awake()
+    {
+        base.Awake();
+        SetData(20003);
+    }
     public override void Start()
     {
         base.Start();

@@ -7,6 +7,12 @@ public class shamanGoblin : ProjectileMonster
 
 
     public Vector2 healArea;
+
+    public override void Awake()
+    {
+        base.Awake();
+        SetData(20005);
+    }
     public override void Start()
     {
         base.Start();
@@ -15,19 +21,40 @@ public class shamanGoblin : ProjectileMonster
     public override void Update()
     {
         base.Update();
+
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            shamanHeal();
+        }
     }
 
-
+    public override void TryAttack() // 힐체크
+    {
+        if (CurrentAttackDelay >= ApplyAttackDelay && !BattleManager.Instance.isDash)
+        {
+            anim.SetTrigger("Attack"); // 힐 (어택 X)
+            CurrentAttackDelay = 0;
+        }
+    }
 
     public void shamanHeal()
     {
+        
         Collider2D[] healMonster = Physics2D.OverlapBoxAll(transform.position, healArea, LayerMask.GetMask("Monster"));
 
 
-        foreach (Collider2D monster in healMonster)
+        if (healMonster != null)
         {
-            monster.GetComponent<Monster>().Hp *= 1.5f;
-
+            foreach (Collider2D monster in healMonster)
+            {
+                monster.GetComponent<Monster>().Hp = monster.GetComponent<Monster>().MaxHp;
+                monster.GetComponent<Monster>().getHealed();
+            }
         }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireCube(transform.position, healArea);
     }
 }

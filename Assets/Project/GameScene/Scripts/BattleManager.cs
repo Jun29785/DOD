@@ -29,8 +29,6 @@ public class BattleManager : MonoBehaviour
 
     void Awake()
     {
-        purpose = 20;
-        BossInterval = purpose;
     }
     void Start()
     {
@@ -55,16 +53,29 @@ public class BattleManager : MonoBehaviour
         character.Hp = character.MaxHp;
         character.Mp = character.MaxMp;
         isStart = false;
-        purpose = 20;
+        purpose = 100;
+        BossInterval = purpose;
         Pattern_id.Clear();
         Score = 0;
         getGold = 0;
-        character.GetComponent<Animator>().SetTrigger("isStart");
+        StartCoroutine(StartLerp());
         Panel.GetComponent<Animator>().SetTrigger("isStart");
         isStart = true;
         gameoverPanel.SetActive(false);
 
     }
 
-    
+
+    public IEnumerator StartLerp()
+    {
+        while (character.transform.position.x <= -1.81)
+        {
+            character.transform.position = Vector2.Lerp(character.transform.position, new Vector2(-1.81f, character.transform.position.y), 4 * Time.deltaTime);
+            yield return null;
+        }
+
+        character.transform.position = new Vector2(-1.81f, character.transform.position.y);
+    }
+
+
 }

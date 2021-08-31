@@ -37,6 +37,11 @@ public abstract class Actor : MonoBehaviour
         {
             return;
         }
+
+        if(Hp > MaxHp)
+        {
+            Hp = MaxHp;
+        }
         CurrentAttackDelay += Time.deltaTime;
         animUpdate();
     }
