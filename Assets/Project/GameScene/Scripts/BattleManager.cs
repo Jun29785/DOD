@@ -29,7 +29,7 @@ public class BattleManager : MonoBehaviour
 
     void Awake()
     {
-        purpose = 20;
+        purpose = 100;
         BossInterval = purpose;
     }
     void Start()

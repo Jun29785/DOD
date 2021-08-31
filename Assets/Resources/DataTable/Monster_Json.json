@@ -22,12 +22,12 @@
     "CoinAmount": "3"
   },
   "20003": {
-    "Name": "ShamanGoblin",
+    "Name": "KnifeGoblin",
     "Hp": "10",
-    "Power": "5",
-    "Speed": "4",
-    "AttackDelay": "5",
-    "AttackDistance": "4",
+    "Power": "3",
+    "Speed": "6",
+    "AttackDelay": "1",
+    "AttackDistance": "0.6",
     "AddScore": "3",
     "AddCoin": "2",
     "CoinAmount": "3"
@@ -35,7 +35,7 @@
   },
   "20004": {
 
-    "Name": "gainetGoblin",
+    "Name": "GiantGoblin",
     "Hp": "35",
     "Power": "8",
     "Speed": "4",
@@ -44,5 +44,18 @@
     "AddScore": "3",
     "AddCoin": "3",
     "CoinAmount": "3"
+  },
+
+  "20005": {
+    "Name": "ShamanGoblin",
+    "Hp": "10",
+    "Power": "1",
+    "Speed": "3",
+    "AttackDelay": "5",
+    "AttackDistance": "2.5",
+    "AddScore": "3",
+    "AddCoin": "2",
+    "CoinAmount": "3"
+
   }
 }

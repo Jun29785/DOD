@@ -54,14 +54,18 @@ public class Objectpool : MonoBehaviour
 {
     public static Objectpool Instance;
 
+    [Header("Prefab Object")]
     [SerializeField]
     private GameObject CoinPrefabs;
     [SerializeField]
     private GameObject[] MonsterPrefabs;
     [SerializeField]
-    private GameObject DamageText;
+    private GameObject DamageTextPrefab;
+    [SerializeField]
+    private GameObject healEffectPrefab;
 
     private Queue<Coin>CoinQueue = new Queue<Coin>();
+    private Queue<HealEffect>healEffectQueue = new Queue<HealEffect>();
 
     MultiMap<int,Monster> Monstermap = new MultiMap<int, Monster>();
 
@@ -78,6 +82,7 @@ public class Objectpool : MonoBehaviour
         {
             CoinQueue.Enqueue(CreateNewCoin());
             CreateNewMonsters();
+            healEffectQueue.Enqueue(CreateNewhealEffect());
         }
 
         for (int i = 0; i < 1000; i++)
@@ -179,7 +184,7 @@ public class Objectpool : MonoBehaviour
 
     private DamageText CreateNewDamageText()
     {
-        var newObj = Instantiate(DamageText).GetComponent<DamageText>();
+        var newObj = Instantiate(DamageTextPrefab).GetComponent<DamageText>();
         newObj.transform.parent = Instance.transform;
         newObj.gameObject.SetActive(false);
         return newObj;
@@ -221,6 +226,44 @@ public class Objectpool : MonoBehaviour
     }
 
 
+    #endregion
+
+
+    #region HealEffect
+    private HealEffect CreateNewhealEffect()
+    {
+        var newObj = Instantiate(healEffectPrefab).GetComponent<HealEffect>();
+        newObj.transform.parent = Instance.transform;
+        newObj.gameObject.SetActive(false);
+        return newObj;
+
+    }
+
+
+
+    public static HealEffect GetHealobject(Vector2 pos)
+    {
+        if (Instance.CoinQueue.Count > 0)
+        {
+            var obj = Instance.healEffectQueue.Dequeue();
+            obj.transform.position = pos;
+            obj.gameObject.SetActive(true);
+            return obj;
+        }
+        else
+        {
+            var newObj = Instance.CreateNewhealEffect();
+            newObj.gameObject.SetActive(true);
+            return newObj;
+        }
+    }
+
+    public static void ReturnhealEffect(HealEffect Obj)
+    {
+        Obj.gameObject.SetActive(false);
+        Obj.transform.SetParent(Instance.transform);
+        Instance.healEffectQueue.Enqueue(Obj);
+    }
     #endregion
 }
 

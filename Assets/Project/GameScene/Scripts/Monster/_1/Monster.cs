@@ -14,6 +14,7 @@ public abstract class Monster : Actor
     public int AddCoin;
     public int CoinAmount;
 
+    public Transform effect_Pos;
 
     public bool Stop;
     public bool isDie = false;
@@ -156,7 +157,14 @@ public abstract class Monster : Actor
         BattleManager.Instance.PlayerDamage(Power);
     }
 
-    
+    public virtual void getHealed()
+    {
+        if (effect_Pos != null)
+        {
+            var obj = Objectpool.GetHealobject(transform.position);
+            obj.transform.parent = effect_Pos;
+        }
+    }
 }
 
 
