@@ -4,21 +4,27 @@ using UnityEngine;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using UnityEngine.UI;
+using DOD.Define;
 
-namespace DB
+namespace DOD.DB
 {
+    
 
     public class DataBaseManager : Singleton<DataBaseManager>
     {
-        public Dictionary<int, TDMonster> tdMonsterDict = new Dictionary<int, TDMonster>();
-        public List<TDUserRank> userRankDict = new List<TDUserRank>();
 
+        public static Dictionary<int, TDSkill> tdSkillDict = new Dictionary<int, TDSkill>();
+
+        public static Dictionary<int, TDMonster> tdMonsterDict = new Dictionary<int, TDMonster>();
+        public static List<TDUserRank> userRankDict = new List<TDUserRank>();
+        public static Dictionary<string, float> skillCoolTime = new Dictionary<string, float>();
 
         protected override void Awake()
         {
             base.Awake();
             LoadMonsterTable();
             LoadRankData();
+            LoadSkillTable();
         }
 
         void LoadMonsterTable()
@@ -71,5 +77,26 @@ namespace DB
 
 
         }
+
+        void LoadSkillTable()
+        {
+            TextAsset jsonText = Resources.Load<TextAsset>("DataTable/Skill_Json"); // Json 불러오기
+
+            tdSkillDict.Clear();
+
+            JObject parsedObj = new JObject(); // Json Object 생성
+
+            parsedObj = JObject.Parse(jsonText.text); // Json Parsing
+
+            foreach (KeyValuePair<string, JToken> pair in parsedObj)
+            {
+                TDSkill tdSkill = new TDSkill();
+
+                tdSkill.SetJsonData(pair.Key, pair.Value.ToObject<JObject>());
+
+                tdSkillDict.Add(tdSkill.SKey, tdSkill);
+            }
+        }
+
     }
 }

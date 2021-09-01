@@ -7,11 +7,11 @@ using UnityEngine.UI;
 
 
 
-namespace DB
+namespace DOD.DB
 {
     public class SkillDataBaseManager : Singleton<SkillDataBaseManager>
     {
-        public Dictionary<int, TDSkill> tdSkillDict = new Dictionary<int, TDSkill>();
+        public static Dictionary<int, TDSkill> tdSkillDict = new Dictionary<int, TDSkill>();
 
         public GameObject SkillButtonObj;
 
@@ -54,7 +54,7 @@ namespace DB
                 TDSkill tdSkill = new TDSkill();
 
                 tdSkill.SetJsonData(pair.Key, pair.Value.ToObject<JObject>());
-                Debug.Log(tdSkill);
+    
                 tdSkillDict.Add(tdSkill.SKey, tdSkill);
             }
         }
