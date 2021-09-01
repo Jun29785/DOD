@@ -49,7 +49,7 @@ public class LobbyUIManager : MonoBehaviour
 
     public void UpdateText()
     {
-        Coin.text = GameManager.Instance.gold.ToString("0");
+        Coin.text = UserData.Coin.ToString();
     }
 
     public void PointerDownInventoryButton()

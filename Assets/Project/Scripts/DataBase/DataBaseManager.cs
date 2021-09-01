@@ -22,6 +22,8 @@ namespace DOD.DB
         protected override void Awake()
         {
             base.Awake();
+            DontDestroyOnLoad(this);
+            UserData.Coin = 0;
             LoadSkillTable();
             LoadMonsterTable();
             LoadRankData();

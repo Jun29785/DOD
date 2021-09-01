@@ -7,7 +7,7 @@ using UnityEngine;
 
 public static class SaveManager
 {
-    public static void Save(SaveData data)
+    public static void Save(UserData data)
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Path.Combine(Application.dataPath, "SaveData.dat");
@@ -17,14 +17,14 @@ public static class SaveManager
         stream.Close();
     }
 
-    public static SaveData Load()
+    public static UserData Load()
     {
         try
         {
             BinaryFormatter formatter = new BinaryFormatter();
             string path = Path.Combine(Application.dataPath, "SaveData.dat");
             FileStream stream = File.OpenRead(path);
-            SaveData data = (SaveData)formatter.Deserialize(stream);
+            UserData data = (UserData)formatter.Deserialize(stream);
             stream.Close();
             return data;
         }

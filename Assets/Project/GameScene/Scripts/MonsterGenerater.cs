@@ -64,7 +64,7 @@ public class MonsterGenerater : MonoBehaviour
                     {
                         currentTime = 0;
                         Randomindex();
-                        monsterNo = 20005;
+                        monsterNo = 20001;
                         spawnAmount = Random.Range(1, 3);
                         SpawnInterval = Random.Range(4, 7);
                     }
@@ -142,7 +142,7 @@ public class MonsterGenerater : MonoBehaviour
 
     public bool ScoreCheck(int min, int max) 
     {
-        if (BattleManager.Score + (BattleManager.Instance.purpose-BattleManager.Instance.BossInterval)>= min && BattleManager.Score + (BattleManager.Instance.purpose - BattleManager.Instance.BossInterval) < max && !BattleManager.Instance.isBoss)
+        if (BattleManager.Instance.Score + (BattleManager.Instance.purpose-BattleManager.Instance.BossInterval)>= min && BattleManager.Instance.Score + (BattleManager.Instance.purpose - BattleManager.Instance.BossInterval) < max && !BattleManager.Instance.isBoss)
         {
             return true;
         }

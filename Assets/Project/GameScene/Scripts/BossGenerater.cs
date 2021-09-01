@@ -15,7 +15,7 @@ public class BossGenerater : MonoBehaviour
     void Update()
     {
         
-        if (BattleManager.Score >= BattleManager.Instance.purpose && cnt <= 0)
+        if (BattleManager.Instance.Score >= BattleManager.Instance.purpose && cnt <= 0)
         {
             BattleManager.Instance.isBoss = true;
             Instantiate(BossPrefab,transform.position,Quaternion.identity);

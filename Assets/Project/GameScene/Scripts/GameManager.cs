@@ -5,11 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
-    public int gold = 0;
 
     protected override void Awake()
     {
         base.Awake();
+        DontDestroyOnLoad(this);
         ApplicationSetting();
     }
 
@@ -20,24 +20,21 @@ public class GameManager : Singleton<GameManager>
         Screen.orientation = ScreenOrientation.Portrait;
 
     }
-    public void GetGold(int value)
-    {
-        gold += value;
-    }
+    
 
-    public void SaveGameData()
+/*    public void SaveGameData()
     {
-        SaveData save = new SaveData();
-        save.coin = gold;
+        UserData save = new UserData();
+        save.Coin = gold;
 
         SaveManager.Save(save);
     }
 
     public void LoadGameData()
     {
-        SaveData save = SaveManager.Load();
-        gold = save.coin;
-    }
+        UserData save = SaveManager.Load();
+        gold = save.Coin;
+    }*/
 
 }
 

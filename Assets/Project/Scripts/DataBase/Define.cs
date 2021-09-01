@@ -13,6 +13,11 @@ namespace DOD.Define
         회전공격,
     }
     
+    public enum playerCharacter 
+    {
+        Knight,
+
+    }
     class Define
     {
     }

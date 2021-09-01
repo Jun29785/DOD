@@ -38,12 +38,12 @@ public class GameSceneUIManager : UIManager
 
     void ScoreUpdate()
     {
-        SetText<float>(ScoreText, BattleManager.Score);
+        SetText<float>(ScoreText, BattleManager.Instance.Score);
     }
 
     public void GetScore(float _score)
     {
-        BattleManager.Score += _score;
+        BattleManager.Instance.Score += _score;
     }
 
     void GameOverCheck()
@@ -61,9 +61,10 @@ public class GameSceneUIManager : UIManager
 
     void Gameover()
     {
-        GOScoreText.text = BattleManager.Score.ToString();
-        GetGoldText.text = BattleManager.getGold.ToString();
+        GOScoreText.text = BattleManager.Instance.Score.ToString();
+        GetGoldText.text = BattleManager.Instance.getGold.ToString();
         GameoverPanel.SetActive(true);
+        UserData.Coin += BattleManager.Instance.getGold;
     }
 
     public void ApearWarningText(int index)
