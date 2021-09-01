@@ -39,7 +39,7 @@ public class shamanGoblin : ProjectileMonster
 
     public void shamanHeal()
     {
-        
+
         Collider2D[] healMonster = Physics2D.OverlapBoxAll(transform.position, healArea, LayerMask.GetMask("Monster"));
 
 
@@ -47,8 +47,11 @@ public class shamanGoblin : ProjectileMonster
         {
             foreach (Collider2D monster in healMonster)
             {
-                monster.GetComponent<Monster>().Hp = monster.GetComponent<Monster>().MaxHp;
-                monster.GetComponent<Monster>().getHealed();
+                if (healMonster != null)
+                {
+                    monster.GetComponent<Monster>().Hp = monster.GetComponent<Monster>().MaxHp;
+                    monster.GetComponent<Monster>().getHealed();
+                }
             }
         }
     }

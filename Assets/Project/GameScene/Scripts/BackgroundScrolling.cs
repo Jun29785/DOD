@@ -9,9 +9,11 @@ public class BackgroundScrolling : MonoBehaviour
     public float speed;
     public float of;
     public Material[] mats;
+    Animator anim;
     private void Start()
     {
-        speed = 0.7f;
+        speed = 0.35f;
+        anim = GetComponent<Animator>();
     }
 
     private void Update()
@@ -22,7 +24,19 @@ public class BackgroundScrolling : MonoBehaviour
         }
         if (!BattleManager.Instance.isContact && !BattleManager.Instance.isStop && !BattleManager.Instance.isUseSkill)
         {
-            offset += Time.deltaTime * speed;
+            switch (BattleManager.Instance.currentmap)
+            {
+                case BattleManager.Stage.forest:
+                    anim.SetInteger("index", 1);
+                    
+                    break;
+                case BattleManager.Stage.GoblinViliage:
+                    anim.SetInteger("index", 2);
+
+                    break;
+                default:
+                    break;
+            }
 
             foreach (Material i in mats)
             {
@@ -33,6 +47,9 @@ public class BackgroundScrolling : MonoBehaviour
             {
                 offset = 0;
             }
+            offset += Time.deltaTime * speed;
+
+            
         }
     }
 

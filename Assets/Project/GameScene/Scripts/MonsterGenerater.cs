@@ -5,11 +5,11 @@ using UnityEngine;
 public class MonsterGenerater : MonoBehaviour
 {
     [SerializeField]
-    float SpawnInterval;
+    public float SpawnInterval;
     [SerializeField]
     int spawnAmount;
     [SerializeField]
-    float currentTime;
+    public float currentTime;
     int monsterNo;
     int Posindex;
     int PrevPosindex;
@@ -19,7 +19,7 @@ public class MonsterGenerater : MonoBehaviour
         PrevPosindex = 99;
         Posindex = 0;
         spawnAmount = 1;
-        SpawnInterval = 3;
+        SpawnInterval = 5;
         monsterNo = 20001;
     }
 
@@ -137,12 +137,12 @@ public class MonsterGenerater : MonoBehaviour
 
     public void RandomMonsterNo(int min, int max) // 몬스터 init num
     {
-        monsterNo = Random.Range(20001, 20004);
+        monsterNo = Random.Range(min, max);
     }
 
     public bool ScoreCheck(int min, int max) 
     {
-        if (BattleManager.Score /*+ (BattleManager.Instance.purpose-BattleManager.Instance.BossInterval)*/>= min && BattleManager.Score /*+ (BattleManager.Instance.purpose - BattleManager.Instance.BossInterval)*/ < max && !BattleManager.Instance.isBoss)
+        if (BattleManager.Score + (BattleManager.Instance.purpose-BattleManager.Instance.BossInterval)>= min && BattleManager.Score + (BattleManager.Instance.purpose - BattleManager.Instance.BossInterval) < max && !BattleManager.Instance.isBoss)
         {
             return true;
         }

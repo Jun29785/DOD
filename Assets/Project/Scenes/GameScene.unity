@@ -1726,8 +1726,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 563111793}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.151, y: 2.45, z: 0}
-  m_LocalScale: {x: 5.624271, y: 5.055839, z: 1}
+  m_LocalPosition: {x: 3.077, y: 2.45, z: 0}
+  m_LocalScale: {x: 11.475807, y: 5.055839, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
@@ -1746,7 +1746,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   render: {fileID: 563111794}
   offset: 0
-  speed: 0
+  speed: 0.35
   of: 0
   mats:
   - {fileID: 2100000, guid: 75802a5e1be9e7a48a0a7da14da26ede, type: 2}
@@ -1757,6 +1757,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: da4aa2c1012da5e4288c6e7917765f73, type: 2}
   - {fileID: 2100000, guid: 46cb7f937413bc045851c5c1d249222b, type: 2}
   - {fileID: 2100000, guid: fde2b55291fe62a41995375b0bd3386b, type: 2}
+  - {fileID: 2100000, guid: bcf0438de2e89d0428d7e2526e9b0148, type: 2}
 --- !u!1 &579324690
 GameObject:
   m_ObjectHideFlags: 0
@@ -2709,6 +2710,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e662677991df86f40ab02eaf06b921f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentmap: 0
   purpose: 100
   BossInterval: 0
   isBoss: 0
