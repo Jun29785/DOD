@@ -13,18 +13,18 @@ namespace DOD.DB
     public class DataBaseManager : Singleton<DataBaseManager>
     {
 
-        public static Dictionary<int, TDSkill> tdSkillDict = new Dictionary<int, TDSkill>();
+        public Dictionary<int, TDSkill> tdSkillDict = new Dictionary<int, TDSkill>();
 
-        public static Dictionary<int, TDMonster> tdMonsterDict = new Dictionary<int, TDMonster>();
-        public static List<TDUserRank> userRankDict = new List<TDUserRank>();
-        public static Dictionary<string, float> skillCoolTime = new Dictionary<string, float>();
+        public Dictionary<int, TDMonster> tdMonsterDict = new Dictionary<int, TDMonster>();
+        public List<TDUserRank> userRankDict = new List<TDUserRank>();
+        public Dictionary<string, float> skillCoolTime = new Dictionary<string, float>();
 
         protected override void Awake()
         {
             base.Awake();
+            LoadSkillTable();
             LoadMonsterTable();
             LoadRankData();
-            LoadSkillTable();
         }
 
         void LoadMonsterTable()

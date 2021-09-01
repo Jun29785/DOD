@@ -11,7 +11,7 @@ namespace DOD.DB
 {
     public class SkillDataBaseManager : Singleton<SkillDataBaseManager>
     {
-        public static Dictionary<int, TDSkill> tdSkillDict = new Dictionary<int, TDSkill>();
+        public Dictionary<int, TDSkill> tdSkillDict = new Dictionary<int, TDSkill>();
 
         public GameObject SkillButtonObj;
 

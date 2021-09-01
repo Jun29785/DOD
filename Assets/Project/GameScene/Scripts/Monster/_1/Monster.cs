@@ -63,15 +63,15 @@ public abstract class Monster : Actor
 
     public override void SetData(int Key)
     {
-        unitNo = DataBaseManager.tdMonsterDict[Key].unitNo;
-        Name = DataBaseManager.tdMonsterDict[Key].Name;
-        MaxHp = DataBaseManager.tdMonsterDict[Key].Hp;
-        Power = DataBaseManager.tdMonsterDict[Key].Power;
-        Speed = DataBaseManager.tdMonsterDict[Key].Speed;
-        AttackDelay = DataBaseManager.tdMonsterDict[Key].AttackDelay;
-        AttackDistance = DataBaseManager.tdMonsterDict[Key].AttackDistance;
-        AddScore = DataBaseManager.tdMonsterDict[Key].AddScore;
-        AddCoin = DataBaseManager.tdMonsterDict[Key].AddCoin;
+        unitNo = DataBaseManager.Instance.tdMonsterDict[Key].unitNo;
+        Name = DataBaseManager.Instance.tdMonsterDict[Key].Name;
+        MaxHp = DataBaseManager.Instance.tdMonsterDict[Key].Hp;
+        Power = DataBaseManager.Instance.tdMonsterDict[Key].Power;
+        Speed = DataBaseManager.Instance.tdMonsterDict[Key].Speed;
+        AttackDelay = DataBaseManager.Instance.tdMonsterDict[Key].AttackDelay;
+        AttackDistance = DataBaseManager.Instance.tdMonsterDict[Key].AttackDistance;
+        AddScore = DataBaseManager.Instance.tdMonsterDict[Key].AddScore;
+        AddCoin = DataBaseManager.Instance.tdMonsterDict[Key].AddCoin;
         
     }
     public virtual void HpUI_Update()

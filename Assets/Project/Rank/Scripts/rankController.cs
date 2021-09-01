@@ -26,11 +26,11 @@ public class rankController : MonoBehaviour
         }
 
 
-        for (int i = 0; i < DataBaseManager.userRankDict.Count; i++)
+        for (int i = 0; i < DataBaseManager.Instance.userRankDict.Count; i++)
         {
             var obj = Instantiate(rankObj);
             obj.transform.parent = rankObjParent.transform;
-            obj.GetComponent<rankObject>().setData((i+1).ToString(),DataBaseManager.userRankDict[i].nickName,DataBaseManager.userRankDict[i].Score);
+            obj.GetComponent<rankObject>().setData((i+1).ToString(),DataBaseManager.Instance.userRankDict[i].nickName,DataBaseManager.Instance.userRankDict[i].Score);
 
         }
     }
