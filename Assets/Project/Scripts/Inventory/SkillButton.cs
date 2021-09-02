@@ -11,9 +11,6 @@ public class SkillButton : MonoBehaviour
     private int Mana;
     public GameObject SkillPanel;
 
-    [SerializeField]
-    private Text buttonText;
-
     public void SetButton(int skey)
     {
         this.SKey = skey;
@@ -22,7 +19,6 @@ public class SkillButton : MonoBehaviour
 
         Debug.Log("name : " + nameKey);
 
-        buttonText.text = SkillDataBaseManager.Instance.tdSkillDict[this.SKey].Name;
     }
 
     public void OnClick()

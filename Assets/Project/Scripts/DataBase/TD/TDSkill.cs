@@ -10,7 +10,6 @@ public class TDSkill : TableBase
 {
     public int SKey;
     public string Name;
-    public string Command_string; // 같이 수정 필요
     public List<int> Command;
     public int Fmana;
     public int Lmana;
@@ -24,8 +23,7 @@ public class TDSkill : TableBase
         
         SKey = Int32.Parse(key);
         Name = info["Name"].Value<string>();
-        Command_string = info["Command"].Value<string>();
-        Command = new List<int>(Array.ConvertAll(Command_string.Split(','), int.Parse));
+        Command = new List<int>(Array.ConvertAll(info["Command"].Value<string>().Split(','), int.Parse));
         Fmana = info["Fmana"].Value<int>();
         Lmana = info["Lmana"].Value<int>();
         Fdmg = info["Fdmg"].Value<int>();
