@@ -9,7 +9,6 @@ using DOD.Define;
 namespace DOD.DB
 {
     
-
     public class DataBaseManager : Singleton<DataBaseManager>
     {
 
@@ -26,14 +25,13 @@ namespace DOD.DB
             UserData.Coin = 0;
         }
 
-
-
         public void LoadTable()
         {
             LoadSkillTable();
             LoadMonsterTable();
             LoadRankData();
         }
+
         void LoadMonsterTable()
         {
             TextAsset jsonText = Resources.Load<TextAsset>("DataTable/Monster_Json"); // Json 불러오기  
@@ -53,7 +51,6 @@ namespace DOD.DB
             }
 
         }
-
 
         public void LoadRankData()
         {

@@ -1,18 +1,39 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class SkillManager : MonoBehaviour
+using DOD.DB;
+public class SkillManager : Singleton<SkillManager>
 {
-    // Start is called before the first frame update
-    void Start()
+    GameObject DBManager;
+
+    DataBaseManager _DBManager;
+
+    public GameObject SkillButtonObj;
+    public Transform SkillObjParent;
+
+    void Awake()
     {
-        
+        base.Awake();
+        if (DBManager == null)
+        {
+            DBManager = GameObject.FindGameObjectWithTag("DataBase");
+            
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+
+   
+    
+    void CreateButton()
     {
-        
+        foreach (var i in _DBManager.tdSkillDict)
+        {
+            Debug.Log("In");
+            GameObject Create = (GameObject)Instantiate(SkillButtonObj);
+            Create.transform.parent = SkillObjParent;
+            Create.transform.localScale = new Vector3(1, 1, 1);
+            Create.GetComponent<SkillButton>().SetButton(i.Value.SKey);
+            Debug.Log("Create : " + Create.name);
+        }
     }
 }
