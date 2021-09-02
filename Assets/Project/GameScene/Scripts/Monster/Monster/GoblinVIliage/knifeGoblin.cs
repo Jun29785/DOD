@@ -9,7 +9,7 @@ public class knifeGoblin : MeleeMonster
     public override void Awake()
     {
         base.Awake();
-        SetData(20003);
+        SetData(20007);
     }
     public override void Start()
     {

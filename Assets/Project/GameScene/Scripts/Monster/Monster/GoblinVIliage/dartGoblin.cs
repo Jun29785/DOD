@@ -9,7 +9,7 @@ public class dartGoblin : ProjectileMonster
     public override void Awake()
     {
         base.Awake();
-        SetData(20002);
+        SetData(20005);
 
     }
 

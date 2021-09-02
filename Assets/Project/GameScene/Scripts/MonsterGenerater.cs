@@ -72,7 +72,6 @@ public class MonsterGenerater : MonoBehaviour
                     {
                         currentTime = 0;
                         Randomindex();
-                        monsterNo = 20002;
                         RandomMonsterNo(20001, 20003);
                         spawnAmount = Random.Range(1, 4);
                         SpawnInterval = Random.Range(3, 6);
@@ -97,12 +96,61 @@ public class MonsterGenerater : MonoBehaviour
                         {
                             currentTime = 0;
                             Randomindex();
-                            RandomMonsterNo(20001, 20006);
+                            RandomMonsterNo(20001, 20004);
                             spawnAmount = Random.Range(2, 4);
                             SpawnInterval = Random.Range(3, 6);
 
                         }
                     }
+                    else if (ScoreCheck(80, 100))
+                    {
+                        if (currentTime >= SpawnInterval)
+                        {
+                            currentTime = 0;
+                            Randomindex();
+                            RandomMonsterNo(20001, 20004);
+                            spawnAmount = Random.Range(2, 4);
+                            SpawnInterval = Random.Range(3, 6);
+
+                        }
+                    }
+                    else if (ScoreCheck(100, 120))
+                    {
+                        if (currentTime >= SpawnInterval)
+                        {
+                            currentTime = 0;
+                            Randomindex();
+                            RandomMonsterNo(20004, 20005);
+                            spawnAmount = Random.Range(2, 4);
+                            SpawnInterval = Random.Range(3, 6);
+
+                        }
+                    }
+                    else if (ScoreCheck(120, 140))
+                    {
+                        if (currentTime >= SpawnInterval)
+                        {
+                            currentTime = 0;
+                            Randomindex();
+                            RandomMonsterNo(20004, 20006);
+                            spawnAmount = Random.Range(2, 4);
+                            SpawnInterval = Random.Range(3, 6);
+
+                        }
+                    }
+                    else if (ScoreCheck(140, 200))
+                    {
+                        if (currentTime >= SpawnInterval)
+                        {
+                            currentTime = 0;
+                            Randomindex();
+                            RandomMonsterNo(20004, 20009);
+                            spawnAmount = Random.Range(2, 4);
+                            SpawnInterval = Random.Range(3, 6);
+
+                        }
+                    }
+
                     else
                     {
                         print("hello world");
@@ -111,7 +159,7 @@ public class MonsterGenerater : MonoBehaviour
                             currentTime = 0;
 
                             Randomindex();
-                            RandomMonsterNo(20001, 20006);
+                            RandomMonsterNo(20001, 20009);
                             spawnAmount = Random.Range(2, 4);
                             SpawnInterval = Random.Range(3, 6);
                         }

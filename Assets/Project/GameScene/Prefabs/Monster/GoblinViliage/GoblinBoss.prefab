@@ -293,6 +293,7 @@ MonoBehaviour:
   AddScore: 10
   AddCoin: 50
   CoinAmount: 3
+  effect_Pos: {fileID: 0}
   Stop: 0
   isDie: 0
   CoinPrefab: {fileID: 8737653804221628634, guid: 46fcd275790f82949b1cdf293acd71de, type: 3}

@@ -1,6 +1,39 @@
 {
   "20001": {
-    "Name": "Goblin",
+    "Name": "빨강슬라임",
+    "Hp": "7",
+    "Power": "6",
+    "Speed": "5",
+    "AttackDelay": "2",
+    "AttackDistance": "0.6",
+    "AddScore": "1",
+    "AddCoin": "1",
+    "CoinAmount": "3"
+  },
+  "20002": {
+    "Name": "하늘슬라임",
+    "Hp": "7",
+    "Power": "3",
+    "Speed": "7",
+    "AttackDelay": "2",
+    "AttackDistance": "0.6",
+    "AddScore": "1",
+    "AddCoin": "1",
+    "CoinAmount": "3"
+  },
+  "20003": {
+    "Name": "검정슬라임",
+    "Hp": "10",
+    "Power": "5",
+    "Speed": "6",
+    "AttackDelay": "3",
+    "AttackDistance": "2",
+    "AddScore": "2",
+    "AddCoin": "2",
+    "CoinAmount": "3"
+  },
+  "20004": {
+    "Name": "고블린",
     "Hp": "16",
     "Power": "2",
     "Speed": "5",
@@ -10,8 +43,8 @@
     "AddCoin": "1",
     "CoinAmount": "3"
   },
-  "20002": {
-    "Name": "DartGoblin",
+  "20005": {
+    "Name": "다트고블린",
     "Hp": "15",
     "Power": "4",
     "Speed": "7",
@@ -21,41 +54,37 @@
     "AddCoin": "2",
     "CoinAmount": "3"
   },
-  "20003": {
-    "Name": "KnifeGoblin",
+  "20006": {
+    "Name": "샤먼고블린",
     "Hp": "10",
-    "Power": "3",
-    "Speed": "6",
-    "AttackDelay": "1",
-    "AttackDistance": "0.6",
+    "Power": "5",
+    "Speed": "4",
+    "AttackDelay": "5",
+    "AttackDistance": "4",
     "AddScore": "3",
     "AddCoin": "2",
     "CoinAmount": "3"
-
   },
-  "20004": {
-
-    "Name": "GiantGoblin",
-    "Hp": "35",
+  "20007": {
+    "Name": "칼든고블린",
+    "Hp": "100",
     "Power": "8",
-    "Speed": "4",
-    "AttackDelay": "4",
+    "Speed": "3",
+    "AttackDelay": "3",
     "AttackDistance": "0.6",
     "AddScore": "3",
     "AddCoin": "3",
     "CoinAmount": "3"
   },
-
-  "20005": {
-    "Name": "ShamanGoblin",
-    "Hp": "10",
-    "Power": "1",
-    "Speed": "3",
-    "AttackDelay": "2",
-    "AttackDistance": "2.5",
-    "AddScore": "3",
-    "AddCoin": "2",
+  "20008": {
+    "Name": "큰고블린",
+    "Hp": "150",
+    "Power": "14",
+    "Speed": "5",
+    "AttackDelay": "5",
+    "AttackDistance": "0.6",
+    "AddScore": "50",
+    "AddCoin": "50",
     "CoinAmount": "3"
-
   }
 }

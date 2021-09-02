@@ -7,5 +7,6 @@ public class blueSlime : MeleeMonster
     public override void Awake()
     {
         base.Awake();
+        SetData(20002);
     }
 }
