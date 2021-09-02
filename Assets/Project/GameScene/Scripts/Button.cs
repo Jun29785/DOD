@@ -2,36 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using DOD.Define;
 public class Button : MonoBehaviour
 {
 
-    enum Scene
-    {
-        LobbyScene,
-        GameScene,
-        InventoryScene,
-        LoadingScene
-    }
+    
 
 
     
     public void ToLobbyScene()
     {
-        SceneManager.LoadScene(Scene.LobbyScene.ToString());
+        SceneManager.LoadScene(Scenes.LobbyScene.ToString());
         Time.timeScale = 1;
     }
 
     public void ToGameScene()
     {
-        LoadingSceneController.LoadScene(Scene.GameScene.ToString());
+        LoadingSceneController.LoadScene(Scenes.GameScene.ToString());
         Time.timeScale = 1;
 
     }
 
     public void ToInventoryScene()
     {
-        SceneManager.LoadScene(Scene.InventoryScene.ToString());
+        SceneManager.LoadScene(Scenes.InventoryScene.ToString());
         Time.timeScale = 1;
     }
 

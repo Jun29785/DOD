@@ -31,7 +31,6 @@ public class TDSkill : TableBase
         Fdmg = info["Fdmg"].Value<int>();
         Ldmg = info["Ldmg"].Value<float>();
         Ctime = info["Ctime"].Value<int>();
-        Debug.Log(SKey);
     }
     
 }

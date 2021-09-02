@@ -24,11 +24,16 @@ namespace DOD.DB
             base.Awake();
             DontDestroyOnLoad(this);
             UserData.Coin = 0;
+        }
+
+
+
+        public void LoadTable()
+        {
             LoadSkillTable();
             LoadMonsterTable();
             LoadRankData();
         }
-
         void LoadMonsterTable()
         {
             TextAsset jsonText = Resources.Load<TextAsset>("DataTable/Monster_Json"); // Json 불러오기  
@@ -53,7 +58,7 @@ namespace DOD.DB
         public void LoadRankData()
         {
 
-            TextAsset jsonText = Resources.Load<TextAsset>("DataTable/UserDataJson"); // Json 불러오기  
+            TextAsset jsonText = Resources.Load<TextAsset>("DataTable/RankDataJson"); // Json 불러오기  
 
             userRankDict.Clear();
 
@@ -73,8 +78,6 @@ namespace DOD.DB
 
 
                 userRankDict.Add(tdrank);
-                //tdUser.SetJsonData(pair.Key, pair.Value.ToObject<JObject>());
-                //userDict.Add(tdUser.nickName, tdUser);
             }
 
 

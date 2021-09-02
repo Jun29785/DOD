@@ -6,19 +6,24 @@ using UnityEngine.SceneManagement;
 public class GameManager : Singleton<GameManager>
 {
 
+
+    public TitleController titleController;
+   
     protected override void Awake()
     {
         base.Awake();
         DontDestroyOnLoad(this);
-        ApplicationSetting();
+    }
+    
+    private void Start()
+    {
+        titleController.Initialize();
     }
 
-
-    void ApplicationSetting()
+    public void ApplicationSetting()
     {
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
         Screen.orientation = ScreenOrientation.Portrait;
-
     }
     
 

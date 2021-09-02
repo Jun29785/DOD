@@ -37,7 +37,7 @@ public class Knight : MeleeCharacter
     public override void Update()
     {
         base.Update();
-        print(BattleManager.Instance.currentmap);
+        //print(BattleManager.Instance.currentmap);
         Skill_Dash();
         Skill_Sting();
         Skill_SpinAttack();

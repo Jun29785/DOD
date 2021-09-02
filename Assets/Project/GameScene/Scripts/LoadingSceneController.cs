@@ -20,6 +20,7 @@ public class LoadingSceneController : MonoBehaviour
         
     }
 
+
     private void Start()
     {
         StartCoroutine(LoadSceneProcess());
