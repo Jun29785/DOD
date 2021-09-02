@@ -12,10 +12,11 @@ public class TDSkill : TableBase
     public string Name;
     public List<int> Command;
     public int Fmana;
-    public int Lmana;
+    public float Lmana;
     public int Fdmg;
     public float Ldmg;
     public int Ctime;
+    public string Description;
 
     public override void SetJsonData(string key, JObject info)
     {
@@ -25,10 +26,11 @@ public class TDSkill : TableBase
         Name = info["Name"].Value<string>();
         Command = new List<int>(Array.ConvertAll(info["Command"].Value<string>().Split(','), int.Parse));
         Fmana = info["Fmana"].Value<int>();
-        Lmana = info["Lmana"].Value<int>();
+        Lmana = info["Lmana"].Value<float>();
         Fdmg = info["Fdmg"].Value<int>();
         Ldmg = info["Ldmg"].Value<float>();
         Ctime = info["Ctime"].Value<int>();
+        Description = info["Description"].Value<string>();
     }
     
 }
