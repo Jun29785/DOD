@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using DOD.DB;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,6 +19,11 @@ public class LobbyUIManager : MonoBehaviour
     public GameObject Leave;
     public Animator Character;
 
+    public GameObject SkillButtonObj;
+    public Transform SkillObjParent;
+    public Image SkillIcon;
+
+    public GameObject SkillPanel;
     private void Awake()
     {
         StartCoroutine("StartScene");
@@ -64,5 +70,40 @@ public class LobbyUIManager : MonoBehaviour
         InventoryAnim.SetTrigger("up");
         InventoryAnim.SetBool("IsClick", false);
         InventoryIcon.transform.localScale = new Vector3(1f, 1f, 1f);
+    }
+
+    public void PointerClickInventoryButton()
+    {
+        CreateButton();
+    }
+
+    void CreateButton()
+    {
+        foreach (var i in DataBaseManager.Instance.tdSkillDict)
+        {
+            Debug.Log("In");
+            GameObject Create = (GameObject)Instantiate(SkillButtonObj);
+            Create.transform.parent = SkillObjParent;
+            Create.transform.localScale = new Vector3(1, 1, 1);
+            Create.GetComponent<SkillButton>().SetButton(i.Value.SKey);
+            Debug.Log("Create : " + Create.name);
+            SkillIcon.sprite = Resources.Load<Sprite>("SkillIcons/" + i.Value.SKey);
+            Debug.Log("Load Sprite Successful!");
+        }
+    }
+
+    public void OnClickSkillButton()
+    {
+        SkillPanel.SetActive(true);
+    }
+
+    public void OnClickUpgradeButton()
+    {
+        SkillManager.Instance.SkillLevel += 1;
+    }
+
+    public void OnClickExitPanelButton()
+    {
+        SkillPanel.SetActive(false);
     }
 }

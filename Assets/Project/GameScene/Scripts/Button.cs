@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 using DOD.Define;
 public class Button : MonoBehaviour
 {
-
-    
     public void ToLobbyScene()
     {
         SceneManager.LoadScene(Scenes.LobbyScene.ToString());

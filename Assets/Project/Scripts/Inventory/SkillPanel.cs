@@ -6,15 +6,21 @@ using UnityEngine.UI;
 
 public class SkillPanel : MonoBehaviour
 {
-   /* List<int> command = ;
-    int SKey = */
+
+    List<int> command = ;
+    int SKey = 
     public Text Name;
-    public Image Icon;
+    public Image SkillIcon;
+    public Text SkillLevel;
     public Text Description;
 
-    public void SkillUpgrade()
+    private void Awake()
     {
-        // 스킬 업그레이드
-        
+        var i = SkillManager.Instance;
+        Name.text = i.Name;
+        SkillIcon.sprite = Resources.Load<Sprite>("SkillIcon/" + i.SKey);
+        SkillLevel.text = i.SkillLevel.ToString("Lv : 0");
+        Description.text = i.Description;
+        PlayerPrefs.SetInt(i.SKey + "SkillLevel", i.SkillLevel);
     }
 }
