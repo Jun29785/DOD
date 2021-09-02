@@ -1,6 +1,6 @@
 {
-  "fdsfsfd2dfse": {
     "nickname": "seungwon",
+    "maxscore": 13,
     "coin": 17520,
     "isFirst": true,
     "skill_level": {
@@ -11,13 +11,12 @@
       "연속찌르기": true,
       "돌진": false
     },
-    "char_level" {
+    "char_level":{
       "기사": 1,
       "마법사": 1
     },
-    "char_True" {
+    "char_True": {
       "기사": true,
       "마법사": false
     }
-  }
 }
