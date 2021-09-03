@@ -130,7 +130,7 @@ public abstract class Monster : Actor
 
     public virtual void ContactCheck() // 맞닿음 감지
     {
-        RaycastHit2D rayhit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 0.4f), Vector2.left, 0.5f, LayerMask.GetMask("Player"));
+        RaycastHit2D rayhit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 0.02f), Vector2.left, 0.5f, LayerMask.GetMask("Player"));
         if (rayhit.collider != null)
         {
 

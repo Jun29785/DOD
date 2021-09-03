@@ -82,7 +82,7 @@
     "Power": "14",
     "Speed": "5",
     "AttackDelay": "5",
-    "AttackDistance": "0.6",
+    "AttackDistance": "0.6  ",
     "AddScore": "50",
     "AddCoin": "50",
     "CoinAmount": "3"

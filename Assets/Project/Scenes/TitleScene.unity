@@ -319,8 +319,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77e84a27e6dff41418dd202646b4dffb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SkillButtonObj: {fileID: 0}
-  SkillObjParent: {fileID: 0}
+  Command: 
+  SKey: 0
+  Name: 
+  Fmana: 0
+  Lmana: 0
+  Fdmg: 0
+  Ldmg: 0
+  Ctime: 0
+  Description: 
+  SkillLevel: 0
+  SkillIcon: {fileID: 0}
 --- !u!4 &280310895
 Transform:
   m_ObjectHideFlags: 0
@@ -903,7 +912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d06f69b47141114eaa2d5134b2233fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadingText: {fileID: 268585087}
+  loadingText: {fileID: 0}
   tapTostart: {fileID: 268585085}
   loadingBar: {fileID: 1214418907}
   loadingBarGauge: {fileID: 205013624}

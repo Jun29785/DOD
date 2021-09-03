@@ -27,7 +27,7 @@ namespace DOD.DB
 
         public void LoadTable()
         {
-            LoadSkillTable();
+            //LoadSkillTable();
             LoadMonsterTable();
             LoadRankData();
         }
