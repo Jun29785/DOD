@@ -62,7 +62,7 @@ public class BattleManager : MonoBehaviour
         character.Hp = character.MaxHp;
         character.Mp = character.MaxMp;
         isStart = false;
-        purpose = 100;
+        purpose = 10;
         BossInterval = purpose;
         Pattern_id.Clear();
         Score = 0;

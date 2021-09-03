@@ -9,6 +9,7 @@ public class BossMonster : Monster
     public GameObject BossState;
     public Slider bossHpbar;
     public Text bossName;
+    public Text hpText;
 
     public GameObject[] BossUIPos;
     bool isApear;
@@ -19,7 +20,8 @@ public class BossMonster : Monster
         base.Awake();
         BossState = GameObject.FindGameObjectWithTag("BossUI");
         bossHpbar = BossState.GetComponentInChildren<Slider>();
-        bossName = BossState.GetComponentInChildren<Text>();
+        bossName = GameObject.FindGameObjectWithTag("bossName").GetComponent<Text>();
+        hpText = GameObject.FindGameObjectWithTag("bossHp").GetComponent<Text>();
         BossUIPos = GameObject.FindGameObjectsWithTag("BossUIPos");
     }
 
@@ -28,6 +30,7 @@ public class BossMonster : Monster
         anim = GetComponent<Animator>();
         applySpeed = Speed;
         ApplyAttackDelay = AttackDelay;
+        
     }
 
 
@@ -42,6 +45,7 @@ public class BossMonster : Monster
         Move();
         DieCheck();
         animUpdate();
+        hpUpdate();
 
     }
 
@@ -80,6 +84,14 @@ public class BossMonster : Monster
 
     }
 
+    public void hpUpdate()
+    {
+        hpText.text = $"{Hp} / {MaxHp}";
+        if(Hp < 0)
+        {
+            Hp = 0;
+        }
+    }
 
     public override void animUpdate()
     {
@@ -116,7 +128,7 @@ public class BossMonster : Monster
 
     public void SetHp(float hp, float maxhp)
     {
-        bossHpbar.value = Mathf.Lerp(bossHpbar.value, hp / maxhp, 3 * Time.deltaTime);
+        bossHpbar.value = Mathf.Lerp(bossHpbar.value, hp / maxhp, 6 * Time.deltaTime);
     }
 
     public override void Move()

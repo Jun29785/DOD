@@ -9,6 +9,8 @@ TagManager:
   - BossUI
   - BossUIPos
   - DataBase
+  - bossName
+  - bossHp
   layers:
   - Default
   - TransparentFX

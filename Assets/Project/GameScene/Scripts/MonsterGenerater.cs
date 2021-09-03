@@ -46,13 +46,16 @@ public class MonsterGenerater : MonoBehaviour
                     switch (Posindex) // 몬스터 위치 인덱스의 위치
                     {
                         case 0:
-                            Objectpool.GetMonsterobject(monsterNo, new Vector2(transform.position.x, 0.51f));
+                            var obj = Objectpool.GetMonsterobject(monsterNo, new Vector2(transform.position.x, 0.51f));
+                            obj.GetComponent<SpriteRenderer>().sortingOrder = 1;
                             break;
                         case 1:
-                            Objectpool.GetMonsterobject(monsterNo, new Vector2(transform.position.x, 0.35f));
+                            var obj2 = Objectpool.GetMonsterobject(monsterNo, new Vector2(transform.position.x, 0.35f));
+                            obj2.GetComponent<SpriteRenderer>().sortingOrder = 2;
                             break;
                         case 2:
-                            Objectpool.GetMonsterobject(monsterNo, new Vector2(transform.position.x, 0.123f));
+                            var obj3 = Objectpool.GetMonsterobject(monsterNo, new Vector2(transform.position.x, 0.123f));
+                            obj3.GetComponent<SpriteRenderer>().sortingOrder = 3;
                             break;
 
                         default:
