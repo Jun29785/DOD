@@ -102,7 +102,7 @@ public class MonsterGenerater : MonoBehaviour
 
                         }
                     }
-                    else if (ScoreCheck(80, 100))
+                    else if (ScoreCheck(60, 100))
                     {
                         if (currentTime >= SpawnInterval)
                         {

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7471232449993640441}
   - component: {fileID: 7471232449993640442}
   m_Layer: 0
-  m_Name: Slime_Projectile
+  m_Name: blackSlime_Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fbad63bcafdafb48bb7a8c14851b8d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 0
+  Speed: 7
   StrikingPower: 0
 --- !u!61 &7471232449993640442
 BoxCollider2D:
@@ -131,7 +131,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.02388151, y: -0.016339958}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -142,5 +142,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.08, y: 0.06}
+  m_Size: {x: 0.44450733, y: 0.2988152}
   m_EdgeRadius: 0

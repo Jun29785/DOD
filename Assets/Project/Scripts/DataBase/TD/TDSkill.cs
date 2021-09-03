@@ -23,14 +23,25 @@ public class TDSkill : TableBase
         base.SetJsonData(key, info);
         
         SKey = Int32.Parse(key);
+        Debug.Log(4);
+
         Name = info["Name"].Value<string>();
+            Debug.Log(7);
         Command = new List<int>(Array.ConvertAll(info["Command"].Value<string>().Split(','), int.Parse));
+            Debug.Log(8);
         Fmana = info["Fmana"].Value<int>();
+            Debug.Log(9);
         Lmana = info["Lmana"].Value<float>();
+            Debug.Log(10);
         Fdmg = info["Fdmg"].Value<int>();
+            Debug.Log(11);
         Ldmg = info["Ldmg"].Value<float>();
+            Debug.Log(12);
         Ctime = info["Ctime"].Value<int>();
-        Description = info["Description"].Value<string>();
+            Debug.Log(13);
+        //Description = info["Description"].Value<string>();
+            Debug.Log(14);
+
     }
-    
+
 }

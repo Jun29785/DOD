@@ -27,9 +27,13 @@ namespace DOD.DB
 
         public void LoadTable()
         {
-            //LoadSkillTable();
+            Debug.Log(1);
+            LoadSkillTable();
+            Debug.Log(2);
             LoadMonsterTable();
+            Debug.Log(3);
             LoadRankData();
+            Debug.Log(4);
         }
 
         void LoadMonsterTable()
@@ -83,12 +87,16 @@ namespace DOD.DB
         void LoadSkillTable()
         {
             TextAsset jsonText = Resources.Load<TextAsset>("DataTable/Skill_Json"); // Json 불러오기
+            Debug.Log(5);
 
             tdSkillDict.Clear();
 
             JObject parsedObj = new JObject(); // Json Object 생성
 
+
             parsedObj = JObject.Parse(jsonText.text); // Json Parsing
+
+            Debug.Log(6);
 
             foreach (KeyValuePair<string, JToken> pair in parsedObj)
             {

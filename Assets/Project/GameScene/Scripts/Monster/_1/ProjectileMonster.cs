@@ -71,7 +71,7 @@ public class ProjectileMonster : Monster
     }
     public virtual void Create_projectile()
     {
-        var obj = Instantiate(projectilePrefab, transform.position, transform.rotation);
+        var obj = Instantiate(projectilePrefab, new Vector2(transform.position.x,transform.position.y + 0.2f), transform.rotation);
         obj.GetComponent<MonsterProjectile>().StrikingPower = Power;
     }
 }
