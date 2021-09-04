@@ -62,9 +62,9 @@ public class GameSceneUIManager : UIManager
     void Gameover()
     {
         GOScoreText.text = BattleManager.Instance.Score.ToString();
-        GetGoldText.text = BattleManager.Instance.getGold.ToString();
+        GetGoldText.text = BattleManager.getGold.ToString();
         GameoverPanel.SetActive(true);
-        UserData.Coin += BattleManager.Instance.getGold;
+        Debug.Log(BattleManager.getGold);
     }
 
     public void ApearWarningText(int index)

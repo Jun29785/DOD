@@ -55,7 +55,7 @@ public class LobbyUIManager : MonoBehaviour
 
     public void UpdateText()
     {
-        Coin.text = UserData.Coin.ToString();
+        Coin.text = UserDataManager.user.Coin.ToString();
     }
 
     public void PointerDownInventoryButton()

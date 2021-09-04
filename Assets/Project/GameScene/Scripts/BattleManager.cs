@@ -13,7 +13,7 @@ public class BattleManager : MonoBehaviour
 
     public Stage currentmap;
     public static BattleManager Instance;
-    public int getGold = 0;
+    public static int getGold = 0;
     public float Score = 0;
 
     public int purpose;

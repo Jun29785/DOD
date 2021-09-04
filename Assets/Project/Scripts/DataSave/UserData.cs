@@ -5,11 +5,13 @@ using DOD.DB;
 using DOD.Define;
 
 
-public class UserData : MonoBehaviour
+public class UserData
 {
-    public static string nickName;
-    public static int maxScore;
-    public static int Coin;
-    public static playerCharacter currentCharacter;
+    public string nickName;
+    public int maxScore;
+    public int Coin;
+
+    public Dictionary<string, int> Skill_Level;
+
 
 }

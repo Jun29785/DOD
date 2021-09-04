@@ -74,6 +74,7 @@ public class TitleController : MonoBehaviour
                 Debug.Log(phase + "Complete");
                 break;
             case IntroPhase.UserData:
+                UserDataManager.Init();
                 LoadComplete = true;
                 Debug.Log(phase + "Complete");
                 break;

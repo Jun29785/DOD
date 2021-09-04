@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.IO;
 using UnityEngine.UI;
 using DOD.Define;
 
@@ -17,12 +18,10 @@ namespace DOD.DB
         public Dictionary<int, TDMonster> tdMonsterDict = new Dictionary<int, TDMonster>();
         public List<TDUserRank> userRankDict = new List<TDUserRank>();
         public Dictionary<string, float> skillCoolTime = new Dictionary<string, float>();
-
         protected override void Awake()
         {
             base.Awake();
             DontDestroyOnLoad(this);
-            UserData.Coin = 0;
         }
 
         public void LoadTable()
@@ -107,6 +106,7 @@ namespace DOD.DB
                 tdSkillDict.Add(tdSkill.SKey, tdSkill);
             }
         }
+
 
     }
 }
