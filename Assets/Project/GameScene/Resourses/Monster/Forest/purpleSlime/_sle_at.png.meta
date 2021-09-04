@@ -1,22 +1,19 @@
 fileFormatVersion: 2
-guid: a3f73e10f2582c04fba3bd815fc3052e
+guid: a6eff7ea0b7f77c449a6c4aadb377d3b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4015792045220560660
-    second: __sle_at_0
+      213: 1930467635757124932
+    second: _sle_at_0
   - first:
-      213: -4326522766762691097
-    second: __sle_at_1
+      213: -8522997228989153664
+    second: _sle_at_1
   - first:
-      213: 6361918598402152033
-    second: __sle_at_2
+      213: -8671699409743692259
+    second: _sle_at_2
   - first:
-      213: 5098426486310696313
-    second: __sle_at_3
-  - first:
-      213: 3882701874192037736
-    second: __sle_at_4
+      213: -8368490845696855545
+    second: _sle_at_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -128,106 +125,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: __sle_at_0
+      name: _sle_at_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 34
-        width: 42
-        height: 34
+        y: 35
+        width: 47
+        height: 31
       alignment: 9
-      pivot: {x: 0.357619, y: 0}
+      pivot: {x: 0.5144776, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ce00ac4596a0548c0800000000000000
-      internalID: -4015792045220560660
+      spriteID: 44d01bf26166aca10800000000000000
+      internalID: 1930467635757124932
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __sle_at_1
+      name: _sle_at_1
       rect:
         serializedVersion: 2
-        x: 42
-        y: 34
-        width: 42
-        height: 34
+        x: 47
+        y: 33
+        width: 47
+        height: 33
       alignment: 9
-      pivot: {x: 0.357619, y: 0}
+      pivot: {x: 0.5144776, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7e5387e677a15f3c0800000000000000
-      internalID: -4326522766762691097
+      spriteID: 08e76705d2b38b980800000000000000
+      internalID: -8522997228989153664
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __sle_at_2
-      rect:
-        serializedVersion: 2
-        x: 84
-        y: 34
-        width: 42
-        height: 34
-      alignment: 9
-      pivot: {x: 0.357619, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 16616b322431a4850800000000000000
-      internalID: 6361918598402152033
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: __sle_at_3
+      name: _sle_at_2
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 42
-        height: 34
+        width: 47
+        height: 33
       alignment: 9
-      pivot: {x: 0.357619, y: 0}
+      pivot: {x: 0.5144776, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 975fdfd60ef31c640800000000000000
-      internalID: 5098426486310696313
+      spriteID: d1e334bd45fe7a780800000000000000
+      internalID: -8671699409743692259
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __sle_at_4
+      name: _sle_at_3
       rect:
         serializedVersion: 2
-        x: 42
+        x: 47
         y: 0
-        width: 42
-        height: 34
+        width: 47
+        height: 33
       alignment: 9
-      pivot: {x: 0.357619, y: 0}
+      pivot: {x: 0.5144776, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 867b5fb78c022e530800000000000000
-      internalID: 3882701874192037736
+      spriteID: 702712cf9e52ddb80800000000000000
+      internalID: -8368490845696855545
       vertices: []
       indices: 
       edges: []

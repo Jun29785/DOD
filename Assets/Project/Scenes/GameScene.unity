@@ -2667,7 +2667,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentmap: 0
-  getGold: 0
   Score: 0
   purpose: 100
   BossInterval: 0
