@@ -29,4 +29,10 @@ public static class UserDataManager
 
     }
 
+    public static void Save()
+    {
+        string save = JsonConvert.SerializeObject(user);
+        File.WriteAllText(Application.dataPath + "/UserDataSample.json", save);
+    }
+
 }
