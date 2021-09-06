@@ -26,13 +26,19 @@ namespace DOD.DB
 
         public void LoadTable()
         {
-            Debug.Log(1);
             LoadSkillTable();
-            Debug.Log(2);
             LoadMonsterTable();
-            Debug.Log(3);
             LoadRankData();
-            Debug.Log(4);
+
+
+            foreach (var item in tdSkillDict)
+            {
+                print(item.Key);
+                print(item.Value.Command);
+                print(item.Value.Fdmg);
+                print(item.Value.Fmana);
+                print(item.Value.Ctime);
+            }
         }
 
         void LoadMonsterTable()

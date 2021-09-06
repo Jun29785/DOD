@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class BackgroundScrolling : MonoBehaviour
 {
-    public MeshRenderer render;
     public float offset;
-    public float speed;
-    public float of;
-    public Material[] mats;
-    Animator anim;
+    public float speed; // 배경 속도
+    public Material[] mats; // 배경 머테리얼
+    Animator anim; // 배경 애니메이터
     private void Start()
     {
         speed = 0.35f;

@@ -76,7 +76,12 @@ public class Character : Actor
         }
     }
 
-    public bool UseMpCheck(float value) //마나 깎는 함수
+    /// <summary>
+    /// MP가 충분한지 체크하는 함수
+    /// </summary>
+    /// <param name="value">체크하는 MP값</param>
+    /// <returns></returns>
+    public bool UseMpCheck(float value) 
     {
         if (Mp - value >= 0)
         {
@@ -91,13 +96,20 @@ public class Character : Actor
 
     }
 
+    /// <summary>
+    /// MP를 사용하는 함수
+    /// </summary>
+    /// <param name="value">사용하는 MP값</param>
     public void UseMp(float value)
     {
         Mp -= value;
     }
 
 
-    public override void DieCheck() //죽는거 체크
+    /// <summary>
+    /// 죽음 체크
+    /// </summary>
+    public override void DieCheck() 
     {
         if (Hp <= 0)
         {
@@ -108,6 +120,13 @@ public class Character : Actor
     }
 
 
+    /// <summary>
+    /// 스탯 재생 코루틴
+    /// </summary>
+    /// <param name="second"> 몇 초마다</param>
+    /// <param name="Hpvalue">HP를 얼마나</param>
+    /// <param name="Mpvalue">MP를 멀마나</param>
+    /// <returns></returns>
     public virtual IEnumerator HpMpRecovery(float second, float Hpvalue, float Mpvalue)
     {
         while (!BattleManager.Instance.isEnd)
@@ -123,12 +142,18 @@ public class Character : Actor
             }
         }
     }
+    /// <summary>
+    /// 적과 맞닿아있는지 체크후 애니메이터에 적용
+    /// </summary>
     public override void animUpdate()
     {
         anim.SetBool("isContact", BattleManager.Instance.isContact);
     }
 
     
+    /// <summary>
+    /// UseSkill를 false로 설정하는 함수 (애니메이터 이벤트로 작동)
+    /// </summary>
 public virtual void SetisUseSkillFalse()
     {
         BattleManager.Instance.isUseSkill = false;
@@ -136,7 +161,10 @@ public virtual void SetisUseSkillFalse()
 
     
 
-    public virtual void AttackStateCheck() // 공격가능 상태 판별
+    /// <summary>
+    /// 공격가능 상태 판별
+    /// </summary>
+    public virtual void AttackStateCheck() 
     {
         RaycastHit2D hitinfo = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 0.5f), Vector2.right, AttackDistance, LayerMask.GetMask("Monster"));
 
@@ -145,6 +173,9 @@ public virtual void SetisUseSkillFalse()
 
     }
 
+    /// <summary>
+    /// HP MP UI 적용
+    /// </summary>
     public virtual void hp_mp_UIUpdate()
     {
         hpSlider.value = Mathf.Lerp(hpSlider.value, Hp/MaxHp, 8f * Time.deltaTime);
@@ -153,6 +184,9 @@ public virtual void SetisUseSkillFalse()
 
     }
 
+    /// <summary>
+    /// 공격
+    /// </summary>
     public virtual void Attack()
     {
 
@@ -172,9 +206,14 @@ public virtual void SetisUseSkillFalse()
             }
         }
     }
+
     /// <summary>
     /// 스킬 사용 함수
     /// </summary>
+    /// <param name="SE">스킬종류</param>
+    /// <param name="list">현재 입력한 커맨드</param>
+    /// <param name="CoolTimeCheck"> 현재 쿨타임</param>
+    /// <returns></returns>
     public bool UseSkill(skillEnum SE,List<int> list, float CoolTimeCheck)
     {
 

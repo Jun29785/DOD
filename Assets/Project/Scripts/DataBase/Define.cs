@@ -31,11 +31,11 @@ namespace DOD.Define
 
     public enum IntroPhase
     {
-        Start,
-        ApplicationSetting,
+        Start, // 스타트
+        ApplicationSetting, // 앱 세팅
         StaticData, // 기획데이터 초기화 및 로드
         UserData, // 유저데이터 로드
-        Compelte
+        Compelte //완료
     }
     class Define
     {
