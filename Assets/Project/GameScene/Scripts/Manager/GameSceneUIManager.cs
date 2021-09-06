@@ -9,16 +9,16 @@ public class GameSceneUIManager : UIManager
     public static GameSceneUIManager Instance;
 
     [Header("GamePlaying")]
-    public Character character; // 캐릭터 스크립트
-    public Text ScoreText; // 점수
-    public Text WarningText; // 마나없습니다 등등 표기 텍스트
-    public GameObject Content; // 스킬 쿨타임오브젝트의 부모객체
-    public GameObject Skill_CoolTime_Prefab; // 스킬쿨타임 오브젝트 프리팹
+    public Character character;                 // 캐릭터 스크립트
+    public Text ScoreText;                      // 점수
+    public Text WarningText;                    // 마나없습니다 등등 표기 텍스트
+    public GameObject Content;                  // 스킬 쿨타임오브젝트의 부모객체
+    public GameObject Skill_CoolTime_Prefab;    // 스킬쿨타임 오브젝트 프리팹
 
     [Header("GameOVerPanel")]
-    public GameObject GameoverPanel;
-    public Text GOScoreText;
-    public Text GetGoldText;
+    public GameObject GameoverPanel;            // 게임오버 판넬
+    public Text GOScoreText;                    // 게임오버시 점수
+    public Text GetGoldText;                    // 게임오버시 얻은 골드
 
     
     void Start()
@@ -27,7 +27,6 @@ public class GameSceneUIManager : UIManager
         character = GameObject.FindGameObjectWithTag("Player").GetComponent<Character>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         ScoreUpdate();
@@ -36,16 +35,26 @@ public class GameSceneUIManager : UIManager
 
 
 
+    /// <summary>
+    /// 점수 세팅
+    /// </summary>
     void ScoreUpdate()
     {
         SetText<float>(ScoreText, BattleManager.Instance.Score);
     }
 
+    /// <summary>
+    /// 점수 올리기
+    /// </summary>
+    /// <param name="_score"></param>
     public void GetScore(float _score)
     {
         BattleManager.Instance.Score += _score;
     }
 
+    /// <summary>
+    /// 게임오버 체크
+    /// </summary>
     void GameOverCheck()
     {
         if(BattleManager.Instance.isEnd)
@@ -59,6 +68,10 @@ public class GameSceneUIManager : UIManager
     }
 
 
+    
+    /// <summary>
+    /// 게임 오버시 함수
+    /// </summary>
     void Gameover()
     {
         GOScoreText.text = BattleManager.Instance.Score.ToString();
@@ -67,6 +80,11 @@ public class GameSceneUIManager : UIManager
         Debug.Log(BattleManager.getGold);
     }
 
+
+    /// <summary>
+    /// 경고 텍스트 뜨게하는함수
+    /// </summary>
+    /// <param name="index"></param>
     public void ApearWarningText(int index)
     {
         switch (index)
@@ -86,6 +104,12 @@ public class GameSceneUIManager : UIManager
         }
     }
 
+
+    /// <summary>
+    /// 쿨타임 오브젝트 생성
+    /// </summary>
+    /// <param name="name"></param>
+    /// <param name="cooltime"></param>
     public void Create_SkillCoolTimeObject(string name, float cooltime)
     {
         var obj = Instantiate(Skill_CoolTime_Prefab);
@@ -95,6 +119,12 @@ public class GameSceneUIManager : UIManager
         obj.gameObject.transform.localPosition = Vector2.zero;  
     }
 
+
+    /// <summary>
+    /// 경고 텍스트 코루틴
+    /// </summary>
+    /// <param name="str"></param>
+    /// <returns></returns>
     IEnumerator SetWarningText(string str)
     {
 

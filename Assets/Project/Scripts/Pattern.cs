@@ -82,6 +82,10 @@ public class Pattern : MonoBehaviour
 
 
         }
+        else
+        {
+            BattleManager.Instance.Pattern_id.Clear();
+        }
 
         foreach (var line in lines)
         {

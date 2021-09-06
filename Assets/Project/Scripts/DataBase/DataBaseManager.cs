@@ -31,11 +31,6 @@ namespace DOD.DB
             LoadRankData();
 
 
-            foreach (var item in tdSkillDict)
-            {
-                print(item.Key);
-                print(item.Value.Name);
-            }
         }
 
         void LoadMonsterTable()

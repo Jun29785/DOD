@@ -30,39 +30,39 @@ public class MeleeCharacter : Character
 
     public void SingleATK() // 단일공격 판정
     {
-        Collider2D[] hitEnemy = Physics2D.OverlapCircleAll(AttackTransform.position, AttackRange, LayerMask.GetMask("Monster"));
+        Collider2D[] hitEnemy = Physics2D.OverlapCircleAll(AttackTransform.position, AttackRange, LayerMask.GetMask("Monster")); // 콜라이더 받아오기
 
         foreach (Collider2D enemy in hitEnemy)
         {
 
 
-            if (FirstTargetcount == 0)
+            if (FirstTargetcount == 0) // 처음 공격이라면
             {
 
-                target = enemy;
+                target = enemy; // enemy를 타겟으로설정
             }
 
-            FirstTargetcount++;
+            FirstTargetcount++; // 카운트를 +1 해줘서 처음공격이아닌 두번째 공격이됨
 
-            if (target.gameObject.activeSelf == false || target.gameObject == null)
+            if (target.gameObject.activeSelf == false || target.gameObject == null) // 만약 타겟으로하던 게임오브젝트가 사라지거나 비활성화되면 = 죽으면
             {
-                FirstTargetcount = 0;
+                FirstTargetcount = 0; // 카운트를 0으로만들어 다음공격이 첫공격이됨
                 target = enemy;
             }
     
 
-            target.GetComponent<Monster>().Damaged(Power);
+            target.GetComponent<Monster>().Damaged(Power); // 타겟에게 데미지를줌
             break;
         }
     }
     public void MultiATK() // 다중공격 판정
     {
-        Collider2D[] hitEnemy = Physics2D.OverlapCircleAll(AttackTransform.position, AttackRange, LayerMask.GetMask("Monster"));
+        Collider2D[] hitEnemy = Physics2D.OverlapCircleAll(AttackTransform.position, AttackRange, LayerMask.GetMask("Monster")); // 콜라이더를 받아와서
 
         foreach (Collider2D enemy in hitEnemy)
         {
 
-            enemy.GetComponent<Monster>().Damaged(ATKDamage);
+            enemy.GetComponent<Monster>().Damaged(ATKDamage); // 모든적에게 공격력만큼 데미지를줌ㄴ
         }
     }
 

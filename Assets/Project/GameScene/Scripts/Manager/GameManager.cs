@@ -15,11 +15,15 @@ public class GameManager : Singleton<GameManager>
         DontDestroyOnLoad(this);
     }
     
+
     private void Start()
     {
         titleController.Initialize();
     }
 
+    /// <summary>
+    /// 앱세팅
+    /// </summary>
     public void ApplicationSetting()
     {
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
