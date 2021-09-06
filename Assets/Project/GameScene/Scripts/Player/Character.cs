@@ -38,14 +38,12 @@ public class Character : Actor
 
     public Vector2 AllAttackRange;
 
-    public float originCOoltimeSpeed = Time.deltaTime;
-    public float ApplyCooltimeSpeed;
+    public float decreaseCooltimeSpeed;
     public override void Start()
     {
         base.Start();
         Hp = MaxHp;
         Mp = MaxMp;
-        ApplyCooltimeSpeed = originCOoltimeSpeed;
 
     }
 

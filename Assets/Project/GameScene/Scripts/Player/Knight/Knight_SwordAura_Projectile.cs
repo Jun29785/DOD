@@ -22,10 +22,6 @@ public class Knight_SwordAura_Projectile : MonoBehaviour
     }
 
 
-    private void FixedUpdate()
-    {
-
-    }
 
     private void OnDrawGizmosSelected()
     {
@@ -39,7 +35,33 @@ public class Knight_SwordAura_Projectile : MonoBehaviour
 
         if (cnt == 0)
         {
-            if (collision.tag == "Monster")
+            if (collision.gameObject.layer == LayerMask.GetMask("Monster"))
+            {
+                Collider2D[] hitEnemy = Physics2D.OverlapBoxAll(transform.position, AttackRange, LayerMask.GetMask("Monster")); // 콜라이더를 받아와서
+                if (hitEnemy != null)
+                {
+                    cnt++;
+
+                    foreach (Collider2D monster in hitEnemy)
+                    {
+                        monster.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(300, 0));
+                        monster.gameObject.GetComponent<Monster>().Damaged(Power);
+
+                    }
+
+
+                    Destroy(gameObject);
+                }
+            }
+        }
+    }
+
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (cnt == 0)
+        {
+            if (collision.gameObject.layer == LayerMask.GetMask("Monster"))
             {
                 Collider2D[] hitEnemy = Physics2D.OverlapBoxAll(transform.position, AttackRange, LayerMask.GetMask("Monster")); // 콜라이더를 받아와서
                 if (hitEnemy != null)

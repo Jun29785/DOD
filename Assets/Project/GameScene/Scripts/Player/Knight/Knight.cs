@@ -71,7 +71,7 @@ public class Knight : MeleeCharacter
     public void Skill_Dash()
     {
 
-        currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.돌진].Name] -= ApplyCooltimeSpeed;
+        currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.돌진].Name] -= Time.deltaTime;
         ATKDamage = DB.tdSkillDict[(int)skillEnum.돌진].Fdmg;
 
         if (UseSkill(skillEnum.돌진, BattleManager.Instance.Pattern_id, currentSkillcoolTimeDic[DataBaseManager.Instance.tdSkillDict[(int)skillEnum.돌진].Name]))
@@ -160,7 +160,7 @@ public class Knight : MeleeCharacter
     /// </summary>
     public void Skill_Sting()
     {
-        currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.연속찌르기].Name] -= ApplyCooltimeSpeed;
+        currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.연속찌르기].Name] -= Time.deltaTime;
 
         if (UseSkill(skillEnum.연속찌르기, BattleManager.Instance.Pattern_id,currentSkillcoolTimeDic[DataBaseManager.Instance.tdSkillDict[(int)skillEnum.연속찌르기].Name]))
         {
@@ -179,7 +179,7 @@ public class Knight : MeleeCharacter
     #region 회전공격
     public void Skill_SpinAttack()
     {
-        currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.회전공격].Name] -= ApplyCooltimeSpeed;
+        currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.회전공격].Name] -= Time.deltaTime;
         if(UseSkill(skillEnum.회전공격, BattleManager.Instance.Pattern_id,currentSkillcoolTimeDic[DataBaseManager.Instance.tdSkillDict[(int)skillEnum.회전공격].Name]))
         {
             ATKDamage = DB.tdSkillDict[(int)skillEnum.회전공격].Fdmg;
@@ -214,7 +214,7 @@ public class Knight : MeleeCharacter
 
     public void Skill_BigSword()
     {
-        currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.검이커져].Name] -= ApplyCooltimeSpeed;
+        currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.검이커져].Name] -= Time.deltaTime;
         ATKDamage = DB.tdSkillDict[(int)skillEnum.검이커져].Fdmg;
 
 
@@ -246,7 +246,7 @@ public class Knight : MeleeCharacter
     {
 
 
-        currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.검기날리기].Name] -= ApplyCooltimeSpeed;
+        currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.검기날리기].Name] -= Time.deltaTime;
         ATKDamage = DB.tdSkillDict[(int)skillEnum.돌진].Fdmg;
 
         if (UseSkill(skillEnum.검기날리기, BattleManager.Instance.Pattern_id, currentSkillcoolTimeDic[DataBaseManager.Instance.tdSkillDict[(int)skillEnum.검기날리기].Name]))
