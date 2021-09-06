@@ -229,7 +229,39 @@ public class Knight : MeleeCharacter
 
 
     #endregion
-    
+
+
+    #region 검기 날리기
+
+
+    /// <summary>
+    /// 스킬 체크
+    /// </summary>
+    public void Skill_SwordAura()
+    {
+
+        currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.검기날리기].Name] -= Time.deltaTime;
+        ATKDamage = DB.tdSkillDict[(int)skillEnum.돌진].Fdmg;
+
+        if (UseSkill(skillEnum.검기날리기, BattleManager.Instance.Pattern_id, currentSkillcoolTimeDic[DataBaseManager.Instance.tdSkillDict[(int)skillEnum.검기날리기].Name]))
+        {
+            ATKDamage = DB.tdSkillDict[(int)skillEnum.검기날리기].Fdmg;
+            UseMp(DB.tdSkillDict[(int)skillEnum.검기날리기].Fmana);
+
+            anim.SetTrigger("SwordAura");
+        }
+
+    }
+
+    public void Create_SwordAura_Projectile()
+    {
+
+    }
+
+
+
+
+    #endregion
     #endregion
 
 
