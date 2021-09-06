@@ -32,14 +32,13 @@ public class Button : MonoBehaviour
         UserDataManager.Save();
     }
 
-
-    /// <summary>
-    /// 인벤씬으로 (필요없어질듯)
-    /// </summary>
-    public void ToInventoryScene()
+    // 로비
+    public void OpenInventory()
     {
-        SceneManager.LoadScene(Scenes.InventoryScene.ToString());
-        Time.timeScale = 1;
+        LobbyUIManager.Instance.Inventory.SetActive(true);
+        Debug.Log("Loading Skill Button");
+        LobbyUIManager.Instance.CreateButton();
+        Debug.Log("Successful Load Skill Button");
     }
 
 
