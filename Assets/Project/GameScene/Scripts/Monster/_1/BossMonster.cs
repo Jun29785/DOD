@@ -167,11 +167,14 @@ public class BossMonster : Monster
 
     private void OnDisable()
     {
-        BossState.transform.position = BossUIPos[1].transform.position;
-        BattleManager.Instance.isBoss = false;
+        if (BossUIPos[1] != null)
+        {
+            BossState.transform.position = BossUIPos[1].transform.position;
+        }
+            BattleManager.Instance.isBoss = false;
         BattleManager.Instance.purpose += BattleManager.Instance.BossInterval;
         BattleManager.Instance.Panel.GetComponent<Animator>().SetTrigger("isStart");
         BattleManager.Instance.nextStage();
         BattleManager.Instance.SetmonsterGenInterval(5f);
-    }
+    }   
 }

@@ -11,6 +11,7 @@ public class Button : MonoBehaviour
         Time.timeScale = 1;
         Debug.Log(BattleManager.getGold);
         UserDataManager.user.Coin += BattleManager.getGold;
+        UserDataManager.Save();
     }
 
     public void ToGameScene()
@@ -19,7 +20,7 @@ public class Button : MonoBehaviour
         Time.timeScale = 1;
         Debug.Log(BattleManager.getGold);
         UserDataManager.user.Coin += BattleManager.getGold;
-
+        UserDataManager.Save();
     }
 
     public void ToInventoryScene()
@@ -56,6 +57,7 @@ public class Button : MonoBehaviour
         Time.timeScale = 1;
         viewObject.SetActive(false);
         BattleManager.Instance.isEnd = true;
+        UserDataManager.Save();
     }
 
 
