@@ -247,7 +247,6 @@ public class Knight : MeleeCharacter
 
 
         currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.검기날리기].Name] -= Time.deltaTime;
-        ATKDamage = DB.tdSkillDict[(int)skillEnum.돌진].Fdmg;
 
         if (UseSkill(skillEnum.검기날리기, BattleManager.Instance.Pattern_id, currentSkillcoolTimeDic[DataBaseManager.Instance.tdSkillDict[(int)skillEnum.검기날리기].Name]))
         {
@@ -263,7 +262,7 @@ public class Knight : MeleeCharacter
 
     public void Create_SwordAura_Projectile()
     {
-        var obj = Instantiate(SwordAura_Projectile, new Vector2(transform.position.x + 0.2f, transform.position.y + 0.2f),Quaternion.identity);
+        var obj = Instantiate(SwordAura_Projectile, new Vector2(transform.position.x + 0.2f, transform.position.y + 0.7f),Quaternion.identity);
         obj.GetComponent<Knight_SwordAura_Projectile>().Init(ATKDamage, 6);
     }
 
