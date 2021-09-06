@@ -84,7 +84,6 @@ namespace DOD.DB
         void LoadSkillTable()
         {
             TextAsset jsonText = Resources.Load<TextAsset>("DataTable/Skill_Json"); // Json 불러오기
-            Debug.Log(5);
 
             tdSkillDict.Clear();
 
@@ -93,7 +92,7 @@ namespace DOD.DB
 
             parsedObj = JObject.Parse(jsonText.text); // Json Parsing
 
-            Debug.Log(6);
+
 
             foreach (KeyValuePair<string, JToken> pair in parsedObj)
             {
