@@ -28,7 +28,7 @@ public class Knight : MeleeCharacter
 
         base.Start();
 
-        foreach (var item in DataBaseManager.Instance.tdSkillDict.Values)
+        foreach (var item in DB.tdSkillDict.Values)
         {
             SkillcoolTimeDic.Add(item.Name, item.Ctime);
             currentSkillcoolTimeDic.Add(item.Name, 0);

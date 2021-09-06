@@ -34,10 +34,7 @@ namespace DOD.DB
             foreach (var item in tdSkillDict)
             {
                 print(item.Key);
-                print(item.Value.Command);
-                print(item.Value.Fdmg);
-                print(item.Value.Fmana);
-                print(item.Value.Ctime);
+                print(item.Value.Name);
             }
         }
 

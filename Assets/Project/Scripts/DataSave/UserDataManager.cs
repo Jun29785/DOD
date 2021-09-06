@@ -17,15 +17,9 @@ public static class UserDataManager
 
         user = JsonConvert.DeserializeObject<UserData>(userData);
 
-        /*Debug.Log(user.Coin);
+        Debug.Log(user.Coin);
         Debug.Log(user.nickName);
 
-        foreach (var item in user.Skill_Level)
-        {
-            Debug.Log(item.Key);
-            Debug.Log(item.Value);
-
-        }*/
 
     }
 

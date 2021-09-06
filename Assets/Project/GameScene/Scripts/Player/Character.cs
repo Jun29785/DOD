@@ -224,25 +224,26 @@ public virtual void SetisUseSkillFalse()
 
             if (!BattleManager.Instance.isUseSkill)
             {
+                
 
-
-                if (UseMpCheck(DataBaseManager.Instance.tdSkillDict[(int)SE].Fmana))
-                {
-
-
-                    if (BattleManager.Instance.Pattern_id.SequenceEqual(DataBaseManager.Instance.tdSkillDict[(int)SE].Command))
+                    if (UseMpCheck(DataBaseManager.Instance.tdSkillDict[(int)SE].Fmana))
                     {
-                        if (CoolTimeCheck <= 0)
+
+
+                        if (BattleManager.Instance.Pattern_id.SequenceEqual(DataBaseManager.Instance.tdSkillDict[(int)SE].Command))
                         {
-                            GameSceneUIManager.Instance.Create_SkillCoolTimeObject(DataBaseManager.Instance.tdSkillDict[(int)SE].Name, DataBaseManager.Instance.tdSkillDict[(int)SE].Ctime);
-                            return true;
-                        }
-                        else
-                        {
-                            GameSceneUIManager.Instance.ApearWarningText(2);
+                            if (CoolTimeCheck <= 0)
+                            {
+                                GameSceneUIManager.Instance.Create_SkillCoolTimeObject(DataBaseManager.Instance.tdSkillDict[(int)SE].Name, DataBaseManager.Instance.tdSkillDict[(int)SE].Ctime);
+                                return true;
+                            }
+                            else
+                            {
+                                GameSceneUIManager.Instance.ApearWarningText(2);
+                            }
                         }
                     }
-                }
+                
             }
             /*else
             {
