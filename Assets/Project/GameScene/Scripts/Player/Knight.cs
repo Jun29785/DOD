@@ -207,7 +207,7 @@ public class Knight : MeleeCharacter
 
     public void Skill_BigSword()
     {
-        currentSkillcoolTimeDic["BigSword"] -= Time.deltaTime;
+        currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.검이커져].Name] -= Time.deltaTime;
 
 
         if (UseSkill(skillEnum.검이커져,BattleManager.Instance.Pattern_id, currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.검이커져].Name]))
