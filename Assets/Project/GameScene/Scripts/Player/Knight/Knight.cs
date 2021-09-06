@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
@@ -18,6 +18,9 @@ public class Knight : MeleeCharacter
 
 
     DataBaseManager DB = DataBaseManager.Instance;
+
+
+    public GameObject SwordAura_Projectile;
     public override void Awake()
     {
 
@@ -42,6 +45,7 @@ public class Knight : MeleeCharacter
         Skill_Sting();
         Skill_SpinAttack();
         Skill_BigSword();
+        Skill_SwordAura();
     }
 
     #region 판정
@@ -211,6 +215,7 @@ public class Knight : MeleeCharacter
     public void Skill_BigSword()
     {
         currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.검이커져].Name] -= Time.deltaTime;
+        ATKDamage = DB.tdSkillDict[(int)skillEnum.검이커져].Fdmg;
 
 
         if (UseSkill(skillEnum.검이커져,BattleManager.Instance.Pattern_id, currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.검이커져].Name]))
@@ -240,6 +245,7 @@ public class Knight : MeleeCharacter
     public void Skill_SwordAura()
     {
 
+
         currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.검기날리기].Name] -= Time.deltaTime;
         ATKDamage = DB.tdSkillDict[(int)skillEnum.돌진].Fdmg;
 
@@ -255,7 +261,8 @@ public class Knight : MeleeCharacter
 
     public void Create_SwordAura_Projectile()
     {
-
+        var obj = Instantiate(SwordAura_Projectile, new Vector2(transform.position.x + 0.2f, transform.position.y + 0.2f),Quaternion.identity);
+        obj.GetComponent<Knight_SwordAura_Projectile>().Init(ATKDamage, 6);
     }
 
 

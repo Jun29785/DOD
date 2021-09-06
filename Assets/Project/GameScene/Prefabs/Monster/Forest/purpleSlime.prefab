@@ -534,6 +534,7 @@ GameObject:
   - component: {fileID: 86291576935378069}
   - component: {fileID: 86291576935378154}
   - component: {fileID: 86291576935378155}
+  - component: {fileID: 7011317333948969378}
   m_Layer: 0
   m_Name: purpleSlime
   m_TagString: Untagged
@@ -688,3 +689,24 @@ MonoBehaviour:
   Hpbar: {fileID: 86291576143262123}
   DamageText_SpawnPoint: {fileID: 86291576020544202}
   canvas: {fileID: 86291576051375230}
+--- !u!50 &7011317333948969378
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 86291576935378070}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4

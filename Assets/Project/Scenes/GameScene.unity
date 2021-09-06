@@ -5845,6 +5845,7 @@ MonoBehaviour:
   AttackRange: 0.7
   originPos: {fileID: 2136505618}
   DashTransform: {fileID: 484780085}
+  SwordAura_Projectile: {fileID: 6589661519657973506, guid: d5a0fc72910f40c46bd0b183d975e652, type: 3}
 --- !u!212 &1642648740
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5949,8 +5950,8 @@ BoxCollider2D:
   m_Offset: {x: 0.006278977, y: 0.22599356}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.4336528, y: 0.04640845}
-    oldSize: {x: 0.75, y: 0.49}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 0.39, y: 0.45}
     newSize: {x: 0.39, y: 0.45}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
