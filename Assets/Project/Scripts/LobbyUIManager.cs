@@ -1,4 +1,6 @@
 ﻿using DOD.DB;
+using DOD.Define;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -74,11 +76,6 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
         InventoryIcon.transform.localScale = new Vector3(1f, 1f, 1f);
     }
 
-    public void PointerClickInventoryButton()
-    {
-        CreateButton();
-    }
-
     public void CreateButton()
     {
         foreach (var i in DataBaseManager.Instance.tdSkillDict)
@@ -96,7 +93,8 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
             j.Mana = i.Value.Fmana + (i.Value.Lmana * j.SkillLevel);
             j.Dmg = i.Value.Fdmg + (i.Value.Ldmg * j.SkillLevel);
             j.Description = i.Value.Description;
-            
+            Debug.Log("Get Static Data");
+            j.SkillLevel = UserDataManager.user.Skill_Level[DataBaseManager.Instance.tdSkillDict[(int)i.Value.SKey].Name];
             Debug.Log("Create : " + Create.name);
             Create.name = i.Value.Name;
             Create.GetComponent<Image>().sprite = Resources.Load<Sprite>("SkillIcon/" + i.Value.SKey) as Sprite;
@@ -104,19 +102,20 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
         }
     }
 
-    public void OnClickSkillButton(GameObject Skill)
+    public void OpenSkillPanel(GameObject Skill)
     {
         SkillPanel.SetActive(true);
 
         var Get = SkillManager.Instance;
         var Set = Skill.GetComponent<SkillButton>();
-        Get.name = Set.Name;
+        Get.Name = Set.Name;
         Get.SKey = Set.SKey;
         Get.Command = Set.Command;
         Get.Mana = Set.Mana;
         Get.Dmg = Set.Dmg;
         Get.Description = Set.Description;
-
+        Get.SkillLevel = Set.SkillLevel;
+        SkillPanel.GetComponent<SkillPanel>().LoadSkillData();
     }
 
     public void OnClickUpgradeButton()

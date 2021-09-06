@@ -18,12 +18,9 @@ public class SkillButton : MonoBehaviour
     [SerializeField]
     public string Description;
     [SerializeField]
-    public int SkillLevel = 0;
+    public int SkillLevel;
 
-    [SerializeField]
-    public Image SkillIcon;
-
-    public GameObject SkillPanel;
+    public GameObject Skill;
 
     public void SetButton(int skey)
     {
@@ -34,4 +31,9 @@ public class SkillButton : MonoBehaviour
         Debug.Log("name : " + nameKey);
 
     }    
+
+    public void OnClickSkillButton()
+    {
+        LobbyUIManager.Instance.OpenSkillPanel(Skill);
+    }
 }
