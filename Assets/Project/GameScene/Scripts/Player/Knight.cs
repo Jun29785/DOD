@@ -14,6 +14,8 @@ public class Knight : MeleeCharacter
     Dictionary<string, float> currentSkillcoolTimeDic = new Dictionary<string, float>();
     Dictionary<string, float> SkillcoolTimeDic = new Dictionary<string, float>();
 
+
+    DataBaseManager DB = DataBaseManager.Instance;
     public override void Awake()
     {
 
@@ -30,9 +32,6 @@ public class Knight : MeleeCharacter
             currentSkillcoolTimeDic.Add(item.Name, 0);
         }
 
-        currentSkillcoolTimeDic.Add("BigSword", 0);
-
-        SkillcoolTimeDic.Add("BigSword", 8); StartCoroutine(HpMpRecovery(1.5f, 1, 3));
     }
     public override void Update()
     {
@@ -56,6 +55,7 @@ public class Knight : MeleeCharacter
     }
 
     #endregion
+
     #region 스킬
 
     #region 돌진
@@ -66,17 +66,13 @@ public class Knight : MeleeCharacter
     public void Skill_Dash()
     {
 
-        currentSkillcoolTimeDic[DataBaseManager.Instance.tdSkillDict[(int)skillEnum.돌진].Name] -= Time.deltaTime;
+        currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.돌진].Name] -= Time.deltaTime;
+        ATKDamage = DB.tdSkillDict[(int)skillEnum.돌진].Fdmg;
 
-
-        if (UseSkill(DataBaseManager.Instance.tdSkillDict[(int)skillEnum.돌진].Name,
-            DataBaseManager.Instance.tdSkillDict[(int)skillEnum.돌진].Ctime,
-            currentSkillcoolTimeDic[DataBaseManager.Instance.tdSkillDict[(int)skillEnum.돌진].Name/* 돌진 */],
-            DataBaseManager.Instance.tdSkillDict[(int)skillEnum.돌진].Fmana,
-            DataBaseManager.Instance.tdSkillDict[(int)skillEnum.돌진].Command))
+        if (UseSkill(skillEnum.돌진, BattleManager.Instance.Pattern_id, currentSkillcoolTimeDic[DataBaseManager.Instance.tdSkillDict[(int)skillEnum.돌진].Name]))
         {
-            ATKDamage = DataBaseManager.Instance.tdSkillDict[(int)skillEnum.돌진].Fdmg;
-            UseMp(DataBaseManager.Instance.tdSkillDict[(int)skillEnum.돌진].Fmana);  
+            ATKDamage = DB.tdSkillDict[(int)skillEnum.돌진].Fdmg;
+            UseMp(DB.tdSkillDict[(int)skillEnum.돌진].Fmana);
             StartCoroutine(DashCroutine());
         }
 
@@ -93,7 +89,7 @@ public class Knight : MeleeCharacter
     /// </summary>
     IEnumerator DashCroutine()
     {
-        currentSkillcoolTimeDic[DataBaseManager.Instance.tdSkillDict[(int)skillEnum.돌진].Name] = SkillcoolTimeDic[DataBaseManager.Instance.tdSkillDict[(int)skillEnum.돌진].Name];
+        currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.돌진].Name] = SkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.돌진].Name];
 
         float currentTime = 1;
 
@@ -159,19 +155,15 @@ public class Knight : MeleeCharacter
     /// </summary>
     public void Skill_Sting()
     {
-        currentSkillcoolTimeDic[DataBaseManager.Instance.tdSkillDict[(int)skillEnum.연속찌르기].Name] -= Time.deltaTime;
+        currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.연속찌르기].Name] -= Time.deltaTime;
 
-        if (UseSkill(DataBaseManager.Instance.tdSkillDict[(int)skillEnum.연속찌르기].Name,
-            SkillcoolTimeDic[DataBaseManager.Instance.tdSkillDict[(int)skillEnum.연속찌르기].Name],
-            currentSkillcoolTimeDic[DataBaseManager.Instance.tdSkillDict[(int)skillEnum.연속찌르기].Name],
-            DataBaseManager.Instance.tdSkillDict[(int)skillEnum.연속찌르기].Fmana,
-            DataBaseManager.Instance.tdSkillDict[(int)skillEnum.연속찌르기].Command))
+        if (UseSkill(skillEnum.연속찌르기, BattleManager.Instance.Pattern_id,currentSkillcoolTimeDic[DataBaseManager.Instance.tdSkillDict[(int)skillEnum.연속찌르기].Name]))
         {
-            ATKDamage = DataBaseManager.Instance.tdSkillDict[(int)skillEnum.연속찌르기].Fdmg;
+            ATKDamage = DB.tdSkillDict[(int)skillEnum.연속찌르기].Fdmg;
             BattleManager.Instance.isUseSkill = true;
-            UseMp(40);
+            UseMp(DB.tdSkillDict[(int)skillEnum.연속찌르기].Fmana);
             anim.SetTrigger("Sting");
-            currentSkillcoolTimeDic[DataBaseManager.Instance.tdSkillDict[(int)skillEnum.연속찌르기].Name] = SkillcoolTimeDic[DataBaseManager.Instance.tdSkillDict[(int)skillEnum.연속찌르기].Name];
+            currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.연속찌르기].Name] = SkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.연속찌르기].Name];
         }
 
 
@@ -182,15 +174,11 @@ public class Knight : MeleeCharacter
     #region 회전공격
     public void Skill_SpinAttack()
     {
-        currentSkillcoolTimeDic[DataBaseManager.Instance.tdSkillDict[(int)skillEnum.회전공격].Name] -= Time.deltaTime;
-        if (UseSkill(DataBaseManager.Instance.tdSkillDict[(int)skillEnum.회전공격].Name,
-            SkillcoolTimeDic[DataBaseManager.Instance.tdSkillDict[(int)skillEnum.회전공격].Name],
-            currentSkillcoolTimeDic[DataBaseManager.Instance.tdSkillDict[(int)skillEnum.회전공격].Name],
-            DataBaseManager.Instance.tdSkillDict[(int)skillEnum.회전공격].Fmana,
-            DataBaseManager.Instance.tdSkillDict[(int)skillEnum.회전공격].Command))
+        currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.회전공격].Name] -= Time.deltaTime;
+        if(UseSkill(skillEnum.회전공격, BattleManager.Instance.Pattern_id,currentSkillcoolTimeDic[DataBaseManager.Instance.tdSkillDict[(int)skillEnum.회전공격].Name]))
         {
-            ATKDamage = DataBaseManager.Instance.tdSkillDict[(int)skillEnum.회전공격].Fdmg;
-            UseMp(DataBaseManager.Instance.tdSkillDict[(int)skillEnum.회전공격].Fmana);
+            ATKDamage = DB.tdSkillDict[(int)skillEnum.회전공격].Fdmg;
+            UseMp(DB.tdSkillDict[(int)skillEnum.회전공격].Fmana);
             StartCoroutine(SpinAttack());
 
         }
@@ -199,8 +187,8 @@ public class Knight : MeleeCharacter
 
     IEnumerator SpinAttack()
     {
-        currentSkillcoolTimeDic[DataBaseManager.Instance.tdSkillDict[(int)skillEnum.회전공격].Name] =
-            SkillcoolTimeDic[DataBaseManager.Instance.tdSkillDict[(int)skillEnum.회전공격].Name];
+        currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.회전공격].Name] =
+            SkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.회전공격].Name];
 
         BattleManager.Instance.isUseSkill = true;
         anim.SetBool("isSpinAttack", true);
@@ -221,14 +209,15 @@ public class Knight : MeleeCharacter
         currentSkillcoolTimeDic["BigSword"] -= Time.deltaTime;
 
 
-        if (UseSkill("검이커져!", SkillcoolTimeDic["BigSword"], currentSkillcoolTimeDic["BigSword"], 40, new List<int>() { 0, 1, 2, 5 }))
+        if (UseSkill(skillEnum.검이커져,BattleManager.Instance.Pattern_id, currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.검이커져].Name]))
         {
-            ATKDamage = 20;
+            ATKDamage = DataBaseManager.Instance.tdSkillDict[(int)skillEnum.검이커져].Fdmg;
             BattleManager.Instance.isUseSkill = true;
             anim.SetTrigger("BigSword");
             UseMp(40);
 
-            currentSkillcoolTimeDic["BigSword"] = SkillcoolTimeDic["BigSword"];
+            currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.검이커져].Name] =
+            SkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.검이커져].Name];
         }
     }
 
@@ -236,6 +225,7 @@ public class Knight : MeleeCharacter
 
 
     #endregion
+    
     #endregion
 
 

@@ -20,6 +20,7 @@ namespace DOD.Define
         연속찌르기 = 10001,
         돌진,
         회전공격,
+        검이커져,
     }
     
     public enum playerCharacter 

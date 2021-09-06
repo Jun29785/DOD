@@ -1706,15 +1706,8 @@ MonoBehaviour:
   speed: 0.35
   of: 0
   mats:
-  - {fileID: 2100000, guid: 75802a5e1be9e7a48a0a7da14da26ede, type: 2}
-  - {fileID: 2100000, guid: 0dc9f9f2baaadf1479697c7a0b7233a4, type: 2}
-  - {fileID: 2100000, guid: 4925c3ab50ec924459540c946047ff2d, type: 2}
-  - {fileID: 2100000, guid: 861557db0d85c874a97d0acf81b20ef3, type: 2}
-  - {fileID: 2100000, guid: c89a0fd0d4355d94ba88f53076bcaebc, type: 2}
-  - {fileID: 2100000, guid: da4aa2c1012da5e4288c6e7917765f73, type: 2}
-  - {fileID: 2100000, guid: 46cb7f937413bc045851c5c1d249222b, type: 2}
-  - {fileID: 2100000, guid: fde2b55291fe62a41995375b0bd3386b, type: 2}
-  - {fileID: 2100000, guid: bcf0438de2e89d0428d7e2526e9b0148, type: 2}
+  - {fileID: 2100000, guid: 66024b6d88824a6429fc54b8d7aee46a, type: 2}
+  - {fileID: 2100000, guid: 317795b3647edd3408e4770d419eeab7, type: 2}
 --- !u!1 &579324690
 GameObject:
   m_ObjectHideFlags: 0

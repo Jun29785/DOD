@@ -4,6 +4,9 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DOD.DB;
+using DOD.Define;
+
 public class Character : Actor
 {
     /* public string characterName;
@@ -172,13 +175,7 @@ public virtual void SetisUseSkillFalse()
     /// <summary>
     /// 스킬 사용 함수
     /// </summary>
-    /// <param name="Name">스킬이름</param>
-    /// <param name="CoolTime">스킬쿨타임</param>
-    /// <param name="CoolTimeCheck">현재 스킬쿨타임</param>
-    /// <param name="MPCheck">사용MP</param>
-    /// <param name="list">패턴 커맨드</param>
-    /// <returns></returns>
-    public bool UseSkill(string Name, float CoolTime, float CoolTimeCheck, float MPCheck, List<int> list)
+    public bool UseSkill(skillEnum SE,List<int> list, float CoolTimeCheck)
     {
 
 
@@ -190,15 +187,15 @@ public virtual void SetisUseSkillFalse()
             {
 
 
-                if (UseMpCheck(MPCheck))
+                if (UseMpCheck(DataBaseManager.Instance.tdSkillDict[(int)SE].Fmana))
                 {
 
 
-                    if (BattleManager.Instance.Pattern_id.SequenceEqual(list))
+                    if (BattleManager.Instance.Pattern_id.SequenceEqual(DataBaseManager.Instance.tdSkillDict[(int)SE].Command))
                     {
                         if (CoolTimeCheck <= 0)
                         {
-                            GameSceneUIManager.Instance.Create_SkillCoolTimeObject(Name, CoolTime);
+                            GameSceneUIManager.Instance.Create_SkillCoolTimeObject(DataBaseManager.Instance.tdSkillDict[(int)SE].Name, DataBaseManager.Instance.tdSkillDict[(int)SE].Ctime);
                             return true;
                         }
                         else
