@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LobbyUIManager : MonoBehaviour
+public class LobbyUIManager : Singleton<LobbyUIManager>
 {
     public Image StartButton;
     public Sprite OnStartButton;
@@ -21,9 +21,11 @@ public class LobbyUIManager : MonoBehaviour
 
     public GameObject SkillButtonObj;
     public Transform SkillObjParent;
-    public Image SkillIcon;
 
     public GameObject SkillPanel;
+    public GameObject Inventory;
+
+
     private void Awake()
     {
         StartCoroutine("StartScene");
@@ -77,7 +79,7 @@ public class LobbyUIManager : MonoBehaviour
         CreateButton();
     }
 
-    void CreateButton()
+    public void CreateButton()
     {
         foreach (var i in DataBaseManager.Instance.tdSkillDict)
         {
@@ -85,16 +87,36 @@ public class LobbyUIManager : MonoBehaviour
             GameObject Create = (GameObject)Instantiate(SkillButtonObj);
             Create.transform.parent = SkillObjParent;
             Create.transform.localScale = new Vector3(1, 1, 1);
-            Create.GetComponent<SkillButton>().SetButton(i.Value.SKey);
+            var j = Create.GetComponent<SkillButton>();
+            // 스킬 값 추가
+            j.SetButton(i.Value.SKey);
+            j.SKey = i.Value.SKey;
+            j.Name = i.Value.Name;
+            j.Command = i.Value.Command;
+            j.Mana = i.Value.Fmana + (i.Value.Lmana * j.SkillLevel);
+            j.Dmg = i.Value.Fdmg + (i.Value.Ldmg * j.SkillLevel);
+            j.Description = i.Value.Description;
+            
             Debug.Log("Create : " + Create.name);
-            SkillIcon.sprite = Resources.Load<Sprite>("SkillIcons/" + i.Value.SKey);
+            Create.name = i.Value.Name;
+            Create.GetComponent<Image>().sprite = Resources.Load<Sprite>("SkillIcon/" + i.Value.SKey) as Sprite;
             Debug.Log("Load Sprite Successful!");
         }
     }
 
-    public void OnClickSkillButton()
+    public void OnClickSkillButton(GameObject Skill)
     {
         SkillPanel.SetActive(true);
+
+        var Get = SkillManager.Instance;
+        var Set = Skill.GetComponent<SkillButton>();
+        Get.name = Set.Name;
+        Get.SKey = Set.SKey;
+        Get.Command = Set.Command;
+        Get.Mana = Set.Mana;
+        Get.Dmg = Set.Dmg;
+        Get.Description = Set.Description;
+
     }
 
     public void OnClickUpgradeButton()

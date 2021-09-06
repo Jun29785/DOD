@@ -9,10 +9,8 @@ public class SkillManager : Singleton<SkillManager>
     public List<int> Command;
     public int SKey;
     public string Name;
-    public int Fmana;
-    public float Lmana;
-    public int Fdmg;
-    public float Ldmg;
+    public float Mana;
+    public float Dmg;
     public int Ctime;
     public string Description;
     public int SkillLevel;

@@ -11,10 +11,8 @@ public class Knight : MeleeCharacter
     public Transform originPos; //원래 위치(돌진)
     public Transform DashTransform; // 돌진으로 가야하는 위치(돌진)
 
-    Dictionary<string, float> currentSkillcoolTimeDic = new Dictionary<string, float>(); // 현재 쿨타임 딕셔너리
-
-
-    Dictionary<string, float> SkillcoolTimeDic = new Dictionary<string, float>(); // 쿨타임 딕셔너리
+    Dictionary<string, float> currentSkillcoolTimeDic = new Dictionary<string, float>();
+    Dictionary<string, float> SkillcoolTimeDic = new Dictionary<string, float>();
 
 
     DataBaseManager DB = DataBaseManager.Instance;
@@ -28,7 +26,7 @@ public class Knight : MeleeCharacter
 
         base.Start();
 
-        foreach (var item in DB.tdSkillDict.Values)
+        foreach (var item in DataBaseManager.Instance.tdSkillDict.Values)
         {
             SkillcoolTimeDic.Add(item.Name, item.Ctime);
             currentSkillcoolTimeDic.Add(item.Name, 0);
@@ -38,6 +36,7 @@ public class Knight : MeleeCharacter
     public override void Update()
     {
         base.Update();
+        //print(BattleManager.Instance.currentmap);
         Skill_Dash();
         Skill_Sting();
         Skill_SpinAttack();
@@ -209,13 +208,12 @@ public class Knight : MeleeCharacter
     {
         currentSkillcoolTimeDic["BigSword"] -= Time.deltaTime;
 
-
         if (UseSkill(skillEnum.검이커져,BattleManager.Instance.Pattern_id, currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.검이커져].Name]))
         {
             ATKDamage = DataBaseManager.Instance.tdSkillDict[(int)skillEnum.검이커져].Fdmg;
             BattleManager.Instance.isUseSkill = true;
             anim.SetTrigger("BigSword");
-            UseMp(DB.tdSkillDict[(int)skillEnum.검이커져].Fmana);
+            UseMp(40);
 
             currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.검이커져].Name] =
             SkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.검이커져].Name];

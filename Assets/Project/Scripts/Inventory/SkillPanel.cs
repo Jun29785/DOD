@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class SkillPanel : MonoBehaviour
 {
-
     /*List<int> command = ;
     int SKey = */
     public Text Name;

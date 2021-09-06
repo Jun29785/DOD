@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using DOD.Define;
 public class Button : MonoBehaviour
-{
+{ 
     public void ToLobbyScene()
     {
         SceneManager.LoadScene(Scenes.LobbyScene.ToString());
@@ -22,10 +22,13 @@ public class Button : MonoBehaviour
 
     }
 
-    public void ToInventoryScene()
+    // 로비
+    public void OpenInventory()
     {
-        SceneManager.LoadScene(Scenes.InventoryScene.ToString());
-        Time.timeScale = 1;
+        LobbyUIManager.Instance.Inventory.SetActive(true);
+        Debug.Log("Loading Skill Button");
+        LobbyUIManager.Instance.CreateButton();
+        Debug.Log("Successful Load Skill Button");
     }
 
     public void Viewit(GameObject viewObj)
