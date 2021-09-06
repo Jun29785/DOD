@@ -197,6 +197,9 @@ public class Knight : MeleeCharacter
         yield return new WaitForSeconds(3f);
 
         anim.SetBool("isSpinAttack", false);
+
+        yield return new WaitForSeconds(0.7f);
+
         BattleManager.Instance.isUseSkill = false;
 
 

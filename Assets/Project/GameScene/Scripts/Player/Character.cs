@@ -214,7 +214,7 @@ public virtual void SetisUseSkillFalse()
     /// <param name="list">현재 입력한 커맨드</param>
     /// <param name="CoolTimeCheck"> 현재 쿨타임</param>
     /// <returns></returns>
-    public bool UseSkill(skillEnum SE,List<int> list, float CoolTimeCheck)
+    public bool UseSkill(skillEnum SE, List<int> list, float CoolTimeCheck)
     {
 
 
@@ -224,7 +224,9 @@ public virtual void SetisUseSkillFalse()
 
             if (!BattleManager.Instance.isUseSkill)
             {
-                
+
+                if (UserDataManager.user.Skill_Level[DataBaseManager.Instance.tdSkillDict[(int)SE].Name] != 0)
+                {
 
                     if (UseMpCheck(DataBaseManager.Instance.tdSkillDict[(int)SE].Fmana))
                     {
@@ -243,15 +245,16 @@ public virtual void SetisUseSkillFalse()
                             }
                         }
                     }
-                
+
+                }
+                /*else
+                {
+                    GameSceneUIManager.Instance.ApearWarningText(3);
+                }*/
+
             }
-            /*else
-            {
-                GameSceneUIManager.Instance.ApearWarningText(3);
-            }*/
 
         }
-        
 
         return false;
 
