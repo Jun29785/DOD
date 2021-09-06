@@ -22,9 +22,9 @@ public class Character : Actor
 
 
      Animator anim;*/
-    public float MaxMp;
+    public float MaxMp; // 최대 MP
     [HideInInspector]
-    public float Mp;
+    public float Mp; // 현재 MP
     
     public bool isAttack;
 
@@ -37,14 +37,19 @@ public class Character : Actor
     public Transform AllAttackPosition;
 
     public Vector2 AllAttackRange;
+
+    public float originCOoltimeSpeed = Time.deltaTime;
+    public float ApplyCooltimeSpeed;
     public override void Start()
     {
         base.Start();
         Hp = MaxHp;
         Mp = MaxMp;
+        ApplyCooltimeSpeed = originCOoltimeSpeed;
+
     }
 
-    public override void Update()
+public override void Update()
     {
         
         base.Update();

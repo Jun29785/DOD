@@ -8,11 +8,12 @@ public class Knight_SwordAura_Projectile : MonoBehaviour
     float Power;
     float moveSpeed;
 
-    public void Init(float power,float speed)
+    int cnt;
+    public void Init(float power, float speed)
     {
         Power = power;
         moveSpeed = speed;
-        
+
     }
 
     private void Update()
@@ -23,23 +24,39 @@ public class Knight_SwordAura_Projectile : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Collider2D[] hitEnemy = Physics2D.OverlapBoxAll(transform.position, AttackRange, LayerMask.GetMask("Monster")); // 콜라이더를 받아와서
-       if(hitEnemy != null)
-        {
-            foreach (Collider2D monster in hitEnemy)
-            {
-                monster.gameObject.GetComponent<Monster>().Damaged(Power);
-                monster.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(200, 0));
-            }
 
-
-            Destroy(gameObject);
-        }
     }
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireCube(transform.position, AttackRange);
 
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
+        if (cnt == 0)
+        {
+            if (collision.tag == "Monster")
+            {
+                Collider2D[] hitEnemy = Physics2D.OverlapBoxAll(transform.position, AttackRange, LayerMask.GetMask("Monster")); // 콜라이더를 받아와서
+                if (hitEnemy != null)
+                {
+                    cnt++;
+
+                    foreach (Collider2D monster in hitEnemy)
+                    {
+                        monster.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(300, 0));
+                        monster.gameObject.GetComponent<Monster>().Damaged(Power);
+
+                    }
+
+
+                    Destroy(gameObject);
+                }
+            }
+        }
     }
 }
