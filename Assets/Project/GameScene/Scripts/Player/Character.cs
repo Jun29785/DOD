@@ -22,9 +22,9 @@ public class Character : Actor
 
 
      Animator anim;*/
-    public float MaxMp;
+    public float MaxMp; // 최대 MP
     [HideInInspector]
-    public float Mp;
+    public float Mp; // 현재 MP
     
     public bool isAttack;
 
@@ -37,14 +37,17 @@ public class Character : Actor
     public Transform AllAttackPosition;
 
     public Vector2 AllAttackRange;
+
+    public float decreaseCooltimeSpeed;
     public override void Start()
     {
         base.Start();
         Hp = MaxHp;
         Mp = MaxMp;
+
     }
 
-    public override void Update()
+public override void Update()
     {
         
         base.Update();
@@ -214,7 +217,7 @@ public virtual void SetisUseSkillFalse()
     /// <param name="list">현재 입력한 커맨드</param>
     /// <param name="CoolTimeCheck"> 현재 쿨타임</param>
     /// <returns></returns>
-    public bool UseSkill(skillEnum SE,List<int> list, float CoolTimeCheck)
+    public bool UseSkill(skillEnum SE, List<int> list, float CoolTimeCheck)
     {
 
 
@@ -224,7 +227,9 @@ public virtual void SetisUseSkillFalse()
 
             if (!BattleManager.Instance.isUseSkill)
             {
-                
+
+                if (UserDataManager.user.Skill_Level[DataBaseManager.Instance.tdSkillDict[(int)SE].Name] != 0)
+                {
 
                     if (UseMpCheck(DataBaseManager.Instance.tdSkillDict[(int)SE].Fmana))
                     {
@@ -243,15 +248,16 @@ public virtual void SetisUseSkillFalse()
                             }
                         }
                     }
-                
+
+                }
+                /*else
+                {
+                    GameSceneUIManager.Instance.ApearWarningText(3);
+                }*/
+
             }
-            /*else
-            {
-                GameSceneUIManager.Instance.ApearWarningText(3);
-            }*/
 
         }
-        
 
         return false;
 

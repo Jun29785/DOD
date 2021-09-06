@@ -15,7 +15,7 @@ public class CoolTImePanel : MonoBehaviour
         {
             for (int i = 0; i <= transform.childCount; i++)
             {
-                transform.GetChild(i).localScale = new Vector2(transform.localScale.x - 20, transform.localScale.x - 20);
+                transform.GetChild(i).localScale = new Vector2(transform.localScale.x - 5, transform.localScale.x - 5);
             }
         }
     }

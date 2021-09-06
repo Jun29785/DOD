@@ -16,11 +16,12 @@ public class BackgroundScrolling : MonoBehaviour
 
     private void Update()
     {
-        if (BattleManager.Instance.isEnd)
+        if (BattleManager.Instance.isEnd) // 게임이 끝이면 멈추기
         {
             return;
         }
-        if (!BattleManager.Instance.isContact && !BattleManager.Instance.isStop && !BattleManager.Instance.isUseSkill)
+
+        if (!BattleManager.Instance.isContact && !BattleManager.Instance.isStop && !BattleManager.Instance.isUseSkill) // 플레이어가 몬스터와 싸우고있을땐 멈추기
         {
             switch (BattleManager.Instance.currentmap)
             {

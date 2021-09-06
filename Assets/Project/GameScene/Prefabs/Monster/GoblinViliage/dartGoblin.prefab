@@ -534,6 +534,7 @@ GameObject:
   - component: {fileID: 7542338389770186860}
   - component: {fileID: 3401635451584189189}
   - component: {fileID: 5813937783558720062}
+  - component: {fileID: 3336289949622197396}
   m_Layer: 8
   m_Name: dartGoblin
   m_TagString: Monster
@@ -638,7 +639,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.033000037, y: 0.185}
@@ -689,3 +690,24 @@ MonoBehaviour:
   DamageText_SpawnPoint: {fileID: 3394003115358485325}
   canvas: {fileID: 7542338389324673991}
   projectilePrefab: {fileID: 1404083872797110678, guid: 3adf1da9f93b89e42a35c41f0a55a282, type: 3}
+--- !u!50 &3336289949622197396
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7542338389770186863}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4

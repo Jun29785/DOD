@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
@@ -16,6 +16,9 @@ public class Knight : MeleeCharacter
 
 
     DataBaseManager DB = DataBaseManager.Instance;
+
+
+    public GameObject SwordAura_Projectile;
     public override void Awake()
     {
 
@@ -41,6 +44,7 @@ public class Knight : MeleeCharacter
         Skill_Sting();
         Skill_SpinAttack();
         Skill_BigSword();
+        Skill_SwordAura();
     }
 
     #region 판정
@@ -196,6 +200,9 @@ public class Knight : MeleeCharacter
         yield return new WaitForSeconds(3f);
 
         anim.SetBool("isSpinAttack", false);
+
+        yield return new WaitForSeconds(0.7f);
+
         BattleManager.Instance.isUseSkill = false;
 
 
@@ -206,7 +213,8 @@ public class Knight : MeleeCharacter
 
     public void Skill_BigSword()
     {
-        currentSkillcoolTimeDic["BigSword"] -= Time.deltaTime;
+        currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.검이커져].Name] -= Time.deltaTime;
+        ATKDamage = DB.tdSkillDict[(int)skillEnum.검이커져].Fdmg;
 
         if (UseSkill(skillEnum.검이커져,BattleManager.Instance.Pattern_id, currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.검이커져].Name]))
         {
@@ -224,7 +232,42 @@ public class Knight : MeleeCharacter
 
 
     #endregion
-    
+
+
+    #region 검기 날리기
+
+
+    /// <summary>
+    /// 스킬 체크
+    /// </summary>
+    public void Skill_SwordAura()
+    {
+
+
+        currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.검기날리기].Name] -= Time.deltaTime;
+
+        if (UseSkill(skillEnum.검기날리기, BattleManager.Instance.Pattern_id, currentSkillcoolTimeDic[DataBaseManager.Instance.tdSkillDict[(int)skillEnum.검기날리기].Name]))
+        {
+
+            BattleManager.Instance.isUseSkill = true;
+            ATKDamage = DB.tdSkillDict[(int)skillEnum.검기날리기].Fdmg;
+            UseMp(DB.tdSkillDict[(int)skillEnum.검기날리기].Fmana);
+
+            anim.SetTrigger("SwordAura");
+        }
+
+    }
+
+    public void Create_SwordAura_Projectile()
+    {
+        var obj = Instantiate(SwordAura_Projectile, new Vector2(transform.position.x + 0.2f, transform.position.y + 0.7f),Quaternion.identity);
+        obj.GetComponent<Knight_SwordAura_Projectile>().Init(ATKDamage, 6);
+    }
+
+
+
+
+    #endregion
     #endregion
 
 

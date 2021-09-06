@@ -21,6 +21,7 @@ namespace DOD.Define
         돌진,
         회전공격,
         검이커져,
+        검기날리기,
     }
     
     public enum playerCharacter 

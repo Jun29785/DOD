@@ -17,8 +17,6 @@ public static class UserDataManager
 
         user = JsonConvert.DeserializeObject<UserData>(userData);
 
-        Debug.Log(user.Coin);
-        Debug.Log(user.nickName);
 
 
     }

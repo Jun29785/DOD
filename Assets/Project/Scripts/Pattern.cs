@@ -53,28 +53,38 @@ public class Pattern : MonoBehaviour
 
     IEnumerator Release()
     {
-        
-        BattleManager.Instance.PatternInputEnd = true;
-        enabled = false;
-        circleList = BattleManager.Instance.Pattern_id.ToList<int>();
-        foreach (int circle in BattleManager.Instance.Pattern_id)
+
+        if (BattleManager.Instance.Pattern_id.Count > 1)
         {
-            circleAnim[circle].SetBool("finish", true);
+            BattleManager.Instance.PatternInputEnd = true;
+            enabled = false;
+            circleList = BattleManager.Instance.Pattern_id.ToList<int>();
+            foreach (int circle in BattleManager.Instance.Pattern_id)
+            {
+                circleAnim[circle].SetBool("finish", true);
+            }
+            yield return new WaitForSeconds(0.1f);
+            BattleManager.Instance.Pattern_id.Clear();
+            yield return new WaitForSeconds(0.9f);
+            //foreach (var circle in circles)
+            //{
+            //    circle.Value.GetComponent<UnityEngine.UI.Image>().color = Color.white;
+            //    circle.Value.GetComponent<Animator>().enabled = false;
+            //}
+
+
+            BattleManager.Instance.PatternInputEnd = false;
+
+            foreach (int circle in circleList)
+            {
+                circleAnim[circle].SetBool("finish", false);
+            }
+
+
         }
-        yield return new WaitForSeconds(0.1f);
-        BattleManager.Instance.Pattern_id.Clear();
-        yield return new WaitForSeconds(0.9f);
-        //foreach (var circle in circles)
-        //{
-        //    circle.Value.GetComponent<UnityEngine.UI.Image>().color = Color.white;
-        //    circle.Value.GetComponent<Animator>().enabled = false;
-        //}
-
-        BattleManager.Instance.PatternInputEnd = false;
-
-        foreach (int circle in circleList)
+        else
         {
-            circleAnim[circle].SetBool("finish", false);
+            BattleManager.Instance.Pattern_id.Clear();
         }
 
         foreach (var line in lines)
