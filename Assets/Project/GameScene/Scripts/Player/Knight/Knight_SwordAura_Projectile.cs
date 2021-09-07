@@ -33,20 +33,11 @@ public class Knight_SwordAura_Projectile : MonoBehaviour
 
         if (collision.tag == "Monster")
         {
-            //Collider2D[] hitEnemy = Physics2D.OverlapBoxAll(transform.position, AttackRange, LayerMask.GetMask("Monster")); // 콜라이더를 받아와서
-            //if (hitEnemy != null)
-            // {
+            
+            collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(collision.gameObject.GetComponent<Rigidbody2D>().velocity.x + 15, collision.gameObject.GetComponent<Rigidbody2D>().velocity.y);
+            collision.gameObject.GetComponent<Monster>().Damaged(Power);
 
-            //foreach (Collider2D monster in hitEnemy)
-            //{
-            collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(collision.gameObject.GetComponent<Rigidbody2D>().velocity.x + 20, collision.gameObject.GetComponent<Rigidbody2D>().velocity.y);
-                    collision.gameObject.GetComponent<Monster>().Damaged(1);
-
-                //}
-
-
-                Destroy(gameObject);
-            //}
+            Destroy(gameObject);
         }
 
 

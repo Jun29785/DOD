@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 85.11825, y: 84.24101}
+  m_AnchoredPosition: {x: 0.01, y: 0.68}
+  m_SizeDelta: {x: 72.41592, y: 70.17766}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &70539981258745656
 CanvasRenderer:
@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.90943396, g: 0.99824226, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -66,7 +66,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: bb358522b1ed05f4ea1582f1de2d9a3d, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 1
@@ -78,7 +78,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uB3CC\uC9C4\n6\uCD08"
+  m_Text: "\uC5F0\uC18D\uCC0C\uB974\uAE30\n6\uCD08"
 --- !u!1 &70539981500787822
 GameObject:
   m_ObjectHideFlags: 0
@@ -247,6 +247,7 @@ MonoBehaviour:
   image: {fileID: 70539981549581044}
   filledPanel: {fileID: 70539981500787820}
   text: {fileID: 70539981258745657}
+  skillKey: 0
   skillName: 
   CoolTime: 0
   CurrentTime: 0
