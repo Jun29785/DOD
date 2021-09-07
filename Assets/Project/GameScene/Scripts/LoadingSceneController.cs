@@ -10,7 +10,7 @@ public class LoadingSceneController : MonoBehaviour
 
 
     [SerializeField]
-    Image Loadingbar;
+    Slider Loadingbar;
 
     
     public static void LoadScene(string name)
@@ -38,13 +38,13 @@ public class LoadingSceneController : MonoBehaviour
 
             if(op.progress < 0.9f)
             {
-                Loadingbar.fillAmount = op.progress;
+                Loadingbar.value = op.progress;
             }
             else
             {
                 timer += Time.unscaledDeltaTime;
-                Loadingbar.fillAmount = Mathf.Lerp(0.9f, 1f, timer);
-                if(Loadingbar.fillAmount>= 1f)
+                Loadingbar.value = Mathf.Lerp(0.9f, 1f, timer);
+                if(Loadingbar.value>= 1f)
                 {
                     op.allowSceneActivation = true;
                     yield break;
