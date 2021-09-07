@@ -41,6 +41,11 @@ public class Button : MonoBehaviour
         Debug.Log("Successful Load Skill Button");
     }
 
+    public void CloseInventory()
+    {
+        LobbyUIManager.Instance.Inventory.SetActive(false);
+        Debug.Log("Close Inventory Panel");
+    }
 
     /// <summary>
     /// 오브젝트를 보여주는함수

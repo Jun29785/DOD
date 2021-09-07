@@ -78,6 +78,11 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
 
     public void CreateButton()
     {
+        for (int i = 0; i < SkillObjParent.childCount; i++)
+        {
+            Destroy(SkillObjParent.GetChild(i).gameObject);
+        }
+
         foreach (var i in DataBaseManager.Instance.tdSkillDict)
         {
             Debug.Log("In");
@@ -116,6 +121,11 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
         Get.Description = Set.Description;
         Get.SkillLevel = Set.SkillLevel;
         SkillPanel.GetComponent<SkillPanel>().LoadSkillData();
+    }
+
+    public void CloseSkillPanel()
+    {
+        SkillPanel.SetActive(false);
     }
 
     public void OnClickUpgradeButton()
