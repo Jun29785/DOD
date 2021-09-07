@@ -17,7 +17,10 @@ public class SkillPanel : MonoBehaviour
     {
         var i = SkillManager.Instance;
         Name.text = i.Name;
-        SkillIcon.sprite = Resources.Load<Sprite>("SkillIcon/" + i.SKey) as Sprite;
+        if (i.SkillLevel < 1)
+            SkillIcon.sprite = Resources.Load<Sprite>("SkillIcon/" + "10000") as Sprite;
+        else
+            SkillIcon.sprite = Resources.Load<Sprite>("SkillIcon/" + i.SKey) as Sprite;
         SkillLevel.text = i.SkillLevel.ToString("Lv : 0");
         Description.text = i.Description;
         PlayerPrefs.SetInt(i.SKey + "SkillLevel", i.SkillLevel);

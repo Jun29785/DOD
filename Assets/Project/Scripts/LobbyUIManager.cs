@@ -32,6 +32,8 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
     public GameObject SkillStatButton;
     public GameObject SkillDescButton;
 
+    private GameObject CurrentSelectedSkill;
+
     private void Awake()
     {
         StartCoroutine("StartScene");
@@ -106,13 +108,17 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
             j.SkillLevel = UserDataManager.user.Skill_Level[DataBaseManager.Instance.tdSkillDict[(int)i.Value.SKey].Name];
             Debug.Log("Create : " + Create.name);
             Create.name = i.Value.Name;
-            Create.GetComponent<Image>().sprite = Resources.Load<Sprite>("SkillIcon/" + i.Value.SKey) as Sprite;
+            if (j.SkillLevel < 1)
+                Create.GetComponent<Image>().sprite = Resources.Load<Sprite>("SkillIcon/" + "10000") as Sprite;
+            else
+                Create.GetComponent<Image>().sprite = Resources.Load<Sprite>("SkillIcon/" + i.Value.SKey) as Sprite;
             Debug.Log("Load Sprite Successful!");
         }
     }
 
     public void OpenSkillPanel(GameObject Skill)
     {
+        CurrentSelectedSkill = Skill;
         SkillPanel.SetActive(true);
 
         var Get = SkillManager.Instance;
@@ -125,7 +131,7 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
         Get.Description = Set.Description;
         Get.SkillLevel = Set.SkillLevel;
         SkillPanel.GetComponent<SkillPanel>().LoadSkillData();
-
+        
         SkillStatPanel.SetActive(true);
     }
 
@@ -149,9 +155,12 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
         SkillStatButton.GetComponent<Image>().color = new Color32(150, 150, 150, 255);
         SkillDescButton.GetComponent<Image>().color = new Color32(255, 255, 255,255);
     }
+
     public void OnClickUpgradeButton()
     {
-        SkillManager.Instance.SkillLevel += 1;
+        CurrentSelectedSkill.GetComponent<SkillButton>().SkillLevel += 1;
+        OpenSkillPanel(CurrentSelectedSkill);
+        UserDataManager.Instance.Save();
     }
 
     public void OnClickExitPanelButton()
