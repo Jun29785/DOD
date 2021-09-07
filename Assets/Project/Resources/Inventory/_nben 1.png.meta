@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: e2db728d2e8ca0f429f08beabd7e2d39
+guid: 0b43289bb7e36c94fa6856434e9424e4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2344330748695491270
-    second: _nben_2 1_0
-  - first:
-      213: -1100372949381238891
-    second: _nben_2 1_1
+      213: -1416900483438049475
+    second: _nben 1_0
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -107,13 +104,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: _nben_2 1_0
+      name: _nben 1_0
       rect:
         serializedVersion: 2
-        x: 57
-        y: 53
-        width: 25
-        height: 6
+        x: 50
+        y: 130
+        width: 620
+        height: 1000
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -121,29 +118,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6c23508256cb88020800000000000000
-      internalID: 2344330748695491270
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: _nben_2 1_1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 56
-        height: 45
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 59faeafe1a0bab0f0800000000000000
-      internalID: -1100372949381238891
+      spriteID: d3788927488265ce0800000000000000
+      internalID: -1416900483438049475
       vertices: []
       indices: 
       edges: []

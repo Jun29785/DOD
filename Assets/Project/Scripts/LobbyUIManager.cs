@@ -27,6 +27,10 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
     public GameObject SkillPanel;
     public GameObject Inventory;
 
+    public GameObject SkillStatPanel;
+    public GameObject SkillDescPanel;
+    public GameObject SkillStatButton;
+    public GameObject SkillDescButton;
 
     private void Awake()
     {
@@ -121,6 +125,8 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
         Get.Description = Set.Description;
         Get.SkillLevel = Set.SkillLevel;
         SkillPanel.GetComponent<SkillPanel>().LoadSkillData();
+
+        SkillStatPanel.SetActive(true);
     }
 
     public void CloseSkillPanel()
@@ -128,6 +134,21 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
         SkillPanel.SetActive(false);
     }
 
+    public void OnClickSkillStatButton()
+    {
+        SkillDescPanel.SetActive(false);
+        SkillStatPanel.SetActive(true);
+        SkillDescButton.GetComponent<Image>().color = new Color32(150, 150, 150, 255);
+        SkillStatButton.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+    }
+
+    public void OnClickSkillDescButton()
+    {
+        SkillStatPanel.SetActive(false);
+        SkillDescPanel.SetActive(true);
+        SkillStatButton.GetComponent<Image>().color = new Color32(150, 150, 150, 255);
+        SkillDescButton.GetComponent<Image>().color = new Color32(255, 255, 255,255);
+    }
     public void OnClickUpgradeButton()
     {
         SkillManager.Instance.SkillLevel += 1;
