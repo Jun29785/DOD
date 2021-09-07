@@ -278,7 +278,7 @@ MonoBehaviour:
   DamageText_SpawnPoint: {fileID: 3033439191782583016}
   canvas: {fileID: 3033439191914039466}
   projectilePrefab: {fileID: 0}
-  healArea: {x: 4.5, y: 1}
+  healArea: {x: 4.5, y: 3.7}
 --- !u!61 &3033439192420616938
 BoxCollider2D:
   m_ObjectHideFlags: 0

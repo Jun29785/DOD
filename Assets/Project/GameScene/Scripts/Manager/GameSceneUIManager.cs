@@ -110,11 +110,10 @@ public class GameSceneUIManager : UIManager
     /// </summary>
     /// <param name="name"></param>
     /// <param name="cooltime"></param>
-    public void Create_SkillCoolTimeObject(string name, float cooltime)
+    public void Create_SkillCoolTimeObject(int Skey)
     {
         var obj = Instantiate(Skill_CoolTime_Prefab);
-        obj.GetComponent<SkillCoolTimeObject>().skillName = name;
-        obj.GetComponent<SkillCoolTimeObject>().CoolTime = cooltime;
+        obj.GetComponent<SkillCoolTimeObject>().skillKey = Skey;
         obj.gameObject.transform.parent = Content.transform;
         obj.gameObject.transform.localPosition = Vector2.zero;  
     }

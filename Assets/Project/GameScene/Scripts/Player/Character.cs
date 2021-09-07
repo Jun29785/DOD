@@ -239,7 +239,7 @@ public virtual void SetisUseSkillFalse()
                         {
                             if (CoolTimeCheck <= 0)
                             {
-                                GameSceneUIManager.Instance.Create_SkillCoolTimeObject(DataBaseManager.Instance.tdSkillDict[(int)SE].Name, DataBaseManager.Instance.tdSkillDict[(int)SE].Ctime);
+                                GameSceneUIManager.Instance.Create_SkillCoolTimeObject((int)SE);
                                 return true;
                             }
                             else

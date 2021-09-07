@@ -254,6 +254,8 @@ public class Knight : MeleeCharacter
             UseMp(DB.tdSkillDict[(int)skillEnum.검기날리기].Fmana);
 
             anim.SetTrigger("SwordAura");
+
+            currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.검기날리기].Name] = SkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.검기날리기].Name];
         }
 
     }
