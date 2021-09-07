@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class GameManager : Singleton<GameManager>
 {
 
-
     public TitleController titleController;
    
     protected override void Awake()
