@@ -16,7 +16,7 @@ public class Button : MonoBehaviour
         Time.timeScale = 1;
         Debug.Log(BattleManager.getGold);
         UserDataManager.user.Coin += BattleManager.getGold;
-        UserDataManager.Save();
+        UserDataManager.Instance.Save();
     }
 
 
@@ -29,7 +29,7 @@ public class Button : MonoBehaviour
         Time.timeScale = 1;
         Debug.Log(BattleManager.getGold);
         UserDataManager.user.Coin += BattleManager.getGold;
-        UserDataManager.Save();
+        UserDataManager.Instance.Save();
     }
 
     // 로비
@@ -94,7 +94,7 @@ public class Button : MonoBehaviour
         Time.timeScale = 1;
         viewObject.SetActive(false);
         BattleManager.Instance.isEnd = true;
-        UserDataManager.Save();
+        UserDataManager.Instance.Save();
     }
 
 
