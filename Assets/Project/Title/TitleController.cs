@@ -43,6 +43,7 @@ public class TitleController : MonoBehaviour
     }
     private void OnPhase(IntroPhase phase)
     {
+        UI.SetLoadStateDescription(phase.ToString());
         if (loadGaugeUpdateCorutine != null)
         {
             StopCoroutine(loadGaugeUpdateCorutine);
@@ -74,7 +75,7 @@ public class TitleController : MonoBehaviour
                 Debug.Log(phase + "Complete");
                 break;
             case IntroPhase.UserData:
-                UserDataManager.Init();
+                UserDataManager.Instance.Init();
                 LoadComplete = true;
                 Debug.Log(phase + "Complete");
                 break;

@@ -44,7 +44,7 @@ public class Character : Actor
         base.Start();
         Hp = MaxHp;
         Mp = MaxMp;
-
+        StartCoroutine(HpMpRecovery(1, 1, 2));
     }
 
 public override void Update()
