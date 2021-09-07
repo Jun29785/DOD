@@ -24,7 +24,6 @@ public class UserDataManager : Singleton<UserDataManager>
         TextAsset userData = Resources.Load<TextAsset>("UserDataSample");
 
 
-        print(userData);
         user = JsonConvert.DeserializeObject<UserData>(userData.text);
 
        //StartCoroutine(InitData());
@@ -36,6 +35,7 @@ public class UserDataManager : Singleton<UserDataManager>
     {
         string save = JsonConvert.SerializeObject(user);
         File.WriteAllText(Application.dataPath + "/Resources/UserDataSample.json", save);
+        //StartCoroutine(SaveData());
     }
 
 
@@ -51,5 +51,22 @@ public class UserDataManager : Singleton<UserDataManager>
 
         string init = www.downloadHandler.text;
         user = JsonConvert.DeserializeObject<UserData>(init);
+    }
+
+
+    IEnumerator SaveData()
+    {
+
+        string userdata = JsonConvert.SerializeObject(user);
+
+        yield return new WaitForSeconds(1);
+        WWWForm form = new WWWForm();
+
+        form.AddField("userData", userdata);
+
+        UnityWebRequest www = UnityWebRequest.Post("http://10.120.74.70:80/datasave", form); // 
+        yield return www.Send();
+
+        Debug.Log(www.downloadHandler.text);
     }
 }
