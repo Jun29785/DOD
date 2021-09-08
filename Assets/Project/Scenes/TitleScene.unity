@@ -166,6 +166,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02213b4952c8d9c459fe83f915b86798, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isexist: 1
+  nickExist: 0
 --- !u!1 &205013622
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,7 +472,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 504640850}
         m_TargetAssemblyTypeName: Button, Assembly-CSharp
-        m_MethodName: ToLobbyScene
+        m_MethodName: TitleToLobby
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -530,6 +532,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c843cff4ca8082a41b074f7c1f246873, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputName: {fileID: 0}
 --- !u!1 &636292742
 GameObject:
   m_ObjectHideFlags: 0

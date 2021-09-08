@@ -20,6 +20,12 @@ public class Button : MonoBehaviour
         UserDataManager.Instance.Save();
     }
 
+    public void TitleToLobby()
+    {
+        SceneManager.LoadScene(Scenes.LobbyScene.ToString());
+        Time.timeScale = 1;
+    }
+
 
     /// <summary>
     /// 게임씬으로
@@ -68,10 +74,38 @@ public class Button : MonoBehaviour
         if (text.text != "")
         {
             UserDataManager.user.nickname = text.text;
-            UserDataManager.Instance.isfirst = false;
-            inputName.SetActive(false);
+            UserDataManager.Instance.isexist = true;
+            UserDataManager.Instance.Sendnick();
+
+            Invoke("nickNameCheck", 1f);
         }
         Debug.Log(UserDataManager.user.nickname);
+    }
+
+    void nickNameCheck()
+    {
+        if (UserDataManager.Instance.nickExist)
+        {
+            Debug.Log("닉네임 중복");
+        }
+        else
+        {
+            inputName.SetActive(false);
+            UserDataManager.Instance.Init();
+
+            //StartCoroutine(initCoroutine());
+        }
+    }
+    
+
+    public IEnumerator initCoroutine()
+    {
+        yield return new WaitForSeconds(5);
+        //GameManager.Instance.StatSetting();
+    }
+    public void QuitGame()
+    {
+        Application.Quit();
     }
     //겜씬
 

@@ -27,7 +27,7 @@ namespace DOD.Define
     
     public enum playerCharacter 
     {
-        Knight,
+        기사,
 
     }
 

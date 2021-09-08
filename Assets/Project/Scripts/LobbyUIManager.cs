@@ -31,12 +31,15 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
     public GameObject SkillDescPanel;
     public GameObject SkillStatButton;
     public GameObject SkillDescButton;
-
+    
     private GameObject CurrentSelectedSkill;
 
 
     public GameObject nameInput;
-
+    public GameObject quitPanel;
+    public GameObject rankPanel;
+    public GameObject invenPanel;
+    bool isQuitPanel;
     protected override void Awake()
     {
         StartCoroutine("StartScene");
@@ -55,7 +58,7 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
 
     void nickNameInput()
     {
-        if (UserDataManager.Instance.isfirst)
+        if (!UserDataManager.Instance.isexist)
         {
             nameInput.SetActive(true);
         }
@@ -63,7 +66,29 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
     }
     private void Update()
     {
-        UpdateText();    
+        UpdateText();
+
+        Debug.Log(rankPanel.activeSelf);
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (!rankPanel.activeSelf)
+            {
+                if (!invenPanel.activeSelf)
+                {
+                    isQuitPanel = !isQuitPanel;
+                    quitPanel.SetActive(isQuitPanel);
+                }
+                else
+                {
+                    invenPanel.SetActive(false);
+                }
+            }
+            else
+            {
+                Debug.Log(1);
+                rankPanel.SetActive(false);
+            }
+        }
     }
 
     public void PointerDownStartButton()
