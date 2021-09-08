@@ -7,11 +7,11 @@ using DOD.Define;
 
 public class UserData
 {
-    public string nickName;
-    public int maxScore;
-    public int Coin;
+    public string nickname;
+    public int maxscore;
+    public int coin;
 
-    public Dictionary<string, int> Skill_Level;
+    public Dictionary<string, int> skill_level;
 
 
 }

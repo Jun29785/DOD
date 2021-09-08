@@ -23,14 +23,6 @@ public class GameManager : Singleton<GameManager>
         titleController.Initialize();
     }
 
-    private void Update()
-    {
-        foreach (var item in DataBaseManager.Instance.tdSkillDict)
-        {
-            Debug.Log(item.Value.Name + "   "+item.Value.Fdmg);
-
-        }
-    }
 
     /// <summary>
     /// 앱세팅
@@ -45,25 +37,12 @@ public class GameManager : Singleton<GameManager>
     {
         foreach (var item in DataBaseManager.Instance.tdSkillDict)
         {
-            item.Value.Fdmg += (int)(item.Value.Ldmg * (UserDataManager.user.Skill_Level[item.Value.Name]-1));
-            item.Value.Fmana += (int)(item.Value.Lmana * (UserDataManager.user.Skill_Level[item.Value.Name]-1));
+            item.Value.Fdmg += (int)(item.Value.Ldmg * (UserDataManager.user.skill_level[item.Value.Name]-1));
+            item.Value.Fmana += (int)(item.Value.Lmana * (UserDataManager.user.skill_level[item.Value.Name]-1));
         }
     }
 
-/*    public void SaveGameData()
-    {
-        UserData save = new UserData();
-        save.Coin = gold;
-
-        SaveManager.Save(save);
-    }
-
-    public void LoadGameData()
-    {
-        UserData save = SaveManager.Load();
-        gold = save.Coin;
-    }*/
-
+    
     
 }
 

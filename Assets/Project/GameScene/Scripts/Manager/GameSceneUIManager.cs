@@ -77,7 +77,7 @@ public class GameSceneUIManager : UIManager
         GOScoreText.text = BattleManager.Instance.Score.ToString();
         GetGoldText.text = BattleManager.getGold.ToString();
         GameoverPanel.SetActive(true);
-        UserDataManager.user.Coin += BattleManager.getGold;
+        UserDataManager.user.coin += BattleManager.getGold;
         BattleManager.getGold = 0;
         Debug.Log(BattleManager.getGold);
     }
