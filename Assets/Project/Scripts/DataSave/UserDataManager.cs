@@ -14,6 +14,7 @@ public class UserDataManager : Singleton<UserDataManager>
     public static UserData user = new UserData();
 
 
+
     
     public void Start()
     {

@@ -76,6 +76,7 @@ public class TitleController : MonoBehaviour
                 break;
             case IntroPhase.UserData:
                 UserDataManager.Instance.Init();
+                GameManager.Instance.StatSetting();
                 LoadComplete = true;
                 Debug.Log(phase + "Complete");
                 break;

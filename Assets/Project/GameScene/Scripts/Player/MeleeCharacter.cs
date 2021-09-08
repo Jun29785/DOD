@@ -62,7 +62,7 @@ public class MeleeCharacter : Character
         foreach (Collider2D enemy in hitEnemy)
         {
 
-            enemy.GetComponent<Monster>().Damaged(ATKDamage); // 모든적에게 공격력만큼 데미지를줌ㄴ
+            enemy.GetComponent<Monster>().Damaged(ATKDamage); // 모든적에게 공격력만큼 데미지를줌
         }
     }
 

@@ -159,6 +159,8 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
     public void OnClickUpgradeButton()
     {
         CurrentSelectedSkill.GetComponent<SkillButton>().SkillLevel += 1;
+        UserDataManager.user.Skill_Level[CurrentSelectedSkill.GetComponent<SkillButton>().Name] += 1;
+        GameManager.Instance.StatSetting(); 
         OpenSkillPanel(CurrentSelectedSkill);
         UserDataManager.Instance.Save();
     }

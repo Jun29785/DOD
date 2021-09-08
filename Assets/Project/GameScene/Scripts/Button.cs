@@ -14,8 +14,6 @@ public class Button : MonoBehaviour
     {
         SceneManager.LoadScene(Scenes.LobbyScene.ToString());
         Time.timeScale = 1;
-        Debug.Log(BattleManager.getGold);
-        UserDataManager.user.Coin += BattleManager.getGold;
         UserDataManager.Instance.Save();
     }
 
@@ -27,8 +25,6 @@ public class Button : MonoBehaviour
     {
         LoadingSceneController.LoadScene(Scenes.GameScene.ToString());
         Time.timeScale = 1;
-        Debug.Log(BattleManager.getGold);
-        UserDataManager.user.Coin += BattleManager.getGold;
         UserDataManager.Instance.Save();
     }
 
