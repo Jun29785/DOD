@@ -15,7 +15,7 @@ public class BattleManager : MonoBehaviour
 
     public Stage currentmap;                          // 현재맵
     public static BattleManager Instance;
-    public static int getGold = 0;                    // 얻은 골드
+    public int getGold = 0;                    // 얻은 골드
     public float Score = 0;                           // 현재 점수
 
     public int purpose; 
@@ -65,7 +65,7 @@ public class BattleManager : MonoBehaviour
         BattleManager.Instance.isEnd = false;
         character.Hp = character.MaxHp;
         character.Mp = character.MaxMp;
-        purpose = 10;
+        purpose = 100;
         BossInterval = purpose;
         Pattern_id.Clear();
         Score = 0;

@@ -34,7 +34,10 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
 
     private GameObject CurrentSelectedSkill;
 
-    private void Awake()
+
+    public GameObject nameInput;
+
+    protected override void Awake()
     {
         StartCoroutine("StartScene");
     }
@@ -45,9 +48,19 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
         yield return new WaitForSeconds(1.5f);
         Leave.SetActive(false);
         Character.SetBool("IDLE", true);
-        
+
+        nickNameInput();
     }
 
+
+    void nickNameInput()
+    {
+        if (UserDataManager.Instance.isfirst)
+        {
+            nameInput.SetActive(true);
+        }
+        
+    }
     private void Update()
     {
         UpdateText();    
@@ -65,7 +78,7 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
 
     public void UpdateText()
     {
-        Coin.text = UserDataManager.user.Coin.ToString();
+        Coin.text = UserDataManager.user.coin.ToString();
     }
 
     public void PointerDownInventoryButton()
@@ -105,7 +118,7 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
             j.Dmg = i.Value.Fdmg + (i.Value.Ldmg * j.SkillLevel);
             j.Description = i.Value.Description;
             Debug.Log("Get Static Data");
-            j.SkillLevel = UserDataManager.user.Skill_Level[DataBaseManager.Instance.tdSkillDict[(int)i.Value.SKey].Name];
+            j.SkillLevel = UserDataManager.user.skill_level[DataBaseManager.Instance.tdSkillDict[(int)i.Value.SKey].Name];
             Debug.Log("Create : " + Create.name);
             Create.name = i.Value.Name;
             if (j.SkillLevel < 1)
@@ -159,7 +172,7 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
     public void OnClickUpgradeButton()
     {
         CurrentSelectedSkill.GetComponent<SkillButton>().SkillLevel += 1;
-        UserDataManager.user.Skill_Level[CurrentSelectedSkill.GetComponent<SkillButton>().Name] += 1;
+        UserDataManager.user.skill_level[CurrentSelectedSkill.GetComponent<SkillButton>().Name] += 1;
         GameManager.Instance.StatSetting(); 
         OpenSkillPanel(CurrentSelectedSkill);
         UserDataManager.Instance.Save();

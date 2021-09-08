@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using DOD.Define;
+using UnityEngine.UI;
+
 public class Button : MonoBehaviour
 {
 
+    public GameObject inputName;
 
     /// <summary>
     /// 로비로
@@ -60,7 +63,16 @@ public class Button : MonoBehaviour
         viewObj.SetActive(false);
     }
 
-
+    public void enter_nickName(Text text)
+    {
+        if (text.text != "")
+        {
+            UserDataManager.user.nickname = text.text;
+            UserDataManager.Instance.isfirst = false;
+            inputName.SetActive(false);
+        }
+        Debug.Log(UserDataManager.user.nickname);
+    }
     //겜씬
 
 

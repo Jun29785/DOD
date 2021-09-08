@@ -14,7 +14,7 @@ public class UserDataManager : Singleton<UserDataManager>
     public static UserData user = new UserData();
 
 
-
+    public bool isfirst = true;
     
     public void Start()
     {
@@ -37,7 +37,7 @@ public class UserDataManager : Singleton<UserDataManager>
         string save = JsonConvert.SerializeObject(user);
         Debug.Log(save);
         File.WriteAllText(Application.dataPath + "/Resources/UserDataSample.json", save);
-        //StartCoroutine(SaveData());
+        //StartCoroutine(SaveData());   
     }
 
 

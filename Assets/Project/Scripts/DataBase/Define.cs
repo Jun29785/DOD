@@ -22,6 +22,7 @@ namespace DOD.Define
         회전공격,
         검이커져,
         검기날리기,
+        삼단베기,
     }
     
     public enum playerCharacter 

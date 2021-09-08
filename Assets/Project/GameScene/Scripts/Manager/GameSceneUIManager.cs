@@ -20,7 +20,8 @@ public class GameSceneUIManager : UIManager
     public Text GOScoreText;                    // 게임오버시 점수
     public Text GetGoldText;                    // 게임오버시 얻은 골드
 
-    
+    int gold;
+    int CNT;
     void Start()
     {
         Instance = this;
@@ -31,6 +32,7 @@ public class GameSceneUIManager : UIManager
     {
         ScoreUpdate();
         GameOverCheck();
+        Debug.Log(gold);
     }
 
 
@@ -74,12 +76,17 @@ public class GameSceneUIManager : UIManager
     /// </summary>
     void Gameover()
     {
-        GOScoreText.text = BattleManager.Instance.Score.ToString();
-        GetGoldText.text = BattleManager.getGold.ToString();
+        if (CNT == 0)
+        {
+            gold = BattleManager.Instance.getGold;
+            CNT++;
+        }
+            GOScoreText.text = BattleManager.Instance.Score.ToString();
+        GetGoldText.text = gold.ToString();
         GameoverPanel.SetActive(true);
-        UserDataManager.user.Coin += BattleManager.getGold;
-        BattleManager.getGold = 0;
-        Debug.Log(BattleManager.getGold);
+        UserDataManager.user.coin += BattleManager.Instance.getGold;
+        BattleManager.Instance.getGold = 0;
+        Debug.Log(BattleManager.Instance.getGold);
     }
 
 
