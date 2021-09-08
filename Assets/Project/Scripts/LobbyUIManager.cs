@@ -49,7 +49,7 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
         Leave.SetActive(false);
         Character.SetBool("IDLE", true);
 
-        Invoke("nickNameInput", 0.6f);
+        nickNameInput();
     }
 
 

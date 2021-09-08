@@ -37,7 +37,7 @@ public class UserDataManager : Singleton<UserDataManager>
         string save = JsonConvert.SerializeObject(user);
         Debug.Log(save);
         File.WriteAllText(Application.dataPath + "/Resources/UserDataSample.json", save);
-        //StartCoroutine(SaveData());
+        //StartCoroutine(SaveData());   
     }
 
 
