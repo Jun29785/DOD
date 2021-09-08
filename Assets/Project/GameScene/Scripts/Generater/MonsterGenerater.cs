@@ -167,6 +167,7 @@ public class MonsterGenerater : MonoBehaviour
                 }
             }
 
+
         }
     }
     public void Randomindex() // 몬스터 위치 인덱스 설정 

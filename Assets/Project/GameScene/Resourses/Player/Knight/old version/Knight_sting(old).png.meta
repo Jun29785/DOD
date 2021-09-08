@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d6c8c7c7f47b1484c816b95b8e845f2f
+guid: b7535782ebe86db4994e807ce5c4d8c2
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -35,6 +35,18 @@ TextureImporter:
   - first:
       213: 3331179546415783246
     second: Knight_sting_10
+  - first:
+      213: -4160312631736955702
+    second: Knight_sting_11
+  - first:
+      213: 862113243378392905
+    second: Knight_sting_12
+  - first:
+      213: 1990266748716801886
+    second: Knight_sting_13
+  - first:
+      213: 1564500160711099994
+    second: Knight_sting_14
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -149,12 +161,12 @@ TextureImporter:
       name: Knight_sting_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 6
         y: 106
-        width: 95
-        height: 47
+        width: 63
+        height: 45
       alignment: 9
-      pivot: {x: 0.29, y: 0}
+      pivot: {x: 0.33, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -170,12 +182,12 @@ TextureImporter:
       name: Knight_sting_1
       rect:
         serializedVersion: 2
-        x: 95
+        x: 101
         y: 106
-        width: 95
-        height: 47
+        width: 63
+        height: 45
       alignment: 9
-      pivot: {x: 0.29, y: 0}
+      pivot: {x: 0.33, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -191,12 +203,12 @@ TextureImporter:
       name: Knight_sting_2
       rect:
         serializedVersion: 2
-        x: 190
+        x: 192
         y: 106
-        width: 95
-        height: 47
+        width: 56
+        height: 45
       alignment: 9
-      pivot: {x: 0.29, y: 0}
+      pivot: {x: 0.4, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -212,12 +224,12 @@ TextureImporter:
       name: Knight_sting_3
       rect:
         serializedVersion: 2
-        x: 285
+        x: 291
         y: 106
-        width: 95
-        height: 47
+        width: 89
+        height: 45
       alignment: 9
-      pivot: {x: 0.29, y: 0}
+      pivot: {x: 0.23, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -230,36 +242,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Knight_sting_4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 55
-        width: 95
-        height: 47
-      alignment: 9
-      pivot: {x: 0.29, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f30d307843f82e520800000000000000
-      internalID: 2729901779906187327
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Knight_sting_5
       rect:
         serializedVersion: 2
-        x: 95
+        x: 6
         y: 55
-        width: 95
-        height: 47
+        width: 83
+        height: 45
       alignment: 9
-      pivot: {x: 0.29, y: 0}
+      pivot: {x: 0.24, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -272,36 +263,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Knight_sting_6
-      rect:
-        serializedVersion: 2
-        x: 190
-        y: 55
-        width: 95
-        height: 47
-      alignment: 9
-      pivot: {x: 0.29, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1e128f9138ea2deb0800000000000000
-      internalID: -4696499583294365215
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Knight_sting_7
       rect:
         serializedVersion: 2
-        x: 285
+        x: 97
         y: 55
-        width: 95
-        height: 47
+        width: 56
+        height: 45
       alignment: 9
-      pivot: {x: 0.29, y: 0}
+      pivot: {x: 0.4, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -317,12 +287,12 @@ TextureImporter:
       name: Knight_sting_8
       rect:
         serializedVersion: 2
-        x: 0
-        y: 4
-        width: 95
-        height: 47
+        x: 196
+        y: 55
+        width: 84
+        height: 45
       alignment: 9
-      pivot: {x: 0.29, y: 0}
+      pivot: {x: 0.24, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -335,36 +305,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Knight_sting_9
-      rect:
-        serializedVersion: 2
-        x: 95
-        y: 4
-        width: 95
-        height: 47
-      alignment: 9
-      pivot: {x: 0.29, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 28965e6ff21f2b560800000000000000
-      internalID: 7328184731993205122
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Knight_sting_10
       rect:
         serializedVersion: 2
-        x: 190
-        y: 4
-        width: 95
-        height: 47
+        x: 291
+        y: 55
+        width: 78
+        height: 45
       alignment: 9
-      pivot: {x: 0.29, y: 0}
+      pivot: {x: 0.26, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -372,6 +321,48 @@ TextureImporter:
       bones: []
       spriteID: e4dd82be52aba3e20800000000000000
       internalID: 3331179546415783246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Knight_sting_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4
+        width: 59
+        height: 45
+      alignment: 9
+      pivot: {x: 0.4, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94f9abb5d67d6fb00800000000000000
+      internalID: 862113243378392905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Knight_sting_13
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 4
+        width: 87
+        height: 45
+      alignment: 9
+      pivot: {x: 0.24, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5f59852019de9b10800000000000000
+      internalID: 1990266748716801886
       vertices: []
       indices: 
       edges: []
