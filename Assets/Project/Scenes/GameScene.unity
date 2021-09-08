@@ -382,6 +382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c843cff4ca8082a41b074f7c1f246873, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputName: {fileID: 0}
 --- !u!1 &104853320
 GameObject:
   m_ObjectHideFlags: 0
@@ -2760,6 +2761,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentmap: 0
+  getGold: 0
   Score: 0
   purpose: 100
   BossInterval: 0
@@ -2916,6 +2918,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c843cff4ca8082a41b074f7c1f246873, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputName: {fileID: 0}
 --- !u!114 &791993564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4248,6 +4251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c843cff4ca8082a41b074f7c1f246873, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputName: {fileID: 0}
 --- !u!1 &1201295630
 GameObject:
   m_ObjectHideFlags: 0
@@ -5186,6 +5190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c843cff4ca8082a41b074f7c1f246873, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputName: {fileID: 0}
 --- !u!114 &1463491955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5883,8 +5888,8 @@ BoxCollider2D:
   m_Offset: {x: 0.006278977, y: 0.22599356}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
-    oldSize: {x: 0.39, y: 0.45}
+    pivot: {x: 0.33115932, y: 0.06193871}
+    oldSize: {x: 0.98, y: 0.65}
     newSize: {x: 0.39, y: 0.45}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -6001,6 +6006,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c843cff4ca8082a41b074f7c1f246873, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputName: {fileID: 0}
 --- !u!114 &1820512719
 MonoBehaviour:
   m_ObjectHideFlags: 0

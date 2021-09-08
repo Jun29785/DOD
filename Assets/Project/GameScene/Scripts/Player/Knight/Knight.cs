@@ -234,7 +234,6 @@ public class Knight : MeleeCharacter
 
     #endregion
 
-
     #region 검기 날리기
 
 
@@ -270,6 +269,24 @@ public class Knight : MeleeCharacter
 
 
 
+    #endregion
+
+    #region 삼단베기
+
+    public void ThreeCut()
+    {
+        currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.삼단베기].Name] -= Time.deltaTime;
+
+        if (UseSkill(skillEnum.삼단베기, BattleManager.Instance.Pattern_id, currentSkillcoolTimeDic[DataBaseManager.Instance.tdSkillDict[(int)skillEnum.삼단베기].Name]))
+        {
+            ATKDamage = DB.tdSkillDict[(int)skillEnum.삼단베기].Fdmg;
+            Debug.Log(DB.tdSkillDict[(int)skillEnum.삼단베기].Fdmg);
+            BattleManager.Instance.isUseSkill = true;
+            UseMp(DB.tdSkillDict[(int)skillEnum.삼단베기].Fmana);
+            anim.SetTrigger("ThreeCut");
+            currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.삼단베기].Name] = SkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.삼단베기].Name];
+        }
+    }
     #endregion
     #endregion
 

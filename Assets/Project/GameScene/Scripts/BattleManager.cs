@@ -15,7 +15,7 @@ public class BattleManager : MonoBehaviour
 
     public Stage currentmap;                          // 현재맵
     public static BattleManager Instance;
-    public static int getGold = 0;                    // 얻은 골드
+    public int getGold = 0;                    // 얻은 골드
     public float Score = 0;                           // 현재 점수
 
     public int purpose; 
