@@ -1,47 +1,110 @@
 {
-  "10001": {
-    "Name": "연속찌르기",
-    "Command": "0,1,2",
-    "Fmana": "50",
-    "Lmana": "3",
-    "Fdmg": "20",
-    "Ldmg": "2",
-    "Ctime": "15"
-  },
-  "10002": {
-    "Name": "돌진",
-    "Command": "3,4,5",
-    "Fmana": "50",
-    "Lmana": "3",
-    "Fdmg": "25",
-    "Ldmg": "2.5",
-    "Ctime": "20"
-  },
-  "10003": {
-    "Name": "회전공격",
-    "Command": "6,7,8",
-    "Fmana": "50",
-    "Lmana": "3",
-    "Fdmg": "40",
-    "Ldmg": "4",
-    "Ctime": "30"
-  },
-  "10004": {
-    "Name": "검이커져!",
-    "Command": "0,1,2,5",
-    "Fmana": "100",
-    "Lmana": "3",
-    "Fdmg": "100",
-    "Ldmg": "4",
-    "Ctime": "30"
-  },
-  "10005": {
-    "Name": "검기날리기",
-    "Command": "1,2,5,8,7",
-    "Fmana": "100",
-    "Lmana": "3",
-    "Fdmg": "2",
-    "Ldmg": "4",
-    "Ctime": "15"
-  }
+     "10001": {
+          "Name": "연속찌르기",
+          "Command": "0,1,2",
+          "Fmana": "50",
+          "Lmana": "3",
+          "Fdmg": "5",
+          "Ldmg": "2.5",
+          "Ctime": "5",
+          "L_Ctime": "0",
+          "UpgrateCost": "50",
+          "Description": "연속으로 공격한다"
+   },
+     "10002": {
+          "Name": "돌진",
+          "Command": "3,4,5",
+          "Fmana": "50",
+          "Lmana": "3",
+          "Fdmg": "5",
+          "Ldmg": "2",
+          "Ctime": "5",
+          "L_Ctime": "0",
+          "UpgrateCost": "50",
+          "Description": "돌진하며 상대를 밀어낸다"
+   },
+     "10003": {
+          "Name": "회전공격",
+          "Command": "6,7,8",
+          "Fmana": "50",
+          "Lmana": "3",
+          "Fdmg": "7",
+          "Ldmg": "3",
+          "Ctime": "10",
+          "L_Ctime": "0",
+          "UpgrateCost": "75",
+          "Description": "몸을 회전하여 공격한다"
+   },
+     "10004": {
+          "Name": "내려찍기",
+          "Command": "0,7,2",
+          "Fmana": "50",
+          "Lmana": "4",
+          "Fdmg": "8",
+          "Ldmg": "5",
+          "Ctime": "10",
+          "L_Ctime": "0",
+          "UpgrateCost": "100",
+          "Description": "검을 크게 만들어 상대를 내려친다"
+   },
+     "10005": {
+          "Name": "검기날리기",
+          "Command": "0,5,6",
+          "Fmana": "70",
+          "Lmana": "5",
+          "Fdmg": "10",
+          "Ldmg": "3",
+          "Ctime": "15",
+          "L_Ctime": "0",
+          "UpgrateCost": "100",
+          "Description": "검에 내공을 밀어넣어 상대에게 날려보낸다"
+   },
+     "10006": {
+          "Name": "z자 베기",
+          "Command": "0,1,2,4,6,7,8",
+          "Fmana": "50",
+          "Lmana": "4",
+          "Fdmg": "15",
+          "Ldmg": "3",
+          "Ctime": "15",
+          "L_Ctime": "0",
+          "UpgrateCost": "100",
+          "Description": "→ ↙ → 순서로 빠르게 상대를 베어낸다"
+   },
+     "10007": {
+          "Name": "밀쳐내기",
+          "Command": "0,1,5,7,6",
+          "Fmana": "50",
+          "Lmana": "3",
+          "Fdmg": "10",
+          "Ldmg": "4",
+          "Ctime": "7",
+          "L_Ctime": "0",
+          "UpgrateCost": "50",
+          "Description": "칼등으로 크게 휘둘러 상대를 날려보낸다"
+   },
+     "10008": {
+          "Name": "흘리기",
+          "Command": "0,3,6",
+          "Fmana": "50",
+          "Lmana": "0",
+          "Fdmg": "0",
+          "Ldmg": "0",
+          "Ctime": "30",
+          "L_Ctime": "1",
+          "UpgrateCost": "50",
+          "Description": "상대의 공격을 예측해 칼로 공격을 흘린다"
+   },
+     "10009": {
+          "Name": "회복",
+          "Command": "1,4,7",
+          "Fmana": "0",
+          "Lmana": "0",
+          "Fdmg": "5",
+          "Ldmg": "2",
+          "Ctime": "30",
+          "L_Ctime": "2",
+          "UpgrateCost": "50",
+          "Description": "체력과 마나를 대폭 회복 시킨다."
+   }
 }

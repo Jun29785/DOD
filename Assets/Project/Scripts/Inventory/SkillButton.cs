@@ -6,6 +6,8 @@ using DOD.DB;
 public class SkillButton : MonoBehaviour
 {
     [SerializeField]
+    public bool isOpenSkill = false;
+    [SerializeField]
     public int SKey;
     [SerializeField]
     public string Name;
@@ -19,6 +21,8 @@ public class SkillButton : MonoBehaviour
     public string Description;
     [SerializeField]
     public int SkillLevel;
+    [SerializeField]
+    public int UpgrateCost;
 
     public GameObject Skill;
 
@@ -30,7 +34,15 @@ public class SkillButton : MonoBehaviour
 
         Debug.Log("name : " + nameKey);
 
-    }    
+    }
+
+    private void Update()
+    {
+        if (SkillLevel < 1 && isOpenSkill)
+        {
+            UpgrateCost = 1000;
+        }
+    }
 
     public void OnClickSkillButton()
     {
