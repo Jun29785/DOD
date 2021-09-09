@@ -14,8 +14,8 @@ public class UserDataManager : Singleton<UserDataManager>
     public static UserData user = new UserData();
 
      
-    public bool isexist;
-    public bool nickExist=  true;
+    public bool isexist = true;
+    public bool nickExist;
     public void Start()
     {
         DontDestroyOnLoad(this);
@@ -23,7 +23,8 @@ public class UserDataManager : Singleton<UserDataManager>
     public void Init()
     {
        TextAsset userData = Resources.Load<TextAsset>("UserDataSample");
-        
+
+        Debug.Log(userData);
 
        user = JsonConvert.DeserializeObject<UserData>(userData.text);
 

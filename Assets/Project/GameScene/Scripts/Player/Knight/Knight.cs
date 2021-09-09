@@ -96,7 +96,7 @@ public class Knight : MeleeCharacter
         currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.돌진].Name] = SkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.돌진].Name];
 
         float currentTime = 1;
-
+        bool isimmute= false;
         BattleManager.Instance.isUseSkill = true;
         BattleManager.Instance.isDash = true;
 
@@ -112,11 +112,22 @@ public class Knight : MeleeCharacter
                 enemy.transform.position = new Vector2(transform.position.x + 0.6f, enemy.transform.position.y);
                 if (currentTime >= 0.4f)
                 {
+                    
                     enemy.GetComponent<Monster>().Damaged(ATKDamage);
+                    if (enemy.gameObject.tag == "immuneMonster")
+                    {
+                        isimmute = true;
+                        break;
+                    }
                 }
 
             }
 
+            if (isimmute)
+            {
+
+                break;
+            }
             transform.position = Vector2.Lerp(transform.position, DashTransform.position, 2.2f * Time.deltaTime);
             if (currentTime >= 0.4f)
             {
@@ -164,7 +175,6 @@ public class Knight : MeleeCharacter
         if (UseSkill(skillEnum.연속찌르기, BattleManager.Instance.Pattern_id,currentSkillcoolTimeDic[DataBaseManager.Instance.tdSkillDict[(int)skillEnum.연속찌르기].Name]))
         {
             ATKDamage = DB.tdSkillDict[(int)skillEnum.연속찌르기].Fdmg;
-            Debug.Log(DB.tdSkillDict[(int)skillEnum.연속찌르기].Fdmg);
             BattleManager.Instance.isUseSkill = true;
             UseMp(DB.tdSkillDict[(int)skillEnum.연속찌르기].Fmana);
             anim.SetTrigger("Sting");

@@ -33,8 +33,11 @@ public class Button : MonoBehaviour
     public void ToGameScene()
     {
         LoadingSceneController.LoadScene(Scenes.GameScene.ToString());
+        //GameManager.Instance.StatSetting();
+
         Time.timeScale = 1;
-        UserDataManager.Instance.Save();
+        //UserDataManager.Instance.Save();
+
     }
 
     // 로비

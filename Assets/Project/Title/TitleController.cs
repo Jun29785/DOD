@@ -75,7 +75,7 @@ public class TitleController : MonoBehaviour
                 Debug.Log(phase + "Complete");
                 break;
             case IntroPhase.UserData:
-                UserDataManager.Instance.DeviceCheck();
+                //UserDataManager.Instance.DeviceCheck();
 
                 Invoke("temp", 3);
                 LoadComplete = true;
@@ -107,11 +107,10 @@ public class TitleController : MonoBehaviour
 
     void temp()
     {
-        if (UserDataManager.Instance.isexist)
-        {
+            //if (UserDataManager.Instance.isexist)
+        //{
             UserDataManager.Instance.Init();
-            GameManager.Instance.StatSetting();
-        }
+        //}
     }
 
     

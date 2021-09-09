@@ -25,14 +25,16 @@ public abstract class Monster : Actor
     public GameObject canvas;
     bool isBackHp;
 
+
+    public bool isBossGoblin;
     public override void Awake()
     {
         base.Awake();
-        DamageText_SpawnPoint.position = new Vector2(DamageText_SpawnPoint.position.x + Random.Range(-0.2f, 0.2f), DamageText_SpawnPoint.position.y);
 
     }
     public override void Start()
     {
+
         base.Start();
 
         if (Hpbar != null)
@@ -44,7 +46,8 @@ public abstract class Monster : Actor
 
     public virtual void OnEnable()
     {
-        Hp = MaxHp;
+        
+        Hp = applyMaxHp;
         isDie = false;
     }
 
@@ -164,6 +167,12 @@ public abstract class Monster : Actor
             var obj = Objectpool.GetHealobject(transform.position);
             obj.transform.parent = effect_Pos;
         }
+    }
+
+    private void OnDisable()
+    {
+        applyMaxHp = MaxHp;
+        applyPower = Power;
     }
 }
 

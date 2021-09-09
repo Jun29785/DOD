@@ -49,8 +49,18 @@ public class shamanGoblin : ProjectileMonster
             {
                 if (healMonster != null)
                 {
-                    monster.GetComponent<Monster>().Hp = monster.GetComponent<Monster>().MaxHp;
-                    monster.GetComponent<Monster>().getHealed();
+                    if (monster != null)
+                    {
+                        try
+                        {
+                            monster.GetComponent<Monster>().Hp = monster.GetComponent<Monster>().Hp + applyPower;
+                            monster.GetComponent<Monster>().getHealed();
+                        }
+                        catch
+                        {
+
+                        }
+                    }
                 }
             }
         }

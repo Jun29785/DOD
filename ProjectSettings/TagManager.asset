@@ -11,6 +11,7 @@ TagManager:
   - DataBase
   - bossName
   - bossHp
+  - immuneMonster
   layers:
   - Default
   - TransparentFX

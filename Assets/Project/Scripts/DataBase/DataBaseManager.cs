@@ -51,6 +51,8 @@ namespace DOD.DB
                 tdMonsterDict.Add(tdMonster.unitNo, tdMonster);
             }
 
+            Debug.Log("몬스터 테이블 완료");
+
         }
 
         public void LoadRankData()
@@ -77,6 +79,7 @@ namespace DOD.DB
 
                 userRankDict.Add(tdrank);
             }
+            Debug.Log("랭크 테이블 완료");
 
 
         }
@@ -102,6 +105,7 @@ namespace DOD.DB
 
                 tdSkillDict.Add(tdSkill.SKey, tdSkill);
             }
+            Debug.Log("스킬 테이블 완료");
         }
 
 

@@ -149,12 +149,14 @@ MonoBehaviour:
   unitNo: 0
   Name: 
   MaxHp: 0
+  applyMaxHp: 0
   Hp: 0
   AttackDistance: 0
   AttackDelay: 0
   ApplyAttackDelay: 0
   CurrentAttackDelay: 0
   Power: 0
+  applyPower: 0
   anim: {fileID: 0}
   Speed: 0
   applySpeed: 0
@@ -168,6 +170,7 @@ MonoBehaviour:
   Hpbar: {fileID: 6309554028702807968}
   DamageText_SpawnPoint: {fileID: 6309554029321268446}
   canvas: {fileID: 6309554028784337561}
+  isBossGoblin: 0
 --- !u!50 &7622425256465231679
 Rigidbody2D:
   serializedVersion: 4
