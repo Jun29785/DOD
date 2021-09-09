@@ -14,6 +14,7 @@ public class SkillManager : Singleton<SkillManager>
     public int Ctime;
     public string Description;
     public int SkillLevel;
+    public int UpgrateCost;
     public Image SkillIcon;
 
     void Awake()

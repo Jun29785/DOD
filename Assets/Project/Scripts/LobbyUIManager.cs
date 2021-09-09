@@ -31,7 +31,8 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
     public GameObject SkillDescPanel;
     public GameObject SkillStatButton;
     public GameObject SkillDescButton;
-
+    
+    
     private GameObject CurrentSelectedSkill;
 
 
@@ -117,6 +118,7 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
             j.Mana = i.Value.Fmana + (i.Value.Lmana * j.SkillLevel);
             j.Dmg = i.Value.Fdmg + (i.Value.Ldmg * j.SkillLevel);
             j.Description = i.Value.Description;
+            j.UpgrateCost = i.Value.UpgradeCost;
             Debug.Log("Get Static Data");
             j.SkillLevel = UserDataManager.user.skill_level[DataBaseManager.Instance.tdSkillDict[(int)i.Value.SKey].Name];
             Debug.Log("Create : " + Create.name);
@@ -142,6 +144,7 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
         Get.Mana = Set.Mana;
         Get.Dmg = Set.Dmg;
         Get.Description = Set.Description;
+        Get.UpgrateCost = Set.UpgrateCost;
         Get.SkillLevel = Set.SkillLevel;
         SkillPanel.GetComponent<SkillPanel>().LoadSkillData();
         
@@ -151,6 +154,7 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
     public void CloseSkillPanel()
     {
         SkillPanel.SetActive(false);
+        CreateButton(); 
     }
 
     public void OnClickSkillStatButton()
@@ -171,6 +175,10 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
 
     public void OnClickUpgradeButton()
     {
+        if (!CurrentSelectedSkill.GetComponent<SkillButton>().isOpenSkill)
+        {
+            CurrentSelectedSkill.GetComponent<SkillButton>().isOpenSkill = true;
+        }
         CurrentSelectedSkill.GetComponent<SkillButton>().SkillLevel += 1;
         UserDataManager.user.skill_level[CurrentSelectedSkill.GetComponent<SkillButton>().Name] += 1;
         GameManager.Instance.StatSetting(); 

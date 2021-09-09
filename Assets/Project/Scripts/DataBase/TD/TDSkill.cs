@@ -17,7 +17,7 @@ public class TDSkill : TableBase
     public float Ldmg;
     public int Ctime;
     public string Description;
-
+    public int UpgradeCost;
     public override void SetJsonData(string key, JObject info)
     {
         base.SetJsonData(key, info);
@@ -30,8 +30,8 @@ public class TDSkill : TableBase
         Fdmg = info["Fdmg"].Value<int>();
         Ldmg = info["Ldmg"].Value<float>();
         Ctime = info["Ctime"].Value<int>();
-        //Description = info["Description"].Value<string>();
-
+        Description = info["Description"].Value<string>();
+        UpgradeCost = info["UpgrateCost"].Value<int>();
     }
 
 }
