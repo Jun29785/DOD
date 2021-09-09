@@ -9,7 +9,7 @@ public class Button : MonoBehaviour
 {
 
     public GameObject inputName;
-
+    public Text overlapName;
     /// <summary>
     /// 로비로
     /// </summary>
@@ -18,6 +18,12 @@ public class Button : MonoBehaviour
         SceneManager.LoadScene(Scenes.LobbyScene.ToString());
         Time.timeScale = 1;
         UserDataManager.Instance.Save();
+    }
+
+    public void TitleToLobby()
+    {
+        SceneManager.LoadScene(Scenes.LobbyScene.ToString());
+        Time.timeScale = 1;
     }
 
 
@@ -68,10 +74,46 @@ public class Button : MonoBehaviour
         if (text.text != "")
         {
             UserDataManager.user.nickname = text.text;
-            UserDataManager.Instance.isfirst = false;
-            inputName.SetActive(false);
+            UserDataManager.Instance.isexist = true;
+            //UserDataManager.Instance.Sendnick();
+
+            Invoke("nickNameCheck", 1f);
         }
         Debug.Log(UserDataManager.user.nickname);
+    }
+
+    void nickNameCheck()
+    {
+        if (UserDataManager.Instance.nickExist)
+        {
+            Debug.Log("닉네임 중복");
+            StartCoroutine(OverlapName());
+        }
+        else
+        {
+            inputName.SetActive(false);
+            UserDataManager.Instance.Init();
+
+        }
+    }
+    
+    IEnumerator OverlapName()
+    {
+        overlapName.gameObject.SetActive(true);
+        while (true) {
+            yield return null;
+            overlapName.color = new Color(overlapName.color.r, overlapName.color.g, overlapName.color.b, overlapName.color.a - 0.01f);
+            if (overlapName.color.a <= 0)
+            {
+                overlapName.gameObject.SetActive(false);
+                overlapName.color = overlapName.color = new Color(overlapName.color.r, overlapName.color.g, overlapName.color.b, 1);
+                break;
+            }
+        }
+    }
+    public void QuitGame()
+    {
+        Application.Quit();
     }
     //겜씬
 
