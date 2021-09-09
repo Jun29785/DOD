@@ -18,6 +18,10 @@ public class Knight_SwordAura_Projectile : MonoBehaviour
     private void Update()
     {
         transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
+        if(transform.position.x >= 6.81f)
+        {
+            Destroy(gameObject);
+        }
     }
 
 
@@ -35,6 +39,12 @@ public class Knight_SwordAura_Projectile : MonoBehaviour
         {
             
             collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(collision.gameObject.GetComponent<Rigidbody2D>().velocity.x + 15, collision.gameObject.GetComponent<Rigidbody2D>().velocity.y);
+            collision.gameObject.GetComponent<Monster>().Damaged(Power);
+
+            Destroy(gameObject);
+        }
+        else if(collision.tag == "immuneMonster")
+        {
             collision.gameObject.GetComponent<Monster>().Damaged(Power);
 
             Destroy(gameObject);

@@ -9,7 +9,7 @@ public class Button : MonoBehaviour
 {
 
     public GameObject inputName;
-
+    public Text overlapName;
     /// <summary>
     /// 로비로
     /// </summary>
@@ -75,7 +75,7 @@ public class Button : MonoBehaviour
         {
             UserDataManager.user.nickname = text.text;
             UserDataManager.Instance.isexist = true;
-            UserDataManager.Instance.Sendnick();
+            //UserDataManager.Instance.Sendnick();
 
             Invoke("nickNameCheck", 1f);
         }
@@ -87,21 +87,29 @@ public class Button : MonoBehaviour
         if (UserDataManager.Instance.nickExist)
         {
             Debug.Log("닉네임 중복");
+            StartCoroutine(OverlapName());
         }
         else
         {
             inputName.SetActive(false);
             UserDataManager.Instance.Init();
 
-            //StartCoroutine(initCoroutine());
         }
     }
     
-
-    public IEnumerator initCoroutine()
+    IEnumerator OverlapName()
     {
-        yield return new WaitForSeconds(5);
-        //GameManager.Instance.StatSetting();
+        overlapName.gameObject.SetActive(true);
+        while (true) {
+            yield return null;
+            overlapName.color = new Color(overlapName.color.r, overlapName.color.g, overlapName.color.b, overlapName.color.a - 0.01f);
+            if (overlapName.color.a <= 0)
+            {
+                overlapName.gameObject.SetActive(false);
+                overlapName.color = overlapName.color = new Color(overlapName.color.r, overlapName.color.g, overlapName.color.b, 1);
+                break;
+            }
+        }
     }
     public void QuitGame()
     {

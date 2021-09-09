@@ -23,6 +23,7 @@ namespace DOD.Define
         검이커져,
         검기날리기,
         삼단베기,
+        재생,
     }
     
     public enum playerCharacter 

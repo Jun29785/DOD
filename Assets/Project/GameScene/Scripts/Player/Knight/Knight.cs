@@ -288,6 +288,38 @@ public class Knight : MeleeCharacter
         }
     }
     #endregion
+
+    public void Healing()
+    {
+        currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.재생].Name] -= Time.deltaTime;
+
+        if (UseSkill(skillEnum.재생, BattleManager.Instance.Pattern_id, currentSkillcoolTimeDic[DataBaseManager.Instance.tdSkillDict[(int)skillEnum.재생].Name]))
+        {
+            BattleManager.Instance.isUseSkill = true;
+            UseMp(DB.tdSkillDict[(int)skillEnum.재생].Fmana);
+            anim.SetTrigger("Healing");
+            StartCoroutine(HealingCroutine(5, 1, 10, 20));
+            currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.재생].Name] = SkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.재생].Name];
+        }
+    }
+
+    IEnumerator HealingCroutine(float duration,float interval ,float HP, float MP)
+    {
+        float durationTime = Time.time + duration;
+        float current = 0;
+
+        while(Time.time <= duration)
+        {
+            yield return null;
+            current += Time.deltaTime;
+            if(current >= interval)
+            {
+                Hp += HP;
+                Mp += MP;
+                current = 0;
+            }
+        }
+    }
     #endregion
 
 

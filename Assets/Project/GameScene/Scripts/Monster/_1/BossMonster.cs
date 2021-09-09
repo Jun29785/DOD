@@ -141,7 +141,7 @@ public class BossMonster : Monster
 
 
 
-
+    
 
 
     public override void ContactCheck() // 공격 감지
@@ -176,5 +176,5 @@ public class BossMonster : Monster
         BattleManager.Instance.Panel.GetComponent<Animator>().SetTrigger("isStart");
         BattleManager.Instance.nextStage();
         BattleManager.Instance.SetmonsterGenInterval(5f);
-    }   
+    }
 }

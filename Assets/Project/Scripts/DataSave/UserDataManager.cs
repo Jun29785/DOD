@@ -15,7 +15,7 @@ public class UserDataManager : Singleton<UserDataManager>
 
      
     public bool isexist;
-    public bool nickExist;
+    public bool nickExist=  true;
     public void Start()
     {
         DontDestroyOnLoad(this);
