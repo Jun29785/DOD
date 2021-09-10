@@ -23,6 +23,12 @@ public class BossMonster : Monster
         bossName = GameObject.FindGameObjectWithTag("bossName").GetComponent<Text>();
         hpText = GameObject.FindGameObjectWithTag("bossHp").GetComponent<Text>();
         BossUIPos = GameObject.FindGameObjectsWithTag("BossUIPos");
+
+        BossState.transform.position = BossUIPos[0].transform.position;
+
+        base.OnEnable();
+        bossHpbar.value = 0;
+        StartCoroutine(appear());
     }
 
     public override void Start()
@@ -38,6 +44,10 @@ public class BossMonster : Monster
     {
         CurrentAttackDelay += Time.deltaTime;
 
+        if(Hp >= applyMaxHp)
+        {
+            Hp = applyMaxHp;
+        }
         if (isApear)
         {
             SetHp(Hp, MaxHp);

@@ -48,7 +48,7 @@ public class Knight : MeleeCharacter
     }
 
     #region 판정
-    public void BigSwordATK() // 검이커져! 판정
+    public void BigSwordATK() // 내려찍기 판정
     {
         Collider2D[] hitEnemy = Physics2D.OverlapBoxAll(AllAttackPosition.position, AllAttackRange, 0, LayerMask.GetMask("Monster"));
 
@@ -220,22 +220,22 @@ public class Knight : MeleeCharacter
     }
     #endregion
 
-    #region 검이커져!
+    #region 내려찍기
 
     public void Skill_BigSword()
     {
-        currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.검이커져].Name] -= Time.deltaTime;
+        currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.내려찍기].Name] -= Time.deltaTime;
         
 
-        if (UseSkill(skillEnum.검이커져,BattleManager.Instance.Pattern_id, currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.검이커져].Name]))
+        if (UseSkill(skillEnum.내려찍기,BattleManager.Instance.Pattern_id, currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.내려찍기].Name]))
         {
-            ATKDamage = DataBaseManager.Instance.tdSkillDict[(int)skillEnum.검이커져].Fdmg;
+            ATKDamage = DataBaseManager.Instance.tdSkillDict[(int)skillEnum.내려찍기].Fdmg;
             BattleManager.Instance.isUseSkill = true;
             anim.SetTrigger("BigSword");
             UseMp(40);
 
-            currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.검이커져].Name] =
-            SkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.검이커져].Name];
+            currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.내려찍기].Name] =
+            SkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.내려찍기].Name];
         }
     }
 
@@ -285,35 +285,35 @@ public class Knight : MeleeCharacter
 
     public void ThreeCut()
     {
-        currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.삼단베기].Name] -= Time.deltaTime;
+        currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.z자베기].Name] -= Time.deltaTime;
 
-        if (UseSkill(skillEnum.삼단베기, BattleManager.Instance.Pattern_id, currentSkillcoolTimeDic[DataBaseManager.Instance.tdSkillDict[(int)skillEnum.삼단베기].Name]))
+        if (UseSkill(skillEnum.z자베기, BattleManager.Instance.Pattern_id, currentSkillcoolTimeDic[DataBaseManager.Instance.tdSkillDict[(int)skillEnum.z자베기].Name]))
         {
-            ATKDamage = DB.tdSkillDict[(int)skillEnum.삼단베기].Fdmg;
-            Debug.Log(DB.tdSkillDict[(int)skillEnum.삼단베기].Fdmg);
+            ATKDamage = DB.tdSkillDict[(int)skillEnum.z자베기].Fdmg;
+            Debug.Log(DB.tdSkillDict[(int)skillEnum.z자베기].Fdmg);
             BattleManager.Instance.isUseSkill = true;
-            UseMp(DB.tdSkillDict[(int)skillEnum.삼단베기].Fmana);
+            UseMp(DB.tdSkillDict[(int)skillEnum.z자베기].Fmana);
             anim.SetTrigger("ThreeCut");
-            currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.삼단베기].Name] = SkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.삼단베기].Name];
+            currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.z자베기].Name] = SkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.z자베기].Name];
         }
     }
     #endregion
 
     public void Healing()
     {
-        currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.재생].Name] -= Time.deltaTime;
+        currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.회복].Name] -= Time.deltaTime;
 
-        if (UseSkill(skillEnum.재생, BattleManager.Instance.Pattern_id, currentSkillcoolTimeDic[DataBaseManager.Instance.tdSkillDict[(int)skillEnum.재생].Name]))
+        if (UseSkill(skillEnum.회복, BattleManager.Instance.Pattern_id, currentSkillcoolTimeDic[DataBaseManager.Instance.tdSkillDict[(int)skillEnum.회복].Name]))
         {
             BattleManager.Instance.isUseSkill = true;
-            UseMp(DB.tdSkillDict[(int)skillEnum.재생].Fmana);
+            UseMp(DB.tdSkillDict[(int)skillEnum.회복].Fmana);
             anim.SetTrigger("Healing");
-            StartCoroutine(HealingCroutine(5, 1, 10, 20));
-            currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.재생].Name] = SkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.재생].Name];
+            StartCoroutine(HealingCroutine(8, 1, DB.tdSkillDict[(int)skillEnum.회복].Fdmg));
+            currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.회복].Name] = SkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.회복].Name];
         }
     }
 
-    IEnumerator HealingCroutine(float duration,float interval ,float HP, float MP)
+    IEnumerator HealingCroutine(float duration,float interval ,float HPMP)
     {
         float durationTime = Time.time + duration;
         float current = 0;
@@ -324,8 +324,8 @@ public class Knight : MeleeCharacter
             current += Time.deltaTime;
             if(current >= interval)
             {
-                Hp += HP;
-                Mp += MP;
+                Hp += HPMP;
+                Mp += HPMP;
                 current = 0;
             }
         }

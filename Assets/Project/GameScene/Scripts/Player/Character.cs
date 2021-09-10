@@ -183,8 +183,8 @@ public virtual void SetisUseSkillFalse()
     {
         hpSlider.value = Mathf.Lerp(hpSlider.value, Hp/MaxHp, 8f * Time.deltaTime);
         mpSlider.value = Mathf.Lerp(mpSlider.value, Mp / MaxMp, 8f * Time.deltaTime);
-        HpText.text = Hp.ToString() + " / " + MaxHp.ToString();
-
+        HpText.text = Hp.ToString("F1") + " / " + MaxHp.ToString("F1");
+        3.14f.ToString()
     }
 
     /// <summary>

@@ -292,7 +292,7 @@ MonoBehaviour:
   AttackDelay: 5
   ApplyAttackDelay: 0
   CurrentAttackDelay: 0
-  Power: 1
+  Power: 10
   applyPower: 0
   anim: {fileID: 0}
   Speed: 4

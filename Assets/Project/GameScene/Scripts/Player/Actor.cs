@@ -25,6 +25,7 @@ public abstract class Actor : MonoBehaviour
 
     public virtual void Awake()
     {
+
         CurrentAttackDelay = AttackDelay;
         ApplyAttackDelay = AttackDelay;
         applyPower = Power;
