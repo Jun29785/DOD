@@ -34,11 +34,10 @@ public class Character : Actor
 
     public float ATKDamage;
 
-    public Transform AllAttackPosition;
-
-    public Vector2 AllAttackRange;
-
     public float decreaseCooltimeSpeed;
+
+    public bool isParing; // 패링중인가 (흘리기 시전중인가? or 무적상태인가)
+
     public override void Start()
     {
         base.Start();
@@ -66,6 +65,7 @@ public override void Update()
 
     public override void SetData(int Key)
     {
+
     }
     public override void Damaged(float value) // 데미지 입는함수
     {
@@ -153,16 +153,22 @@ public override void Update()
         anim.SetBool("isContact", BattleManager.Instance.isContact);
     }
 
-    
+
     /// <summary>
-    /// UseSkill를 false로 설정하는 함수 (애니메이터 이벤트로 작동)
+    /// UseSkill를 false로 설정하는 함수 (애니메이션 이벤트로 작동)
     /// </summary>
-public virtual void SetisUseSkillFalse()
+    public virtual void SetisUseSkillFalse()
     {
         BattleManager.Instance.isUseSkill = false;
     }
 
-    
+    /// <summary>
+    /// 무적 상태 비활성화(애니메이션 이벤트로 작동)
+    /// </summary>
+    public virtual void SetisParingFalse()
+    {
+        isParing = false;
+    }
 
     /// <summary>
     /// 공격가능 상태 판별
@@ -183,8 +189,7 @@ public virtual void SetisUseSkillFalse()
     {
         hpSlider.value = Mathf.Lerp(hpSlider.value, Hp/MaxHp, 8f * Time.deltaTime);
         mpSlider.value = Mathf.Lerp(mpSlider.value, Mp / MaxMp, 8f * Time.deltaTime);
-        HpText.text = Hp.ToString() + " / " + MaxHp.ToString();
-
+        HpText.text = Hp.ToString("F0") + " / " + MaxHp.ToString("F0");
     }
 
     /// <summary>
@@ -228,8 +233,8 @@ public virtual void SetisUseSkillFalse()
             if (!BattleManager.Instance.isUseSkill)
             {
 
-                if (UserDataManager.user.skill_level[DataBaseManager.Instance.tdSkillDict[(int)SE].Name] != 0)
-                {
+                //if (UserDataManager.user.skill_level[DataBaseManager.Instance.tdSkillDict[(int)SE].Name] != 0)
+                //{
 
                     if (UseMpCheck(DataBaseManager.Instance.tdSkillDict[(int)SE].Fmana))
                     {
@@ -249,7 +254,7 @@ public virtual void SetisUseSkillFalse()
                         }
                     }
 
-                }
+                //}
                 /*else
                 {
                     GameSceneUIManager.Instance.ApearWarningText(3);

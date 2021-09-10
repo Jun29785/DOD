@@ -8,15 +8,18 @@ using DOD.Define;
 public class Knight : MeleeCharacter
 {
 
+
     public Transform originPos; //원래 위치(돌진)
     public Transform DashTransform; // 돌진으로 가야하는 위치(돌진)
-
+    public Transform BigSword_ATK_Transform; // 내려찍기 판정 위치
+    public Transform Paring_ATK_Transform; // 흘리기 판정 위치
     Dictionary<string, float> currentSkillcoolTimeDic = new Dictionary<string, float>();
     Dictionary<string, float> SkillcoolTimeDic = new Dictionary<string, float>();
 
 
     DataBaseManager DB = DataBaseManager.Instance;
 
+    public Vector2 TEST;
 
     public GameObject SwordAura_Projectile;
     public override void Awake()
@@ -39,18 +42,31 @@ public class Knight : MeleeCharacter
     public override void Update()
     {
         base.Update();
-        //print(BattleManager.Instance.currentmap);
         Skill_Dash();
         Skill_Sting();
         Skill_SpinAttack();
         Skill_BigSword();
         Skill_SwordAura();
+        Skill_ThreeCut();
+        Skill_Healing();
+        Skill_paring();
     }
 
     #region 판정
-    public void BigSwordATK() // 검이커져! 판정
+    public void BigSwordATK() // 내려찍기 판정
     {
-        Collider2D[] hitEnemy = Physics2D.OverlapBoxAll(AllAttackPosition.position, AllAttackRange, 0, LayerMask.GetMask("Monster"));
+        Collider2D[] hitEnemy = Physics2D.OverlapBoxAll(BigSword_ATK_Transform.position, new Vector2(4,1), 0, LayerMask.GetMask("Monster"));
+
+        foreach (Collider2D enemy in hitEnemy)
+        {
+            enemy.GetComponent<Monster>().Damaged(ATKDamage);
+        }
+    }
+
+
+    public void ParingATK() // 흘리기 판정
+    {
+        Collider2D[] hitEnemy = Physics2D.OverlapBoxAll(Paring_ATK_Transform.position, new Vector2(2.3f,1), 0, LayerMask.GetMask("Monster"));
 
         foreach (Collider2D enemy in hitEnemy)
         {
@@ -96,7 +112,7 @@ public class Knight : MeleeCharacter
         currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.돌진].Name] = SkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.돌진].Name];
 
         float currentTime = 1;
-
+        bool isimmute= false;
         BattleManager.Instance.isUseSkill = true;
         BattleManager.Instance.isDash = true;
 
@@ -112,11 +128,21 @@ public class Knight : MeleeCharacter
                 enemy.transform.position = new Vector2(transform.position.x + 0.6f, enemy.transform.position.y);
                 if (currentTime >= 0.4f)
                 {
+                    
                     enemy.GetComponent<Monster>().Damaged(ATKDamage);
+                    if (enemy.gameObject.tag == "immuneMonster")
+                    {
+                        isimmute = true;
+                    }
                 }
 
             }
 
+            if (isimmute)
+            {
+
+                break;
+            }
             transform.position = Vector2.Lerp(transform.position, DashTransform.position, 2.2f * Time.deltaTime);
             if (currentTime >= 0.4f)
             {
@@ -164,7 +190,6 @@ public class Knight : MeleeCharacter
         if (UseSkill(skillEnum.연속찌르기, BattleManager.Instance.Pattern_id,currentSkillcoolTimeDic[DataBaseManager.Instance.tdSkillDict[(int)skillEnum.연속찌르기].Name]))
         {
             ATKDamage = DB.tdSkillDict[(int)skillEnum.연속찌르기].Fdmg;
-            Debug.Log(DB.tdSkillDict[(int)skillEnum.연속찌르기].Fdmg);
             BattleManager.Instance.isUseSkill = true;
             UseMp(DB.tdSkillDict[(int)skillEnum.연속찌르기].Fmana);
             anim.SetTrigger("Sting");
@@ -210,22 +235,22 @@ public class Knight : MeleeCharacter
     }
     #endregion
 
-    #region 검이커져!
+    #region 내려찍기
 
     public void Skill_BigSword()
     {
-        currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.검이커져].Name] -= Time.deltaTime;
+        currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.내려찍기].Name] -= Time.deltaTime;
         
 
-        if (UseSkill(skillEnum.검이커져,BattleManager.Instance.Pattern_id, currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.검이커져].Name]))
+        if (UseSkill(skillEnum.내려찍기,BattleManager.Instance.Pattern_id, currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.내려찍기].Name]))
         {
-            ATKDamage = DataBaseManager.Instance.tdSkillDict[(int)skillEnum.검이커져].Fdmg;
+            ATKDamage = DataBaseManager.Instance.tdSkillDict[(int)skillEnum.내려찍기].Fdmg;
             BattleManager.Instance.isUseSkill = true;
             anim.SetTrigger("BigSword");
             UseMp(40);
 
-            currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.검이커져].Name] =
-            SkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.검이커져].Name];
+            currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.내려찍기].Name] =
+            SkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.내려찍기].Name];
         }
     }
 
@@ -271,56 +296,85 @@ public class Knight : MeleeCharacter
 
     #endregion
 
-    #region 삼단베기
+    #region z자베기
 
-    public void ThreeCut()
+    public void Skill_ThreeCut()
     {
-        currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.삼단베기].Name] -= Time.deltaTime;
+        currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.z자베기].Name] -= Time.deltaTime;
 
-        if (UseSkill(skillEnum.삼단베기, BattleManager.Instance.Pattern_id, currentSkillcoolTimeDic[DataBaseManager.Instance.tdSkillDict[(int)skillEnum.삼단베기].Name]))
+        if (UseSkill(skillEnum.z자베기, BattleManager.Instance.Pattern_id, currentSkillcoolTimeDic[DataBaseManager.Instance.tdSkillDict[(int)skillEnum.z자베기].Name]))
         {
-            ATKDamage = DB.tdSkillDict[(int)skillEnum.삼단베기].Fdmg;
-            Debug.Log(DB.tdSkillDict[(int)skillEnum.삼단베기].Fdmg);
+            ATKDamage = DB.tdSkillDict[(int)skillEnum.z자베기].Fdmg;
+            Debug.Log(DB.tdSkillDict[(int)skillEnum.z자베기].Fdmg);
             BattleManager.Instance.isUseSkill = true;
-            UseMp(DB.tdSkillDict[(int)skillEnum.삼단베기].Fmana);
+            UseMp(DB.tdSkillDict[(int)skillEnum.z자베기].Fmana);
             anim.SetTrigger("ThreeCut");
-            currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.삼단베기].Name] = SkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.삼단베기].Name];
+            currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.z자베기].Name] = SkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.z자베기].Name];
         }
     }
     #endregion
 
-    public void Healing()
+    #region 회복
+    public void Skill_Healing()
     {
-        currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.재생].Name] -= Time.deltaTime;
+        currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.회복].Name] -= Time.deltaTime;
 
-        if (UseSkill(skillEnum.재생, BattleManager.Instance.Pattern_id, currentSkillcoolTimeDic[DataBaseManager.Instance.tdSkillDict[(int)skillEnum.재생].Name]))
+        if (UseSkill(skillEnum.회복, BattleManager.Instance.Pattern_id, currentSkillcoolTimeDic[DataBaseManager.Instance.tdSkillDict[(int)skillEnum.회복].Name]))
         {
             BattleManager.Instance.isUseSkill = true;
-            UseMp(DB.tdSkillDict[(int)skillEnum.재생].Fmana);
+            UseMp(DB.tdSkillDict[(int)skillEnum.회복].Fmana);
             anim.SetTrigger("Healing");
-            StartCoroutine(HealingCroutine(5, 1, 10, 20));
-            currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.재생].Name] = SkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.재생].Name];
+            StartCoroutine(HealingCroutine(8, 1, DB.tdSkillDict[(int)skillEnum.회복].Fdmg));
+            currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.회복].Name] = SkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.회복].Name];
         }
     }
 
-    IEnumerator HealingCroutine(float duration,float interval ,float HP, float MP)
+    IEnumerator HealingCroutine(float duration,float interval ,float HPMP)
     {
         float durationTime = Time.time + duration;
         float current = 0;
 
-        while(Time.time <= duration)
+        while(Time.time <= durationTime)
         {
             yield return null;
             current += Time.deltaTime;
             if(current >= interval)
             {
-                Hp += HP;
-                Mp += MP;
+                Hp += HPMP;
+                Mp += HPMP;
                 current = 0;
             }
         }
     }
     #endregion
 
+    #region 흘리기
+
+    public void Skill_paring()
+    {
+
+        currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.흘리기].Name] -= Time.deltaTime;
+
+        if (UseSkill(skillEnum.연속찌르기, BattleManager.Instance.Pattern_id, currentSkillcoolTimeDic[DataBaseManager.Instance.tdSkillDict[(int)skillEnum.흘리기].Name]))
+        {
+            isParing = true;
+            ATKDamage = DB.tdSkillDict[(int)skillEnum.흘리기].Fdmg;
+            BattleManager.Instance.isUseSkill = true;
+            UseMp(DB.tdSkillDict[(int)skillEnum.흘리기].Fmana);
+            anim.SetTrigger("Paring");
+            currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.흘리기].Name] = SkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.흘리기].Name];
+        }
+    }
+    #endregion
+
+    #endregion
+
+
+    public override void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireCube(BigSword_ATK_Transform.position,new Vector2(4,1));
+        Gizmos.DrawWireCube(Paring_ATK_Transform.position,new Vector2(2.3f,1));
+
+    }
 
 }

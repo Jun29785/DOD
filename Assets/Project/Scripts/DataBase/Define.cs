@@ -20,10 +20,12 @@ namespace DOD.Define
         연속찌르기 = 10001,
         돌진,
         회전공격,
-        검이커져,
+        내려찍기,
         검기날리기,
-        삼단베기,
-        재생,
+        z자베기,
+        밀쳐내기,
+        흘리기,
+        회복,
     }
     
     public enum playerCharacter 

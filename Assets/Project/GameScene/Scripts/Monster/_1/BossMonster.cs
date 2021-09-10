@@ -23,6 +23,11 @@ public class BossMonster : Monster
         bossName = GameObject.FindGameObjectWithTag("bossName").GetComponent<Text>();
         hpText = GameObject.FindGameObjectWithTag("bossHp").GetComponent<Text>();
         BossUIPos = GameObject.FindGameObjectsWithTag("BossUIPos");
+
+        BossState.transform.position = BossUIPos[0].transform.position;
+
+        bossHpbar.value = 0;
+        StartCoroutine(appear());
     }
 
     public override void Start()
@@ -30,7 +35,7 @@ public class BossMonster : Monster
         anim = GetComponent<Animator>();
         applySpeed = Speed;
         ApplyAttackDelay = AttackDelay;
-        
+
     }
 
 
@@ -38,6 +43,10 @@ public class BossMonster : Monster
     {
         CurrentAttackDelay += Time.deltaTime;
 
+        if (Hp >= applyMaxHp)
+        {
+            Hp = applyMaxHp;
+        }
         if (isApear)
         {
             SetHp(Hp, MaxHp);
@@ -69,7 +78,7 @@ public class BossMonster : Monster
     public override void Damaged(float value)
     {
         Objectpool.GetDamageText(canvas, DamageText_SpawnPoint.position, ((int)value).ToString());
-        if(cnt >= 5) 
+        if (cnt >= 5)
         {
             Hp -= value;
             anim.SetTrigger("Damaged");
@@ -87,7 +96,7 @@ public class BossMonster : Monster
     public void hpUpdate()
     {
         hpText.text = $"{Hp} / {MaxHp}";
-        if(Hp < 0)
+        if (Hp < 0)
         {
             Hp = 0;
         }
@@ -141,7 +150,7 @@ public class BossMonster : Monster
 
 
 
-    
+
 
 
     public override void ContactCheck() // 공격 감지
@@ -167,14 +176,17 @@ public class BossMonster : Monster
 
     private void OnDisable()
     {
-        if (BossUIPos[1] != null)
+        if (!BattleManager.Instance.isEnd)
         {
-            BossState.transform.position = BossUIPos[1].transform.position;
-        }
+            if (BossUIPos[1] != null)
+            {
+                BossState.transform.position = BossUIPos[1].transform.position;
+            }
             BattleManager.Instance.isBoss = false;
-        BattleManager.Instance.purpose += BattleManager.Instance.BossInterval;
-        BattleManager.Instance.Panel.GetComponent<Animator>().SetTrigger("isStart");
-        BattleManager.Instance.nextStage();
-        BattleManager.Instance.SetmonsterGenInterval(5f);
+            BattleManager.Instance.purpose += BattleManager.Instance.BossInterval;
+            BattleManager.Instance.Panel.GetComponent<Animator>().SetTrigger("isStart");
+            BattleManager.Instance.nextStage();
+            BattleManager.Instance.SetmonsterGenInterval(5f);
+        }
     }
-}
+}   

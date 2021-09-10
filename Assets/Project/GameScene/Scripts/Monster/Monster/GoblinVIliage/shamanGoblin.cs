@@ -21,15 +21,12 @@ public class shamanGoblin : ProjectileMonster
     public override void Update()
     {
         base.Update();
-
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            shamanHeal();
-        }
+        TryAttack();
     }
 
     public override void TryAttack() // 힐체크
     {
+
         if (CurrentAttackDelay >= ApplyAttackDelay && !BattleManager.Instance.isDash)
         {
             anim.SetTrigger("Attack"); // 힐 (어택 X)
@@ -49,8 +46,18 @@ public class shamanGoblin : ProjectileMonster
             {
                 if (healMonster != null)
                 {
-                    monster.GetComponent<Monster>().Hp = monster.GetComponent<Monster>().MaxHp;
-                    monster.GetComponent<Monster>().getHealed();
+                    if (monster != null)
+                    {
+                        try
+                        {
+                            monster.GetComponent<Monster>().Hp = monster.GetComponent<Monster>().Hp + applyPower;
+                            monster.GetComponent<Monster>().getHealed();
+                        }
+                        catch
+                        {
+
+                        }
+                    }
                 }
             }
         }

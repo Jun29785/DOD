@@ -66,10 +66,9 @@ public class MeleeCharacter : Character
         }
     }
 
-    private void OnDrawGizmosSelected()
+    public virtual void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(AttackTransform.position, AttackRange);
-        Gizmos.DrawWireCube(AllAttackPosition.position, AllAttackRange);
 
     }
 
