@@ -68,7 +68,6 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
     {
         UpdateText();
 
-        Debug.Log(rankPanel.activeSelf);
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (!rankPanel.activeSelf)
@@ -85,7 +84,6 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
             }
             else
             {
-                Debug.Log(1);
                 rankPanel.SetActive(false);
             }
         }

@@ -355,8 +355,9 @@ public class Knight : MeleeCharacter
 
         currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.흘리기].Name] -= Time.deltaTime;
 
-        if (UseSkill(skillEnum.연속찌르기, BattleManager.Instance.Pattern_id, currentSkillcoolTimeDic[DataBaseManager.Instance.tdSkillDict[(int)skillEnum.흘리기].Name]))
+        if (UseSkill(skillEnum.흘리기, BattleManager.Instance.Pattern_id, currentSkillcoolTimeDic[DataBaseManager.Instance.tdSkillDict[(int)skillEnum.흘리기].Name]))
         {
+            BattleManager.Instance.isUseSkill = true;
             isParing = true;
             ATKDamage = DB.tdSkillDict[(int)skillEnum.흘리기].Fdmg;
             BattleManager.Instance.isUseSkill = true;

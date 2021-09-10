@@ -283,7 +283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12e4b1af39d12db4b8f981691d6c19a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitNo: 20005
+  unitNo: 40001
   Name: dsfa
   MaxHp: 1000
   applyMaxHp: 0
