@@ -2632,6 +2632,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputName: {fileID: 0}
+  overlapName: {fileID: 0}
 --- !u!1 &1162963063
 GameObject:
   m_ObjectHideFlags: 0
@@ -3037,6 +3038,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputName: {fileID: 0}
+  overlapName: {fileID: 0}
 --- !u!114 &1316052908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4432,6 +4434,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputName: {fileID: 0}
+  overlapName: {fileID: 0}
 --- !u!114 &1835391891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5719,7 +5722,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Content: {fileID: 473140047872707325}
   m_Horizontal: 0
-  m_Vertical: 1
+  m_Vertical: 0
   m_MovementType: 1
   m_Elasticity: 0.1
   m_Inertia: 1

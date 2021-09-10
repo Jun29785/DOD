@@ -13,7 +13,7 @@ public class UserDataManager : Singleton<UserDataManager>
 {
     public static UserData user = new UserData();
 
-     
+    
     public bool isexist;
     public bool nickExist=  true;
     public void Start()

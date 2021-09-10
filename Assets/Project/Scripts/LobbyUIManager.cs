@@ -56,10 +56,10 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
 
     void nickNameInput()
     {
-        if (UserDataManager.Instance.isfirst)
-        {
-            nameInput.SetActive(true);
-        }
+        //if (UserDataManager.Instance.isfirst)
+        //{
+        //    nameInput.SetActive(true);
+        //}
         
     }
     private void Update()
@@ -120,7 +120,7 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
             j.Description = i.Value.Description;
             j.UpgrateCost = i.Value.UpgradeCost;
             Debug.Log("Get Static Data");
-            j.SkillLevel = UserDataManager.user.skill_level[DataBaseManager.Instance.tdSkillDict[(int)i.Value.SKey].Name];
+            //j.SkillLevel = UserDataManager.user.skill_level[DataBaseManager.Instance.tdSkillDict[(int)i.Value.SKey].Name];
             Debug.Log("Create : " + Create.name);
             Create.name = i.Value.Name;
             if (j.SkillLevel < 1)
