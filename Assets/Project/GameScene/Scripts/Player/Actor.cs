@@ -25,11 +25,8 @@ public abstract class Actor : MonoBehaviour
 
     public virtual void Awake()
     {
-
-        CurrentAttackDelay = AttackDelay;
-        ApplyAttackDelay = AttackDelay;
-        applyPower = Power;
         applyMaxHp = MaxHp;
+        Hp = applyMaxHp;
     }
 
 
@@ -38,6 +35,9 @@ public abstract class Actor : MonoBehaviour
     {
         anim = GetComponent<Animator>();
 
+        ApplyAttackDelay = AttackDelay;
+        CurrentAttackDelay = AttackDelay;
+        applyPower = Power;
     }
 
     public virtual void Update()

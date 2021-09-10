@@ -87,6 +87,10 @@ public class GameSceneUIManager : UIManager
         UserDataManager.user.coin += BattleManager.Instance.getGold;
         BattleManager.Instance.getGold = 0;
         Debug.Log(BattleManager.Instance.getGold);
+        if (UserDataManager.user.highscore < BattleManager.Instance.Score)
+        {
+            UserDataManager.user.highscore = (int)BattleManager.Instance.Score;
+        }
     }
 
 

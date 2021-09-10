@@ -8,15 +8,18 @@ using DOD.Define;
 public class Knight : MeleeCharacter
 {
 
+
     public Transform originPos; //원래 위치(돌진)
     public Transform DashTransform; // 돌진으로 가야하는 위치(돌진)
-
+    public Transform BigSword_ATK_Transform; // 내려찍기 판정 위치
+    public Transform Paring_ATK_Transform; // 흘리기 판정 위치
     Dictionary<string, float> currentSkillcoolTimeDic = new Dictionary<string, float>();
     Dictionary<string, float> SkillcoolTimeDic = new Dictionary<string, float>();
 
 
     DataBaseManager DB = DataBaseManager.Instance;
 
+    public Vector2 TEST;
 
     public GameObject SwordAura_Projectile;
     public override void Awake()
@@ -39,18 +42,31 @@ public class Knight : MeleeCharacter
     public override void Update()
     {
         base.Update();
-        //print(BattleManager.Instance.currentmap);
         Skill_Dash();
         Skill_Sting();
         Skill_SpinAttack();
         Skill_BigSword();
         Skill_SwordAura();
+        Skill_ThreeCut();
+        Skill_Healing();
+        Skill_paring();
     }
 
     #region 판정
     public void BigSwordATK() // 내려찍기 판정
     {
-        Collider2D[] hitEnemy = Physics2D.OverlapBoxAll(AllAttackPosition.position, AllAttackRange, 0, LayerMask.GetMask("Monster"));
+        Collider2D[] hitEnemy = Physics2D.OverlapBoxAll(BigSword_ATK_Transform.position, new Vector2(4,1), 0, LayerMask.GetMask("Monster"));
+
+        foreach (Collider2D enemy in hitEnemy)
+        {
+            enemy.GetComponent<Monster>().Damaged(ATKDamage);
+        }
+    }
+
+
+    public void ParingATK() // 흘리기 판정
+    {
+        Collider2D[] hitEnemy = Physics2D.OverlapBoxAll(Paring_ATK_Transform.position, new Vector2(2.3f,1), 0, LayerMask.GetMask("Monster"));
 
         foreach (Collider2D enemy in hitEnemy)
         {
@@ -117,7 +133,6 @@ public class Knight : MeleeCharacter
                     if (enemy.gameObject.tag == "immuneMonster")
                     {
                         isimmute = true;
-                        break;
                     }
                 }
 
@@ -281,9 +296,9 @@ public class Knight : MeleeCharacter
 
     #endregion
 
-    #region 삼단베기
+    #region z자베기
 
-    public void ThreeCut()
+    public void Skill_ThreeCut()
     {
         currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.z자베기].Name] -= Time.deltaTime;
 
@@ -299,7 +314,8 @@ public class Knight : MeleeCharacter
     }
     #endregion
 
-    public void Healing()
+    #region 회복
+    public void Skill_Healing()
     {
         currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.회복].Name] -= Time.deltaTime;
 
@@ -318,7 +334,7 @@ public class Knight : MeleeCharacter
         float durationTime = Time.time + duration;
         float current = 0;
 
-        while(Time.time <= duration)
+        while(Time.time <= durationTime)
         {
             yield return null;
             current += Time.deltaTime;
@@ -332,5 +348,33 @@ public class Knight : MeleeCharacter
     }
     #endregion
 
+    #region 흘리기
+
+    public void Skill_paring()
+    {
+
+        currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.흘리기].Name] -= Time.deltaTime;
+
+        if (UseSkill(skillEnum.연속찌르기, BattleManager.Instance.Pattern_id, currentSkillcoolTimeDic[DataBaseManager.Instance.tdSkillDict[(int)skillEnum.흘리기].Name]))
+        {
+            isParing = true;
+            ATKDamage = DB.tdSkillDict[(int)skillEnum.흘리기].Fdmg;
+            BattleManager.Instance.isUseSkill = true;
+            UseMp(DB.tdSkillDict[(int)skillEnum.흘리기].Fmana);
+            anim.SetTrigger("Paring");
+            currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.흘리기].Name] = SkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.흘리기].Name];
+        }
+    }
+    #endregion
+
+    #endregion
+
+
+    public override void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireCube(BigSword_ATK_Transform.position,new Vector2(4,1));
+        Gizmos.DrawWireCube(Paring_ATK_Transform.position,new Vector2(2.3f,1));
+
+    }
 
 }

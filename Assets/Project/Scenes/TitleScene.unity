@@ -372,6 +372,7 @@ MonoBehaviour:
   Ctime: 0
   Description: 
   SkillLevel: 0
+  UpgrateCost: 0
   SkillIcon: {fileID: 0}
 --- !u!4 &280310895
 Transform:
@@ -533,6 +534,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputName: {fileID: 0}
+  overlapName: {fileID: 0}
 --- !u!1 &636292742
 GameObject:
   m_ObjectHideFlags: 0

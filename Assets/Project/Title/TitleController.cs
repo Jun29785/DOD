@@ -107,10 +107,10 @@ public class TitleController : MonoBehaviour
 
     void temp()
     {
-            //if (UserDataManager.Instance.isexist)
-        //{
+        if (UserDataManager.Instance.isexist)
+        {
             UserDataManager.Instance.Init();
-        //}
+        }
     }
 
     

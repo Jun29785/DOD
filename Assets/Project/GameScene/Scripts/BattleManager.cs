@@ -48,7 +48,10 @@ public class BattleManager : MonoBehaviour
 
     public void PlayerDamage(float value)
     {
-        character.Damaged(value);
+        if (!character.isParing)
+        {
+            character.Damaged(value);
+        }
     }
 
     public void GetGold(int value)

@@ -31,7 +31,6 @@ public abstract class Monster : Actor
     {
         base.Awake();
         applySpeed = Speed;
-        ApplyAttackDelay = AttackDelay;
 
     }
     public override void Start()
