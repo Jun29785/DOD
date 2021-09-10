@@ -36,7 +36,7 @@ public class Button : MonoBehaviour
         //GameManager.Instance.StatSetting();
 
         Time.timeScale = 1;
-        //UserDataManager.Instance.Save();
+        UserDataManager.Instance.Save();
 
     }
 
@@ -157,3 +157,4 @@ public class Button : MonoBehaviour
 
 
 }
+    
