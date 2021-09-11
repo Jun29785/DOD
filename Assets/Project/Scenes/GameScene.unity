@@ -4797,7 +4797,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05142c5ff45ee674fa84eb7903d3d506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BossPrefab: {fileID: 7174979389727369561, guid: 21ad55c66bb82cf42967f3c17627b018, type: 3}
+  ForestBossPrefab: {fileID: 4157690189176089417, guid: 7a1dad1db5438074e990f8ea8834c611, type: 3}
+  GoblinBossPrefab: {fileID: 7174979389727369561, guid: 21ad55c66bb82cf42967f3c17627b018, type: 3}
 --- !u!4 &1404212652
 Transform:
   m_ObjectHideFlags: 0

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class BossGenerater : MonoBehaviour
 {
-    public GameObject BossPrefab;
+    public GameObject ForestBossPrefab;
+    public GameObject GoblinBossPrefab;
     int cnt = 0;
     void Start()
     {
@@ -18,7 +19,19 @@ public class BossGenerater : MonoBehaviour
         if (BattleManager.Instance.Score >= BattleManager.Instance.purpose && cnt <= 0)
         {
             BattleManager.Instance.isBoss = true;
-            Instantiate(BossPrefab,transform.position,Quaternion.identity);
+            switch (BattleManager.Instance.currentmap)
+            {
+                case BattleManager.Stage.forest:
+                    Instantiate(ForestBossPrefab, transform.position, Quaternion.identity);
+
+                    break;
+                case BattleManager.Stage.GoblinViliage:
+                    Instantiate(GoblinBossPrefab,transform.position, Quaternion.identity);
+
+                    break;
+                default:
+                    break;
+            }
             cnt++;
         }
         if (!BattleManager.Instance.isBoss)

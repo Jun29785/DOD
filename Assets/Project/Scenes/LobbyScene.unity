@@ -5222,11 +5222,13 @@ MonoBehaviour:
   SkillObjParent: {fileID: 473140047872707325}
   SkillPanel: {fileID: 5936396880854182017}
   Inventory: {fileID: 454147507}
+  rankPanel: {fileID: 1746202489}
+  nameInput: {fileID: 1883161856}
+  quitPanel: {fileID: 2038772568}
   SkillStatPanel: {fileID: 562411761}
   SkillDescPanel: {fileID: 556239967}
   SkillStatButton: {fileID: 5936396880851879291}
   SkillDescButton: {fileID: 5936396881353479091}
-  nameInput: {fileID: 0}
 --- !u!95 &1835391892
 Animator:
   serializedVersion: 3

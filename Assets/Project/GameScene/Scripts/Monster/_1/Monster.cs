@@ -23,7 +23,6 @@ public abstract class Monster : Actor
     public Slider Hpbar;
     public Transform DamageText_SpawnPoint;
     public GameObject canvas;
-    bool isBackHp;
 
 
     public bool isBossGoblin;

@@ -12,9 +12,9 @@ public class BossMonster : Monster
     public Text hpText;
 
     public GameObject[] BossUIPos;
-    bool isApear;
+    public bool isApear;
 
-    int cnt; // 맞은 횟수 
+    public int cnt; // 맞은 횟수 
     public override void Awake()
     {
         base.Awake();
@@ -32,6 +32,7 @@ public class BossMonster : Monster
 
     public override void Start()
     {
+        base.Start();
         anim = GetComponent<Animator>();
         applySpeed = Speed;
         ApplyAttackDelay = AttackDelay;
