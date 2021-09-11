@@ -1,1 +1,16 @@
-{"nickname":null,"highscore":4,"coin":18,"character_level":null,"skill_level":null}
+{
+  "nickName": "king",
+  "maxScore": 200,
+  "Coin": 51,
+  "Skill_Level": {
+    "연속찌르기": 0,
+    "돌진": 0,
+    "회전공격": 0,
+    "내려찍기!": 0,
+    "검기날리기": 0,
+    "z자 베기": 0,
+    "밀쳐내기": 0,
+    "흘리기": 0,
+    "회복": 0
+  }
+}
