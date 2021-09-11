@@ -1,25 +1,25 @@
 fileFormatVersion: 2
-guid: 05a2c73381b547b49825be10cf07ab21
+guid: 0b2d95ab1a571c448ad1adf4dc340022
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8474297274656919480
-    second: boss_sle_run_0
+      213: 3619356930648166948
+    second: tree_boss_skill_24che_0
   - first:
-      213: 8525903432703198377
-    second: boss_sle_run_1
+      213: 6416894808793428408
+    second: tree_boss_skill_24che_1
   - first:
-      213: -1701285410562592447
-    second: boss_sle_run_2
+      213: -1487020682042940463
+    second: tree_boss_skill_24che_2
   - first:
-      213: -8053819961733615208
-    second: boss_sle_run_3
+      213: 1508987396639434648
+    second: tree_boss_skill_24che_3
   - first:
-      213: -3105375393321045987
-    second: boss_sle_run_4
+      213: -8066178776106516519
+    second: tree_boss_skill_24che_4
   - first:
-      213: 7830527351554104376
-    second: boss_sle_run_5
+      213: 288787056210460750
+    second: tree_boss_skill_24che_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -131,127 +131,127 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: boss_sle_run_0
+      name: tree_boss_skill_24che_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 42
-        width: 36
-        height: 42
+        y: 109
+        width: 75
+        height: 109
       alignment: 9
-      pivot: {x: 0.3073445, y: 0}
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8bf8cf8f870ca9570800000000000000
-      internalID: 8474297274656919480
+      spriteID: 422d1a6c3f98a3230800000000000000
+      internalID: 3619356930648166948
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boss_sle_run_1
+      name: tree_boss_skill_24che_1
       rect:
         serializedVersion: 2
-        x: 36
-        y: 42
-        width: 36
-        height: 42
+        x: 75
+        y: 114
+        width: 75
+        height: 104
       alignment: 9
-      pivot: {x: 0.3073445, y: 0}
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9a4ce87fff7125670800000000000000
-      internalID: 8525903432703198377
+      spriteID: 8b13e2794d36d0950800000000000000
+      internalID: 6416894808793428408
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boss_sle_run_2
+      name: tree_boss_skill_24che_2
       rect:
         serializedVersion: 2
-        x: 72
-        y: 42
-        width: 36
-        height: 42
+        x: 150
+        y: 114
+        width: 75
+        height: 104
       alignment: 9
-      pivot: {x: 0.3073445, y: 0}
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 141bcd1dee1d368e0800000000000000
-      internalID: -1701285410562592447
+      spriteID: 1d3eb29719a0d5be0800000000000000
+      internalID: -1487020682042940463
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boss_sle_run_3
+      name: tree_boss_skill_24che_3
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 36
-        height: 42
+        y: 5
+        width: 75
+        height: 104
       alignment: 9
-      pivot: {x: 0.3073445, y: 0}
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 891faef6a651b3090800000000000000
-      internalID: -8053819961733615208
+      spriteID: 8972c33da0001f410800000000000000
+      internalID: 1508987396639434648
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boss_sle_run_4
+      name: tree_boss_skill_24che_4
       rect:
         serializedVersion: 2
-        x: 36
-        y: 0
-        width: 36
-        height: 42
+        x: 75
+        y: 5
+        width: 75
+        height: 104
       alignment: 9
-      pivot: {x: 0.3073445, y: 0}
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d103cd2688d77e4d0800000000000000
-      internalID: -3105375393321045987
+      spriteID: 9df306bb32d2f0090800000000000000
+      internalID: -8066178776106516519
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boss_sle_run_5
+      name: tree_boss_skill_24che_5
       rect:
         serializedVersion: 2
-        x: 72
+        x: 150
         y: 0
-        width: 36
-        height: 42
+        width: 75
+        height: 109
       alignment: 9
-      pivot: {x: 0.3073445, y: 0}
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 83cdc59632f9bac60800000000000000
-      internalID: 7830527351554104376
+      spriteID: e40c72d2c4af10400800000000000000
+      internalID: 288787056210460750
       vertices: []
       indices: 
       edges: []

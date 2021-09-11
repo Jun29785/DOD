@@ -80,6 +80,7 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
                 if (SkillPanel.activeSelf)
                 {
                     SkillPanel.SetActive(false);
+
                 }
                 else
                 {

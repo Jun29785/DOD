@@ -21,7 +21,7 @@ public class GoblinViliageBoss : BossMonster
         skillCool = Time.time + 3;
     }
 
-    public override void Update()
+    public override void Update()   
     {
         base.Update();
         passive_ATK_increase();
