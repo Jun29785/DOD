@@ -1619,7 +1619,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &562411762
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5227,9 +5227,6 @@ MonoBehaviour:
   SkillStatButton: {fileID: 5936396880851879291}
   SkillDescButton: {fileID: 5936396881353479091}
   nameInput: {fileID: 0}
-  quitPanel: {fileID: 2038772568}
-  rankPanel: {fileID: 1746202489}
-  invenPanel: {fileID: 454147507}
 --- !u!95 &1835391892
 Animator:
   serializedVersion: 3

@@ -180,6 +180,7 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
             CurrentSelectedSkill.GetComponent<SkillButton>().isOpenSkill = true;
         }
         CurrentSelectedSkill.GetComponent<SkillButton>().SkillLevel += 1;
+        Debug.Log(UserDataManager.user.skill_level[CurrentSelectedSkill.GetComponent<SkillButton>().Name]);
         UserDataManager.user.skill_level[CurrentSelectedSkill.GetComponent<SkillButton>().Name] += 1;
         GameManager.Instance.StatSetting(); 
         OpenSkillPanel(CurrentSelectedSkill);
