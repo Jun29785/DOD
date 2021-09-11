@@ -26,6 +26,10 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
 
     public GameObject SkillPanel;
     public GameObject Inventory;
+    public GameObject rankPanel;
+    public GameObject nameInput;
+    public GameObject quitPanel;
+
 
     public GameObject SkillStatPanel;
     public GameObject SkillDescPanel;
@@ -35,8 +39,7 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
     
     private GameObject CurrentSelectedSkill;
 
-
-    public GameObject nameInput;
+    bool isQuitPanel = false;
 
     protected override void Awake()
     {
@@ -56,15 +59,39 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
 
     void nickNameInput()
     {
-        //if (UserDataManager.Instance.isfirst)
-        //{
-        //    nameInput.SetActive(true);
-        //}
+        if (UserDataManager.Instance.isexist)
+        {
+            nameInput.SetActive(true);
+        }
         
     }
     private void Update()
     {
-        UpdateText();    
+        UpdateText();
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (rankPanel.activeSelf)
+            {
+                rankPanel.SetActive(false);
+            }
+            else if (Inventory.activeSelf)
+            {
+                if (SkillPanel.activeSelf)
+                {
+                    SkillPanel.SetActive(false);
+                }
+                else
+                {
+                    Inventory.SetActive(false);
+                }
+            }
+            else
+            {
+                isQuitPanel = !isQuitPanel;
+                quitPanel.SetActive(isQuitPanel);
+            }
+        }
     }
 
     public void PointerDownStartButton()
