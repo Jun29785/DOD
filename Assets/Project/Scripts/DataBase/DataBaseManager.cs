@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.IO;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 using DOD.Define;
 
 namespace DOD.DB
@@ -57,14 +58,35 @@ namespace DOD.DB
 
         public void LoadRankData()
         {
-
-            TextAsset jsonText = Resources.Load<TextAsset>("DataTable/RankDataJson"); // Json 불러오기  
+            Debug.Log("랭크실행");
 
             userRankDict.Clear();
 
+            StartCoroutine(rank());
+
+
+
+        }
+
+
+        public IEnumerator rank()
+        {
+            Debug.Log("랭크코루틴 실행");
+
+
+
+
+            UnityWebRequest www = UnityWebRequest.Get("http://15.165.160.44:3000/show_rank");
+            yield return www.Send();
+
+            string a = www.downloadHandler.text;
+
+            Debug.Log(a);
+
+
             JObject parsedObj = new JObject(); //Json Object 생성
 
-            parsedObj = JObject.Parse(jsonText.text);
+            parsedObj = JObject.Parse(a);
 
             JArray jArray = new JArray();
             jArray = JArray.Parse(parsedObj["data"].ToString());
@@ -74,14 +96,12 @@ namespace DOD.DB
 
                 TDUserRank tdrank = new TDUserRank();
 
-                tdrank.SetJsonData(jo["user_id"].Value<string>(), jo);
+                tdrank.SetJsonData(jo);
 
 
                 userRankDict.Add(tdrank);
             }
             Debug.Log("랭크 테이블 완료");
-
-
         }
 
         void LoadSkillTable()

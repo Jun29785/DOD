@@ -14,5 +14,7 @@ public class InventoryUIManager : MonoBehaviour
     public void OnClickSkillIcon()
     {
         SkillPanel.SetActive(true);
+        GameManager.Instance.StatSetting();
+
     }
 }

@@ -37,7 +37,9 @@ public class GameManager : Singleton<GameManager>
     {
         foreach (var item in DataBaseManager.Instance.tdSkillDict)
         {
-            Debug.Log("skill_level : " + UserDataManager.user.skill_level[item.Value.Name].ToString());
+            Debug.Log(item.Value.Name);
+            Debug.Log("skill_level : " + UserDataManager.user.skill_level[item.Value.Name]);
+
             item.Value.Fdmg += (int)(item.Value.Ldmg * (UserDataManager.user.skill_level[item.Value.Name]-1));
             item.Value.Fmana += (int)(item.Value.Lmana * (UserDataManager.user.skill_level[item.Value.Name]-1));
         }

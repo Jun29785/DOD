@@ -36,6 +36,7 @@ public class Button : MonoBehaviour
         //GameManager.Instance.StatSetting();
 
         Time.timeScale = 1;
+        //GameManager.Instance.StatSetting();
         UserDataManager.Instance.Save();
 
     }
@@ -47,12 +48,15 @@ public class Button : MonoBehaviour
         Debug.Log("Loading Skill Button");
         LobbyUIManager.Instance.CreateButton();
         Debug.Log("Successful Load Skill Button");
+        GameManager.Instance.StatSetting();
     }
 
     public void CloseInventory()
     {
         LobbyUIManager.Instance.Inventory.SetActive(false);
         Debug.Log("Close Inventory Panel");
+        GameManager.Instance.StatSetting();
+
     }
 
     /// <summary>
@@ -77,15 +81,15 @@ public class Button : MonoBehaviour
         if (text.text != "")
         {
             UserDataManager.user.nickname = text.text;
-            UserDataManager.Instance.isexist = true;
-            //UserDataManager.Instance.Sendnick();
-
+            Debug.Log(UserDataManager.user.nickname);
+            UserDataManager.Instance.Sendnick();
+            Debug.Log("닉넴 입력");
             Invoke("nickNameCheck", 1f);
         }
         Debug.Log(UserDataManager.user.nickname);
     }
 
-    void nickNameCheck()
+    public void nickNameCheck()
     {
         if (UserDataManager.Instance.nickExist)
         {

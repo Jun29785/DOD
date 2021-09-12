@@ -5,17 +5,17 @@ using UnityEngine;
 
 public class TDUserRank : TableBase
 {
-    public string user_id;
-    public string nickName;
-    public string Score;
+    public string device_id;
+    public string nickname;
+    public string score;
 
 
 
-    public override void SetJsonData(string key, JObject info)
+    public void SetJsonData(JObject info)
     {
-       this.user_id = info["user_id"].Value<string>();
-       this.nickName = info["nickname"].Value<string>();
-       this.Score = info["score"].Value<string>();
+       this.device_id = info["device_id"].Value<string>();
+       this.nickname = info["nickname"].Value<string>();
+       this.score = info["score"].Value<string>();
 
     }
 }

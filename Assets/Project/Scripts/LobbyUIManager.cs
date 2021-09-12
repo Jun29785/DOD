@@ -43,7 +43,7 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
 
     protected override void Awake()
     {
-        StartCoroutine("StartScene");
+        StartCoroutine(StartScene());
     }
 
     IEnumerator StartScene()
@@ -59,7 +59,7 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
 
     void nickNameInput()
     {
-        if (UserDataManager.Instance.isexist)
+        if (!UserDataManager.Instance.isexist)
         {
             nameInput.SetActive(true);
         }
@@ -156,6 +156,8 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
             else
                 Create.GetComponent<Image>().sprite = Resources.Load<Sprite>("SkillIcon/" + i.Value.SKey) as Sprite;
             Debug.Log("Load Sprite Successful!");
+            GameManager.Instance.StatSetting();
+
         }
     }
 

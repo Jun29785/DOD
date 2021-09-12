@@ -15,20 +15,27 @@ public class UserDataManager : Singleton<UserDataManager>
 
     
     public bool isexist;
-    public bool nickExist=  true;
+    public bool nickExist;
     public void Start()
     {
         DontDestroyOnLoad(this);
     }
-    public void Init()
+
+    private void Update()
     {
-       TextAsset userData = Resources.Load<TextAsset>("UserDataSample");
         
 
-       user = JsonConvert.DeserializeObject<UserData>(userData.text);
+    }
 
-       //StartCoroutine(InitData());
+    public void Init()
+    {
+       //TextAsset userData = Resources.Load<TextAsset>("UserDataSample");
+        
 
+       //user = JsonConvert.DeserializeObject<UserData>(userData.text);
+
+       StartCoroutine(InitData());
+    
 
     }
 
@@ -37,10 +44,10 @@ public class UserDataManager : Singleton<UserDataManager>
     
     public void Save()
     {
-        string save = JsonConvert.SerializeObject(user);
+        //string save = JsonConvert.SerializeObject(user);
         
-        File.WriteAllText(Application.dataPath + "/Resources/UserDataSample.json", save);
-        //StartCoroutine(SaveData());   
+        //File.WriteAllText(Application.dataPath + "/Resources/UserDataSample.json", save);
+        StartCoroutine(SaveData());   
     }
 
     public void DeviceCheck()
@@ -51,23 +58,31 @@ public class UserDataManager : Singleton<UserDataManager>
     public IEnumerator DeviceChecker()
     {
 
+        yield return null;
 
-        string Deviceid = SystemInfo.deviceUniqueIdentifier.ToString();
-
-        yield return new WaitForSeconds(1);
         WWWForm form = new WWWForm();
 
-        form.AddField("device", Deviceid.ToString());
+        form.AddField("device", SystemInfo.deviceUniqueIdentifier);
 
-        UnityWebRequest www = UnityWebRequest.Post("http://10.120.74.70/device", form); 
+        UnityWebRequest www = UnityWebRequest.Post("http://15.165.160.44:3000/device", form); 
         yield return www.Send();
 
         string a = www.downloadHandler.text;
+        Debug.Log(a);
         a = a.Substring(0, a.Length - 1);
         string[] parsing = a.Split(':');
+
+        Debug.Log(parsing[0]);
+
         Debug.Log(parsing[1]);
         isexist = (parsing[1] != "false") ? true : false;
         Debug.Log(isexist);
+
+
+        if (isexist)
+        {
+            Init();
+        }
 
     }
 
@@ -78,15 +93,15 @@ public class UserDataManager : Singleton<UserDataManager>
 
     public IEnumerator SendnickName()
     {
+        yield return null;
 
-        string Deviceid = SystemInfo.deviceUniqueIdentifier.ToString();
-        string nick = user.nickname.ToString();
+        string nick = user.nickname;
 
         WWWForm form = new WWWForm();
 
-        form.AddField("device", Deviceid.ToString());
+        form.AddField("device", SystemInfo.deviceUniqueIdentifier);
         form.AddField("nickname", nick);
-        UnityWebRequest www = UnityWebRequest.Post("http://10.120.74.70/create_name", form); // 
+        UnityWebRequest www = UnityWebRequest.Post("http://15.165.160.44:3000/create_name", form); // 
         yield return www.Send();
 
         string a = www.downloadHandler.text;
@@ -101,17 +116,28 @@ public class UserDataManager : Singleton<UserDataManager>
     public IEnumerator InitData()
     {
 
+        yield return null;
 
         WWWForm form = new WWWForm();
 
-        form.AddField("nickname", user.nickname);
-        UnityWebRequest www = UnityWebRequest.Post("http://10.120.74.70:80/dataload",form);
+        form.AddField("device", SystemInfo.deviceUniqueIdentifier);
+        UnityWebRequest www = UnityWebRequest.Post("http://15.165.160.44:3000/dataload", form);
 
         yield return www.Send();
 
         string init = www.downloadHandler.text;
         Debug.Log(init);
         user = JsonConvert.DeserializeObject<UserData>(init);
+
+
+        Debug.Log(user.nickname);
+        Debug.Log(user.highscore);
+        Debug.Log(user.coin);
+            foreach (var item in user.skill_level)
+            {
+                Debug.Log(item.Key);
+                Debug.Log(item.Value);
+            }
     }
 
 
@@ -126,7 +152,7 @@ public class UserDataManager : Singleton<UserDataManager>
 
         form.AddField("userData",userdata.ToString());
 
-        UnityWebRequest www = UnityWebRequest.Post("http://10.120.74.70:80/datasave", form); // 
+        UnityWebRequest www = UnityWebRequest.Post("http://15.165.160.44:3000/datasave", form); // 
         yield return www.Send();
 
         Debug.Log(www.downloadHandler.text);
