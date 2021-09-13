@@ -2791,13 +2791,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 756781417}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e662677991df86f40ab02eaf06b921f5, type: 3}
+  m_Script: {fileID: 11500000, guid: 9c0a43aea99728e49a1ae265c9adae7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   currentmap: 0
   getGold: 0
   Score: 0
-  purpose: 100
+  purpose: 0
   BossInterval: 0
   loopCount: 0
   isBoss: 0

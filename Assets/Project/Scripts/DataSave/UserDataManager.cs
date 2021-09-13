@@ -72,9 +72,6 @@ public class UserDataManager : Singleton<UserDataManager>
         a = a.Substring(0, a.Length - 1);
         string[] parsing = a.Split(':');
 
-        Debug.Log(parsing[0]);
-
-        Debug.Log(parsing[1]);
         isexist = (parsing[1] != "false") ? true : false;
         Debug.Log(isexist);
 
@@ -156,5 +153,23 @@ public class UserDataManager : Singleton<UserDataManager>
         yield return www.Send();
 
         Debug.Log(www.downloadHandler.text);
+    }
+
+
+    public void game_end_Func(int score)
+    {
+        StartCoroutine(game_end(score));
+    }
+    IEnumerator game_end(int score)
+    {
+        WWWForm form = new WWWForm();
+
+        form.AddField("score", score);
+
+        UnityWebRequest www = UnityWebRequest.Post("http://10.120.74.70:80/game_end", form); // 
+        yield return www.Send();
+
+        Debug.Log(www.downloadHandler.text);
+
     }
 }

@@ -33,7 +33,7 @@ public class BattleManager : MonoBehaviour
     public List<int> Pattern_id = new List<int>();      // 현재 입력한 커맨드
 
     public Character character;                         // 플레이어스크립트
-    public GameObject Panel;                            // 게임 시작 판넬 ( 검정색)
+    public GameObject StartPanel;                            // 게임 시작 판넬 ( 검정색)
     public MonsterGenerater monsterGenerater;           // 몬스터 소환 스크립트
 
     void Awake()

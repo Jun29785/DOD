@@ -29,7 +29,6 @@ namespace DOD.DB
         {
             LoadSkillTable();
             LoadMonsterTable();
-            LoadRankData();
 
 
         }

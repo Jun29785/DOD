@@ -33,10 +33,9 @@ public class Button : MonoBehaviour
     public void ToGameScene()
     {
         LoadingSceneController.LoadScene(Scenes.GameScene.ToString());
-        //GameManager.Instance.StatSetting();
+        GameManager.Instance.StatSetting();
 
         Time.timeScale = 1;
-        //GameManager.Instance.StatSetting();
         UserDataManager.Instance.Save();
 
     }

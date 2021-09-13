@@ -79,6 +79,7 @@ public class GameSceneUIManager : UIManager
         if (CNT == 0)
         {
             gold = BattleManager.Instance.getGold;
+            UserDataManager.Instance.game_end_Func((int)BattleManager.Instance.Score);
             CNT++;
         }
             GOScoreText.text = BattleManager.Instance.Score.ToString();

@@ -35,13 +35,13 @@ public class GameManager : Singleton<GameManager>
     
     public void StatSetting()
     {
-        foreach (var item in DataBaseManager.Instance.tdSkillDict)
+        foreach (var item in DataBaseManager.Instance.tdSkillDict.Values)
         {
-            Debug.Log(item.Value.Name);
-            Debug.Log("skill_level : " + UserDataManager.user.skill_level[item.Value.Name]);
+            Debug.Log(item.Name);
+            Debug.Log("skill_level : " + UserDataManager.user.skill_level[item.Name]);
 
-            item.Value.Fdmg += (int)(item.Value.Ldmg * (UserDataManager.user.skill_level[item.Value.Name]-1));
-            item.Value.Fmana += (int)(item.Value.Lmana * (UserDataManager.user.skill_level[item.Value.Name]-1));
+            item.Fdmg += (int)(item.Ldmg * (UserDataManager.user.skill_level[item.Name]-1));
+            item.Fmana += (int)(item.Lmana * (UserDataManager.user.skill_level[item.Name]-1));
         }
     }
 
