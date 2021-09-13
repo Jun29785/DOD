@@ -98,6 +98,7 @@ public class Button : MonoBehaviour
         else
         {
             inputName.SetActive(false);
+            GameManager.Instance.isnameInput = true;
             UserDataManager.Instance.Init();
 
         }

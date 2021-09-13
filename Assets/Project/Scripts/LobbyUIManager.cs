@@ -61,7 +61,10 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
     {
         if (!UserDataManager.Instance.isexist)
         {
-            nameInput.SetActive(true);
+            if (!GameManager.Instance.isnameInput)
+            {
+                nameInput.SetActive(true);
+            }
         }
         
     }

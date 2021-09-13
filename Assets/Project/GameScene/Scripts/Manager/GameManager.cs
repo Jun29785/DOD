@@ -8,7 +8,7 @@ public class GameManager : Singleton<GameManager>
 {
 
     public TitleController titleController;
-   
+    public bool isnameInput;
     
     
     protected override void Awake()

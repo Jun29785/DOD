@@ -78,6 +78,7 @@ public class UserDataManager : Singleton<UserDataManager>
 
         if (isexist)
         {
+            GameManager.Instance.isnameInput = true;
             Init();
         }
 
