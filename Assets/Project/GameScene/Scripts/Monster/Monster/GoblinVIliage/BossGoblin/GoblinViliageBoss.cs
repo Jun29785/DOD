@@ -27,9 +27,22 @@ public class GoblinViliageBoss : BossMonster
         passive_ATK_increase();
         if (Time.time >= skillCool)
         {
-            skillCool = Time.time + 5;
+            skillCool = Time.time + 6;
 
-            spawnGoblin();
+            int skillIndex = Random.Range(0, 2);
+            anim.SetInteger("SkillIndex", skillIndex);
+            switch (skillIndex)
+            {
+                case 0:
+                    Skill_Smash();
+                    break;
+                case 1:
+                    Skill_spawnGoblin();
+                    break;
+
+                default:
+                    break;
+            }
         }
     }
 
@@ -49,9 +62,15 @@ public class GoblinViliageBoss : BossMonster
         BattleManager.Instance.PlayerDamage(applyPower);
     }
 
+    public void Skill_spawnGoblin()
+    {
+        anim.SetTrigger("Skill");
+       
+        
+    }
+
     public void spawnGoblin()
     {
-
         for (int i = 0; i < 3; i++)
         {
             int index = Random.Range(0, 3);
@@ -71,6 +90,10 @@ public class GoblinViliageBoss : BossMonster
                     break;
             }
         }
-        
+    }
+
+    public void Skill_Smash() {
+        anim.SetInteger("SkillIndex",0);
+        anim.SetTrigger("Skill");
     }
 }
