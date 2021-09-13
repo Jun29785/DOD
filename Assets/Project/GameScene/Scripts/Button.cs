@@ -45,9 +45,9 @@ public class Button : MonoBehaviour
     {
         LobbyUIManager.Instance.Inventory.SetActive(true);
         Debug.Log("Loading Skill Button");
+        GameManager.Instance.StatSetting();
         LobbyUIManager.Instance.CreateButton();
         Debug.Log("Successful Load Skill Button");
-        GameManager.Instance.StatSetting();
     }
 
     public void CloseInventory()

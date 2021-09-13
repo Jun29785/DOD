@@ -95,6 +95,7 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
         }
     }
 
+    #region 스타트 버튼 애니메이션
     public void PointerDownStartButton()
     {
         StartButton.sprite = OnStartButton;
@@ -105,11 +106,32 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
         StartButton.sprite = OffStartButton;
     }
 
+
+    public void OnClickSkillStatButton()
+    {
+        SkillDescPanel.SetActive(false);
+        SkillStatPanel.SetActive(true);
+        SkillDescButton.GetComponent<Image>().color = new Color32(150, 150, 150, 255);
+        SkillStatButton.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+    }
+
+    public void OnClickSkillDescButton()
+    {
+        SkillStatPanel.SetActive(false);
+        SkillDescPanel.SetActive(true);
+        SkillStatButton.GetComponent<Image>().color = new Color32(150, 150, 150, 255);
+        SkillDescButton.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+    }
+
+
+    #endregion
     public void UpdateText()
     {
         Coin.text = UserDataManager.user.coin.ToString();
     }
 
+
+    #region 인벤 버튼 애니메이션
     public void PointerDownInventoryButton()
     {
         InventoryAnim.SetTrigger("down");
@@ -124,43 +146,11 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
         InventoryIcon.transform.localScale = new Vector3(1f, 1f, 1f);
     }
 
-    public void CreateButton()
-    {
-        for (int i = 0; i < SkillObjParent.childCount; i++)
-        {
-            Destroy(SkillObjParent.GetChild(i).gameObject);
-        }
 
-        foreach (var i in DataBaseManager.Instance.tdSkillDict.Values)
-        {
-            Debug.Log("In");
-            GameManager.Instance.StatSetting();
-            GameObject Create = (GameObject)Instantiate(SkillButtonObj);
-            Create.transform.parent = SkillObjParent;
-            Create.transform.localScale = new Vector3(1, 1, 1);
-            var j = Create.GetComponent<SkillButton>();
-            // 스킬 값 추가
-            j.SetButton(i.SKey);
-            j.SKey = i.SKey;
-            j.Name = i.Name;
-            j.Command = i.Command;
-            j.Mana = i.Fmana + (i.Lmana * j.SkillLevel);
-            j.Dmg = i.Fdmg + (i.Ldmg * j.SkillLevel);
-            j.Description = i.Description;
-            j.UpgrateCost = i.UpgradeCost;
-            Debug.Log("Get Static Data");
-            //j.SkillLevel = UserDataManager.user.skill_level[DataBaseManager.Instance.tdSkillDict[(int)i.Value.SKey].Name];
-            Debug.Log("Create : " + Create.name);
-            Create.name = i.Name;
-            if (j.SkillLevel < 1)
-                Create.GetComponent<Image>().sprite = Resources.Load<Sprite>("SkillIcon/" + "10000") as Sprite;
-            else
-                Create.GetComponent<Image>().sprite = Resources.Load<Sprite>("SkillIcon/" + i.SKey) as Sprite;
-            Debug.Log("Load Sprite Successful!");
+    #endregion
+ 
 
-        }
-    }
-
+    #region 스킬 판넬
     public void OpenSkillPanel(GameObject Skill)
     {
         CurrentSelectedSkill = Skill;
@@ -187,23 +177,42 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
         GameManager.Instance.StatSetting();
         CreateButton();
     }
-
-    public void OnClickSkillStatButton()
+    public void OnClickExitPanelButton()
     {
-        SkillDescPanel.SetActive(false);
-        SkillStatPanel.SetActive(true);
-        SkillDescButton.GetComponent<Image>().color = new Color32(150, 150, 150, 255);
-        SkillStatButton.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+        SkillPanel.SetActive(false);
     }
+    #endregion
 
-    public void OnClickSkillDescButton()
+
+   public void CreateButton()
     {
-        SkillStatPanel.SetActive(false);
-        SkillDescPanel.SetActive(true);
-        SkillStatButton.GetComponent<Image>().color = new Color32(150, 150, 150, 255);
-        SkillDescButton.GetComponent<Image>().color = new Color32(255, 255, 255,255);
-    }
+        for (int i = 0; i < SkillObjParent.childCount; i++)
+        {
+            Destroy(SkillObjParent.GetChild(i).gameObject);
+        }
 
+        foreach (var i in DataBaseManager.Instance.tdSkillDict.Values)
+        {
+            Debug.Log("In");
+            GameObject Create = (GameObject)Instantiate(SkillButtonObj);
+            Create.transform.parent = SkillObjParent;
+            Create.transform.localScale = new Vector3(1, 1, 1);
+            var j = Create.GetComponent<SkillButton>();
+            // 스킬 값 추가
+            j.SetButton(i.SKey);
+            
+            Debug.Log("Get Static Data");
+            //j.SkillLevel = UserDataManager.user.skill_level[DataBaseManager.Instance.tdSkillDict[(int)i.Value.SKey].Name];
+            Debug.Log("Create : " + Create.name);
+            Create.name = i.Name;
+            if (j.SkillLevel < 1)
+                Create.GetComponent<Image>().sprite = Resources.Load<Sprite>("SkillIcon/" + "10000") as Sprite;
+            else
+                Create.GetComponent<Image>().sprite = Resources.Load<Sprite>("SkillIcon/" + i.SKey) as Sprite;
+            Debug.Log("Load Sprite Successful!");
+
+        }
+    }
     public void OnClickUpgradeButton()
     {
         if (!CurrentSelectedSkill.GetComponent<SkillButton>().isOpenSkill)
@@ -218,8 +227,5 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
         UserDataManager.Instance.Save();
     }
 
-    public void OnClickExitPanelButton()
-    {
-        SkillPanel.SetActive(false);
-    }
+    
 }

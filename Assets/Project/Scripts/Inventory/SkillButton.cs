@@ -30,13 +30,21 @@ public class SkillButton : MonoBehaviour
     {
         this.SKey = skey;
 
-        string nameKey = DataBaseManager.Instance.tdSkillDict[this.SKey].Name;
+        //string nameKey = DataBaseManager.Instance.tdSkillDict[this.SKey].Name; ?? 
 
-        Debug.Log("name : " + nameKey);
+        this.Name = DataBaseManager.Instance.tdSkillDict[this.SKey].Name;
+        this.Command = DataBaseManager.Instance.tdSkillDict[this.SKey].Command;
+        this.Description = DataBaseManager.Instance.tdSkillDict[this.SKey].Description;
+        this.UpgrateCost = DataBaseManager.Instance.tdSkillDict[this.SKey].UpgradeCost;
+        this.Mana = DataBaseManager.Instance.tdSkillDict[this.SKey].Fmana;
+        this.Dmg = DataBaseManager.Instance.tdSkillDict[this.SKey].Fdmg;
+        this.SkillLevel = UserDataManager.user.skill_level[DataBaseManager.Instance.tdSkillDict[this.SKey].Name];
+
+        //Debug.Log("name : " + nameKey);
 
     }
 
-    private void Update()
+private void Update()
     {
         if (SkillLevel < 1 && isOpenSkill)
         {
