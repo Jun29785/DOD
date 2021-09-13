@@ -20,7 +20,7 @@ public class BattleManager : MonoBehaviour
 
     public int purpose; 
     public int BossInterval;
-    public int loopCount;
+    public int loopCount = 0;
 
     public bool isBoss;                                 // 보스전중인가?
     public bool isContact = false;                      // 몬스터와 닿았는가? 

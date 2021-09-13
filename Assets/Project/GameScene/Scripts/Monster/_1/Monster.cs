@@ -174,6 +174,15 @@ public abstract class Monster : Actor
         applyMaxHp = MaxHp;
         applyPower = Power;
     }
+
+
+    void setMonsterStat()
+    {
+        if (BattleManager.Instance.loopCount != 0)
+        {
+
+        }
+    }
 }
 
 

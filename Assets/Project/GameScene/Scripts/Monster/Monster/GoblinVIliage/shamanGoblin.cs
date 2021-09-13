@@ -11,7 +11,7 @@ public class shamanGoblin : ProjectileMonster
     public override void Awake()
     {
         base.Awake();
-        SetData(20006);
+        SetData(20009);
     }
     public override void Start()
     {

@@ -8,7 +8,7 @@ public class Goblin : MeleeMonster
     public override void Awake()
     {
         base.Awake();
-        SetData(20004);
+        SetData(20006);
 
     }
     public override void Start()

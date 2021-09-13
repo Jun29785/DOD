@@ -7,6 +7,6 @@ public class giantGoblin : MeleeMonster
     public override void Awake()
     {
         base.Awake();
-        SetData(20008);
+        SetData(20010);
     }
 }

@@ -7,6 +7,6 @@ public class blackSlime : ProjectileMonster
     public override void Awake()
     {
         base.Awake();
-        SetData(20003);
+        SetData(20005);
     }
 }
