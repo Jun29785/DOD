@@ -1,0 +1,13 @@
+{
+     "30001": {
+          "Name": "기사",
+          "Hp": "50",
+          "Mp": "250",
+          "Power": "3",
+          "LHp": "10",
+          "LMp": "50",
+          "Lpower": "0.5",
+          "AttackDistance": "1",
+          "AttackDelay": "0"
+   }
+}

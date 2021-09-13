@@ -65,7 +65,13 @@ public override void Update()
 
     public override void SetData(int Key)
     {
-
+        this.unitNo = DataBaseManager.Instance.tdCharacterDict[Key].UnitNo;
+        this.Name = DataBaseManager.Instance.tdCharacterDict[Key].name;
+        this.MaxHp = DataBaseManager.Instance.tdCharacterDict[Key].HP;
+        this.AttackDistance = DataBaseManager.Instance.tdCharacterDict[Key].attackDistance;
+        this.AttackDelay = DataBaseManager.Instance.tdCharacterDict[Key].attakDelay;
+        this.Power = DataBaseManager.Instance.tdCharacterDict[Key].POWER;
+        this.MaxMp = DataBaseManager.Instance.tdCharacterDict[Key].MP;
     }
     public override void Damaged(float value) // 데미지 입는함수
     {

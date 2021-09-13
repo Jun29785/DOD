@@ -15,6 +15,7 @@ namespace DOD.DB
     {
 
         public Dictionary<int, TDSkill> tdSkillDict = new Dictionary<int, TDSkill>();
+        public Dictionary<int, TDCharacter> tdCharacterDict = new Dictionary<int, TDCharacter>();
 
         public Dictionary<int, TDMonster> tdMonsterDict = new Dictionary<int, TDMonster>();
         public List<TDUserRank> userRankDict = new List<TDUserRank>();
@@ -29,7 +30,7 @@ namespace DOD.DB
         {
             LoadSkillTable();
             LoadMonsterTable();
-
+            LoadCharacterTable();
 
         }
 
@@ -128,5 +129,30 @@ namespace DOD.DB
         }
 
 
+        void LoadCharacterTable()
+        {
+            TextAsset jsonText = Resources.Load<TextAsset>("DataTable/Character_Json"); // Json 불러오기
+
+            Debug.Log(jsonText);
+            tdCharacterDict.Clear();
+
+            JObject parsedObj = new JObject(); // Json Object 생성
+
+
+            parsedObj = JObject.Parse(jsonText.text); // Json Parsing
+
+            Debug.Log(parsedObj);
+
+
+            foreach (KeyValuePair<string, JToken> pair in parsedObj)
+            {
+                TDCharacter tdCharacter= new TDCharacter();
+
+                tdCharacter.SetJsonData(pair.Key, pair.Value.ToObject<JObject>());
+
+                tdCharacterDict.Add(tdCharacter.UnitNo, tdCharacter);
+            }
+            Debug.Log("캐릭터 테이블 완료");
+        }
     }
 }

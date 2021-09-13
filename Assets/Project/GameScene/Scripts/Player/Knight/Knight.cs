@@ -24,7 +24,7 @@ public class Knight : MeleeCharacter
     public GameObject SwordAura_Projectile;
     public override void Awake()
     {
-
+        SetData((int)characterEnum.기사);
 
     }
     public override void Start()

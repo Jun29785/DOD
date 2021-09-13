@@ -28,9 +28,9 @@ namespace DOD.Define
         회복,
     }
     
-    public enum playerCharacter 
+    public enum characterEnum 
     {
-        기사,
+        기사 = 30001,
 
     }
 
