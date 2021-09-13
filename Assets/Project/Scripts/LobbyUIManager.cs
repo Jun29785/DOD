@@ -131,32 +131,32 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
             Destroy(SkillObjParent.GetChild(i).gameObject);
         }
 
-        foreach (var i in DataBaseManager.Instance.tdSkillDict)
+        foreach (var i in DataBaseManager.Instance.tdSkillDict.Values)
         {
             Debug.Log("In");
+            GameManager.Instance.StatSetting();
             GameObject Create = (GameObject)Instantiate(SkillButtonObj);
             Create.transform.parent = SkillObjParent;
             Create.transform.localScale = new Vector3(1, 1, 1);
             var j = Create.GetComponent<SkillButton>();
             // 스킬 값 추가
-            j.SetButton(i.Value.SKey);
-            j.SKey = i.Value.SKey;
-            j.Name = i.Value.Name;
-            j.Command = i.Value.Command;
-            j.Mana = i.Value.Fmana + (i.Value.Lmana * j.SkillLevel);
-            j.Dmg = i.Value.Fdmg + (i.Value.Ldmg * j.SkillLevel);
-            j.Description = i.Value.Description;
-            j.UpgrateCost = i.Value.UpgradeCost;
+            j.SetButton(i.SKey);
+            j.SKey = i.SKey;
+            j.Name = i.Name;
+            j.Command = i.Command;
+            j.Mana = i.Fmana + (i.Lmana * j.SkillLevel);
+            j.Dmg = i.Fdmg + (i.Ldmg * j.SkillLevel);
+            j.Description = i.Description;
+            j.UpgrateCost = i.UpgradeCost;
             Debug.Log("Get Static Data");
             //j.SkillLevel = UserDataManager.user.skill_level[DataBaseManager.Instance.tdSkillDict[(int)i.Value.SKey].Name];
             Debug.Log("Create : " + Create.name);
-            Create.name = i.Value.Name;
+            Create.name = i.Name;
             if (j.SkillLevel < 1)
                 Create.GetComponent<Image>().sprite = Resources.Load<Sprite>("SkillIcon/" + "10000") as Sprite;
             else
-                Create.GetComponent<Image>().sprite = Resources.Load<Sprite>("SkillIcon/" + i.Value.SKey) as Sprite;
+                Create.GetComponent<Image>().sprite = Resources.Load<Sprite>("SkillIcon/" + i.SKey) as Sprite;
             Debug.Log("Load Sprite Successful!");
-            GameManager.Instance.StatSetting();
 
         }
     }
@@ -177,14 +177,15 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
         Get.UpgrateCost = Set.UpgrateCost;
         Get.SkillLevel = Set.SkillLevel;
         SkillPanel.GetComponent<SkillPanel>().LoadSkillData();
-        
+        GameManager.Instance.StatSetting();
         SkillStatPanel.SetActive(true);
     }
 
     public void CloseSkillPanel()
     {
         SkillPanel.SetActive(false);
-        CreateButton(); 
+        GameManager.Instance.StatSetting();
+        CreateButton();
     }
 
     public void OnClickSkillStatButton()

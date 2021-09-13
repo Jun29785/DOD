@@ -50,6 +50,7 @@ public class Knight : MeleeCharacter
         Skill_ThreeCut();
         Skill_Healing();
         Skill_paring();
+        Skill_push();
     }
 
     #region 판정
@@ -112,7 +113,6 @@ public class Knight : MeleeCharacter
         currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.돌진].Name] = SkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.돌진].Name];
 
         float currentTime = 1;
-        bool isimmute= false;
         BattleManager.Instance.isUseSkill = true;
         BattleManager.Instance.isDash = true;
 
@@ -130,19 +130,10 @@ public class Knight : MeleeCharacter
                 {
                     
                     enemy.GetComponent<Monster>().Damaged(ATKDamage);
-                    if (enemy.gameObject.tag == "immuneMonster")
-                    {
-                        isimmute = true;
-                    }
                 }
 
             }
 
-            if (isimmute)
-            {
-
-                break;
-            }
             transform.position = Vector2.Lerp(transform.position, DashTransform.position, 2.2f * Time.deltaTime);
             if (currentTime >= 0.4f)
             {
@@ -368,6 +359,47 @@ public class Knight : MeleeCharacter
     }
     #endregion
 
+    #region 밀쳐내기
+
+    public void Skill_push()
+    {
+
+        currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.밀쳐내기].Name] -= Time.deltaTime;
+
+        if (UseSkill(skillEnum.밀쳐내기, BattleManager.Instance.Pattern_id, currentSkillcoolTimeDic[DataBaseManager.Instance.tdSkillDict[(int)skillEnum.밀쳐내기].Name]))
+        {
+            BattleManager.Instance.isUseSkill = true;
+            ATKDamage = DB.tdSkillDict[(int)skillEnum.밀쳐내기].Fdmg;
+            UseMp(DB.tdSkillDict[(int)skillEnum.밀쳐내기].Fmana);
+            anim.SetTrigger("Push");
+            currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.밀쳐내기].Name] = SkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.밀쳐내기].Name];
+        }
+    }
+
+    public void Push()
+    {
+            Collider2D[] hitEnemy = Physics2D.OverlapCircleAll(AttackTransform.position, AttackRange, LayerMask.GetMask("Monster")); // 콜라이더를 받아와서
+
+            foreach (Collider2D enemy in hitEnemy)
+            {
+
+                enemy.GetComponent<Monster>().Damaged(ATKDamage); // 모든적에게 공격력만큼 데미지를줌
+            if (enemy.tag == "Monster")
+            {
+
+                enemy.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(enemy.gameObject.GetComponent<Rigidbody2D>().velocity.x + 15, enemy.gameObject.GetComponent<Rigidbody2D>().velocity.y);
+                enemy.gameObject.GetComponent<Monster>().Damaged(ATKDamage);
+
+            }
+            else if (enemy.tag == "immuneMonster")
+            {
+                enemy.gameObject.GetComponent<Monster>().Damaged(ATKDamage);
+
+            }
+        }
+        
+    }
+    #endregion
     #endregion
 
 

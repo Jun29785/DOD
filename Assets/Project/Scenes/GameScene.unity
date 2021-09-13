@@ -2809,7 +2809,7 @@ MonoBehaviour:
   isDash: 0
   Pattern_id: 
   character: {fileID: 0}
-  Panel: {fileID: 104853320}
+  startPanel: {fileID: 104853320}
   monsterGenerater: {fileID: 741794276}
 --- !u!4 &756781419
 Transform:
@@ -5809,7 +5809,7 @@ MonoBehaviour:
   Power: 3
   applyPower: 0
   anim: {fileID: 0}
-  MaxMp: 2000
+  MaxMp: 2000000
   Mp: 0
   isAttack: 0
   hpSlider: {fileID: 1474086296}

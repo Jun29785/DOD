@@ -33,7 +33,7 @@ public class BattleManager : MonoBehaviour
     public List<int> Pattern_id = new List<int>();      // 현재 입력한 커맨드
 
     public Character character;                         // 플레이어스크립트
-    public GameObject StartPanel;                            // 게임 시작 판넬 ( 검정색)
+    public GameObject startPanel;                            // 게임 시작 판넬 ( 검정색)
     public MonsterGenerater monsterGenerater;           // 몬스터 소환 스크립트
 
     void Awake()
@@ -68,13 +68,13 @@ public class BattleManager : MonoBehaviour
         BattleManager.Instance.isEnd = false;
         character.Hp = character.MaxHp;
         character.Mp = character.MaxMp;
-        purpose = 2;
+        purpose = 20;
         BossInterval = purpose;
         Pattern_id.Clear();
         Score = 0;
         getGold = 0;
         StartCoroutine(StartLerp());
-        Panel.GetComponent<Animator>().SetTrigger("isStart");
+        startPanel.GetComponent<Animator>().SetTrigger("isStart");
 
     }
 

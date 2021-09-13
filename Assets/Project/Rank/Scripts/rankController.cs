@@ -15,7 +15,7 @@ public class rankController : MonoBehaviour
     {
         DataBaseManager.Instance.LoadRankData();
 
-        Invoke("rank", 1f);
+        Invoke("rank", 0.4f);
     }
 
     public void rank()

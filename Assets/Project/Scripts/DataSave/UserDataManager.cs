@@ -164,11 +164,15 @@ public class UserDataManager : Singleton<UserDataManager>
     {
         WWWForm form = new WWWForm();
 
+        form.AddField("nickname", user.nickname);
         form.AddField("score", score);
+        Debug.Log(user.nickname);
+        Debug.Log(score);
 
-        UnityWebRequest www = UnityWebRequest.Post("http://10.120.74.70:80/game_end", form); // 
+        UnityWebRequest www = UnityWebRequest.Post("http://15.165.160.44:3000/game_end", form);
         yield return www.Send();
 
+        Debug.Log("게임 점수 보내기 완료");
         Debug.Log(www.downloadHandler.text);
 
     }
