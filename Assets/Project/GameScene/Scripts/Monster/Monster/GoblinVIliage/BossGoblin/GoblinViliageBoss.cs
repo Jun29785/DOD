@@ -64,6 +64,7 @@ public class GoblinViliageBoss : BossMonster
 
     public void Skill_spawnGoblin()
     {
+        anim.SetInteger("SkillIndex", 1);
         anim.SetTrigger("Skill");
        
         
