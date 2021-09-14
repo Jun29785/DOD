@@ -17,7 +17,7 @@ public class SkillCoolTimeObject : MonoBehaviour
     void Start()
     {
         skillName = DataBaseManager.Instance.tdSkillDict[skillKey].Name;
-        CoolTime = DataBaseManager.Instance.tdSkillDict[skillKey].Ctime;
+        CoolTime = DataBaseManager.Instance.tdSkillDict[skillKey].T_Ctime;
 
         if (Resources.Load<Sprite>("SkillIcon/" + skillKey) != null)
         {

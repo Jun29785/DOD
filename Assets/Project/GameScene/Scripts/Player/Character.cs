@@ -242,7 +242,7 @@ public override void Update()
                 if (UserDataManager.user.skill_level[DataBaseManager.Instance.tdSkillDict[(int)SE].Name] != 0)
                 {
 
-                    if (UseMpCheck(DataBaseManager.Instance.tdSkillDict[(int)SE].Fmana))
+                    if (UseMpCheck(DataBaseManager.Instance.tdSkillDict[(int)SE].Tmana))
                     {
 
 

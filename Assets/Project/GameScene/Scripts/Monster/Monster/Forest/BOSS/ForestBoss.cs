@@ -115,21 +115,13 @@ public class ForestBoss : BossMonster
     {
 
 
-        if (!BattleManager.Instance.isContact && !isBattle && !Stop || BattleManager.Instance.isContact && !isBattle && !Stop)
+        if (!BattleManager.Instance.isContact)
         {
             if (!BattleManager.Instance.isUseSkill)
             {
                 transform.Translate(Vector2.left * applySpeed * Time.deltaTime);
             }
 
-        }
-        else if (isBattle && !BattleManager.Instance.isContact && !Stop)
-        {
-
-            if (!BattleManager.Instance.isUseSkill)
-            {
-                transform.Translate(Vector2.left * 5 * Time.deltaTime);
-            }
         }
 
 
@@ -143,7 +135,7 @@ public class ForestBoss : BossMonster
             {
                 isAngry = true;
                 applyPower = applyPower * 2;
-                anim.SetBool("isAngry", isAngry);
+                anim.SetBool("isAngry", true);
                 anim.SetTrigger("Angry");
                 ApplyAttackDelay = AttackDelay / 2;
             }

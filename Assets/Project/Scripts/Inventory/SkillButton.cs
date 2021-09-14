@@ -36,8 +36,8 @@ public class SkillButton : MonoBehaviour
         this.Command = DataBaseManager.Instance.tdSkillDict[this.SKey].Command;
         this.Description = DataBaseManager.Instance.tdSkillDict[this.SKey].Description;
         this.UpgrateCost = DataBaseManager.Instance.tdSkillDict[this.SKey].UpgradeCost;
-        this.Mana = DataBaseManager.Instance.tdSkillDict[this.SKey].Fmana;
-        this.Dmg = DataBaseManager.Instance.tdSkillDict[this.SKey].Fdmg;
+        this.Mana = DataBaseManager.Instance.tdSkillDict[this.SKey].Tmana;
+        this.Dmg = DataBaseManager.Instance.tdSkillDict[this.SKey].Tdmg;
         this.SkillLevel = UserDataManager.user.skill_level[DataBaseManager.Instance.tdSkillDict[this.SKey].Name];
 
         //Debug.Log("name : " + nameKey);

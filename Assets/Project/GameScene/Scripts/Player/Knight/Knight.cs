@@ -34,7 +34,7 @@ public class Knight : MeleeCharacter
 
         foreach (var item in DataBaseManager.Instance.tdSkillDict.Values)
         {
-            SkillcoolTimeDic.Add(item.Name, item.Ctime);
+            SkillcoolTimeDic.Add(item.Name, item.T_Ctime);
             currentSkillcoolTimeDic.Add(item.Name, 0);
         }
 
@@ -91,9 +91,9 @@ public class Knight : MeleeCharacter
 
         if (UseSkill(skillEnum.돌진, BattleManager.Instance.Pattern_id, currentSkillcoolTimeDic[DataBaseManager.Instance.tdSkillDict[(int)skillEnum.돌진].Name]))
         {
-            ATKDamage = DB.tdSkillDict[(int)skillEnum.돌진].Fdmg;
-            Debug.Log(DB.tdSkillDict[(int)skillEnum.돌진].Fdmg);
-            UseMp(DB.tdSkillDict[(int)skillEnum.돌진].Fmana);
+            ATKDamage = DB.tdSkillDict[(int)skillEnum.돌진].Tdmg;
+            Debug.Log(DB.tdSkillDict[(int)skillEnum.돌진].Tdmg);
+            UseMp(DB.tdSkillDict[(int)skillEnum.돌진].Tmana);
             StartCoroutine(DashCroutine());
         }
 
@@ -180,9 +180,9 @@ public class Knight : MeleeCharacter
 
         if (UseSkill(skillEnum.연속찌르기, BattleManager.Instance.Pattern_id,currentSkillcoolTimeDic[DataBaseManager.Instance.tdSkillDict[(int)skillEnum.연속찌르기].Name]))
         {
-            ATKDamage = DB.tdSkillDict[(int)skillEnum.연속찌르기].Fdmg;
+            ATKDamage = DB.tdSkillDict[(int)skillEnum.연속찌르기].Tdmg;
             BattleManager.Instance.isUseSkill = true;
-            UseMp(DB.tdSkillDict[(int)skillEnum.연속찌르기].Fmana);
+            UseMp(DB.tdSkillDict[(int)skillEnum.연속찌르기].Tmana);
             anim.SetTrigger("Sting");
             currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.연속찌르기].Name] = SkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.연속찌르기].Name];
         }
@@ -198,8 +198,8 @@ public class Knight : MeleeCharacter
         currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.회전공격].Name] -= Time.deltaTime;
         if(UseSkill(skillEnum.회전공격, BattleManager.Instance.Pattern_id,currentSkillcoolTimeDic[DataBaseManager.Instance.tdSkillDict[(int)skillEnum.회전공격].Name]))
         {
-            ATKDamage = DB.tdSkillDict[(int)skillEnum.회전공격].Fdmg;
-            UseMp(DB.tdSkillDict[(int)skillEnum.회전공격].Fmana);
+            ATKDamage = DB.tdSkillDict[(int)skillEnum.회전공격].Tdmg;
+            UseMp(DB.tdSkillDict[(int)skillEnum.회전공격].Tmana);
             StartCoroutine(SpinAttack());
 
         }
@@ -235,7 +235,7 @@ public class Knight : MeleeCharacter
 
         if (UseSkill(skillEnum.내려찍기,BattleManager.Instance.Pattern_id, currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.내려찍기].Name]))
         {
-            ATKDamage = DataBaseManager.Instance.tdSkillDict[(int)skillEnum.내려찍기].Fdmg;
+            ATKDamage = DataBaseManager.Instance.tdSkillDict[(int)skillEnum.내려찍기].Tdmg;
             BattleManager.Instance.isUseSkill = true;
             anim.SetTrigger("BigSword");
             UseMp(40);
@@ -266,8 +266,8 @@ public class Knight : MeleeCharacter
         {
 
             BattleManager.Instance.isUseSkill = true;
-            ATKDamage = DB.tdSkillDict[(int)skillEnum.검기날리기].Fdmg;
-            UseMp(DB.tdSkillDict[(int)skillEnum.검기날리기].Fmana);
+            ATKDamage = DB.tdSkillDict[(int)skillEnum.검기날리기].Tdmg;
+            UseMp(DB.tdSkillDict[(int)skillEnum.검기날리기].Tmana);
 
             anim.SetTrigger("SwordAura");
 
@@ -295,10 +295,10 @@ public class Knight : MeleeCharacter
 
         if (UseSkill(skillEnum.z자베기, BattleManager.Instance.Pattern_id, currentSkillcoolTimeDic[DataBaseManager.Instance.tdSkillDict[(int)skillEnum.z자베기].Name]))
         {
-            ATKDamage = DB.tdSkillDict[(int)skillEnum.z자베기].Fdmg;
-            Debug.Log(DB.tdSkillDict[(int)skillEnum.z자베기].Fdmg);
+            ATKDamage = DB.tdSkillDict[(int)skillEnum.z자베기].Tdmg;
+            Debug.Log(DB.tdSkillDict[(int)skillEnum.z자베기].Tdmg);
             BattleManager.Instance.isUseSkill = true;
-            UseMp(DB.tdSkillDict[(int)skillEnum.z자베기].Fmana);
+            UseMp(DB.tdSkillDict[(int)skillEnum.z자베기].Tmana);
             anim.SetTrigger("ThreeCut");
             currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.z자베기].Name] = SkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.z자베기].Name];
         }
@@ -313,9 +313,9 @@ public class Knight : MeleeCharacter
         if (UseSkill(skillEnum.회복, BattleManager.Instance.Pattern_id, currentSkillcoolTimeDic[DataBaseManager.Instance.tdSkillDict[(int)skillEnum.회복].Name]))
         {
             BattleManager.Instance.isUseSkill = true;
-            UseMp(DB.tdSkillDict[(int)skillEnum.회복].Fmana);
+            UseMp(DB.tdSkillDict[(int)skillEnum.회복].Tmana);
             anim.SetTrigger("Healing");
-            StartCoroutine(HealingCroutine(8, 1, DB.tdSkillDict[(int)skillEnum.회복].Fdmg));
+            StartCoroutine(HealingCroutine(8, 1, DB.tdSkillDict[(int)skillEnum.회복].Tdmg));
             currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.회복].Name] = SkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.회복].Name];
         }
     }
@@ -350,9 +350,9 @@ public class Knight : MeleeCharacter
         {
             BattleManager.Instance.isUseSkill = true;
             isParing = true;
-            ATKDamage = DB.tdSkillDict[(int)skillEnum.흘리기].Fdmg;
+            ATKDamage = DB.tdSkillDict[(int)skillEnum.흘리기].Tdmg;
             BattleManager.Instance.isUseSkill = true;
-            UseMp(DB.tdSkillDict[(int)skillEnum.흘리기].Fmana);
+            UseMp(DB.tdSkillDict[(int)skillEnum.흘리기].Tmana);
             anim.SetTrigger("Paring");
             currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.흘리기].Name] = SkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.흘리기].Name];
         }
@@ -369,8 +369,8 @@ public class Knight : MeleeCharacter
         if (UseSkill(skillEnum.밀쳐내기, BattleManager.Instance.Pattern_id, currentSkillcoolTimeDic[DataBaseManager.Instance.tdSkillDict[(int)skillEnum.밀쳐내기].Name]))
         {
             BattleManager.Instance.isUseSkill = true;
-            ATKDamage = DB.tdSkillDict[(int)skillEnum.밀쳐내기].Fdmg;
-            UseMp(DB.tdSkillDict[(int)skillEnum.밀쳐내기].Fmana);
+            ATKDamage = DB.tdSkillDict[(int)skillEnum.밀쳐내기].Tdmg;
+            UseMp(DB.tdSkillDict[(int)skillEnum.밀쳐내기].Tmana);
             anim.SetTrigger("Push");
             currentSkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.밀쳐내기].Name] = SkillcoolTimeDic[DB.tdSkillDict[(int)skillEnum.밀쳐내기].Name];
         }
