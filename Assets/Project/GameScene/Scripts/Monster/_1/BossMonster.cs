@@ -188,6 +188,7 @@ public class BossMonster : Monster
             BattleManager.Instance.startPanel.GetComponent<Animator>().SetTrigger("isStart");
             BattleManager.Instance.nextStage();
             BattleManager.Instance.SetmonsterGenInterval(5f);
+            
         }
     }
 }   

@@ -7,7 +7,10 @@ public class ForestBoss : BossMonster
 
     bool isBattle;
     public Character player;
+    bool isAngry;
 
+    public GameObject attackPrefab;
+    public GameObject angryAttackPrefab;
     public override void Awake()
     {
         base.Awake();
@@ -37,6 +40,7 @@ public class ForestBoss : BossMonster
         DieCheck();
         animUpdate();
         hpUpdate();
+        angryCheck();
     }
 
     public override void FixedUpdate()
@@ -49,7 +53,6 @@ public class ForestBoss : BossMonster
         BattleCheck();
         ContactCheck();
     }
-    public GameObject attackPrefab;
     public virtual void BattleCheck() // 배틀 감지
     {
         RaycastHit2D rayhit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 0.6f), Vector2.left, AttackDistance, LayerMask.GetMask("Player"));
@@ -89,9 +92,18 @@ public class ForestBoss : BossMonster
 
     public override void Attack()
     {
-       var obj =  Instantiate(attackPrefab,new Vector2(player.gameObject.transform.position.x, -0.1484008f), Quaternion.identity);
+        if (!isAngry)
+        {
+            var obj = Instantiate(attackPrefab, new Vector2(player.gameObject.transform.position.x, -0.1484008f), Quaternion.identity);
 
-        obj.GetComponent<AttackObject>().Power = this.applyPower;
+            obj.GetComponent<AttackObject>().Power = this.applyPower;
+        }
+        else
+        {
+            var obj = Instantiate(angryAttackPrefab, new Vector2(player.gameObject.transform.position.x, 0.6f), Quaternion.identity);
+
+            obj.GetComponent<AttackObject>().Power = this.applyPower;
+        }
     }
 
     public override void Damaged(float value)
@@ -123,4 +135,20 @@ public class ForestBoss : BossMonster
 
     }
 
+    public void angryCheck()
+    {
+        if (Hp <= applyMaxHp / 2)
+        {
+            if (!isAngry)
+            {
+                isAngry = true;
+                applyPower = applyPower * 2;
+                anim.SetBool("isAngry", isAngry);
+                anim.SetTrigger("Angry");
+                ApplyAttackDelay = AttackDelay / 2;
+            }
+        }
+    }
+
+    
 }

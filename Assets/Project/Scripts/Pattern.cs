@@ -94,9 +94,22 @@ public class Pattern : MonoBehaviour
 
 
 
-        circleList.Clear();
-        lines.Clear();
+        try
+        {
+            circleList.Clear();
+        }
+        catch
+        {
 
+        }
+        try
+        {
+            lines.Clear();
+        }
+        catch
+        {
+
+        }
         
 
         lineOnEdit = null;

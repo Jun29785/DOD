@@ -103,7 +103,7 @@ BoxCollider2D:
   m_Offset: {x: 0.04275024, y: 0.72642744}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.1385933}
+    pivot: {x: 0.5003277, y: 0.1469943}
     oldSize: {x: 1.84, y: 2.01}
     newSize: {x: 1.84, y: 2.01}
     adaptiveTilingThreshold: 0.5
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b679fda0229197469ddfc39bc8b0244, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitNo: 40002
+  unitNo: 40001
   Name: "\uB098\uBB34"
   MaxHp: 500
   applyMaxHp: 0
@@ -178,6 +178,7 @@ MonoBehaviour:
   cnt: 0
   player: {fileID: 0}
   attackPrefab: {fileID: 4816257949462880918, guid: 08c5421f7d401f14ea14b6c380ee94ce, type: 3}
+  angryAttackPrefab: {fileID: 7231138786015445714, guid: 0dee66d096483f4418f6d1b674acf3b2, type: 3}
 --- !u!1 &4592127933864545136
 GameObject:
   m_ObjectHideFlags: 0

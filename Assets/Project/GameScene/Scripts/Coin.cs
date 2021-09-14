@@ -23,16 +23,5 @@ public class Coin : MonoBehaviour
         Objectpool.ReturnCoin(this);
     }
 
-    /*IEnumerator CoinCroutine()
-    {
-        rigid.AddForce(new Vector2(Random.Range(20, 120), Random.Range(100, 200)));
-        yield return new WaitForSeconds(0.3f);
-        Destroy(gameObject.GetComponent<Rigidbody2D>());
-        while(false)
-        {
-            transform.position = Vector2.Lerp(transform.position, goldPanel.transform.position, 3 * Time.deltaTime);
-            
-        }
-
-    }*/
+    
 }

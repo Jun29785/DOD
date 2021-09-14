@@ -126,7 +126,112 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: tree_boss_angry_skill_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 218
+        width: 184
+        height: 218
+      alignment: 9
+      pivot: {x: 0.5001087, y: 0.2133999}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4850a4e394125b980800000000000000
+      internalID: -8523870121267427964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tree_boss_angry_skill_1
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 218
+        width: 184
+        height: 218
+      alignment: 9
+      pivot: {x: 0.5001087, y: 0.2133999}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1354920396e07e70800000000000000
+      internalID: 9111035565248369435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tree_boss_angry_skill_2
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 218
+        width: 184
+        height: 218
+      alignment: 9
+      pivot: {x: 0.5001087, y: 0.2133999}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdddd88f4c9a1c500800000000000000
+      internalID: 414799304143527388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tree_boss_angry_skill_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 184
+        height: 218
+      alignment: 9
+      pivot: {x: 0.5001087, y: 0.2133999}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1670e8ee3315d5760800000000000000
+      internalID: 7448198642228135777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tree_boss_angry_skill_4
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 0
+        width: 184
+        height: 218
+      alignment: 9
+      pivot: {x: 0.5001087, y: 0.2133999}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac81281311ef9b3f0800000000000000
+      internalID: -884396502003083062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
