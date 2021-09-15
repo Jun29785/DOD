@@ -8,7 +8,7 @@ public class SkillCoolTimeObject : MonoBehaviour
     public Image image;
     public Image filledPanel;
     public Text text;
-
+    public RectTransform RT;
     public int skillKey;
     public string skillName;
     public float CoolTime;
@@ -16,6 +16,8 @@ public class SkillCoolTimeObject : MonoBehaviour
     
     void Start()
     {
+        RT = GetComponent<RectTransform>();
+        RT.sizeDelta = new Vector2(RT.sizeDelta.x * (1280 / Screen.height), RT.sizeDelta.y * (1280 / Screen.height));
         skillName = DataBaseManager.Instance.tdSkillDict[skillKey].Name;
         CoolTime = DataBaseManager.Instance.tdSkillDict[skillKey].T_Ctime;
 

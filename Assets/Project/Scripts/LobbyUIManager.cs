@@ -188,7 +188,7 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
         Coin.text = UserDataManager.user.coin.ToString();
         if (Inventory.activeSelf)
         {
-            Characterlvl.text = UserDataManager.user.character_level[InvenCharacter.GetComponent<InvenChar>().CharKey].ToString("0");
+            Characterlvl.text = UserDataManager.user.character_level[InvenCharacter.GetComponent<InvenChar>().CharName].ToString("0");
             CharUpgradeCost.text = InvenCharacter.GetComponent<InvenChar>().UpgradeCost.ToString();
         }
     }
