@@ -17,7 +17,7 @@ public class Button : MonoBehaviour
     {
         LoadingSceneController.LoadScene(Scenes.LobbyScene.ToString());
         Time.timeScale = 1;
-=    }
+   }
 
     public void TitleToLobby()
     {
