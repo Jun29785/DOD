@@ -215,7 +215,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &93051770
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3600,6 +3600,7 @@ GameObject:
   - component: {fileID: 1138600069}
   - component: {fileID: 1138600071}
   - component: {fileID: 1138600070}
+  - component: {fileID: 1138600072}
   m_Layer: 5
   m_Name: Upgrade Cost
   m_TagString: Untagged
@@ -3668,6 +3669,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1138600068}
   m_CullTransparentMesh: 0
+--- !u!114 &1138600072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1138600068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1835391891}
+          m_TargetAssemblyTypeName: LobbyUIManager, Assembly-CSharp
+          m_MethodName: OnClickCharacterUpGradeButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1162963063
 GameObject:
   m_ObjectHideFlags: 0
@@ -7305,7 +7335,6 @@ GameObject:
   - component: {fileID: 473140047028724336}
   - component: {fileID: 473140047028724337}
   - component: {fileID: 473140047028724352}
-  - component: {fileID: 473140047028724353}
   m_Layer: 5
   m_Name: Character
   m_TagString: Untagged
@@ -7334,35 +7363,6 @@ MonoBehaviour:
   attakDelay: 0
   UpgradeCost: 100
   Level: 0
---- !u!114 &473140047028724353
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 473140047028724351}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 4
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1835391891}
-          m_TargetAssemblyTypeName: LobbyUIManager, Assembly-CSharp
-          m_MethodName: OnClickCharacter
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &473140047272465498
 GameObject:
   m_ObjectHideFlags: 0

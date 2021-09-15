@@ -42,11 +42,12 @@ public class Button : MonoBehaviour
     // 로비
     public void OpenInventory()
     {
-        LobbyUIManager.Instance.Inventory.SetActive(true);
-        Debug.Log("Loading Skill Button");
+        var i = LobbyUIManager.Instance;
+        i.Inventory.SetActive(true);
+        GameManager.Instance.CharSetting();
         GameManager.Instance.StatSetting();
-        LobbyUIManager.Instance.CreateButton();
-        Debug.Log("Successful Load Skill Button");
+        i.CreateButton();
+        i.InvenCharacter.GetComponent<InvenChar>().LoadData(i.InvenCharKey);
     }
 
     public void CloseInventory()

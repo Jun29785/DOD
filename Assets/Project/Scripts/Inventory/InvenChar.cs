@@ -45,8 +45,11 @@ public class InvenChar : MonoBehaviour
             StartCoroutine(LobbyUIManager.Instance.NoMoney());
             return;
         }
+        Debug.Log("ready to Upgrade. UpgradeCost : " + UpgradeCost);
         UserDataManager.user.coin -= UpgradeCost;
         Level += 1;
-        UserDataManager.user.character_level[name] += 1;
+        UserDataManager.user.character_level[CharKey.ToString()] += 1;
+        Debug.Log("Successful Upgrade! UpgradeCost : " + UpgradeCost);
+
     }
 }

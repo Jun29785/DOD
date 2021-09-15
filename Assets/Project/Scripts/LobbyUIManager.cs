@@ -47,7 +47,7 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
     private GameObject CurrentSelectedSkill;
 
     bool isQuitPanel = false;
-
+    public int InvenCharKey;
 
     [Header("Rank")]
     public MultiMap<int,GameObject> rankObjQ = new MultiMap<int, GameObject>(); // 랭크 오브젝트 큐(오브젝트 풀)
@@ -58,13 +58,13 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
 
     protected override void Awake()
     {
-        
+        InvenCharKey = 30001;
         StartCoroutine(StartScene());
     }
 
     IEnumerator StartScene()
     {
-        InvenCharacter.GetComponent<InvenChar>().LoadData(30001);
+        InvenCharacter.GetComponent<InvenChar>().LoadData(InvenCharKey);
         CreateNewrankObj();
         
         Canvas.SetTrigger("LeaveOpen");
@@ -209,29 +209,7 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
     {
         StartButton.sprite = OffStartButton;
     }
-
-
-    public void OnClickSkillStatButton()
-    {
-        SkillDescPanel.SetActive(false);
-        SkillStatPanel.SetActive(true);
-        SkillDescButton.GetComponent<Image>().color = new Color32(150, 150, 150, 255);
-        SkillStatButton.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
-    }
-
-    public void OnClickSkillDescButton()
-    {
-        SkillStatPanel.SetActive(false);
-        SkillDescPanel.SetActive(true);
-        SkillStatButton.GetComponent<Image>().color = new Color32(150, 150, 150, 255);
-        SkillDescButton.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
-    }
-
-
     #endregion
-
-    
-
 
     #region 인벤 버튼 애니메이션
     public void PointerDownInventoryButton()
@@ -251,8 +229,22 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
 
     #endregion
 
-
     #region 스킬 판넬
+    public void OnClickSkillStatButton()
+    {
+        SkillDescPanel.SetActive(false);
+        SkillStatPanel.SetActive(true);
+        SkillDescButton.GetComponent<Image>().color = new Color32(150, 150, 150, 255);
+        SkillStatButton.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+    }
+
+    public void OnClickSkillDescButton()
+    {
+        SkillStatPanel.SetActive(false);
+        SkillDescPanel.SetActive(true);
+        SkillStatButton.GetComponent<Image>().color = new Color32(150, 150, 150, 255);
+        SkillDescButton.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+    }
     public void OpenSkillPanel(GameObject Skill)
     {
         if (!SkillPanel.activeSelf)
@@ -344,23 +336,13 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
         UserDataManager.Instance.Save();
     }
 
-    public void OnClickCharacter()
-    {
-        if (!InvenCharacter.transform.GetChild(0).gameObject.activeSelf)
-        {
-            InvenCharacter.transform.GetChild(0).gameObject.SetActive(true);
-        }
-        else
-        {
-            InvenCharacter.transform.GetChild(0).gameObject.SetActive(false);
-        }
-    }
-
     public void OnClickCharacterUpGradeButton()
     {
         var invn = InvenCharacter.GetComponent<InvenChar>();
         invn.Upgrade();
         GameManager.Instance.CharSetting();
+        invn.LoadData(invn.CharKey);
         UserDataManager.Instance.Save();
+        Debug.Log("Successful Save Data! UpgradeCost : " + invn.UpgradeCost);
     }
 }

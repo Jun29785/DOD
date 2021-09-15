@@ -54,7 +54,7 @@ public class GameManager : Singleton<GameManager>
     {
         foreach (var item in DataBaseManager.Instance.tdCharacterDict.Values)
         {
-            var i = UserDataManager.user.character_level[item.Name];
+            var i = UserDataManager.user.character_level[item.UnitNo.ToString()];
             item.THP = item.HP + (float)(item.Lhp * (i - 1));
             item.TMP = item.MP + (float)(item.Lmp * (i - 1));
             item.TPOWER = item.POWER + (float)(item.Lpower * (i - 1));
