@@ -13,7 +13,7 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
     public Sprite OffStartButton;
 
     public Text Coin;
-
+    public Text InvenCoin;
     public Animator InventoryAnim;
     public GameObject InventoryIcon;
 
@@ -29,14 +29,16 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
     public GameObject rankPanel;
     public GameObject nameInput;
     public GameObject quitPanel;
-
+    public GameObject InvenCharacter;
 
     public GameObject SkillStatPanel;
     public GameObject SkillDescPanel;
     public GameObject SkillStatButton;
     public GameObject SkillDescButton;
-    
-    
+
+    public Text Characterlvl;
+    public Text CharUpgradeCost;
+
     private GameObject CurrentSelectedSkill;
 
     bool isQuitPanel = false;
@@ -66,8 +68,9 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
                 nameInput.SetActive(true);
             }
         }
-        
+
     }
+
     private void Update()
     {
         UpdateText();
@@ -128,9 +131,16 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
 
 
     #endregion
+
     public void UpdateText()
     {
+        InvenCoin.text = UserDataManager.user.coin.ToString();
         Coin.text = UserDataManager.user.coin.ToString();
+        if (Inventory.activeSelf)
+        {
+            Characterlvl.text = UserDataManager.user.character_level[InvenCharacter.GetComponent<InvenChar>().CharKey].ToString("0");
+            CharUpgradeCost.text = InvenCharacter.GetComponent<InvenChar>().UpgradeCost.ToString();
+        }
     }
 
 
@@ -151,14 +161,33 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
 
 
     #endregion
- 
+
 
     #region 스킬 판넬
     public void OpenSkillPanel(GameObject Skill)
     {
-        CurrentSelectedSkill = Skill;
-        SkillPanel.SetActive(true);
+        if (!SkillPanel.activeSelf)
+        {
+            CurrentSelectedSkill = Skill;
+            SkillPanel.SetActive(true);
+            OnClickSkillStatButton();
 
+        }
+        else
+        {
+            var i = CurrentSelectedSkill.GetComponent<SkillButton>();
+            i.SetButton(i.SKey);
+        }
+        LoadData(Skill);
+        SkillPanel.GetComponent<SkillPanel>().LoadSkillData();
+        GameManager.Instance.StatSetting();
+        SkillStatPanel.SetActive(true);
+        //Characterlvl = InvenCharacter.transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).GetComponent<Text>();
+        //CharUpgradeCost = InvenCharacter.transform.GetChild(0).transform.GetChild(1).GetComponent<Text>();
+    }
+
+    private void LoadData(GameObject Skill)
+    {
         var Get = SkillManager.Instance;
         var Set = Skill.GetComponent<SkillButton>();
         Get.Name = Set.Name;
@@ -166,20 +195,20 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
         Get.Command = Set.Command;
         Get.Mana = Set.Mana;
         Get.Dmg = Set.Dmg;
+        Get.Ctime = Set.Ctime;
         Get.Description = Set.Description;
-        Get.UpgrateCost = Set.UpgrateCost;
+        Get.UpgradeCost = Set.UpgradeCost;
         Get.SkillLevel = Set.SkillLevel;
-        SkillPanel.GetComponent<SkillPanel>().LoadSkillData();
-        GameManager.Instance.StatSetting();
-        SkillStatPanel.SetActive(true);
     }
 
     public void CloseSkillPanel()
     {
         SkillPanel.SetActive(false);
         GameManager.Instance.StatSetting();
+        SkillManager.Instance.InitData();
         CreateButton();
     }
+
     public void OnClickExitPanelButton()
     {
         SkillPanel.SetActive(false);
@@ -187,7 +216,7 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
     #endregion
 
 
-   public void CreateButton()
+    public void CreateButton()
     {
         for (int i = 0; i < SkillObjParent.childCount; i++)
         {
@@ -203,7 +232,7 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
             var j = Create.GetComponent<SkillButton>();
             // 스킬 값 추가
             j.SetButton(i.SKey);
-            
+
             Debug.Log("Get Static Data");
             //j.SkillLevel = UserDataManager.user.skill_level[DataBaseManager.Instance.tdSkillDict[(int)i.Value.SKey].Name];
             Debug.Log("Create : " + Create.name);
@@ -216,19 +245,36 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
 
         }
     }
+
     public void OnClickUpgradeButton()
     {
-        if (!CurrentSelectedSkill.GetComponent<SkillButton>().isOpenSkill)
+        var skillbutton = CurrentSelectedSkill.GetComponent<SkillButton>();
+        if (!skillbutton.isOpenSkill)
         {
-            CurrentSelectedSkill.GetComponent<SkillButton>().isOpenSkill = true;
+            skillbutton.isOpenSkill = true;
         }
-        CurrentSelectedSkill.GetComponent<SkillButton>().SkillLevel += 1;
-        Debug.Log(UserDataManager.user.skill_level[CurrentSelectedSkill.GetComponent<SkillButton>().Name]);
-        UserDataManager.user.skill_level[CurrentSelectedSkill.GetComponent<SkillButton>().Name] += 1;
-        GameManager.Instance.StatSetting(); 
+        skillbutton.SkillLevel += 1;
+        Debug.Log(UserDataManager.user.skill_level[skillbutton.Name]);
+        UserDataManager.user.skill_level[skillbutton.Name] += 1;
+        GameManager.Instance.StatSetting();
         OpenSkillPanel(CurrentSelectedSkill);
         UserDataManager.Instance.Save();
     }
 
-    
+    public void OnClickCharacter()
+    {
+        if (!InvenCharacter.transform.GetChild(0).gameObject.activeSelf)
+        {
+            InvenCharacter.transform.GetChild(0).gameObject.SetActive(true);
+        }
+        else
+        {
+            InvenCharacter.transform.GetChild(0).gameObject.SetActive(false);
+        }
+    }
+
+    public void OnClickCharacterUpGradeButton()
+    {
+
+    }
 }

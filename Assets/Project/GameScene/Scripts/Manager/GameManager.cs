@@ -37,12 +37,13 @@ public class GameManager : Singleton<GameManager>
     {
         foreach (var item in DataBaseManager.Instance.tdSkillDict.Values)
         {
+            var i = UserDataManager.user.skill_level[item.Name];
             Debug.Log(item.Name);
             Debug.Log("skill_level : " + UserDataManager.user.skill_level[item.Name]);
 
-            item.Tdmg =item.Fdmg +(float)(item.Ldmg * (UserDataManager.user.skill_level[item.Name]-1));
-            item.Tmana = item.Fmana +(float)(item.Lmana * (UserDataManager.user.skill_level[item.Name]-1));
-            item.T_Ctime = item.Ctime - (float)(item.L_Ctime * (UserDataManager.user.skill_level[item.Name] - 1));
+            item.Tdmg =item.Fdmg +(float)(item.Ldmg * (i-1));
+            item.Tmana = item.Fmana +(float)(item.Lmana * (i-1));
+            item.T_Ctime = item.Ctime - (float)(item.L_Ctime * (i-1));
         }
     }
 

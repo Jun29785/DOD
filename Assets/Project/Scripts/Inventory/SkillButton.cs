@@ -20,9 +20,11 @@ public class SkillButton : MonoBehaviour
     [SerializeField]
     public string Description;
     [SerializeField]
+    public float Ctime;
+    [SerializeField]
     public int SkillLevel;
     [SerializeField]
-    public int UpgrateCost;
+    public int UpgradeCost;
 
     public GameObject Skill;
 
@@ -35,21 +37,19 @@ public class SkillButton : MonoBehaviour
         this.Name = DataBaseManager.Instance.tdSkillDict[this.SKey].Name;
         this.Command = DataBaseManager.Instance.tdSkillDict[this.SKey].Command;
         this.Description = DataBaseManager.Instance.tdSkillDict[this.SKey].Description;
-        this.UpgrateCost = DataBaseManager.Instance.tdSkillDict[this.SKey].UpgradeCost;
         this.Mana = DataBaseManager.Instance.tdSkillDict[this.SKey].Tmana;
         this.Dmg = DataBaseManager.Instance.tdSkillDict[this.SKey].Tdmg;
         this.SkillLevel = UserDataManager.user.skill_level[DataBaseManager.Instance.tdSkillDict[this.SKey].Name];
-
-        //Debug.Log("name : " + nameKey);
-
-    }
-
-private void Update()
-    {
-        if (SkillLevel < 1 && isOpenSkill)
+        this.Ctime = DataBaseManager.Instance.tdSkillDict[this.SKey].T_Ctime;
+        if (this.SkillLevel < 1 && !isOpenSkill)
         {
-            UpgrateCost = 1000;
+            this.UpgradeCost = 1000;
         }
+        else
+        {
+            this.UpgradeCost = DataBaseManager.Instance.tdSkillDict[this.SKey].UpgradeCost;
+        }
+        //Debug.Log("name : " + nameKey);
     }
 
     public void OnClickSkillButton()
