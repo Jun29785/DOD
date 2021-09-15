@@ -20,6 +20,8 @@ public class Pattern : MonoBehaviour
     new bool enabled = true;
 
     public Animator[] circleAnim;
+
+
     void Start()
     {
         circles = new Dictionary<int, CircleIdentifier>();

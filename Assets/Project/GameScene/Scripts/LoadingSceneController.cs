@@ -32,9 +32,12 @@ public class LoadingSceneController : MonoBehaviour
         op.allowSceneActivation = false;
 
         float timer = 0;
+
+        UserDataManager.Instance.Save();
         while (!op.isDone)
         {
             yield return null;
+
 
             if(op.progress < 0.9f)
             {

@@ -32,7 +32,6 @@ public class GameSceneUIManager : UIManager
     {
         ScoreUpdate();
         GameOverCheck();
-        Debug.Log(gold);
     }
 
 
@@ -82,8 +81,8 @@ public class GameSceneUIManager : UIManager
             UserDataManager.Instance.game_end_Func((int)BattleManager.Instance.Score);
             CNT++;
         }
-            GOScoreText.text = BattleManager.Instance.Score.ToString();
-        GetGoldText.text = gold.ToString();
+            GOScoreText.text = "Score : " + BattleManager.Instance.Score.ToString();
+        GetGoldText.text = "Gold : +" + gold.ToString();
         GameoverPanel.SetActive(true);
         UserDataManager.user.coin += BattleManager.Instance.getGold;
         BattleManager.Instance.getGold = 0;
@@ -119,11 +118,12 @@ public class GameSceneUIManager : UIManager
     }
 
 
+
+
     /// <summary>
     /// 쿨타임 오브젝트 생성
     /// </summary>
-    /// <param name="name"></param>
-    /// <param name="cooltime"></param>
+    /// <param name="Skey">스킬 키값</param>
     public void Create_SkillCoolTimeObject(int Skey)
     {
         var obj = Instantiate(Skill_CoolTime_Prefab);
