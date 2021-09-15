@@ -37,7 +37,7 @@ public class GameManager : Singleton<GameManager>
     {
         foreach (var item in DataBaseManager.Instance.tdSkillDict.Values)
         {
-            var i = UserDataManager.user.skill_level[item.Name];
+            var i = UserDataManager.user.skill_level[item.SKey.ToString()];
 
             item.Tdmg = item.Fdmg + (float)(item.Ldmg * (i - 1));
             item.Tmana = item.Fmana + (float)(item.Lmana * (i - 1));
