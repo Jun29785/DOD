@@ -6,8 +6,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+
+
 public class LobbyUIManager : Singleton<LobbyUIManager>
 {
+
+    
+
     public Image StartButton;
     public Sprite OnStartButton;
     public Sprite OffStartButton;
@@ -37,23 +43,35 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
     public GameObject SkillDescButton;
 
     public Text Characterlvl;
-    public Text CharUpgradeCost;
+    public Text CharUpgradeCost;    
 
     private GameObject CurrentSelectedSkill;
 
     bool isQuitPanel = false;
 
+
+    [Header("Rank")]
+    public MultiMap<int,GameObject> rankObjQ = new MultiMap<int, GameObject>(); // 랭크 오브젝트 큐(오브젝트 풀)
+    public GameObject rankObj_1;
+    public GameObject rankObj_2;
+    public GameObject rankObj_3;
+    public GameObject rankObj_Default;
+
     protected override void Awake()
     {
+        
         StartCoroutine(StartScene());
     }
 
     IEnumerator StartScene()
     {
+        CreateNewrankObj();
+
         Canvas.SetTrigger("LeaveOpen");
         yield return new WaitForSeconds(1.5f);
         Leave.SetActive(false);
         Character.SetBool("IDLE", true);
+
 
         nickNameInput();
     }
@@ -70,6 +88,69 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
         }
 
     }
+
+    #region 오브젝트 풀
+    private void CreateNewrankObj()
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            var newObj1 = Instantiate(rankObj_1);
+            newObj1.transform.parent = Instance.transform;
+            newObj1.gameObject.SetActive(false);
+            rankObjQ.Add(1, newObj1);
+
+            var newObj2 = Instantiate(rankObj_2);
+            newObj2.transform.parent = Instance.transform;
+            newObj2.gameObject.SetActive(false);
+            rankObjQ.Add(2, newObj2);
+
+            var newObj3 = Instantiate(rankObj_3);
+            newObj3.transform.parent = Instance.transform;
+            newObj3.gameObject.SetActive(false);
+            rankObjQ.Add(3, newObj3);
+        }
+        for(int i = 0; i<100; i++)
+        {
+            var newObj = Instantiate(rankObj_Default);
+            newObj.transform.parent = Instance.transform;
+            newObj.gameObject.SetActive(false);
+            rankObjQ.Add(4, newObj);
+        }
+
+
+    }
+
+
+
+    public static GameObject GetrankObj(int index)
+    {
+        if (Instance.rankObjQ[index].Count > 0)
+        {
+            var obj = Instance.rankObjQ.Removeit(index);
+
+            obj.gameObject.SetActive(true);
+
+            return obj;
+        }
+        else
+        {
+            Instance.CreateNewrankObj();
+            var newObj = Instance.rankObjQ.Removeit(index);
+
+            newObj.gameObject.SetActive(true);
+
+            return newObj;
+        }
+    }
+
+    public static void ReturnRankObj(int index,GameObject Obj)
+    {
+        Obj.gameObject.SetActive(false);
+        Instance.rankObjQ.Add(index, Obj);
+    }
+    #endregion
+
+
 
     private void Update()
     {
@@ -98,6 +179,17 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
                 isQuitPanel = !isQuitPanel;
                 quitPanel.SetActive(isQuitPanel);
             }
+        }
+    }
+
+    public void UpdateText()
+    {
+        InvenCoin.text = UserDataManager.user.coin.ToString();
+        Coin.text = UserDataManager.user.coin.ToString();
+        if (Inventory.activeSelf)
+        {
+            Characterlvl.text = UserDataManager.user.character_level[InvenCharacter.GetComponent<InvenChar>().CharKey].ToString("0");
+            CharUpgradeCost.text = InvenCharacter.GetComponent<InvenChar>().UpgradeCost.ToString();
         }
     }
 
@@ -132,16 +224,7 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
 
     #endregion
 
-    public void UpdateText()
-    {
-        InvenCoin.text = UserDataManager.user.coin.ToString();
-        Coin.text = UserDataManager.user.coin.ToString();
-        if (Inventory.activeSelf)
-        {
-            Characterlvl.text = UserDataManager.user.character_level[InvenCharacter.GetComponent<InvenChar>().CharKey].ToString("0");
-            CharUpgradeCost.text = InvenCharacter.GetComponent<InvenChar>().UpgradeCost.ToString();
-        }
-    }
+    
 
 
     #region 인벤 버튼 애니메이션
