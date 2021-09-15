@@ -68,9 +68,9 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
         CreateNewrankObj();
         
         Canvas.SetTrigger("LeaveOpen");
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(2.0f);
         Leave.SetActive(false);
-        Character.SetBool("IDLE", true);
+        Character.SetTrigger("IDLE");
 
 
         nickNameInput();
