@@ -7,6 +7,7 @@ using System.IO;
 using UnityEngine.UI;
 using UnityEngine.Networking;
 using DOD.Define;
+using System;
 
 namespace DOD.DB
 {
@@ -20,6 +21,11 @@ namespace DOD.DB
         public Dictionary<int, TDMonster> tdMonsterDict = new Dictionary<int, TDMonster>();
         public List<TDUserRank> userRankDict = new List<TDUserRank>();
         public Dictionary<string, float> skillCoolTime = new Dictionary<string, float>();
+
+
+
+
+        public List<string> tipText = new List<string>();
         protected override void Awake()
         {
             base.Awake();
@@ -31,6 +37,7 @@ namespace DOD.DB
             LoadSkillTable();
             LoadMonsterTable();
             LoadCharacterTable();
+            LoadTipText();
 
         }
 
@@ -153,6 +160,19 @@ namespace DOD.DB
                 tdCharacterDict.Add(tdCharacter.UnitNo, tdCharacter);
             }
             Debug.Log("캐릭터 테이블 완료");
+        }
+
+
+
+
+        public void LoadTipText()
+        {
+            TextAsset jsonText = Resources.Load<TextAsset>("Tip");
+            string[] Tip = jsonText.text.Split(',');
+            foreach (string text in Tip)
+            {
+                tipText.Add(text);
+            }
         }
     }
 }
