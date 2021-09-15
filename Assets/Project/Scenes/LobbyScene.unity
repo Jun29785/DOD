@@ -1282,6 +1282,7 @@ RectTransform:
   m_Children:
   - {fileID: 473140046918840142}
   - {fileID: 5936396880854182018}
+  - {fileID: 641944953}
   m_Father: {fileID: 1346590785}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1908,6 +1909,85 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 562411761}
+  m_CullTransparentMesh: 0
+--- !u!1 &641944952
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 641944953}
+  - component: {fileID: 641944955}
+  - component: {fileID: 641944954}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &641944953
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 641944952}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 454147508}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &641944954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 641944952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: New Text
+--- !u!222 &641944955
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 641944952}
   m_CullTransparentMesh: 0
 --- !u!1 &647067092
 GameObject:
@@ -6067,6 +6147,7 @@ MonoBehaviour:
   Character: {fileID: 117686918}
   SkillButtonObj: {fileID: 2825931678393596960, guid: 2021accc9824ddc46afa53d96f0eedc9, type: 3}
   SkillObjParent: {fileID: 473140047872707325}
+  WarningText: {fileID: 641944952}
   SkillPanel: {fileID: 5936396880854182017}
   Inventory: {fileID: 454147507}
   rankPanel: {fileID: 1746202489}
@@ -6079,10 +6160,10 @@ MonoBehaviour:
   SkillDescButton: {fileID: 5936396881353479091}
   Characterlvl: {fileID: 837562334}
   CharUpgradeCost: {fileID: 1138600070}
-  rankObj_1: {fileID: 4834071678354880502, guid: ca1a48f46956fb7498285c495e6fefd3, type: 3}
-  rankObj_2: {fileID: 6061081495273188853, guid: 67218df6d228494499b56ad834cc1a1e, type: 3}
-  rankObj_3: {fileID: 2129166471139291473, guid: 93bff64fedc0d974eace8cc89fb4da58, type: 3}
-  rankObj_Default: {fileID: 6989904789849961347, guid: 889c82617ff2c8247878c434923081ab, type: 3}
+  rankObj_1: {fileID: 0}
+  rankObj_2: {fileID: 0}
+  rankObj_3: {fileID: 0}
+  rankObj_Default: {fileID: 0}
 --- !u!95 &1835391892
 Animator:
   serializedVersion: 3
@@ -7208,8 +7289,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89b171037d805c84699867d88f579785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CharKey: "\uAE30\uC0AC"
+  CharKey: 0
+  CharName: 
+  HP: 0
+  MP: 0
+  POWER: 0
+  attackDistance: 0
+  attakDelay: 0
   UpgradeCost: 100
+  Level: 0
 --- !u!114 &473140047028724353
 MonoBehaviour:
   m_ObjectHideFlags: 0
