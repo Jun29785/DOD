@@ -136,8 +136,11 @@ public class UserDataManager : Singleton<UserDataManager>
                 Debug.Log(item.Key);
                 Debug.Log(item.Value);
             }
+            foreach(var item in user.character_level)
+        {
+            Debug.Log(item.Key);
+        }
     }
-
 
     IEnumerator SaveData()
     {
@@ -156,11 +159,11 @@ public class UserDataManager : Singleton<UserDataManager>
         Debug.Log(www.downloadHandler.text);
     }
 
-
     public void game_end_Func(int score)
     {
         StartCoroutine(game_end(score));
     }
+
     IEnumerator game_end(int score)
     {
         WWWForm form = new WWWForm();

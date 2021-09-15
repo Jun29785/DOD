@@ -18,30 +18,46 @@ public class SkillPanel : MonoBehaviour
     public Text DescriptionText;
     public Text UpgradeCostText; // 업그레이드 비용 계산 필요 (고정값 * 스킬 레벨)
 
+    private void Update()
+    {
+
+    }
+
     public void LoadSkillData()
     {
         var i = SkillManager.Instance;
         string cmd = "";
         foreach (int j in i.Command)
         {
-            cmd += j+1+" ";
+            cmd += j + 1 + " ";
         }
         Name.text = i.Name;
         if (i.SkillLevel < 1)
+        {
             SkillIcon.sprite = Resources.Load<Sprite>("SkillIcon/" + "10000") as Sprite;
+            ATKText.text = "해금 필요";
+            ManaText.text = "해금 필요";
+            CommandText.text = "해금 필요";
+            CTimeText.text = "해금 필요";
+            SkillLevel.text = "해금 필요";
+            DescriptionText.text = "해금 필요";
+            Name.text = "해금되지 않은 스킬";
+            UpgradeCostText.text = i.UpgradeCost.ToString();
+        }
         else
         {
             SkillIcon.sprite = Resources.Load<Sprite>("SkillIcon/" + i.SKey) as Sprite;
-            SkillLevel.text = i.SkillLevel.ToString("Lv : 0");
+            SkillLevel.text = i.SkillLevel.ToString("LV : 0");
             Description.text = i.Description;
-            PlayerPrefs.SetInt(i.SKey + "SkillLevel", i.SkillLevel);
-        }
-        ATKText.text = i.Dmg.ToString();
-        ManaText.text = i.Mana.ToString();
-        CommandText.text = cmd;
-        CTimeText.text = i.Ctime.ToString("00"+"초");
+            ATKText.text = i.Dmg.ToString();
+            ManaText.text = i.Mana.ToString();
+            CommandText.text = cmd;
+            CTimeText.text = i.Ctime.ToString("0초");
 
-        DescriptionText.text = i.Description;
-        UpgradeCostText.text = i.UpgrateCost.ToString();
+            DescriptionText.text = i.Description;
+            UpgradeCostText.text = i.UpgradeCost.ToString();
+        }
     }
+
+
 }
