@@ -11,9 +11,6 @@ using UnityEngine.UI;
 
 public class LobbyUIManager : Singleton<LobbyUIManager>
 {
-
-    
-
     public Image StartButton;
     public Sprite OnStartButton;
     public Sprite OffStartButton;
@@ -30,6 +27,8 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
     public GameObject SkillButtonObj;
     public Transform SkillObjParent;
 
+    public GameObject WarningText;
+
     public GameObject SkillPanel;
     public GameObject Inventory;
     public GameObject rankPanel;
@@ -41,7 +40,7 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
     public GameObject SkillDescPanel;
     public GameObject SkillStatButton;
     public GameObject SkillDescButton;
-
+    
     public Text Characterlvl;
     public Text CharUpgradeCost;    
 
@@ -76,6 +75,12 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
         nickNameInput();
     }
 
+    public IEnumerator NoMoney()
+    {
+        WarningText.SetActive(true);
+        yield return new WaitForSeconds(1.7f);
+        WarningText.SetActive(false);
+    }
 
     void nickNameInput()
     {
@@ -188,7 +193,7 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
         Coin.text = UserDataManager.user.coin.ToString();
         if (Inventory.activeSelf)
         {
-            Characterlvl.text = UserDataManager.user.character_level[InvenCharacter.GetComponent<InvenChar>().CharKey].ToString("0");
+            Characterlvl.text = UserDataManager.user.character_level[InvenCharacter.GetComponent<InvenChar>().CharName].ToString("0");
             CharUpgradeCost.text = InvenCharacter.GetComponent<InvenChar>().UpgradeCost.ToString();
         }
     }
@@ -332,13 +337,7 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
     public void OnClickUpgradeButton()
     {
         var skillbutton = CurrentSelectedSkill.GetComponent<SkillButton>();
-        if (!skillbutton.isOpenSkill)
-        {
-            skillbutton.isOpenSkill = true;
-        }
-        skillbutton.SkillLevel += 1;
-        Debug.Log(UserDataManager.user.skill_level[skillbutton.Name]);
-        UserDataManager.user.skill_level[skillbutton.Name] += 1;
+        skillbutton.Upgrade();
         GameManager.Instance.StatSetting();
         OpenSkillPanel(CurrentSelectedSkill);
         UserDataManager.Instance.Save();
@@ -358,6 +357,9 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
 
     public void OnClickCharacterUpGradeButton()
     {
-
+        var invn = InvenCharacter.GetComponent<InvenChar>();
+        invn.Upgrade();
+        GameManager.Instance.CharSetting();
+        UserDataManager.Instance.Save();
     }
 }
