@@ -15,14 +15,13 @@ public class Button : MonoBehaviour
     /// </summary>
     public void ToLobbyScene()
     {
-        SceneManager.LoadScene(Scenes.LobbyScene.ToString());
+        LoadingSceneController.LoadScene(Scenes.LobbyScene.ToString());
         Time.timeScale = 1;
-        UserDataManager.Instance.Save();
-    }
+=    }
 
     public void TitleToLobby()
     {
-        SceneManager.LoadScene(Scenes.LobbyScene.ToString());
+        LoadingSceneController.LoadScene(Scenes.LobbyScene.ToString());
         Time.timeScale = 1;
     }
 
