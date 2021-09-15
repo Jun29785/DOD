@@ -2113,6 +2113,7 @@ GameObject:
   - component: {fileID: 653614826}
   - component: {fileID: 653614828}
   - component: {fileID: 653614827}
+  - component: {fileID: 653614829}
   m_Layer: 5
   m_Name: left
   m_TagString: Untagged
@@ -2177,6 +2178,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 653614825}
   m_CullTransparentMesh: 0
+--- !u!114 &653614829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 653614825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1835391891}
+          m_TargetAssemblyTypeName: LobbyUIManager, Assembly-CSharp
+          m_MethodName: OnClickLeaveDoor
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &657738104
 GameObject:
   m_ObjectHideFlags: 0
@@ -2681,7 +2711,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -160}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 720, y: 1280}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &786135575
@@ -2850,6 +2880,7 @@ GameObject:
   - component: {fileID: 839181929}
   - component: {fileID: 839181931}
   - component: {fileID: 839181930}
+  - component: {fileID: 839181932}
   m_Layer: 5
   m_Name: right
   m_TagString: Untagged
@@ -2914,6 +2945,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 839181928}
   m_CullTransparentMesh: 0
+--- !u!114 &839181932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 839181928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1835391891}
+          m_TargetAssemblyTypeName: LobbyUIManager, Assembly-CSharp
+          m_MethodName: OnClickLeaveDoor
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &856697966
 GameObject:
   m_ObjectHideFlags: 0
@@ -3127,6 +3187,7 @@ GameObject:
   - component: {fileID: 967074766}
   - component: {fileID: 967074765}
   - component: {fileID: 967074764}
+  - component: {fileID: 967074767}
   m_Layer: 5
   m_Name: Button (1)
   m_TagString: Untagged
@@ -3196,7 +3257,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 967074765}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 967074767}
+        m_TargetAssemblyTypeName: Button, Assembly-CSharp
+        m_MethodName: Hideit
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2038772568}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &967074765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3235,6 +3308,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 967074762}
   m_CullTransparentMesh: 0
+--- !u!114 &967074767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 967074762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c843cff4ca8082a41b074f7c1f246873, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputName: {fileID: 0}
+  overlapName: {fileID: 0}
 --- !u!1 &1063805730
 GameObject:
   m_ObjectHideFlags: 0
@@ -6034,6 +6121,7 @@ GameObject:
   - component: {fileID: 1826266234}
   - component: {fileID: 1826266233}
   - component: {fileID: 1826266232}
+  - component: {fileID: 1826266235}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -6103,7 +6191,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1826266233}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1826266235}
+        m_TargetAssemblyTypeName: Button, Assembly-CSharp
+        m_MethodName: QuitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1826266233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6142,6 +6242,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1826266230}
   m_CullTransparentMesh: 0
+--- !u!114 &1826266235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1826266230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c843cff4ca8082a41b074f7c1f246873, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputName: {fileID: 0}
+  overlapName: {fileID: 0}
 --- !u!1 &1835391888
 GameObject:
   m_ObjectHideFlags: 0
@@ -6226,6 +6340,7 @@ MonoBehaviour:
   SkillDescButton: {fileID: 5936396881353479091}
   Characterlvl: {fileID: 837562334}
   CharUpgradeCost: {fileID: 1138600070}
+  InvenCharKey: 0
   rankObj_1: {fileID: 4834071678354880502, guid: ca1a48f46956fb7498285c495e6fefd3, type: 3}
   rankObj_2: {fileID: 6061081495273188853, guid: 67218df6d228494499b56ad834cc1a1e, type: 3}
   rankObj_3: {fileID: 2129166471139291473, guid: 93bff64fedc0d974eace8cc89fb4da58, type: 3}

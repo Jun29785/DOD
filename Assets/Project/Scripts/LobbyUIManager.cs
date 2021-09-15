@@ -345,4 +345,9 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
         UserDataManager.Instance.Save();
         Debug.Log("Successful Save Data! UpgradeCost : " + invn.UpgradeCost);
     }
+
+    public void OnClickLeaveDoor()
+    {
+        StartCoroutine(StartScene());
+    }
 }
