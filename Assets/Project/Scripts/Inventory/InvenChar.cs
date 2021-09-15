@@ -13,9 +13,11 @@ public class InvenChar : MonoBehaviour
 
     public int UpgradeCost;
     public int Level;
+    
+    
     public void SetData(int level)
     {
-        UserDataManager.user.skill_level[CharName] = level;
+        UserDataManager.user.skill_level[CharKey.ToString()] = level;
         UserDataManager.Instance.Save();
     }
 
@@ -31,7 +33,7 @@ public class InvenChar : MonoBehaviour
         this.attackDistance = charDict.attackDistance;
         this.attakDelay = charDict.attakDelay;
         Debug.Log(charDict.Name);
-        this.Level = UserDataManager.user.character_level[charDict.Name];
+        this.Level = UserDataManager.user.character_level[charDict.UnitNo.ToString()];
         this.UpgradeCost = charDict.TUC;
     }
 

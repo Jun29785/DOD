@@ -39,7 +39,7 @@ public class SkillButton : MonoBehaviour
         this.Description = skillDict.Description;
         this.Mana = skillDict.Tmana;
         this.Dmg = skillDict.Tdmg;
-        this.SkillLevel = UserDataManager.user.skill_level[skillDict.Name];
+        this.SkillLevel = UserDataManager.user.skill_level[skillDict.SKey.ToString()];
         this.Ctime = skillDict.T_Ctime;
         if (this.SkillLevel < 1 && !isOpenSkill)
         {
@@ -71,6 +71,6 @@ public class SkillButton : MonoBehaviour
         }
         UserDataManager.user.coin -= UpgradeCost;
         SkillLevel += 1;
-        UserDataManager.user.skill_level[Name] += 1;
+        UserDataManager.user.skill_level[SKey.ToString()] += 1;
     }
 }
