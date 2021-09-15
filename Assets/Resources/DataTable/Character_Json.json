@@ -1,6 +1,6 @@
 {
      "30001": {
-          "Name": "ê¸°ì‚¬",
+          "Name": "±â»ç",
           "Hp": "50",
           "Mp": "250",
           "Power": "3",
@@ -8,6 +8,8 @@
           "LMp": "50",
           "Lpower": "0.5",
           "AttackDistance": "1",
-          "AttackDelay": "0"
+          "AttackDelay": "0",
+          "UpgrateCost": "50",
+          "LUC": "10"
    }
 }

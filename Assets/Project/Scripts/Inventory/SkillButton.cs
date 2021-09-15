@@ -31,23 +31,23 @@ public class SkillButton : MonoBehaviour
     public void SetButton(int skey)
     {
         this.SKey = skey;
+        var skillDict = DataBaseManager.Instance.tdSkillDict[this.SKey];
+        //string nameKey = skillDict.Name; ?? 
 
-        //string nameKey = DataBaseManager.Instance.tdSkillDict[this.SKey].Name; ?? 
-
-        this.Name = DataBaseManager.Instance.tdSkillDict[this.SKey].Name;
-        this.Command = DataBaseManager.Instance.tdSkillDict[this.SKey].Command;
-        this.Description = DataBaseManager.Instance.tdSkillDict[this.SKey].Description;
-        this.Mana = DataBaseManager.Instance.tdSkillDict[this.SKey].Tmana;
-        this.Dmg = DataBaseManager.Instance.tdSkillDict[this.SKey].Tdmg;
-        this.SkillLevel = UserDataManager.user.skill_level[DataBaseManager.Instance.tdSkillDict[this.SKey].Name];
-        this.Ctime = DataBaseManager.Instance.tdSkillDict[this.SKey].T_Ctime;
+        this.Name = skillDict.Name;
+        this.Command = skillDict.Command;
+        this.Description = skillDict.Description;
+        this.Mana = skillDict.Tmana;
+        this.Dmg = skillDict.Tdmg;
+        this.SkillLevel = UserDataManager.user.skill_level[skillDict.Name];
+        this.Ctime = skillDict.T_Ctime;
         if (this.SkillLevel < 1 && !isOpenSkill)
         {
             this.UpgradeCost = 1000;
         }
         else
         {
-            this.UpgradeCost = DataBaseManager.Instance.tdSkillDict[this.SKey].UpgradeCost;
+            this.UpgradeCost = skillDict.UpgradeCost;
         }
         //Debug.Log("name : " + nameKey);
     }
@@ -55,5 +55,22 @@ public class SkillButton : MonoBehaviour
     public void OnClickSkillButton()
     {
         LobbyUIManager.Instance.OpenSkillPanel(Skill);
+    }
+
+    public void Upgrade()
+    {
+        var coin = UserDataManager.user.coin;
+        if (coin < UpgradeCost)
+        {
+            StartCoroutine(LobbyUIManager.Instance.NoMoney());
+            return;
+        }
+        if (!isOpenSkill)
+        {
+            isOpenSkill = true;
+        }
+        UserDataManager.user.coin -= UpgradeCost;
+        SkillLevel += 1;
+        UserDataManager.user.skill_level[Name] += 1;
     }
 }

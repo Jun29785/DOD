@@ -13,7 +13,8 @@ public class UserDataManager : Singleton<UserDataManager>
 {
     public static UserData user = new UserData();
 
-    
+    [SerializeField]
+    int coin = user.coin;
     public bool isexist;
     public bool nickExist;
     public void Start()
@@ -24,19 +25,16 @@ public class UserDataManager : Singleton<UserDataManager>
     private void Update()
     {
         
-
     }
 
     public void Init()
     {
        //TextAsset userData = Resources.Load<TextAsset>("UserDataSample");
         
-
        //user = JsonConvert.DeserializeObject<UserData>(userData.text);
 
        StartCoroutine(InitData());
     
-
     }
 
 
