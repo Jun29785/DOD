@@ -64,8 +64,9 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
 
     IEnumerator StartScene()
     {
+        InvenCharacter.GetComponent<InvenChar>().LoadData(30001);
         CreateNewrankObj();
-
+        
         Canvas.SetTrigger("LeaveOpen");
         yield return new WaitForSeconds(1.5f);
         Leave.SetActive(false);
