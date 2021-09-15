@@ -43,7 +43,7 @@ public class TitleController : MonoBehaviour
     }
     private void OnPhase(IntroPhase phase)
     {
-        UI.SetLoadStateDescription(phase.ToString());
+        UI.SetLoadStateDescription(phase);
         if (loadGaugeUpdateCorutine != null)
         {
             StopCoroutine(loadGaugeUpdateCorutine);
@@ -56,7 +56,7 @@ public class TitleController : MonoBehaviour
         }
         else
         {
-            UI.loadingBarGauge.fillAmount = 1f;
+            UI.loadingBar.value = 1f;
         }
         switch (phase)
         {
