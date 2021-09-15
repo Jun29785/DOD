@@ -7,38 +7,38 @@ using System;
 public class TDCharacter : TableBase
 {
     public int UnitNo;
-    public string name;
+    public string Name;
     public float HP;
+    public float THP;
     public float MP;
+    public float TMP;
     public float POWER;
+    public float TPOWER;
     public float Lhp;
     public float Lmp;
     public float Lpower;
     public float attackDistance;
     public float attakDelay;
+    public int UpgradeCost;
+    public int TUC;
+    public int LUC;
 
     public override void SetJsonData(string key, JObject info)
     {
         base.SetJsonData(key, info);
         this.UnitNo = Int32.Parse(key);
-        Debug.Log("UnitNo");
-        this.name = info["Name"].Value<string>();
-        Debug.Log("Name");
+        this.Name = info["Name"].Value<string>();
         this.HP = info["Hp"].Value<float>();
-        Debug.Log("HP");
         this.MP = info["Mp"].Value<float>();
-        Debug.Log("MP");
         this.POWER = info["Power"].Value<float>();
-        Debug.Log("POWER");
         this.Lhp = info["LHp"].Value<float>();
-        Debug.Log("LH");
         this.Lmp = info["LMp"].Value<float>();
-        Debug.Log("LM");
         this.Lpower = info["Lpower"].Value<float>();
-        Debug.Log("LP");
         this.attackDistance = info["AttackDistance"].Value<float>();
-        Debug.Log("AD");
+        Debug.Log("1");
         this.attakDelay = info["AttackDelay"].Value<float>();
-        Debug.Log("ADEL");
+        Debug.Log("2");
+        this.UpgradeCost = info["UpgrateCost"].Value<int>();
+        this.LUC = info["LUC"].Value<int>();
     }
 }

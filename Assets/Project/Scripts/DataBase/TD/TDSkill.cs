@@ -22,8 +22,8 @@ public class TDSkill : TableBase
     public float L_Ctime;
     public string Description;
     public int UpgradeCost;
-
-
+    public int TUC;
+    public int LCU;
 
     public override void SetJsonData(string key, JObject info)
     {
@@ -40,6 +40,7 @@ public class TDSkill : TableBase
         L_Ctime = info["L_Ctime"].Value<float>();
         Description = info["Description"].Value<string>();
         UpgradeCost = info["UpgrateCost"].Value<int>();
+        LCU = info["LCU"].Value<int>();
     }
 
 }

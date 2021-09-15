@@ -38,6 +38,7 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
 
     public Text Characterlvl;
     public Text CharUpgradeCost;
+    public GameObject WarningText;
 
     private GameObject CurrentSelectedSkill;
 
@@ -46,6 +47,7 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
     protected override void Awake()
     {
         StartCoroutine(StartScene());
+        InvenCharacter.GetComponent<InvenChar>().LoadData(30001);
     }
 
     IEnumerator StartScene()
@@ -58,6 +60,12 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
         nickNameInput();
     }
 
+    public IEnumerator NoMoney()
+    {
+        WarningText.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        WarningText.SetActive(false);
+    }
 
     void nickNameInput()
     {
@@ -70,11 +78,10 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
         }
 
     }
-
+    
     private void Update()
     {
         UpdateText();
-
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (rankPanel.activeSelf)
@@ -129,16 +136,17 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
         SkillDescButton.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
     }
 
-
     #endregion
 
     public void UpdateText()
     {
-        InvenCoin.text = UserDataManager.user.coin.ToString();
-        Coin.text = UserDataManager.user.coin.ToString();
-        if (Inventory.activeSelf)
+        var coin = UserDataManager.user.coin.ToString();
+        Debug.Log("Coin : " + coin);
+        InvenCoin.text = coin;
+        Coin.text = coin;
+        if (InvenCharacter.activeSelf)
         {
-            Characterlvl.text = UserDataManager.user.character_level[InvenCharacter.GetComponent<InvenChar>().CharKey].ToString("0");
+            Characterlvl.text = "Lv." + UserDataManager.user.character_level[InvenCharacter.GetComponent<InvenChar>().CharName].ToString("0");
             CharUpgradeCost.text = InvenCharacter.GetComponent<InvenChar>().UpgradeCost.ToString();
         }
     }
@@ -181,6 +189,7 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
         LoadData(Skill);
         SkillPanel.GetComponent<SkillPanel>().LoadSkillData();
         GameManager.Instance.StatSetting();
+        GameManager.Instance.CharSetting();
         SkillStatPanel.SetActive(true);
         //Characterlvl = InvenCharacter.transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).GetComponent<Text>();
         //CharUpgradeCost = InvenCharacter.transform.GetChild(0).transform.GetChild(1).GetComponent<Text>();
@@ -205,6 +214,7 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
     {
         SkillPanel.SetActive(false);
         GameManager.Instance.StatSetting();
+        GameManager.Instance.CharSetting();
         SkillManager.Instance.InitData();
         CreateButton();
     }
@@ -214,7 +224,6 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
         SkillPanel.SetActive(false);
     }
     #endregion
-
 
     public void CreateButton()
     {
@@ -249,16 +258,11 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
     public void OnClickUpgradeButton()
     {
         var skillbutton = CurrentSelectedSkill.GetComponent<SkillButton>();
-        if (!skillbutton.isOpenSkill)
-        {
-            skillbutton.isOpenSkill = true;
-        }
-        skillbutton.SkillLevel += 1;
-        Debug.Log(UserDataManager.user.skill_level[skillbutton.Name]);
-        UserDataManager.user.skill_level[skillbutton.Name] += 1;
+        skillbutton.Upgrade();
         GameManager.Instance.StatSetting();
         OpenSkillPanel(CurrentSelectedSkill);
         UserDataManager.Instance.Save();
+        
     }
 
     public void OnClickCharacter()
@@ -275,6 +279,10 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
 
     public void OnClickCharacterUpGradeButton()
     {
-
+        var character = InvenCharacter.GetComponent<InvenChar>();
+        character.Upgrade();
+        GameManager.Instance.CharSetting();
+        UserDataManager.Instance.Save();
     }
 }
+

@@ -66,7 +66,7 @@ public override void Update()
     public override void SetData(int Key)
     {
         this.unitNo = DataBaseManager.Instance.tdCharacterDict[Key].UnitNo;
-        this.Name = DataBaseManager.Instance.tdCharacterDict[Key].name;
+        this.Name = DataBaseManager.Instance.tdCharacterDict[Key].Name;
         this.MaxHp = DataBaseManager.Instance.tdCharacterDict[Key].HP;
         this.AttackDistance = DataBaseManager.Instance.tdCharacterDict[Key].attackDistance;
         this.AttackDelay = DataBaseManager.Instance.tdCharacterDict[Key].attakDelay;
