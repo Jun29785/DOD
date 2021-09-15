@@ -16,6 +16,7 @@ public class SkillCoolTimeObject : MonoBehaviour
     
     void Start()
     {
+        Debug.Log((1280 / Screen.height));
         RT = GetComponent<RectTransform>();
         RT.sizeDelta = new Vector2(RT.sizeDelta.x * (1280 / Screen.height), RT.sizeDelta.y * (1280 / Screen.height));
         skillName = DataBaseManager.Instance.tdSkillDict[skillKey].Name;
