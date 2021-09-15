@@ -43,6 +43,10 @@ public class GameManager : Singleton<GameManager>
             item.Tmana = item.Fmana + (float)(item.Lmana * (i - 1));
             item.T_Ctime = item.Ctime - (float)(item.L_Ctime * (i - 1));
             item.TUC = item.UpgradeCost + (int)(item.LCU * (i - 1));
+            if(item.T_Ctime < item.M_Ctime)
+            {
+                item.T_Ctime = item.M_Ctime;
+            }
         }
     }
 

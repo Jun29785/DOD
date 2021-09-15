@@ -6,8 +6,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+
+
 public class LobbyUIManager : Singleton<LobbyUIManager>
 {
+
+    
+
     public Image StartButton;
     public Sprite OnStartButton;
     public Sprite OffStartButton;
@@ -37,35 +43,39 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
     public GameObject SkillDescButton;
 
     public Text Characterlvl;
-    public Text CharUpgradeCost;
-    public GameObject WarningText;
+    public Text CharUpgradeCost;    
 
     private GameObject CurrentSelectedSkill;
 
     bool isQuitPanel = false;
 
+
+    [Header("Rank")]
+    public MultiMap<int,GameObject> rankObjQ = new MultiMap<int, GameObject>(); // 랭크 오브젝트 큐(오브젝트 풀)
+    public GameObject rankObj_1;
+    public GameObject rankObj_2;
+    public GameObject rankObj_3;
+    public GameObject rankObj_Default;
+
     protected override void Awake()
     {
+        
         StartCoroutine(StartScene());
-        InvenCharacter.GetComponent<InvenChar>().LoadData(30001);
     }
 
     IEnumerator StartScene()
     {
+        CreateNewrankObj();
+
         Canvas.SetTrigger("LeaveOpen");
         yield return new WaitForSeconds(1.5f);
         Leave.SetActive(false);
         Character.SetBool("IDLE", true);
 
+
         nickNameInput();
     }
 
-    public IEnumerator NoMoney()
-    {
-        WarningText.SetActive(true);
-        yield return new WaitForSeconds(1.5f);
-        WarningText.SetActive(false);
-    }
 
     void nickNameInput()
     {
@@ -78,10 +88,74 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
         }
 
     }
-    
+
+    #region 오브젝트 풀
+    private void CreateNewrankObj()
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            var newObj1 = Instantiate(rankObj_1);
+            newObj1.transform.parent = Instance.transform;
+            newObj1.gameObject.SetActive(false);
+            rankObjQ.Add(1, newObj1);
+
+            var newObj2 = Instantiate(rankObj_2);
+            newObj2.transform.parent = Instance.transform;
+            newObj2.gameObject.SetActive(false);
+            rankObjQ.Add(2, newObj2);
+
+            var newObj3 = Instantiate(rankObj_3);
+            newObj3.transform.parent = Instance.transform;
+            newObj3.gameObject.SetActive(false);
+            rankObjQ.Add(3, newObj3);
+        }
+        for(int i = 0; i<100; i++)
+        {
+            var newObj = Instantiate(rankObj_Default);
+            newObj.transform.parent = Instance.transform;
+            newObj.gameObject.SetActive(false);
+            rankObjQ.Add(4, newObj);
+        }
+
+
+    }
+
+
+
+    public static GameObject GetrankObj(int index)
+    {
+        if (Instance.rankObjQ[index].Count > 0)
+        {
+            var obj = Instance.rankObjQ.Removeit(index);
+
+            obj.gameObject.SetActive(true);
+
+            return obj;
+        }
+        else
+        {
+            Instance.CreateNewrankObj();
+            var newObj = Instance.rankObjQ.Removeit(index);
+
+            newObj.gameObject.SetActive(true);
+
+            return newObj;
+        }
+    }
+
+    public static void ReturnRankObj(int index,GameObject Obj)
+    {
+        Obj.gameObject.SetActive(false);
+        Instance.rankObjQ.Add(index, Obj);
+    }
+    #endregion
+
+
+
     private void Update()
     {
         UpdateText();
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (rankPanel.activeSelf)
@@ -105,6 +179,17 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
                 isQuitPanel = !isQuitPanel;
                 quitPanel.SetActive(isQuitPanel);
             }
+        }
+    }
+
+    public void UpdateText()
+    {
+        InvenCoin.text = UserDataManager.user.coin.ToString();
+        Coin.text = UserDataManager.user.coin.ToString();
+        if (Inventory.activeSelf)
+        {
+            Characterlvl.text = UserDataManager.user.character_level[InvenCharacter.GetComponent<InvenChar>().CharKey].ToString("0");
+            CharUpgradeCost.text = InvenCharacter.GetComponent<InvenChar>().UpgradeCost.ToString();
         }
     }
 
@@ -136,20 +221,10 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
         SkillDescButton.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
     }
 
+
     #endregion
 
-    public void UpdateText()
-    {
-        var coin = UserDataManager.user.coin.ToString();
-        Debug.Log("Coin : " + coin);
-        InvenCoin.text = coin;
-        Coin.text = coin;
-        if (InvenCharacter.activeSelf)
-        {
-            Characterlvl.text = "Lv." + UserDataManager.user.character_level[InvenCharacter.GetComponent<InvenChar>().CharName].ToString("0");
-            CharUpgradeCost.text = InvenCharacter.GetComponent<InvenChar>().UpgradeCost.ToString();
-        }
-    }
+    
 
 
     #region 인벤 버튼 애니메이션
@@ -189,7 +264,6 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
         LoadData(Skill);
         SkillPanel.GetComponent<SkillPanel>().LoadSkillData();
         GameManager.Instance.StatSetting();
-        GameManager.Instance.CharSetting();
         SkillStatPanel.SetActive(true);
         //Characterlvl = InvenCharacter.transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).GetComponent<Text>();
         //CharUpgradeCost = InvenCharacter.transform.GetChild(0).transform.GetChild(1).GetComponent<Text>();
@@ -214,7 +288,6 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
     {
         SkillPanel.SetActive(false);
         GameManager.Instance.StatSetting();
-        GameManager.Instance.CharSetting();
         SkillManager.Instance.InitData();
         CreateButton();
     }
@@ -224,6 +297,7 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
         SkillPanel.SetActive(false);
     }
     #endregion
+
 
     public void CreateButton()
     {
@@ -258,11 +332,16 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
     public void OnClickUpgradeButton()
     {
         var skillbutton = CurrentSelectedSkill.GetComponent<SkillButton>();
-        skillbutton.Upgrade();
+        if (!skillbutton.isOpenSkill)
+        {
+            skillbutton.isOpenSkill = true;
+        }
+        skillbutton.SkillLevel += 1;
+        Debug.Log(UserDataManager.user.skill_level[skillbutton.Name]);
+        UserDataManager.user.skill_level[skillbutton.Name] += 1;
         GameManager.Instance.StatSetting();
         OpenSkillPanel(CurrentSelectedSkill);
         UserDataManager.Instance.Save();
-        
     }
 
     public void OnClickCharacter()
@@ -279,10 +358,6 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
 
     public void OnClickCharacterUpGradeButton()
     {
-        var character = InvenCharacter.GetComponent<InvenChar>();
-        character.Upgrade();
-        GameManager.Instance.CharSetting();
-        UserDataManager.Instance.Save();
+
     }
 }
-

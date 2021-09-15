@@ -10,7 +10,8 @@ public class rankObject : MonoBehaviour
     public Text rankText;
     public Text nicknameText;
 
-    //임시
+    public int index;
+
     public void setData(string rank, string Name, string Score)
     {
         rankText.text = rank.ToString();

@@ -20,6 +20,7 @@ public class TDSkill : TableBase
     public float T_Ctime;
     public int Ctime;
     public float L_Ctime;
+    public float M_Ctime;
     public string Description;
     public int UpgradeCost;
     public int TUC;
@@ -38,6 +39,7 @@ public class TDSkill : TableBase
         Ldmg = info["Ldmg"].Value<float>();
         Ctime = info["Ctime"].Value<int>();
         L_Ctime = info["L_Ctime"].Value<float>();
+        M_Ctime = info["M_Ctime"].Value<float>();
         Description = info["Description"].Value<string>();
         UpgradeCost = info["UpgrateCost"].Value<int>();
         LCU = info["LCU"].Value<int>();

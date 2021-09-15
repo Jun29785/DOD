@@ -439,3 +439,4 @@ MonoBehaviour:
   scoreText: {fileID: 2129166470558704099}
   rankText: {fileID: 2129166469940638078}
   nicknameText: {fileID: 2129166470100547403}
+  index: 3

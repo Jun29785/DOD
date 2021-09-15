@@ -360,6 +360,7 @@ MonoBehaviour:
   scoreText: {fileID: 6061081495849450823}
   rankText: {fileID: 6061081494190140890}
   nicknameText: {fileID: 6061081494286085103}
+  index: 2
 --- !u!1 &6061081495849450817
 GameObject:
   m_ObjectHideFlags: 0
