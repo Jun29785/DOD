@@ -47,7 +47,7 @@ public class SkillButton : MonoBehaviour
         }
         else
         {
-            this.UpgradeCost = skillDict.UpgradeCost;
+            this.UpgradeCost = skillDict.TUC;
         }
         //Debug.Log("name : " + nameKey);
     }

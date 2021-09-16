@@ -334,6 +334,9 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
         var skillbutton = CurrentSelectedSkill.GetComponent<SkillButton>();
         skillbutton.Upgrade();
         GameManager.Instance.StatSetting();
+        skillbutton.SetButton(skillbutton.SKey);
+        SkillPanel.GetComponent<SkillPanel>().LoadSkillData();
+        LoadData(CurrentSelectedSkill);
         OpenSkillPanel(CurrentSelectedSkill);
         UserDataManager.Instance.Save();
     }
