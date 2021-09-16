@@ -67,7 +67,7 @@ public class Pattern : MonoBehaviour
             }
             yield return new WaitForSeconds(0.1f);
             BattleManager.Instance.Pattern_id.Clear();
-            yield return new WaitForSeconds(0.9f);
+            yield return new WaitForSeconds(0.5f);
             //foreach (var circle in circles)
             //{
             //    circle.Value.GetComponent<UnityEngine.UI.Image>().color = Color.white;
