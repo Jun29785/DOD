@@ -5205,8 +5205,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05142c5ff45ee674fa84eb7903d3d506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ForestBossPrefab: {fileID: 4157690189176089417, guid: 7a1dad1db5438074e990f8ea8834c611, type: 3}
-  GoblinBossPrefab: {fileID: 7174979389727369561, guid: 21ad55c66bb82cf42967f3c17627b018, type: 3}
 --- !u!4 &1404212652
 Transform:
   m_ObjectHideFlags: 0
@@ -5504,6 +5502,9 @@ MonoBehaviour:
   - {fileID: 3068807791331068530, guid: e2ff34a40b6020f44a337084822bf150, type: 3}
   - {fileID: 3570624192935833109, guid: e85d7df021644194cbdaca217241093c, type: 3}
   - {fileID: 86291576935378070, guid: 0b6583f74facf3b4cbeb897ebf5360af, type: 3}
+  BossMonsterPrefabs:
+  - {fileID: 4157690189176089417, guid: 7a1dad1db5438074e990f8ea8834c611, type: 3}
+  - {fileID: 7174979389727369561, guid: 21ad55c66bb82cf42967f3c17627b018, type: 3}
   DamageTextPrefab: {fileID: 7691615809364386524, guid: 19abcd0f40f2fd346a70a609ef5418ea, type: 3}
   healEffectPrefab: {fileID: 7413917634373153016, guid: d52d9ac215914c34a8c96c07cc4dff7e, type: 3}
   CTObjPrefab: {fileID: 70539981549581046, guid: 6fe9a073faace8d48bd39252bdc4a50c, type: 3}

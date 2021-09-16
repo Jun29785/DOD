@@ -19,7 +19,6 @@ public class Knight : MeleeCharacter
 
     DataBaseManager DB = DataBaseManager.Instance;
 
-    public Vector2 TEST;
 
     public GameObject SwordAura_Projectile;
     public override void Awake()

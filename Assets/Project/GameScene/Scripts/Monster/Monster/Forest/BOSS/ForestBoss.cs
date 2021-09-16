@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using DOD.Define;
 public class ForestBoss : BossMonster
 {
 
@@ -14,6 +14,7 @@ public class ForestBoss : BossMonster
     public override void Awake()
     {
         base.Awake();
+        SetData((int)bossEnum.거대나무);
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Character>();
     }
 

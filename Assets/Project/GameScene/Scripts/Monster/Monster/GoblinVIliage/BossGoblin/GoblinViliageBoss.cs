@@ -1,33 +1,41 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using DOD.Define;
 public class GoblinViliageBoss : BossMonster
 {
 
     [SerializeField]
     GameObject spawnCircle;
 
+
     float skillCool;
     public override void Awake()
     {
         base.Awake();
+        SetData((int)bossEnum.고블린챔피언);
         Hp = applyMaxHp;
     }
 
     public override void Start()
     {
         base.Start();
-        skillCool = Time.time + 3;
+        skillCool = Time.time + SkillDelay;
     }
 
     public override void Update()   
     {
         base.Update();
-        passive_ATK_increase();
-        if (Time.time >= skillCool)
+        CurrentAttackDelay += Time.deltaTime;
+
+        if(CurrentAttackDelay >= ApplyAttackDelay)
         {
-            skillCool = Time.time + 6;
+            anim.SetTrigger("Attack");
+        }
+        passive_ATK_increase();
+        if (Time.time >= SkillDelay)
+        {
+            skillCool = Time.time + SkillDelay;
 
             int skillIndex = Random.Range(0, 2);
             anim.SetInteger("SkillIndex", skillIndex);
@@ -50,6 +58,7 @@ public class GoblinViliageBoss : BossMonster
     public override void OnEnable()
     {
         applyPower = Power;
+        skillCool = Time.time + SkillDelay;
     }
     public void passive_ATK_increase()
     {
