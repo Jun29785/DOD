@@ -42,7 +42,9 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
     public GameObject SkillDescButton;
     
     public Text Characterlvl;
-    public Text CharUpgradeCost;    
+    public Text CharUpgradeCost;
+
+    public GameObject CharUpgrade;
 
     private GameObject CurrentSelectedSkill;
 
@@ -349,5 +351,10 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
     public void OnClickLeaveDoor()
     {
         StartCoroutine(StartScene());
+    }
+
+    public void OnClickUpgradeChar() 
+    {
+        CharUpgrade.transform.GetChild(1).gameObject.SetActive(true);
     }
 }
