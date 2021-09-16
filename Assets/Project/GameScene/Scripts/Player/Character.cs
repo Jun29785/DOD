@@ -67,11 +67,11 @@ public override void Update()
     {
         this.unitNo = DataBaseManager.Instance.tdCharacterDict[Key].UnitNo;
         this.Name = DataBaseManager.Instance.tdCharacterDict[Key].Name;
-        this.MaxHp = DataBaseManager.Instance.tdCharacterDict[Key].HP;
+        this.MaxHp = DataBaseManager.Instance.tdCharacterDict[Key].THP;
         this.AttackDistance = DataBaseManager.Instance.tdCharacterDict[Key].attackDistance;
         this.AttackDelay = DataBaseManager.Instance.tdCharacterDict[Key].attakDelay;
-        this.Power = DataBaseManager.Instance.tdCharacterDict[Key].POWER;
-        this.MaxMp = DataBaseManager.Instance.tdCharacterDict[Key].MP;
+        this.Power = DataBaseManager.Instance.tdCharacterDict[Key].TPOWER;
+        this.MaxMp = DataBaseManager.Instance.tdCharacterDict[Key].TMP;
     }
     public override void Damaged(float value) // 데미지 입는함수
     {
