@@ -13,9 +13,12 @@ public class SkillCoolTimeObject : MonoBehaviour
     public string skillName;
     public float CoolTime;
     public float CurrentTime;
-    
-    void Start()
+    bool isStop = true;
+    void Awake()
     {
+        skillKey = 10001;
+        CoolTime = 10;
+        CurrentTime = 10;
         Debug.Log((1280 / Screen.height));
         RT = GetComponent<RectTransform>();
 
@@ -26,6 +29,11 @@ public class SkillCoolTimeObject : MonoBehaviour
         Debug.Log(RT.sizeDelta.x * ((Screen.height * Camera.main.rect.height)/ 1280));
 
         RT.sizeDelta = new Vector2(RT.sizeDelta.x * ( (Screen.height * Camera.main.rect.height) / (float)1280), RT.sizeDelta.y * ( (Screen.height * Camera.main.rect.height)/(float)1280));
+        
+    }
+
+    void OnEnable()
+    {
         skillName = DataBaseManager.Instance.tdSkillDict[skillKey].Name;
         CoolTime = DataBaseManager.Instance.tdSkillDict[skillKey].T_Ctime;
 
@@ -33,20 +41,25 @@ public class SkillCoolTimeObject : MonoBehaviour
         {
             image.sprite = Resources.Load<Sprite>("SkillIcon/" + skillKey) as Sprite;
         }
-        
-        CurrentTime = CoolTime;
-    }
 
+        CurrentTime = CoolTime;
+
+        isStop = false;
+    }
     void Update()
     {
-        if(CurrentTime <= 0)
+        if (CurrentTime <= 0)
         {
-            Destroy(gameObject);
+            isStop = true;
+            Objectpool.ReturnCTObj(this);
         }
 
-        text.text = $"{skillName}\n{CurrentTime.ToString("N1")}"; 
-        CurrentTime -= Time.deltaTime;
-        filledPanel.fillAmount = CurrentTime / CoolTime;
+        if (!isStop)
+        {
+            text.text = $"{skillName}\n{CurrentTime.ToString("N1")}";
+            CurrentTime -= Time.deltaTime;
+            filledPanel.fillAmount = CurrentTime / CoolTime;
+        }
     }
 
     

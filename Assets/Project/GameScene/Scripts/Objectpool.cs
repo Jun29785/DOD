@@ -63,6 +63,8 @@ public class Objectpool : MonoBehaviour
     private GameObject DamageTextPrefab;
     [SerializeField]
     private GameObject healEffectPrefab;
+    [SerializeField]
+    private GameObject CTObjPrefab;
 
     private Queue<Coin>CoinQueue = new Queue<Coin>();
     private Queue<HealEffect>healEffectQueue = new Queue<HealEffect>();
@@ -70,7 +72,10 @@ public class Objectpool : MonoBehaviour
     MultiMap<int,Monster> Monstermap = new MultiMap<int, Monster>();
 
     private Queue<DamageText> DamageTextQueue = new Queue<DamageText>();
-    void Start()
+    private Queue<SkillCoolTimeObject>CTObjQueue = new Queue<SkillCoolTimeObject>();
+
+
+    void Awake()
     {
         Instance = this;
         Initialize(50);
@@ -81,6 +86,7 @@ public class Objectpool : MonoBehaviour
         for (int i = 0; i < count; i++)
         {
             CoinQueue.Enqueue(CreateNewCoin());
+            CTObjQueue.Enqueue(CreateNewCTObj());
             CreateNewMonsters();
             healEffectQueue.Enqueue(CreateNewhealEffect());
         }
@@ -228,6 +234,52 @@ public class Objectpool : MonoBehaviour
 
     #endregion
 
+    #region CoolTimeObject
+
+    private SkillCoolTimeObject CreateNewCTObj()
+    {
+        var newObj = Instantiate(CTObjPrefab).GetComponent<SkillCoolTimeObject>();
+        newObj.transform.parent = Instance.transform;
+        newObj.gameObject.SetActive(false);
+        return newObj;
+
+    }
+
+
+
+    public static SkillCoolTimeObject GetCTobj(int Key, GameObject parents)
+    {
+        if (Instance.CoinQueue.Count > 0)
+        {
+            var obj = Instance.CTObjQueue.Dequeue();
+
+            obj.skillKey = Key;
+            obj.gameObject.transform.parent = parents.transform;
+            obj.gameObject.transform.localPosition = Vector2.zero;
+
+            obj.gameObject.SetActive(true);
+            return obj;
+        }
+        else
+        {
+            var obj = Instance.CreateNewCTObj();
+
+
+            obj.skillKey = Key;
+            obj.gameObject.transform.parent = parents.transform;
+            obj.gameObject.transform.localPosition = Vector2.zero;
+            obj.gameObject.SetActive(true);
+            return obj;
+        }
+    }
+
+    public static void ReturnCTObj(SkillCoolTimeObject Obj)
+    {
+        Obj.gameObject.SetActive(false);
+        Obj.transform.SetParent(Instance.transform);
+        Instance.CTObjQueue.Enqueue(Obj);
+    }
+    #endregion
 
     #region HealEffect
     private HealEffect CreateNewhealEffect()

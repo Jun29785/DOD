@@ -1638,10 +1638,10 @@ RectTransform:
   m_Father: {fileID: 748881766}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 2.5, y: 0}
-  m_SizeDelta: {x: -5, y: -10}
+  m_SizeDelta: {x: 715, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &545053083
 MonoBehaviour:
@@ -4958,10 +4958,10 @@ RectTransform:
   m_Father: {fileID: 545053082}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -357.50018, y: 0}
-  m_SizeDelta: {x: 0, y: 64}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1431757870
 MonoBehaviour:
@@ -5176,6 +5176,7 @@ MonoBehaviour:
   - {fileID: 3570624192935833109, guid: e85d7df021644194cbdaca217241093c, type: 3}
   DamageTextPrefab: {fileID: 7691615809364386524, guid: 19abcd0f40f2fd346a70a609ef5418ea, type: 3}
   healEffectPrefab: {fileID: 7413917634373153016, guid: d52d9ac215914c34a8c96c07cc4dff7e, type: 3}
+  CTObjPrefab: {fileID: 70539981549581046, guid: 6fe9a073faace8d48bd39252bdc4a50c, type: 3}
 --- !u!1 &1463491952
 GameObject:
   m_ObjectHideFlags: 0
@@ -5930,7 +5931,7 @@ BoxCollider2D:
   m_Offset: {x: 0.006278977, y: 0.22599356}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.4861431, y: 0.11797}
     oldSize: {x: 0.48, y: 0.53}
     newSize: {x: 0.39, y: 0.45}
     adaptiveTilingThreshold: 0.5
