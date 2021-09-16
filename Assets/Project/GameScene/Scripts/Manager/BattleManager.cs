@@ -39,7 +39,9 @@ public class BattleManager : MonoBehaviour
 
     public AudioClip Forest;
     public AudioClip GoblinViliage;
+    public AudioClip Boss;
 
+    int cnt;
     void Awake()
     {
         Instance = this;
@@ -48,6 +50,11 @@ public class BattleManager : MonoBehaviour
     {
         character = GameObject.FindWithTag("Player").GetComponent<Character>();
         StartPanel();
+    }
+
+    private void Update()
+    {
+        BossMusic();
     }
 
     public void PlayerDamage(float value)
@@ -64,6 +71,22 @@ public class BattleManager : MonoBehaviour
         getGold += value;
     }
 
+    public void BossMusic()
+    {
+        if (Instance.isBoss)
+        {
+            if (cnt == 0)
+            {
+                SoundManager.Instance.BgSound(Boss);
+                cnt++;
+            }
+        }
+        else
+        {
+            cnt = 0;
+        }
+    }
+
 
     /// <summary>
     /// 게임 시작후 초기화함수
@@ -71,10 +94,10 @@ public class BattleManager : MonoBehaviour
     public void StartPanel()
     {
         BattleManager.Instance.isEnd = false;
-        //SoundManager.Instance.BgSound(Forest);
+        SoundManager.Instance.BgSound(Forest);
         character.Hp = character.MaxHp;
         character.Mp = character.MaxMp;
-        purpose = 100;
+        purpose = 2;
         BossInterval = purpose;
         Pattern_id.Clear();
         Score = 0;
