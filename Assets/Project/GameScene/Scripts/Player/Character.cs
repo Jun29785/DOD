@@ -261,10 +261,10 @@ public override void Update()
                     }
 
                 }
-                /*else
+                else
                 {
                     GameSceneUIManager.Instance.ApearWarningText(3);
-                }*/
+                }
 
             }
 
