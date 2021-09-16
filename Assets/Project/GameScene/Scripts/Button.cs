@@ -56,6 +56,7 @@ public class Button : MonoBehaviour
 
     public void CloseInventory()
     {
+        LobbyUIManager.Instance.CharUpgrade.transform.GetChild(1).gameObject.SetActive(false);
         LobbyUIManager.Instance.Inventory.SetActive(false);
         Debug.Log("Close Inventory Panel");
         GameManager.Instance.StatSetting();

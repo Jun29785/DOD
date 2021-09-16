@@ -29,7 +29,14 @@ public class SkillPanel : MonoBehaviour
         string cmd = "";
         foreach (int j in i.Command)
         {
-            cmd += j + 1 + "-";
+            if (j == i.Command[i.Command.Count - 1])
+            {
+                cmd += j + 1;
+            }
+            else
+            {
+                cmd += j + 1 + "-";
+            }
         }
         Name.text = i.Name;
         if (i.SkillLevel < 1)
