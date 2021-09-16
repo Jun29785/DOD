@@ -66,7 +66,7 @@ public class UserDataManager : Singleton<UserDataManager>
         yield return www.Send();
 
         string a = www.downloadHandler.text;
-        Debug.Log(a);   
+        Debug.Log(a);
         a = a.Substring(0, a.Length - 1);
         string[] parsing = a.Split(':');
 

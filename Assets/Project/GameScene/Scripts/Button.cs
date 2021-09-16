@@ -10,6 +10,9 @@ public class Button : MonoBehaviour
 
     public GameObject inputName;
     public Text overlapName;
+
+    public GameObject InvenCharacter;
+
     /// <summary>
     /// 로비로
     /// </summary>
@@ -101,6 +104,8 @@ public class Button : MonoBehaviour
             inputName.SetActive(false);
             GameManager.Instance.isnameInput = true;
             UserDataManager.Instance.Init();
+            InvenCharacter.GetComponent<InvenChar>().LoadData(30001);
+
 
         }
     }

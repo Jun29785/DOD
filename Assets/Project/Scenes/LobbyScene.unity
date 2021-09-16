@@ -1251,6 +1251,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputName: {fileID: 1883161856}
   overlapName: {fileID: 1604274805}
+  InvenCharacter: {fileID: 473140047028724351}
 --- !u!1 &454147507
 GameObject:
   m_ObjectHideFlags: 0
@@ -1283,7 +1284,6 @@ RectTransform:
   - {fileID: 473140046918840142}
   - {fileID: 5936396880854182018}
   - {fileID: 641944953}
-  - {fileID: 612982021}
   m_Father: {fileID: 1346590785}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1910,85 +1910,6 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 562411761}
-  m_CullTransparentMesh: 0
---- !u!1 &612982020
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 612982021}
-  - component: {fileID: 612982023}
-  - component: {fileID: 612982022}
-  m_Layer: 5
-  m_Name: Text
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &612982021
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 612982020}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 454147508}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &612982022
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 612982020}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.94317573, b: 0, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 80
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 6
-    m_MaxSize: 80
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 1
-    m_VerticalOverflow: 1
-    m_LineSpacing: 1
-  m_Text: New Text
---- !u!222 &612982023
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 612982020}
   m_CullTransparentMesh: 0
 --- !u!1 &641944952
 GameObject:
@@ -3402,6 +3323,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputName: {fileID: 0}
   overlapName: {fileID: 0}
+  InvenCharacter: {fileID: 0}
 --- !u!1 &1063805730
 GameObject:
   m_ObjectHideFlags: 0
@@ -4457,6 +4379,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputName: {fileID: 0}
   overlapName: {fileID: 0}
+  InvenCharacter: {fileID: 0}
 --- !u!114 &1316052908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5864,6 +5787,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputName: {fileID: 0}
   overlapName: {fileID: 0}
+  InvenCharacter: {fileID: 0}
 --- !u!1 &1722642155
 GameObject:
   m_ObjectHideFlags: 0
@@ -6336,6 +6260,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputName: {fileID: 0}
   overlapName: {fileID: 0}
+  InvenCharacter: {fileID: 0}
 --- !u!1 &1835391888
 GameObject:
   m_ObjectHideFlags: 0
@@ -6383,6 +6308,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputName: {fileID: 0}
   overlapName: {fileID: 0}
+  InvenCharacter: {fileID: 0}
 --- !u!114 &1835391891
 MonoBehaviour:
   m_ObjectHideFlags: 0

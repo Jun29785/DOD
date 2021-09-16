@@ -166,6 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02213b4952c8d9c459fe83f915b86798, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coin: 16
   isexist: 0
   nickExist: 0
 --- !u!1 &280310893
@@ -802,6 +803,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputName: {fileID: 0}
   overlapName: {fileID: 0}
+  InvenCharacter: {fileID: 0}
 --- !u!1 &1129744449
 GameObject:
   m_ObjectHideFlags: 0

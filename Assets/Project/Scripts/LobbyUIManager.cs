@@ -64,7 +64,7 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
 
     IEnumerator StartScene()
     {
-        InvenCharacter.GetComponent<InvenChar>().LoadData(InvenCharKey);
+        //InvenCharacter.GetComponent<InvenChar>().LoadData(InvenCharKey);
         CreateNewrankObj();
         
         Canvas.SetTrigger("LeaveOpen");
@@ -199,7 +199,7 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
         }
     }
 
-    #region 스타트 버튼 애니메이션
+    #region 스타트 버튼 이벤트
     public void PointerDownStartButton()
     {
         StartButton.sprite = OnStartButton;
@@ -211,7 +211,7 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
     }
     #endregion
 
-    #region 인벤 버튼 애니메이션
+    #region 인벤 버튼 이벤트
     public void PointerDownInventoryButton()
     {
         InventoryAnim.SetTrigger("down");
