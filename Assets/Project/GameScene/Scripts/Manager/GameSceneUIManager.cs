@@ -126,10 +126,7 @@ public class GameSceneUIManager : UIManager
     /// <param name="Skey">스킬 키값</param>
     public void Create_SkillCoolTimeObject(int Skey)
     {
-        var obj = Instantiate(Skill_CoolTime_Prefab);
-        obj.GetComponent<SkillCoolTimeObject>().skillKey = Skey;
-        obj.gameObject.transform.parent = Content.transform;
-        obj.gameObject.transform.localPosition = Vector2.zero;  
+        Objectpool.GetCTobj(Skey,Content);
     }
 
 
