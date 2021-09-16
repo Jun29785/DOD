@@ -9,33 +9,31 @@ public class GoblinViliageBoss : BossMonster
     GameObject spawnCircle;
 
 
-    float skillCool;
+    float currentSKillDelay;
     public override void Awake()
     {
         base.Awake();
         SetData((int)bossEnum.고블린챔피언);
-        Hp = applyMaxHp;
+
     }
 
     public override void Start()
     {
         base.Start();
-        skillCool = Time.time + SkillDelay;
     }
 
     public override void Update()   
     {
         base.Update();
         CurrentAttackDelay += Time.deltaTime;
-
+        currentSKillDelay += Time.deltaTime;
         if(CurrentAttackDelay >= ApplyAttackDelay)
         {
             anim.SetTrigger("Attack");
         }
         passive_ATK_increase();
-        if (Time.time >= SkillDelay)
+        if (currentSKillDelay >= SkillDelay)
         {
-            skillCool = Time.time + SkillDelay;
 
             int skillIndex = Random.Range(0, 2);
             anim.SetInteger("SkillIndex", skillIndex);
@@ -51,14 +49,21 @@ public class GoblinViliageBoss : BossMonster
                 default:
                     break;
             }
+
+            currentSKillDelay = 0;
         }
     }
 
 
     public override void OnEnable()
     {
+        base.OnEnable();
+
         applyPower = Power;
-        skillCool = Time.time + SkillDelay;
+        currentSKillDelay = 0;
+
+        applyMaxHp = MaxHp;
+        Hp = applyMaxHp;
     }
     public void passive_ATK_increase()
     {

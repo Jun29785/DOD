@@ -19,7 +19,10 @@ public class ForestBoss : BossMonster
     }
 
 
-
+    public override void OnEnable()
+    {
+        base.OnEnable();
+    }
     public override void Start()
     {
         base.Start();

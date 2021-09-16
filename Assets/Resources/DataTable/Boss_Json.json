@@ -3,7 +3,7 @@
     "Name": "거대나무",
     "Hp": "100",
     "Power": "20",
-    "Speed": "1",
+    "Speed": "3",
     "AttackDistance": "1",
     "AttackDelay": "3",
     "AddScore": "1",

@@ -24,15 +24,26 @@ public class TDBoss : TableBase
         base.SetJsonData(key, info);
 
         UnitNo = Int32.Parse(key);
+        Debug.Log(UnitNo);
         Name = info["Name"].Value<string>();
+        Debug.Log(Name);
         HP = info["Hp"].Value<int>();
+        Debug.Log(HP);
         Power = info["Power"].Value<float>();
+        Debug.Log(Power);
         Speed = info["Speed"].Value<float>();
+        Debug.Log(Speed);
         attakDelay = info["AttackDelay"].Value<float>();
+        Debug.Log(attakDelay);
         attackDistance = info["AttackDistance"].Value<float>();
+        Debug.Log(attackDistance);
         AddScore = info["AddScore"].Value<float>();
+        Debug.Log(AddScore);
         AddCoin = info["AddCoin"].Value<int>();
+        Debug.Log(AddCoin);
         CoinAmount = info["CoinAmount"].Value<int>();
+        Debug.Log(CoinAmount);
         SkillDelay = info["SkillDelay"].Value<float>();
+        Debug.Log(SkillDelay);
     }
 }

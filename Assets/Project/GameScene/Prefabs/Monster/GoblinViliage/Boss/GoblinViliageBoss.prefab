@@ -283,23 +283,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12e4b1af39d12db4b8f981691d6c19a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitNo: 40001
-  Name: dsfa
-  MaxHp: 1000
+  unitNo: 0
+  Name: 
+  MaxHp: 0
   applyMaxHp: 0
-  Hp: 1000
-  AttackDistance: 0.6
-  AttackDelay: 5
+  Hp: 1
+  AttackDistance: 0
+  AttackDelay: 0
   ApplyAttackDelay: 0
   CurrentAttackDelay: 0
-  Power: 10
+  Power: 0
   applyPower: 0
   anim: {fileID: 0}
-  Speed: 4
+  Speed: 0
   applySpeed: 0
-  AddScore: 5
-  AddCoin: 5
-  CoinAmount: 5
+  AddScore: 0
+  AddCoin: 0
+  CoinAmount: 0
   effect_Pos: {fileID: 1966202305}
   Stop: 0
   isDie: 0
@@ -313,6 +313,9 @@ MonoBehaviour:
   bossName: {fileID: 0}
   hpText: {fileID: 0}
   BossUIPos: []
+  isApear: 0
+  SkillDelay: 0
+  cnt: 0
   spawnCircle: {fileID: 2363485236205032528, guid: 7daa23b1646feea4e851ca1fe271e4f4, type: 3}
 --- !u!61 &7174979389727369574
 BoxCollider2D:

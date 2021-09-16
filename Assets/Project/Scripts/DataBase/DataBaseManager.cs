@@ -149,7 +149,7 @@ namespace DOD.DB
 
             parsedObj = JObject.Parse(jsonText.text); // Json Parsing
 
-            Debug.Log(parsedObj);   
+            Debug.Log(parsedObj);
 
 
             foreach (KeyValuePair<string, JToken> pair in parsedObj)
@@ -173,7 +173,7 @@ namespace DOD.DB
             TextAsset jsonText = Resources.Load<TextAsset>("DataTable/Boss_Json"); // Json 불러오기
 
             Debug.Log(jsonText);
-            tdCharacterDict.Clear();
+            tdBossDict.Clear();
 
             JObject parsedObj = new JObject(); // Json Object 생성
 

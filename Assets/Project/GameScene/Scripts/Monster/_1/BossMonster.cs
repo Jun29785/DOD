@@ -21,16 +21,13 @@ public class BossMonster : Monster
     public override void Awake()
     {
         base.Awake();
+
         BossState = GameObject.FindGameObjectWithTag("BossUI");
         bossHpbar = BossState.GetComponentInChildren<Slider>();
         bossName = GameObject.FindGameObjectWithTag("bossName").GetComponent<Text>();
         hpText = GameObject.FindGameObjectWithTag("bossHp").GetComponent<Text>();
         BossUIPos = GameObject.FindGameObjectsWithTag("BossUIPos");
 
-        BossState.transform.position = BossUIPos[0].transform.position;
-
-        bossHpbar.value = 0;
-        StartCoroutine(appear());
     }
 
     public override void Start()
@@ -74,9 +71,49 @@ public class BossMonster : Monster
         base.DieCheck();
     }
 
+
+    public override void OnEnable()
+    {
+        base.OnEnable();
+        Hp = applyMaxHp;
+        applyPower = Power;
+        bossName.text = Name.ToString();
+
+
+        applyMaxHp = MaxHp;
+        Hp = applyMaxHp;
+
+
+        BossState.transform.position = BossUIPos[0].transform.position;
+
+        bossHpbar.value = 0;
+        StartCoroutine(appear());
+
+    }
     public override void Die()
     {
-        this.gameObject.SetActive(false);
+        if (!BattleManager.Instance.isEnd)
+        {
+            if (BossUIPos[1] != null)
+            {
+                BossState.transform.position = BossUIPos[1].transform.position;
+            }
+            BattleManager.Instance.isBoss = false;
+            BattleManager.Instance.purpose += BattleManager.Instance.BossInterval;
+            BattleManager.Instance.startPanel.GetComponent<Animator>().SetTrigger("isStart");
+            BattleManager.Instance.nextStage();
+            BattleManager.Instance.SetmonsterGenInterval(5f);
+
+        }
+        Objectpool.ReturnBossMonster(this);
+    }
+
+    public void OnDisable()
+    {
+        BossState.transform.position = BossUIPos[1].transform.position;
+        setMonsterStat();
+        applyPower = Power;
+        applyMaxHp = MaxHp;
     }
 
     public override void Damaged(float value)
@@ -113,29 +150,26 @@ public class BossMonster : Monster
 
     public override void SetData(int Key)
     {
-        DataBaseManager.Instance.tdBossDict[Key].UnitNo = this.unitNo;
-        DataBaseManager.Instance.tdBossDict[Key].HP = this.Hp;
-        DataBaseManager.Instance.tdBossDict[Key].Power = this.Power;
-        DataBaseManager.Instance.tdBossDict[Key].Speed = this.Speed;
-        DataBaseManager.Instance.tdBossDict[Key].attackDistance = this.AttackDistance;
-        DataBaseManager.Instance.tdBossDict[Key].attakDelay = this.AttackDelay;
-        DataBaseManager.Instance.tdBossDict[Key].AddScore = this.AddScore;
-        DataBaseManager.Instance.tdBossDict[Key].AddCoin = this.AddCoin;
-        DataBaseManager.Instance.tdBossDict[Key].CoinAmount = this.CoinAmount;
+        this.unitNo = DataBaseManager.Instance.tdBossDict[Key].UnitNo;
+        this.Name = DataBaseManager.Instance.tdBossDict[Key].Name;
+        this.MaxHp = DataBaseManager.Instance.tdBossDict[Key].HP;
+        this.applyMaxHp = DataBaseManager.Instance.tdBossDict[Key].HP;
+        this.Power = DataBaseManager.Instance.tdBossDict[Key].Power;
+        this.applyPower = DataBaseManager.Instance.tdBossDict[Key].Power;
+        this.Speed = DataBaseManager.Instance.tdBossDict[Key].Speed;
+        this.AttackDistance = DataBaseManager.Instance.tdBossDict[Key].attackDistance;
+        this.AttackDelay = DataBaseManager.Instance.tdBossDict[Key].attakDelay;
+        this.ApplyAttackDelay = DataBaseManager.Instance.tdBossDict[Key].attakDelay;
+        this.AddScore = DataBaseManager.Instance.tdBossDict[Key].AddScore;
+        this.AddCoin = DataBaseManager.Instance.tdBossDict[Key].AddCoin;
+        this.CoinAmount = DataBaseManager.Instance.tdBossDict[Key].CoinAmount;
+        this.SkillDelay = DataBaseManager.Instance.tdBossDict[Key].SkillDelay;
     }
 
-    public override void OnEnable()
-    {
-        bossName.text = this.Name.ToString();
-        BossState.transform.position = BossUIPos[0].transform.position;
-
-        base.OnEnable();
-        bossHpbar.value = 0;
-        StartCoroutine(appear());
-    }
+   
 
 
-    IEnumerator appear()
+    public IEnumerator appear()
     {
         while (bossHpbar.value <= 0.99f)
         {
@@ -184,22 +218,11 @@ public class BossMonster : Monster
             Stop = false;
         }
 
+
+        
+
     }
 
-    private void OnDisable()
-    {
-        if (!BattleManager.Instance.isEnd)
-        {
-            if (BossUIPos[1] != null)
-            {
-                BossState.transform.position = BossUIPos[1].transform.position;
-            }
-            BattleManager.Instance.isBoss = false;
-            BattleManager.Instance.purpose += BattleManager.Instance.BossInterval;
-            BattleManager.Instance.startPanel.GetComponent<Animator>().SetTrigger("isStart");
-            BattleManager.Instance.nextStage();
-            BattleManager.Instance.SetmonsterGenInterval(5f);
-            
-        }
-    }
+
+
 }   
