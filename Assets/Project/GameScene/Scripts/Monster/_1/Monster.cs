@@ -46,9 +46,17 @@ public abstract class Monster : Actor
 
     public virtual void OnEnable()
     {
-        
+        if (BattleManager.Instance.loopCount != 0)
+        {
+            MaxHp = MaxHp + 1.2f * BattleManager.Instance.loopCount;
+            Power = MaxHp + 1.2f * BattleManager.Instance.loopCount;
+            
+        }
+        applyPower = Power;
+        applyMaxHp = MaxHp;
         Hp = applyMaxHp;
         isDie = false;
+        
     }
 
     public override void Update()
