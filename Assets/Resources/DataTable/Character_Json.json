@@ -9,7 +9,7 @@
           "Lpower": "0.5",
           "AttackDistance": "1",
           "AttackDelay": "0",
-          "UpgrateCost": "-1",
-          "LUC": "-1"
+          "UpgrateCost": "50",
+          "LUC": "10"
    }
 }
