@@ -22,7 +22,6 @@ public class TDCharacter : TableBase
     public int UpgradeCost;
     public int TUC;
     public int LUC;
-
     public override void SetJsonData(string key, JObject info)
     {
         base.SetJsonData(key, info);

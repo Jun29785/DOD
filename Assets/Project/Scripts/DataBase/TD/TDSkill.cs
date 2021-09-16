@@ -25,7 +25,7 @@ public class TDSkill : TableBase
     public int UpgradeCost;
     public int TUC;
     public int LCU;
-
+    public int UnlockCost;
     public override void SetJsonData(string key, JObject info)
     {
         base.SetJsonData(key, info);
@@ -43,6 +43,7 @@ public class TDSkill : TableBase
         Description = info["Description"].Value<string>();
         UpgradeCost = info["UpgrateCost"].Value<int>();
         LCU = info["LCU"].Value<int>();
+        UnlockCost = info["UnlockCost"].Value<int>();
     }
 
 }

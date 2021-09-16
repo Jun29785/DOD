@@ -43,7 +43,7 @@ public class SkillButton : MonoBehaviour
         this.Ctime = skillDict.T_Ctime;
         if (this.SkillLevel < 1 && !isOpenSkill)
         {
-            this.UpgradeCost = 1000;
+            this.UpgradeCost = skillDict.UnlockCost;
         }
         else
         {
