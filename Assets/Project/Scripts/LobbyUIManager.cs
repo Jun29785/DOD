@@ -367,7 +367,6 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
 
     public void OnClickUpgradeChar() 
     {
-        SoundManager.Instance.SFXPlay("버튼 클릭", ClickButton);
-        CharUpgrade.transform.GetChild(1).gameObject.SetActive(true);
+        OnClickCharacterUpGradeButton();
     }
 }
