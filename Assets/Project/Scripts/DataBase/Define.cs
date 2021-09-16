@@ -15,6 +15,19 @@ namespace DOD.Define
         LoadingScene
     }
 
+    public enum monsterEnum
+    {
+        빨강슬라임 = 20001,
+        초록슬라임,
+        하늘슬라임,
+        보라슬라임,
+        검정슬라임,
+        고블린,
+        단검고블린,
+        다트고블린,
+        샤먼고블린,
+        큰고블린,
+    }
     public enum skillEnum
     {
         연속찌르기 = 10001,
