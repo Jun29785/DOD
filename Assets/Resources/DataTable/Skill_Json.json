@@ -11,7 +11,7 @@
           "M_Ctime": "3",
           "UpgrateCost": "50",
           "LCU": "5",
-          "UnlockCost": "100",
+          "UnlockCost": "10",
           "Description": "연속으로 공격한다"
    },
      "10002": {
@@ -26,7 +26,7 @@
           "M_Ctime": "3",
           "UpgrateCost": "50",
           "LCU": "5",
-          "UnlockCost": "300",
+          "UnlockCost": "100",
           "Description": "돌진하며 상대를 밀어낸다"
    },
      "10003": {
@@ -41,7 +41,7 @@
           "M_Ctime": "7",
           "UpgrateCost": "75",
           "LCU": "10",
-          "UnlockCost": "500",
+          "UnlockCost": "300",
           "Description": "몸을 회전하여 공격한다"
    },
      "10004": {

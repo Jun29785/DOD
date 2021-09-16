@@ -193,6 +193,7 @@ public class MonsterGenerater : MonoBehaviour
 
         }
     }
+
     public void Randomindex() // 몬스터 위치 인덱스 설정 
     {
         Posindex = Random.Range(0, 3);
