@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DOD.Define;
 
 public class shamanGoblin : ProjectileMonster
 {
@@ -11,7 +12,7 @@ public class shamanGoblin : ProjectileMonster
     public override void Awake()
     {
         base.Awake();
-        SetData(20009);
+        SetData((int)monsterEnum.샤먼고블린);
     }
     public override void Start()
     {

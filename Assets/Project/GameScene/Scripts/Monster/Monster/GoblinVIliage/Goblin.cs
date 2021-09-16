@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DOD.Define;
 
 public class Goblin : MeleeMonster
 {
@@ -8,7 +9,7 @@ public class Goblin : MeleeMonster
     public override void Awake()
     {
         base.Awake();
-        SetData(20006);
+        SetData((int)monsterEnum.고블린);
 
     }
     public override void Start()

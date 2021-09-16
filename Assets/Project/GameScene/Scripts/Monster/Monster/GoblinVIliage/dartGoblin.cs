@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DOD.Define;
 
 public class dartGoblin : ProjectileMonster
 {
@@ -9,7 +10,7 @@ public class dartGoblin : ProjectileMonster
     public override void Awake()
     {
         base.Awake();
-        SetData(20008);
+        SetData((int)monsterEnum.다트고블린);
 
     }
 

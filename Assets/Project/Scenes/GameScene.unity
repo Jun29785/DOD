@@ -5503,6 +5503,7 @@ MonoBehaviour:
   - {fileID: 4390969127535229739, guid: 7d83d6bd23a540842a1ef23e1d56d4a1, type: 3}
   - {fileID: 3068807791331068530, guid: e2ff34a40b6020f44a337084822bf150, type: 3}
   - {fileID: 3570624192935833109, guid: e85d7df021644194cbdaca217241093c, type: 3}
+  - {fileID: 86291576935378070, guid: 0b6583f74facf3b4cbeb897ebf5360af, type: 3}
   DamageTextPrefab: {fileID: 7691615809364386524, guid: 19abcd0f40f2fd346a70a609ef5418ea, type: 3}
   healEffectPrefab: {fileID: 7413917634373153016, guid: d52d9ac215914c34a8c96c07cc4dff7e, type: 3}
   CTObjPrefab: {fileID: 70539981549581046, guid: 6fe9a073faace8d48bd39252bdc4a50c, type: 3}
