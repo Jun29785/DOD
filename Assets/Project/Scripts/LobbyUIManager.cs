@@ -79,7 +79,7 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
     public IEnumerator NoMoney()
     {
         WarningText.SetActive(true);
-        yield return new WaitForSeconds(1.7f);
+        yield return new WaitForSeconds(1.3f);
         WarningText.SetActive(false);
     }
 
