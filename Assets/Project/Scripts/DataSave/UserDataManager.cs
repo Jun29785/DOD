@@ -58,6 +58,7 @@ public class UserDataManager : Singleton<UserDataManager>
 
         yield return null;
 
+
         WWWForm form = new WWWForm();
 
         form.AddField("device", SystemInfo.deviceUniqueIdentifier);

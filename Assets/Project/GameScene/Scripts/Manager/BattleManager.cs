@@ -97,7 +97,7 @@ public class BattleManager : MonoBehaviour
         SoundManager.Instance.BgSound(Forest);
         character.Hp = character.MaxHp;
         character.Mp = character.MaxMp;
-        purpose = 2;
+        purpose = 100;
         BossInterval = purpose;
         Pattern_id.Clear();
         Score = 0;
