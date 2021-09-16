@@ -211,19 +211,19 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
     }
     #endregion
 
-    #region 인벤 버튼 이벤트
-    public void PointerDownInventoryButton()
+    #region 버튼 이벤트
+    public void PointerDownInventoryButton(GameObject Icon)
     {
         InventoryAnim.SetTrigger("down");
         InventoryAnim.SetBool("IsClick", true);
-        InventoryIcon.transform.localScale = new Vector3(1.1f, 1.1f, 1f);
+        Icon.transform.localScale = new Vector3(1.1f, 1.1f, 1f);
     }
 
-    public void PointerUpInventoryButton()
+    public void PointerUpInventoryButton(GameObject Icon)
     {
         InventoryAnim.SetTrigger("up");
         InventoryAnim.SetBool("IsClick", false);
-        InventoryIcon.transform.localScale = new Vector3(1f, 1f, 1f);
+        Icon.transform.localScale = new Vector3(1f, 1f, 1f);
     }
 
 
