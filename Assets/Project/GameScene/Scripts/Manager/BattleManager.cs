@@ -56,6 +56,7 @@ public class BattleManager : MonoBehaviour
 
     public void GetGold(int value)
     {
+        UserDataManager.user.coin += value;
         getGold += value;
     }
 

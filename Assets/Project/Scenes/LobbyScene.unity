@@ -2796,6 +2796,7 @@ GameObject:
   - component: {fileID: 744796979}
   - component: {fileID: 744796978}
   - component: {fileID: 744796977}
+  - component: {fileID: 744796980}
   m_Layer: 5
   m_Name: CoinText
   m_TagString: Untagged
@@ -2864,6 +2865,21 @@ RectTransform:
   m_AnchoredPosition: {x: 140, y: 0}
   m_SizeDelta: {x: 220, y: 60}
   m_Pivot: {x: 1, y: 0.5}
+--- !u!114 &744796980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 744796976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &765125728
 GameObject:
   m_ObjectHideFlags: 0
@@ -5289,6 +5305,7 @@ GameObject:
   - component: {fileID: 1470460523}
   - component: {fileID: 1470460525}
   - component: {fileID: 1470460524}
+  - component: {fileID: 1470460526}
   m_Layer: 5
   m_Name: CoinText
   m_TagString: Untagged
@@ -5357,6 +5374,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1470460522}
   m_CullTransparentMesh: 0
+--- !u!114 &1470460526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470460522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1471201028
 GameObject:
   m_ObjectHideFlags: 0
