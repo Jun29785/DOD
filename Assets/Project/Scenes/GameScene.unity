@@ -3046,6 +3046,8 @@ MonoBehaviour:
   character: {fileID: 0}
   startPanel: {fileID: 104853320}
   monsterGenerater: {fileID: 741794276}
+  Forest: {fileID: 8300000, guid: 8b1cf2f18b95c6747ae7756dcf4d6ba2, type: 3}
+  GoblinViliage: {fileID: 8300000, guid: 65161289d3d4b4c4ebec5c6d08f778b6, type: 3}
 --- !u!4 &756781419
 Transform:
   m_ObjectHideFlags: 0

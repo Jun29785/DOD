@@ -6,7 +6,7 @@ public class SoundManager : Singleton<SoundManager>
 {
     public AudioSource bgSound;
 
-    private void Awake()
+    protected override void Awake()
     {
         DontDestroyOnLoad(this);
     }

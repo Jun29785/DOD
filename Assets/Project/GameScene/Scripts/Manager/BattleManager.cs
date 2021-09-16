@@ -36,6 +36,10 @@ public class BattleManager : MonoBehaviour
     public GameObject startPanel;                            // 게임 시작 판넬 ( 검정색)
     public MonsterGenerater monsterGenerater;           // 몬스터 소환 스크립트
 
+
+    public AudioClip Forest;
+    public AudioClip GoblinViliage;
+
     void Awake()
     {
         Instance = this;
@@ -67,6 +71,7 @@ public class BattleManager : MonoBehaviour
     public void StartPanel()
     {
         BattleManager.Instance.isEnd = false;
+        //SoundManager.Instance.BgSound(Forest);
         character.Hp = character.MaxHp;
         character.Mp = character.MaxMp;
         purpose = 100;
@@ -110,6 +115,21 @@ public class BattleManager : MonoBehaviour
         else
         {
             currentmap++;
+            
+        }
+
+        switch (currentmap)
+        {
+            case Stage.forest:
+                SoundManager.Instance.BgSound(Forest);
+
+                break;
+            case Stage.GoblinViliage:
+                SoundManager.Instance.BgSound(GoblinViliage);
+
+                break;
+            default:
+                break;
         }
     }
 
