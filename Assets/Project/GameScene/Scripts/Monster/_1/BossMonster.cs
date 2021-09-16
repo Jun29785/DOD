@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using DOD.Define;
+using DOD.DB;
 
 public class BossMonster : Monster
 {
@@ -13,6 +14,8 @@ public class BossMonster : Monster
 
     public GameObject[] BossUIPos;
     public bool isApear;
+    public float SkillDelay;
+
 
     public int cnt; // 맞은 횟수 
     public override void Awake()
@@ -110,7 +113,15 @@ public class BossMonster : Monster
 
     public override void SetData(int Key)
     {
-        throw new System.NotImplementedException();
+        DataBaseManager.Instance.tdBossDict[Key].UnitNo = this.unitNo;
+        DataBaseManager.Instance.tdBossDict[Key].HP = this.Hp;
+        DataBaseManager.Instance.tdBossDict[Key].Power = this.Power;
+        DataBaseManager.Instance.tdBossDict[Key].Speed = this.Speed;
+        DataBaseManager.Instance.tdBossDict[Key].attackDistance = this.AttackDistance;
+        DataBaseManager.Instance.tdBossDict[Key].attakDelay = this.AttackDelay;
+        DataBaseManager.Instance.tdBossDict[Key].AddScore = this.AddScore;
+        DataBaseManager.Instance.tdBossDict[Key].AddCoin = this.AddCoin;
+        DataBaseManager.Instance.tdBossDict[Key].CoinAmount = this.CoinAmount;
     }
 
     public override void OnEnable()

@@ -1,11 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using DOD.Define;
 public class BossGenerater : MonoBehaviour
 {
-    public GameObject ForestBossPrefab;
-    public GameObject GoblinBossPrefab;
     int cnt = 0;
     void Start()
     {
@@ -22,11 +20,11 @@ public class BossGenerater : MonoBehaviour
             switch (BattleManager.Instance.currentmap)
             {
                 case BattleManager.Stage.forest:
-                    Instantiate(ForestBossPrefab, transform.position, Quaternion.identity);
+                   Objectpool.GetBossMonsterobject((int)bossEnum.거대나무, transform.position);
 
                     break;
                 case BattleManager.Stage.GoblinViliage:
-                    Instantiate(GoblinBossPrefab,transform.position, Quaternion.identity);
+                    Objectpool.GetBossMonsterobject((int)bossEnum.고블린챔피언, transform.position);
 
                     break;
                 default:

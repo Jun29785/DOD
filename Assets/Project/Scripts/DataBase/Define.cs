@@ -41,6 +41,11 @@ namespace DOD.Define
         회복,
     }
     
+    public enum bossEnum
+    {
+        거대나무 = 40001,
+        고블린챔피언,
+    }
     public enum characterEnum 
     {
         기사 = 30001,

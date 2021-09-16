@@ -60,6 +60,8 @@ public class Objectpool : MonoBehaviour
     [SerializeField]
     private GameObject[] MonsterPrefabs;
     [SerializeField]
+    private GameObject[] BossMonsterPrefabs;
+    [SerializeField]
     private GameObject DamageTextPrefab;
     [SerializeField]
     private GameObject healEffectPrefab;
@@ -69,7 +71,8 @@ public class Objectpool : MonoBehaviour
     private Queue<Coin>CoinQueue = new Queue<Coin>();
     private Queue<HealEffect>healEffectQueue = new Queue<HealEffect>();
 
-    MultiMap<int,Monster> Monstermap = new MultiMap<int, Monster>();
+    MultiMap<int,Monster> monsterMap = new MultiMap<int, Monster>();
+    MultiMap<int,BossMonster> bossMap = new MultiMap<int, BossMonster>();
 
     private Queue<DamageText> DamageTextQueue = new Queue<DamageText>();
     private Queue<SkillCoolTimeObject>CTObjQueue = new Queue<SkillCoolTimeObject>();
@@ -91,6 +94,10 @@ public class Objectpool : MonoBehaviour
             healEffectQueue.Enqueue(CreateNewhealEffect());
         }
 
+        for (int i = 0; i < 3; i++)
+        {
+            CreateNewBossMonsters();
+        }
         for (int i = 0; i < 1000; i++)
         {
             DamageTextQueue.Enqueue(CreateNewDamageText());
@@ -146,7 +153,7 @@ public class Objectpool : MonoBehaviour
             var newObj = Instantiate(monster).GetComponent<Monster>();
             newObj.transform.parent = Instance.transform;
             newObj.gameObject.SetActive(false);
-            Monstermap.Add(newObj.unitNo, newObj);
+            monsterMap.Add(newObj.unitNo, newObj);
         }
         
 
@@ -156,9 +163,9 @@ public class Objectpool : MonoBehaviour
 
     public static Monster GetMonsterobject(int monsterNo,  Vector2 pos/*, BattleManager.Monster type*/)
     {
-        if (Instance.Monstermap[monsterNo].Count > 0)
+        if (Instance.monsterMap[monsterNo].Count > 0)
         {
-            var obj = Instance.Monstermap.Removeit(monsterNo);
+            var obj = Instance.monsterMap.Removeit(monsterNo);
             
             obj.transform.position = pos;
             obj.gameObject.SetActive(true);
@@ -168,7 +175,7 @@ public class Objectpool : MonoBehaviour
         else
         {
             Instance.CreateNewMonsters();
-            var newObj = Instance.Monstermap.Removeit(monsterNo);
+            var newObj = Instance.monsterMap.Removeit(monsterNo);
 
             newObj.transform.position = pos;
             newObj.gameObject.SetActive(true);
@@ -181,7 +188,7 @@ public class Objectpool : MonoBehaviour
     {
         Obj.gameObject.SetActive(false);
         Obj.transform.SetParent(Instance.transform);
-        Instance.Monstermap.Add(Obj.unitNo,Obj);
+        Instance.monsterMap.Add(Obj.unitNo,Obj);
     }
 
     #endregion
@@ -315,6 +322,57 @@ public class Objectpool : MonoBehaviour
         Obj.gameObject.SetActive(false);
         Obj.transform.SetParent(Instance.transform);
         Instance.healEffectQueue.Enqueue(Obj);
+    }
+    #endregion
+
+
+    #region BossMonster
+
+
+    private void CreateNewBossMonsters()
+    {
+
+        foreach (GameObject monster in BossMonsterPrefabs)
+        {
+            var newObj = Instantiate(monster).GetComponent<BossMonster>();
+            newObj.transform.parent = Instance.transform;
+            newObj.gameObject.SetActive(false);
+            monsterMap.Add(newObj.unitNo, newObj);
+        }
+
+
+    }
+
+
+
+    public static BossMonster GetBossMonsterobject(int monsterNo, Vector2 pos/*, BattleManager.Monster type*/)
+    {
+        if (Instance.monsterMap[monsterNo].Count > 0)
+        {
+            var obj = Instance.bossMap.Removeit(monsterNo);
+
+            obj.transform.position = pos;
+            obj.gameObject.SetActive(true);
+
+            return obj;
+        }
+        else
+        {
+            Instance.CreateNewMonsters();
+            var newObj = Instance.bossMap.Removeit(monsterNo);
+
+            newObj.transform.position = pos;
+            newObj.gameObject.SetActive(true);
+
+            return newObj;
+        }
+    }
+
+    public static void ReturnBossMonster(BossMonster Obj)
+    {
+        Obj.gameObject.SetActive(false);
+        Obj.transform.SetParent(Instance.transform);
+        Instance.bossMap.Add(Obj.unitNo, Obj);
     }
     #endregion
 }

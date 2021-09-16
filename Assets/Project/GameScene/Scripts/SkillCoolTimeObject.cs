@@ -19,14 +19,8 @@ public class SkillCoolTimeObject : MonoBehaviour
         skillKey = 10001;
         CoolTime = 10;
         CurrentTime = 10;
-        Debug.Log((1280 / Screen.height));
         RT = GetComponent<RectTransform>();
 
-        Debug.Log(Camera.main.rect.height);
-        Debug.Log(Screen.height);
-        Debug.Log(Screen.height * Camera.main.rect.height);
-        Debug.Log(( (Screen.height * Camera.main.rect.height / (float)1280 )));
-        Debug.Log(RT.sizeDelta.x * ((Screen.height * Camera.main.rect.height)/ 1280));
 
         RT.sizeDelta = new Vector2(RT.sizeDelta.x * ( (Screen.height * Camera.main.rect.height) / (float)1280), RT.sizeDelta.y * ( (Screen.height * Camera.main.rect.height)/(float)1280));
         

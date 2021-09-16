@@ -19,8 +19,9 @@ namespace DOD.DB
         public Dictionary<int, TDCharacter> tdCharacterDict = new Dictionary<int, TDCharacter>();
 
         public Dictionary<int, TDMonster> tdMonsterDict = new Dictionary<int, TDMonster>();
+        public Dictionary<int, TDBoss> tdBossDict = new Dictionary<int, TDBoss>();
+
         public List<TDUserRank> userRankDict = new List<TDUserRank>();
-        public Dictionary<string, float> skillCoolTime = new Dictionary<string, float>();
 
 
 
@@ -38,7 +39,7 @@ namespace DOD.DB
             LoadMonsterTable();
             LoadCharacterTable();
             LoadTipText();
-
+            LoadBossTable();
         }
 
         void LoadMonsterTable()
@@ -159,10 +160,39 @@ namespace DOD.DB
 
                 tdCharacterDict.Add(tdCharacter.UnitNo, tdCharacter);
             }
+
+            foreach (var item in tdCharacterDict.Keys)
+            {
+                Debug.Log(item);
+            }
             Debug.Log("캐릭터 테이블 완료");
         }
 
+        void LoadBossTable()
+        {
+            TextAsset jsonText = Resources.Load<TextAsset>("DataTable/Boss_Json"); // Json 불러오기
 
+            Debug.Log(jsonText);
+            tdCharacterDict.Clear();
+
+            JObject parsedObj = new JObject(); // Json Object 생성
+
+
+            parsedObj = JObject.Parse(jsonText.text); // Json Parsing
+
+            Debug.Log(parsedObj);
+
+
+            foreach (KeyValuePair<string, JToken> pair in parsedObj)
+            {
+                TDBoss tdBoss = new TDBoss();
+
+                tdBoss.SetJsonData(pair.Key, pair.Value.ToObject<JObject>());
+
+                tdBossDict.Add(tdBoss.UnitNo, tdBoss);
+            }
+            Debug.Log("보스 테이블 완료");
+        }
 
 
         public void LoadTipText()
