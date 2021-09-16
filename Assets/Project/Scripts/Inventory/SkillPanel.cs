@@ -41,7 +41,7 @@ public class SkillPanel : MonoBehaviour
             CTimeText.text = "해금 필요";
             SkillLevel.text = "해금 필요";
             DescriptionText.text = "해금 필요";
-            Name.text = "해금되지 않은 스킬";
+            Name.text = i.Name;
             UpgradeCostText.text = i.UpgradeCost.ToString();
         }
         else
