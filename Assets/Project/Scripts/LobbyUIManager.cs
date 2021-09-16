@@ -11,6 +11,7 @@ using UnityEngine.UI;
 
 public class LobbyUIManager : Singleton<LobbyUIManager>
 {
+    #region 오브젝트
     public Image StartButton;
     public Sprite OnStartButton;
     public Sprite OffStartButton;
@@ -58,6 +59,12 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
     public GameObject rankObj_3;
     public GameObject rankObj_Default;
 
+    #endregion
+
+    #region 사운드
+    public AudioClip ClickButton;
+    public AudioClip Levelup;
+    #endregion
     protected override void Awake()
     {
         InvenCharKey = 30001;
@@ -158,8 +165,6 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
     }
     #endregion
 
-
-
     private void Update()
     {
         UpdateText();
@@ -238,6 +243,7 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
         SkillStatPanel.SetActive(true);
         SkillDescButton.GetComponent<Image>().color = new Color32(150, 150, 150, 255);
         SkillStatButton.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+        SoundManager.Instance.SFXPlay("버튼 클릭",ClickButton);
     }
 
     public void OnClickSkillDescButton()
@@ -246,6 +252,7 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
         SkillDescPanel.SetActive(true);
         SkillStatButton.GetComponent<Image>().color = new Color32(150, 150, 150, 255);
         SkillDescButton.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+        SoundManager.Instance.SFXPlay("버튼 클릭", ClickButton);
     }
     public void OpenSkillPanel(GameObject Skill)
     {
@@ -286,6 +293,7 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
 
     public void CloseSkillPanel()
     {
+        SoundManager.Instance.SFXPlay("버튼 클릭", ClickButton);
         SkillPanel.SetActive(false);
         GameManager.Instance.StatSetting();
         SkillManager.Instance.InitData();
@@ -295,6 +303,7 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
     public void OnClickExitPanelButton()
     {
         SkillPanel.SetActive(false);
+        SoundManager.Instance.SFXPlay("버튼 클릭", ClickButton);
     }
     #endregion
 
@@ -358,6 +367,7 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
 
     public void OnClickUpgradeChar() 
     {
+        SoundManager.Instance.SFXPlay("버튼 클릭", ClickButton);
         CharUpgrade.transform.GetChild(1).gameObject.SetActive(true);
     }
 }

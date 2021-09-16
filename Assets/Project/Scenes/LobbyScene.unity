@@ -591,7 +591,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -7655812585128632542, guid: 343344633e48c6046b37829f75b7adc0, type: 3}
+  m_Sprite: {fileID: -130157730619384753, guid: 1af6bfe647168614c8f0b3b207c6a429, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7031,6 +7031,8 @@ MonoBehaviour:
   rankObj_2: {fileID: 6061081495273188853, guid: 67218df6d228494499b56ad834cc1a1e, type: 3}
   rankObj_3: {fileID: 2129166471139291473, guid: 93bff64fedc0d974eace8cc89fb4da58, type: 3}
   rankObj_Default: {fileID: 6989904789849961347, guid: 889c82617ff2c8247878c434923081ab, type: 3}
+  ClickButton: {fileID: 8300000, guid: d286db9a05265774e9a11cd2d58cfe2c, type: 3}
+  Levelup: {fileID: 8300000, guid: 2572f6d357b416a45a3cc557336bb608, type: 3}
 --- !u!95 &1835391892
 Animator:
   serializedVersion: 3

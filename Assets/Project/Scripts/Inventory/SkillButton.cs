@@ -72,5 +72,6 @@ public class SkillButton : MonoBehaviour
         UserDataManager.user.coin -= UpgradeCost;
         SkillLevel += 1;
         UserDataManager.user.skill_level[SKey.ToString()] += 1;
+        SoundManager.Instance.SFXPlay("레벨 업", LobbyUIManager.Instance.Levelup);
     }
 }

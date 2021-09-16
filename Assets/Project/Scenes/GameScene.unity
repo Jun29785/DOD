@@ -4439,6 +4439,7 @@ MonoBehaviour:
   GOScoreText: {fileID: 887747945}
   GetGoldText: {fileID: 169773718}
   CoinText: {fileID: 1074733178}
+  ClickButton: {fileID: 8300000, guid: d286db9a05265774e9a11cd2d58cfe2c, type: 3}
 --- !u!4 &1057568664
 Transform:
   m_ObjectHideFlags: 0
@@ -6158,7 +6159,6 @@ MonoBehaviour:
   DashTransform: {fileID: 484780085}
   BigSword_ATK_Transform: {fileID: 1944708695}
   Paring_ATK_Transform: {fileID: 1988581325}
-  TEST: {x: 2.3, y: 1}
   SwordAura_Projectile: {fileID: 6589661519657973506, guid: d5a0fc72910f40c46bd0b183d975e652, type: 3}
 --- !u!212 &1642648740
 SpriteRenderer:

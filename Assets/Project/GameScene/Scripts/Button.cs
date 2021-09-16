@@ -18,6 +18,7 @@ public class Button : MonoBehaviour
     /// </summary>
     public void ToLobbyScene()
     {
+        SoundManager.Instance.SFXPlay("버튼 클릭", GameSceneUIManager.Instance.ClickButton);
         LoadingSceneController.LoadScene(Scenes.LobbyScene.ToString());
         Time.timeScale = 1;
    }
@@ -34,6 +35,14 @@ public class Button : MonoBehaviour
     /// </summary>
     public void ToGameScene()
     {
+        if(SceneManager.GetActiveScene().name == "GameScene")
+        {
+            SoundManager.Instance.SFXPlay("버튼 클릭", GameSceneUIManager.Instance.ClickButton);
+        }
+        else if (SceneManager.GetActiveScene().name == "LobbyScene")
+        {
+            SoundManager.Instance.SFXPlay("버튼 클릭", LobbyUIManager.Instance.ClickButton);
+        }
         LoadingSceneController.LoadScene(Scenes.GameScene.ToString());
         GameManager.Instance.StatSetting();
         GameManager.Instance.CharSetting();
@@ -45,6 +54,7 @@ public class Button : MonoBehaviour
     // 로비
     public void OpenInventory()
     {
+        SoundManager.Instance.SFXPlay("버튼 클릭", LobbyUIManager.Instance.ClickButton);
         var i = LobbyUIManager.Instance;
         i.Inventory.SetActive(true);
         GameManager.Instance.CharSetting();
@@ -55,6 +65,7 @@ public class Button : MonoBehaviour
 
     public void CloseInventory()
     {
+        SoundManager.Instance.SFXPlay("버튼 클릭", LobbyUIManager.Instance.ClickButton);
         LobbyUIManager.Instance.CharUpgrade.transform.GetChild(1).gameObject.SetActive(false);
         LobbyUIManager.Instance.Inventory.SetActive(false);
         Debug.Log("Close Inventory Panel");
@@ -68,6 +79,7 @@ public class Button : MonoBehaviour
     /// <param name="viewObj">보여줄 오브젝트</param>
     public void Viewit(GameObject viewObj)
     {
+        SoundManager.Instance.SFXPlay("버튼 클릭", LobbyUIManager.Instance.ClickButton);
         viewObj.SetActive(true);
     }
     /// <summary>
@@ -76,11 +88,13 @@ public class Button : MonoBehaviour
     /// <param name="viewObj">끌 오브젝트</param>
     public void Hideit(GameObject viewObj)
     {
+        SoundManager.Instance.SFXPlay("버튼 클릭", LobbyUIManager.Instance.ClickButton);
         viewObj.SetActive(false);
     }
 
     public void enter_nickName(Text text)
     {
+        SoundManager.Instance.SFXPlay("버튼 클릭", LobbyUIManager.Instance.ClickButton);
         if (text.text != "")
         {
             UserDataManager.user.nickname = text.text;
@@ -137,6 +151,7 @@ public class Button : MonoBehaviour
     /// <param name="viewObject">pausePanel</param>
     public void Pause(GameObject viewObject)
     {
+        SoundManager.Instance.SFXPlay("버튼 클릭", GameSceneUIManager.Instance.ClickButton);
         Time.timeScale = 0;
         viewObject.SetActive(true);
     }
@@ -148,6 +163,7 @@ public class Button : MonoBehaviour
     /// <param name="viewObject">pausePanel</param>
     public void Pose(GameObject viewObject)
     {
+        SoundManager.Instance.SFXPlay("버튼 클릭", GameSceneUIManager.Instance.ClickButton);
         Time.timeScale = 1;
         viewObject.SetActive(false);
     }
@@ -159,6 +175,7 @@ public class Button : MonoBehaviour
     /// <param name="viewObject">pasuePanel</param>
     public void gameSceneQuit(GameObject viewObject)
     {
+        SoundManager.Instance.SFXPlay("버튼 클릭", GameSceneUIManager.Instance.ClickButton);
         Time.timeScale = 1;
         viewObject.SetActive(false);
         BattleManager.Instance.isEnd = true;

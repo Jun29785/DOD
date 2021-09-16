@@ -12,7 +12,7 @@ public class GameSceneUIManager : UIManager
     public Character character;                 // 캐릭터 스크립트
     public Text ScoreText;                      // 점수
     public Text WarningText;                    // 마나없습니다 등등 표기 텍스트
-    public GameObject Content;                  // 스킬 쿨타임오브젝트의 부모객체
+    public GameObject Content;                      // 스킬 쿨타임오브젝트의 부모객체
     public GameObject Skill_CoolTime_Prefab;    // 스킬쿨타임 오브젝트 프리팹
 
     [Header("GameOVerPanel")]
@@ -22,6 +22,10 @@ public class GameSceneUIManager : UIManager
     public Text CoinText;
     int gold;
     int CNT;
+
+    [Header("Sounds")]
+    public AudioClip ClickButton;
+
     void Start()
     {
         Instance = this;

@@ -50,6 +50,7 @@ public class InvenChar : MonoBehaviour
         Level += 1;
         UserDataManager.user.character_level[CharKey.ToString()] += 1;
         Debug.Log("Successful Upgrade! UpgradeCost : " + UpgradeCost);
+        SoundManager.Instance.SFXPlay("레벨 업", LobbyUIManager.Instance.Levelup);
 
     }
 }
