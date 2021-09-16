@@ -16,10 +16,17 @@ public class LoadingSceneController : MonoBehaviour
     public static void LoadScene(string name)
     {
         nextScene = name;
+        UserDataManager.Instance.Save();
         SceneManager.LoadScene("LoadingScene");
         
     }
 
+    public static void TitletoLoadScene(string name)
+    {
+        nextScene = name;
+        SceneManager.LoadScene("LoadingScene");
+
+    }
 
     private void Start()
     {
@@ -33,7 +40,6 @@ public class LoadingSceneController : MonoBehaviour
 
         float timer = 0;
 
-        UserDataManager.Instance.Save();
         while (!op.isDone)
         {
             yield return null;

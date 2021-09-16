@@ -84,7 +84,7 @@ namespace DOD.DB
 
 
 
-            UnityWebRequest www = UnityWebRequest.Get("http://15.165.160.44:3000/show_rank");
+            UnityWebRequest www = UnityWebRequest.Get("http://10.120.74.70:4000/show_rank");
             yield return www.Send();
 
             string a = www.downloadHandler.text;

@@ -110,8 +110,15 @@ public class BossMonster : Monster
 
     public void OnDisable()
     {
-        BossState.transform.position = BossUIPos[1].transform.position;
-        setMonsterStat();
+        try
+        {
+            BossState.transform.position = BossUIPos[1].transform.position;
+        }
+        catch
+        {
+
+        }
+            setMonsterStat();
         applyPower = Power;
         applyMaxHp = MaxHp;
     }

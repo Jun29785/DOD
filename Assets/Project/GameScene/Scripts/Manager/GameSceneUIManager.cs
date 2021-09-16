@@ -91,8 +91,8 @@ public class GameSceneUIManager : UIManager
             UserDataManager.Instance.game_end_Func((int)BattleManager.Instance.Score);
             CNT++;
         }
-            GOScoreText.text = "Score : " + BattleManager.Instance.Score.ToString();
-        GetGoldText.text = "Gold : +" + gold.ToString();
+            GOScoreText.text = "점수 : " + BattleManager.Instance.Score.ToString();
+        GetGoldText.text = "골드획득량 : " + gold.ToString();
         GameoverPanel.SetActive(true);
         BattleManager.Instance.getGold = 0;
         Debug.Log(BattleManager.Instance.getGold);

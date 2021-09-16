@@ -110,6 +110,12 @@ public class ForestBoss : BossMonster
         }
     }
 
+    public override void TryAttack()
+    {
+        base.TryAttack();
+    }
+
+
     public override void Damaged(float value)
     {
         base.Damaged(value);
