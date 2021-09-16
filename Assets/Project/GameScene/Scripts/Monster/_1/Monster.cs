@@ -46,14 +46,9 @@ public abstract class Monster : Actor
 
     public virtual void OnEnable()
     {
-        if (BattleManager.Instance.loopCount != 0)
-        {
-            MaxHp = MaxHp + 1.2f * BattleManager.Instance.loopCount;
-            Power = MaxHp + 1.2f * BattleManager.Instance.loopCount;
-            
-        }
-        applyPower = Power;
-        applyMaxHp = MaxHp;
+        
+
+
         Hp = applyMaxHp;
         isDie = false;
         
@@ -179,16 +174,18 @@ public abstract class Monster : Actor
 
     private void OnDisable()
     {
-        applyMaxHp = MaxHp;
+        setMonsterStat();
         applyPower = Power;
+        applyMaxHp = MaxHp;
     }
 
 
-    void setMonsterStat()
+    public void setMonsterStat()
     {
         if (BattleManager.Instance.loopCount != 0)
         {
-
+                MaxHp = MaxHp + 1.2f * BattleManager.Instance.loopCount;
+                Power = MaxHp + 1.2f * BattleManager.Instance.loopCount;
         }
     }
 }

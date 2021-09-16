@@ -20,7 +20,7 @@ public class BattleManager : MonoBehaviour
 
     public int purpose; 
     public int BossInterval;
-    public int loopCount = 0;
+    public int loopCount;
 
     public bool isBoss;                                 // 보스전중인가?
     public bool isContact = false;                      // 몬스터와 닿았는가? 
@@ -38,11 +38,11 @@ public class BattleManager : MonoBehaviour
 
     void Awake()
     {
+        Instance = this;
     }
     void Start()
     {
         character = GameObject.FindWithTag("Player").GetComponent<Character>();
-        Instance = this;
         StartPanel();
     }
 
