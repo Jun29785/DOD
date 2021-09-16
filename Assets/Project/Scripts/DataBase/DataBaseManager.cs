@@ -149,7 +149,7 @@ namespace DOD.DB
 
             parsedObj = JObject.Parse(jsonText.text); // Json Parsing
 
-            Debug.Log(parsedObj);   
+            Debug.Log(parsedObj);
 
 
             foreach (KeyValuePair<string, JToken> pair in parsedObj)

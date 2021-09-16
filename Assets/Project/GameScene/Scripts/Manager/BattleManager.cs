@@ -105,6 +105,7 @@ public class BattleManager : MonoBehaviour
         {
             currentmap = Stage.forest;
             loopCount++;
+            Debug.Log(loopCount);
         }
         else
         {

@@ -102,6 +102,8 @@ public class Objectpool : MonoBehaviour
         {
             DamageTextQueue.Enqueue(CreateNewDamageText());
         }
+
+        
     }
 
     #region Coin
@@ -337,8 +339,9 @@ public class Objectpool : MonoBehaviour
             var newObj = Instantiate(monster).GetComponent<BossMonster>();
             newObj.transform.parent = Instance.transform;
             newObj.gameObject.SetActive(false);
-            monsterMap.Add(newObj.unitNo, newObj);
+            bossMap.Add(newObj.unitNo, newObj);
         }
+
 
 
     }
@@ -347,7 +350,7 @@ public class Objectpool : MonoBehaviour
 
     public static BossMonster GetBossMonsterobject(int monsterNo, Vector2 pos/*, BattleManager.Monster type*/)
     {
-        if (Instance.monsterMap[monsterNo].Count > 0)
+        if (Instance.bossMap[monsterNo].Count > 0)
         {
             var obj = Instance.bossMap.Removeit(monsterNo);
 

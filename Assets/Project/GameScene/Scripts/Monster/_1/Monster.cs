@@ -184,8 +184,8 @@ public abstract class Monster : Actor
     {
         if (BattleManager.Instance.loopCount != 0)
         {
-                MaxHp = MaxHp + 1.2f * BattleManager.Instance.loopCount;
-                Power = MaxHp + 1.2f * BattleManager.Instance.loopCount;
+                MaxHp = MaxHp * (1.2f * BattleManager.Instance.loopCount);
+                Power = Power * (1.2f * BattleManager.Instance.loopCount);
                 AddCoin = AddCoin + 1 * BattleManager.Instance.loopCount;
         }
     }
