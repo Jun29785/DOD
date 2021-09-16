@@ -581,6 +581,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Loadingbar: {fileID: 1892663230}
+  BgSound: {fileID: 8300000, guid: 63e2d732badada7439c476ac14746617, type: 3}
 --- !u!1 &1224323757
 GameObject:
   m_ObjectHideFlags: 0

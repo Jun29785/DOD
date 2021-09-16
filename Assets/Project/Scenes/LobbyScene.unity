@@ -7107,6 +7107,7 @@ MonoBehaviour:
   rankObj_Default: {fileID: 6989904789849961347, guid: 889c82617ff2c8247878c434923081ab, type: 3}
   ClickButton: {fileID: 8300000, guid: d286db9a05265774e9a11cd2d58cfe2c, type: 3}
   Levelup: {fileID: 8300000, guid: 2572f6d357b416a45a3cc557336bb608, type: 3}
+  BgSounds: {fileID: 8300000, guid: 63e2d732badada7439c476ac14746617, type: 3}
 --- !u!95 &1835391892
 Animator:
   serializedVersion: 3

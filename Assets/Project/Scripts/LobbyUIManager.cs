@@ -64,6 +64,7 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
     #region 사운드
     public AudioClip ClickButton;
     public AudioClip Levelup;
+    public AudioClip BgSounds;
     #endregion
     protected override void Awake()
     {
@@ -81,8 +82,9 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
         Leave.SetActive(false);
         Character.SetTrigger("IDLE");
 
-
         nickNameInput();
+
+        SoundManager.Instance.BgSound(BgSounds);
     }
 
     public IEnumerator NoMoney()

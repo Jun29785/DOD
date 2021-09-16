@@ -12,7 +12,7 @@ public class LoadingSceneController : MonoBehaviour
     [SerializeField]
     Slider Loadingbar;
 
-    
+    public AudioClip BgSound;
     public static void LoadScene(string name)
     {
         nextScene = name;
@@ -28,6 +28,10 @@ public class LoadingSceneController : MonoBehaviour
 
     }
 
+    private void Awake()
+    {
+        SoundManager.Instance.BgSound(BgSound);
+    }
     private void Start()
     {
         StartCoroutine(LoadSceneProcess());
