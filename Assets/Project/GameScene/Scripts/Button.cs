@@ -48,6 +48,7 @@ public class Button : MonoBehaviour
         GameManager.Instance.StatSetting();
         i.CreateButton();
         i.InvenCharacter.GetComponent<InvenChar>().LoadData(i.InvenCharKey);
+        i.Inventory.transform.GetChild(3).GetComponent<Text>().text = UserDataManager.user.nickname;
     }
 
     public void CloseInventory()
