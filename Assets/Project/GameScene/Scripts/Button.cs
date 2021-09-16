@@ -66,7 +66,6 @@ public class Button : MonoBehaviour
     public void CloseInventory()
     {
         SoundManager.Instance.SFXPlay("버튼 클릭", LobbyUIManager.Instance.ClickButton);
-        LobbyUIManager.Instance.CharUpgrade.transform.GetChild(1).gameObject.SetActive(false);
         LobbyUIManager.Instance.Inventory.SetActive(false);
         Debug.Log("Close Inventory Panel");
         GameManager.Instance.StatSetting();
