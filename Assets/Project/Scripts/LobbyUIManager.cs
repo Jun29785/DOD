@@ -59,6 +59,9 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
     public GameObject rankObj_3;
     public GameObject rankObj_Default;
 
+    public GameObject SoundPanel;
+    public GameObject BG_Check;
+    public GameObject SFX_Check;
     #endregion
 
     #region 사운드
@@ -70,6 +73,15 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
     {
         InvenCharKey = 30001;
         StartCoroutine(StartScene());
+        if (PlayerPrefs.GetFloat("BGSound") == -80f)
+        {
+            BG_Check.transform.GetChild(0).gameObject.SetActive(false);
+        }
+        if (PlayerPrefs.GetFloat("SFX") == -80f)
+        {
+            SFX_Check.transform.GetChild(0).gameObject.SetActive(false);
+        }
+
     }
 
     IEnumerator StartScene()
@@ -78,13 +90,13 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
         CreateNewrankObj();
         
         Canvas.SetTrigger("LeaveOpen");
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(2.2f);
+        SoundManager.Instance.BgSound(BgSounds);
         Leave.SetActive(false);
         Character.SetTrigger("IDLE");
 
         nickNameInput();
 
-        SoundManager.Instance.BgSound(BgSounds);
     }
 
     public IEnumerator NoMoney()
@@ -370,5 +382,48 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
     public void OnClickUpgradeChar() 
     {
         OnClickCharacterUpGradeButton();
+    }
+
+    public void OnClickSoundButton()
+    {
+        SoundManager.Instance.SFXPlay("버튼 클릭", ClickButton);
+        SoundPanel.SetActive(true);
+    }
+
+    public void BGSoundCheckBox()
+    {
+        if (BG_Check.transform.GetChild(0).gameObject.activeSelf && PlayerPrefs.GetFloat("BGSound") == 0f)
+        {
+            BG_Check.transform.GetChild(0).gameObject.SetActive(false);
+            PlayerPrefs.SetFloat("BGSound", -80f);
+        }
+        else
+        {
+            BG_Check.transform.GetChild(0).gameObject.SetActive(true);
+            PlayerPrefs.SetFloat("BGSound", 0f);
+        }
+        Debug.Log("BGSound : " + PlayerPrefs.GetFloat("BGSound"));
+    }
+
+    public void SFXCheckBox()
+    {
+        if (SFX_Check.transform.GetChild(0).gameObject.activeSelf && PlayerPrefs.GetFloat("SFX")==0f)
+        {
+            SFX_Check.transform.GetChild(0).gameObject.SetActive(false);
+            PlayerPrefs.SetFloat("SFX", -80f);
+        }
+        else
+        {
+            SFX_Check.transform.GetChild(0).gameObject.SetActive(true);
+            PlayerPrefs.SetFloat("SFX", 0f);
+        }
+        
+        Debug.Log("SFX : " + PlayerPrefs.GetFloat("SFX"));
+    }
+
+    public void ExitSoundPanel(GameObject SoundPanel)
+    {
+        SoundPanel.SetActive(false);
+        SoundManager.Instance.SFXPlay("버튼 클릭", ClickButton);
     }
 }

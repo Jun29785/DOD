@@ -46,12 +46,8 @@ public abstract class Monster : Actor
 
     public virtual void OnEnable()
     {
-        
-
-
         Hp = applyMaxHp;
         isDie = false;
-        
     }
 
     public override void Update()
