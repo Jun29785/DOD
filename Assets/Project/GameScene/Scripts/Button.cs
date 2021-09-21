@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class Button : MonoBehaviour
 {
-
     public GameObject inputName;
     public Text overlapName;
 

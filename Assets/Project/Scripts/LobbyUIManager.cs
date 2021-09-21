@@ -6,9 +6,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
-
-
 public class LobbyUIManager : Singleton<LobbyUIManager>
 {
     #region 오브젝트
@@ -218,7 +215,7 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
             Characterlvl.text = "Lv." + UserDataManager.user.character_level[InvenCharacter.GetComponent<InvenChar>().CharKey.ToString()].ToString("0");
             CharUpgradeCost.text = InvenCharacter.GetComponent<InvenChar>().UpgradeCost.ToString();
         }
-    }
+    }   
 
     #region 스타트 버튼 이벤트
     public void PointerDownStartButton()
