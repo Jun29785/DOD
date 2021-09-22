@@ -75,18 +75,17 @@ public class BossMonster : Monster
     public override void OnEnable()
     {
         base.OnEnable();
-        Hp = applyMaxHp;
-        applyPower = Power;
+        Hp = applyMaxHp *(BattleManager.Instance.loopCount +1);
+        applyPower = Power * (BattleManager.Instance.loopCount +1);
         bossName.text = Name.ToString();
 
-
-        applyMaxHp = MaxHp;
-        Hp = applyMaxHp;
-
-
+        MaxHp *= (BattleManager.Instance.loopCount + 1);
+        applyMaxHp = MaxHp * (BattleManager.Instance.loopCount +1);
+        Hp = applyMaxHp * (BattleManager.Instance.loopCount +1);
+        
         BossState.transform.position = BossUIPos[0].transform.position;
 
-        bossHpbar.value = 0;
+        bossHpbar.value = MaxHp;
         StartCoroutine(appear());
 
     }
@@ -140,10 +139,13 @@ public class BossMonster : Monster
         cnt++;
 
     }
-
+    
+    /// <summary>
+    /// 체력바 업데이트
+    /// </summary>
     public void hpUpdate()
     {
-        hpText.text = $"{Hp} / {MaxHp}";
+        hpText.text = $"{(int)Hp} / {(int)MaxHp}";
         if (Hp < 0)
         {
             Hp = 0;
@@ -157,20 +159,21 @@ public class BossMonster : Monster
 
     public override void SetData(int Key)
     {
-        this.unitNo = DataBaseManager.Instance.tdBossDict[Key].UnitNo;
-        this.Name = DataBaseManager.Instance.tdBossDict[Key].Name;
-        this.MaxHp = DataBaseManager.Instance.tdBossDict[Key].HP;
-        this.applyMaxHp = DataBaseManager.Instance.tdBossDict[Key].HP;
-        this.Power = DataBaseManager.Instance.tdBossDict[Key].Power;
-        this.applyPower = DataBaseManager.Instance.tdBossDict[Key].Power;
-        this.Speed = DataBaseManager.Instance.tdBossDict[Key].Speed;
-        this.AttackDistance = DataBaseManager.Instance.tdBossDict[Key].attackDistance;
-        this.AttackDelay = DataBaseManager.Instance.tdBossDict[Key].attakDelay;
-        this.ApplyAttackDelay = DataBaseManager.Instance.tdBossDict[Key].attakDelay;
-        this.AddScore = DataBaseManager.Instance.tdBossDict[Key].AddScore;
-        this.AddCoin = DataBaseManager.Instance.tdBossDict[Key].AddCoin;
-        this.CoinAmount = DataBaseManager.Instance.tdBossDict[Key].CoinAmount;
-        this.SkillDelay = DataBaseManager.Instance.tdBossDict[Key].SkillDelay;
+        var dict = DataBaseManager.Instance.tdBossDict[Key];
+        this.unitNo = dict.UnitNo;
+        this.Name = dict.Name;
+        this.MaxHp = dict.HP;
+        this.applyMaxHp = dict.HP;
+        this.Power = dict.Power;
+        this.applyPower = dict.Power;
+        this.Speed = dict.Speed;
+        this.AttackDistance = dict.attackDistance;
+        this.AttackDelay = dict.attakDelay;
+        this.ApplyAttackDelay = dict.attakDelay;
+        this.AddScore = dict.AddScore;
+        this.AddCoin = dict.AddCoin;
+        this.CoinAmount = dict.CoinAmount;
+        this.SkillDelay = dict.SkillDelay;
     }
 
    

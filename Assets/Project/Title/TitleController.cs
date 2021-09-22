@@ -39,10 +39,15 @@ public class TitleController : MonoBehaviour
 
     public void Initialize()
     {
+        if (Application.internetReachability == NetworkReachability.NotReachable)
+        {
+            Debug.Log("WIFI ERROR");
+        }
         OnPhase(phase);
     }
     private void OnPhase(IntroPhase phase)
     {
+        
         UI.SetLoadStateDescription(phase);
         if (loadGaugeUpdateCorutine != null)
         {

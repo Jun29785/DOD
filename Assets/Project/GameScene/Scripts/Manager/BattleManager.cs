@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class BattleManager : MonoBehaviour
 {
-    
-
-    
     public enum Stage 
     {
         forest,
@@ -55,6 +52,7 @@ public class BattleManager : MonoBehaviour
     private void Update()
     {
         BossMusic();
+       
     }
 
     public void PlayerDamage(float value)
@@ -133,7 +131,7 @@ public class BattleManager : MonoBehaviour
         {
             currentmap = Stage.forest;
             loopCount++;
-            Debug.Log(loopCount);
+            Debug.Log("loopcount"+loopCount);
         }
         else
         {

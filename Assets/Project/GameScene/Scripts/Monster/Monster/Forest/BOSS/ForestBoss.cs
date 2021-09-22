@@ -15,6 +15,7 @@ public class ForestBoss : BossMonster
     {
         base.Awake();
         SetData((int)bossEnum.거대나무);
+        Debug.Log("hp : " + Hp);
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Character>();
     }
 
