@@ -11,7 +11,7 @@
           "M_Ctime": "3",
           "UpgrateCost": "50",
           "LCU": "5",
-          "UnlockCost": "10",
+          "UnlockCost": "0",
           "Description": "연속으로 공격한다"
    },
      "10002": {
@@ -26,7 +26,7 @@
           "M_Ctime": "3",
           "UpgrateCost": "50",
           "LCU": "5",
-          "UnlockCost": "100",
+          "UnlockCost": "30",
           "Description": "돌진하며 상대를 밀어낸다"
    },
      "10003": {
@@ -41,7 +41,7 @@
           "M_Ctime": "7",
           "UpgrateCost": "75",
           "LCU": "10",
-          "UnlockCost": "300",
+          "UnlockCost": "60",
           "Description": "몸을 회전하여 공격한다"
    },
      "10004": {
@@ -56,7 +56,7 @@
           "M_Ctime": "7",
           "UpgrateCost": "100",
           "LCU": "10",
-          "UnlockCost": "750",
+          "UnlockCost": "120",
           "Description": "검을 크게 만들어 상대를 내려친다"
    },
      "10005": {
@@ -71,7 +71,7 @@
           "M_Ctime": "10",
           "UpgrateCost": "100",
           "LCU": "10",
-          "UnlockCost": "1000",
+          "UnlockCost": "200",
           "Description": "검에 내공을 밀어넣어 상대에게 날려보낸다"
    },
      "10006": {
@@ -86,7 +86,7 @@
           "M_Ctime": "10",
           "UpgrateCost": "100",
           "LCU": "10",
-          "UnlockCost": "1000",
+          "UnlockCost": "200",
           "Description": "→ ↙ → 순서로 빠르게 상대를 베어낸다"
    },
      "10007": {
@@ -101,7 +101,7 @@
           "M_Ctime": "5",
           "UpgrateCost": "50",
           "LCU": "5",
-          "UnlockCost": "1000",
+          "UnlockCost": "300",
           "Description": "칼등으로 크게 휘둘러 상대를 날려보낸다"
    },
      "10008": {
@@ -116,7 +116,7 @@
           "M_Ctime": "10",
           "UpgrateCost": "50",
           "LCU": "5",
-          "UnlockCost": "1500",
+          "UnlockCost": "320",
           "Description": "상대의 공격을 예측해 칼로 공격을 흘린다"
    },
      "10009": {
@@ -131,7 +131,7 @@
           "M_Ctime": "10",
           "UpgrateCost": "50",
           "LCU": "5",
-          "UnlockCost": "1500",
+          "UnlockCost": "350",
           "Description": "체력과 마나를 대폭 회복 시킨다."
    }
 }
