@@ -26,7 +26,7 @@
           "M_Ctime": "3",
           "UpgrateCost": "50",
           "LCU": "5",
-          "UnlockCost": "30",
+          "UnlockCost": "50",
           "Description": "돌진하며 상대를 밀어낸다"
    },
      "10003": {
@@ -41,7 +41,7 @@
           "M_Ctime": "7",
           "UpgrateCost": "75",
           "LCU": "10",
-          "UnlockCost": "60",
+          "UnlockCost": "100",
           "Description": "몸을 회전하여 공격한다"
    },
      "10004": {
@@ -56,7 +56,7 @@
           "M_Ctime": "7",
           "UpgrateCost": "100",
           "LCU": "10",
-          "UnlockCost": "120",
+          "UnlockCost": "150",
           "Description": "검을 크게 만들어 상대를 내려친다"
    },
      "10005": {
@@ -101,7 +101,7 @@
           "M_Ctime": "5",
           "UpgrateCost": "50",
           "LCU": "5",
-          "UnlockCost": "300",
+          "UnlockCost": "230",
           "Description": "칼등으로 크게 휘둘러 상대를 날려보낸다"
    },
      "10008": {
@@ -116,7 +116,7 @@
           "M_Ctime": "10",
           "UpgrateCost": "50",
           "LCU": "5",
-          "UnlockCost": "320",
+          "UnlockCost": "300",
           "Description": "상대의 공격을 예측해 칼로 공격을 흘린다"
    },
      "10009": {
