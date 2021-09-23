@@ -59,6 +59,10 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
     public GameObject SoundPanel;
     public GameObject BG_Check;
     public GameObject SFX_Check;
+
+    public GameObject TutorialPanel;
+    private GameObject TutorialImage;
+    private int TutorialNumber;
     #endregion
 
     #region 사운드
@@ -66,9 +70,12 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
     public AudioClip Levelup;
     public AudioClip BgSounds;
     #endregion
+
     protected override void Awake()
     {
         InvenCharKey = 30001;
+        TutorialImage = TutorialPanel.transform.GetChild(0).gameObject;
+        TutorialNumber = 1;
         StartCoroutine(StartScene());
         if (PlayerPrefs.GetFloat("BGSound") == -80f)
         {
@@ -78,7 +85,6 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
         {
             SFX_Check.transform.GetChild(0).gameObject.SetActive(false);
         }
-
     }
 
     IEnumerator StartScene()
@@ -109,6 +115,7 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
         {
             if (!GameManager.Instance.isnameInput)
             {
+                Tutorial();
                 nameInput.SetActive(true);
             }
         }
@@ -387,6 +394,36 @@ public class LobbyUIManager : Singleton<LobbyUIManager>
         SoundPanel.SetActive(true);
     }
 
+    public void Tutorial()
+    {
+        if (!TutorialPanel.activeSelf)
+        {
+            TutorialPanel.SetActive(true);
+        }
+        TutorialImage.GetComponent<Image>().sprite = Resources.Load<Sprite>("tutorial/" + TutorialNumber.ToString()) as Sprite;
+    }
+    
+    public void TutorialLeftArrow()
+    {
+        if (TutorialNumber > 1)
+        {
+            TutorialNumber--;
+            Tutorial();
+        }
+    }
+
+    public void TutorialRightArrow()
+    {
+        if (TutorialNumber > 4)
+        {
+            TutorialPanel.SetActive(false);
+        }
+        else
+        {
+            TutorialNumber++;
+            Tutorial();
+        }
+    }
     public void BGSoundCheckBox()
     {
         if (BG_Check.transform.GetChild(0).gameObject.activeSelf && PlayerPrefs.GetFloat("BGSound") == 0f)

@@ -65,15 +65,16 @@ public abstract class Monster : Actor
 
     public override void SetData(int Key)
     {
-        unitNo = DataBaseManager.Instance.tdMonsterDict[Key].unitNo;
-        Name = DataBaseManager.Instance.tdMonsterDict[Key].Name;
-        MaxHp = DataBaseManager.Instance.tdMonsterDict[Key].Hp;
-        Power = DataBaseManager.Instance.tdMonsterDict[Key].Power;
-        Speed = DataBaseManager.Instance.tdMonsterDict[Key].Speed;
-        AttackDelay = DataBaseManager.Instance.tdMonsterDict[Key].AttackDelay;
-        AttackDistance = DataBaseManager.Instance.tdMonsterDict[Key].AttackDistance;
-        AddScore = DataBaseManager.Instance.tdMonsterDict[Key].AddScore;
-        AddCoin = DataBaseManager.Instance.tdMonsterDict[Key].AddCoin;
+        var dict = DataBaseManager.Instance.tdMonsterDict[Key];
+        unitNo = dict.unitNo;
+        Name = dict.Name;
+        MaxHp = dict.Hp;
+        Power = dict.Power;
+        Speed = dict.Speed;
+        AttackDelay = dict.AttackDelay;
+        AttackDistance = dict.AttackDistance;
+        AddScore = dict.AddScore;
+        AddCoin = dict.AddCoin;
         
     }
     public virtual void HpUI_Update()
@@ -180,8 +181,8 @@ public abstract class Monster : Actor
     {
         if (BattleManager.Instance.loopCount != 0)
         {
-                MaxHp = MaxHp * (1.2f * BattleManager.Instance.loopCount);
-                Power = Power * (1.2f * BattleManager.Instance.loopCount);
+                MaxHp = MaxHp * (2f * BattleManager.Instance.loopCount);
+                Power = Power * (2f * BattleManager.Instance.loopCount);
                 AddCoin = AddCoin + 1 * BattleManager.Instance.loopCount;
         }
     }

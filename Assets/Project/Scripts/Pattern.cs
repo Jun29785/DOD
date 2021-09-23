@@ -208,9 +208,6 @@ public class Pattern : MonoBehaviour
             lines.RemoveAt(lines.Count - 1);
 
             StartCoroutine(Release());
-
-
-
         }
         unlocking = false;
         
