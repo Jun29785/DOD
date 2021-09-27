@@ -175,28 +175,6 @@ public class MonsterGenerater : MonoBehaviour
 
                     }
                 }
-                else if (ScoreCheck(200, 300))
-                {
-                    if (currentTime >= SpawnInterval)
-                    {
-                        currentTime = 0;
-                        Randomindex();
-                        RandomMonsterNo(20001, 20005);
-                        spawnAmount = Random.Range(2, 4);
-                        SpawnInterval = Random.Range(2, 5);
-                    }
-                }
-                else if (ScoreCheck(300, 400))
-                {
-                    if (currentTime >= SpawnInterval)
-                    {
-                        currentTime = 0;
-                        Randomindex();
-                        RandomMonsterNo(20006, 20010);
-                        spawnAmount = Random.Range(2, 4);
-                        SpawnInterval = Random.Range(2, 5);
-                    }
-                }
                 else
                 {
                     print("hello world");

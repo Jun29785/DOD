@@ -119,7 +119,7 @@ public class GameSceneUIManager : UIManager
                 StartCoroutine(SetWarningText("스킬이 쿨타임입니다."));
                 break;
             case 3:
-                StartCoroutine(SetWarningText("스킬을 이미 사용중입니다."));
+                StartCoroutine(SetWarningText("NONE"));
                 break;
             default:
                 break;

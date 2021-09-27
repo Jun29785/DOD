@@ -238,7 +238,7 @@ public override void Update()
 
             if (!BattleManager.Instance.isUseSkill)
             {
-
+                
                 if (UserDataManager.user.skill_level[DataBaseManager.Instance.tdSkillDict[(int)SE].SKey.ToString()] != 0)
                 {
 
@@ -263,7 +263,7 @@ public override void Update()
                 }
                 else
                 {
-                    GameSceneUIManager.Instance.ApearWarningText(3);
+                    //GameSceneUIManager.Instance.ApearWarningText(3);
                 }
 
             }
