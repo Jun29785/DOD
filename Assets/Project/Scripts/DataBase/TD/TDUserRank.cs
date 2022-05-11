@@ -7,7 +7,7 @@ public class TDUserRank : TableBase
 {
     public string device_id;
     public string nickname;
-    public string score;
+    public int score;
 
 
 
@@ -15,7 +15,7 @@ public class TDUserRank : TableBase
     {
        this.device_id = info["device_id"].Value<string>();
        this.nickname = info["nickname"].Value<string>();
-       this.score = info["score"].Value<string>();
+       this.score = info["score"].Value<int>();
 
     }
 }

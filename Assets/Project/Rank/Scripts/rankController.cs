@@ -10,13 +10,12 @@ public class rankController : MonoBehaviour
     {
         DataBaseManager.Instance.LoadRankData();
         //rank();
-        Invoke("rank", 0.1f);
+        Invoke("rank", 0.2f);
     }
 
     public void rank()
     {
         Debug.Log("랭크 오브젝트 생성");
-
 
         for (int i = 0; i < rankObjParent.childCount; i++)
         {
@@ -25,6 +24,7 @@ public class rankController : MonoBehaviour
         }
 
         GameObject obj;
+        Debug.Log(DataBaseManager.Instance.userRankDict.Count);
         for (int i = 0; i < DataBaseManager.Instance.userRankDict.Count; i++)
         {
             switch (i + 1)
@@ -43,7 +43,7 @@ public class rankController : MonoBehaviour
                     break;
             }
             obj.transform.parent = rankObjParent.transform;
-            obj.GetComponent<rankObject>().setData((i + 1).ToString(), DataBaseManager.Instance.userRankDict[i].nickname, DataBaseManager.Instance.userRankDict[i].score);
+            obj.GetComponent<rankObject>().setData((i + 1).ToString(), DataBaseManager.Instance.userRankDict[i].nickname, DataBaseManager.Instance.userRankDict[i].score.ToString());
 
         }
     }

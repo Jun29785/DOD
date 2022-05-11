@@ -84,7 +84,7 @@ namespace DOD.DB
 
 
 
-            UnityWebRequest www = UnityWebRequest.Get("http://15.165.160.44:3000/show_rank");
+            UnityWebRequest www = UnityWebRequest.Get("http://10.120.74.70:3000/show_rank");
             yield return www.Send();
 
             string a = www.downloadHandler.text;
@@ -98,10 +98,10 @@ namespace DOD.DB
 
             JArray jArray = new JArray();
             jArray = JArray.Parse(parsedObj["data"].ToString());
-
+            Debug.Log(jArray);
             foreach (JObject jo in jArray)
             {
-
+                Debug.Log(1);
                 TDUserRank tdrank = new TDUserRank();
 
                 tdrank.SetJsonData(jo);

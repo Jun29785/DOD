@@ -63,7 +63,7 @@ public class UserDataManager : Singleton<UserDataManager>
 
         form.AddField("device", SystemInfo.deviceUniqueIdentifier);
 
-        UnityWebRequest www = UnityWebRequest.Post("http://15.165.160.44:3000/device", form); 
+        UnityWebRequest www = UnityWebRequest.Post("http://10.120.74.70:3000/device", form); 
         yield return www.Send();
 
         string a = www.downloadHandler.text;
@@ -98,18 +98,18 @@ public class UserDataManager : Singleton<UserDataManager>
 
         form.AddField("device", SystemInfo.deviceUniqueIdentifier);
         form.AddField("nickname", nick);
-        UnityWebRequest www = UnityWebRequest.Post("http://15.165.160.44:3000/create_name", form); // 
+        UnityWebRequest www = UnityWebRequest.Post("http://10.120.74.70:3000/create_name", form); // 
         yield return www.Send();
 
         string a = www.downloadHandler.text;
         a = a.Substring(0, a.Length - 1);
+        Debug.Log("a : " + a);
         string[] parsing = a.Split(':');
         Debug.Log(parsing[1]);
         nickExist = (parsing[1] != "false") ? true : false;
 
-        
-
     }
+
     public IEnumerator InitData()
     {
 
@@ -118,7 +118,7 @@ public class UserDataManager : Singleton<UserDataManager>
         WWWForm form = new WWWForm();
 
         form.AddField("device", SystemInfo.deviceUniqueIdentifier);
-        UnityWebRequest www = UnityWebRequest.Post("http://15.165.160.44:3000/dataload", form);
+        UnityWebRequest www = UnityWebRequest.Post("http://10.120.74.70:3000/dataload", form);
 
         yield return www.Send();
 
@@ -152,7 +152,7 @@ public class UserDataManager : Singleton<UserDataManager>
 
         form.AddField("userData",userdata.ToString());
 
-        UnityWebRequest www = UnityWebRequest.Post("http://15.165.160.44:3000/datasave", form); // 
+        UnityWebRequest www = UnityWebRequest.Post("http://10.120.74.70:3000/datasave", form); // 
         yield return www.Send();
 
         Debug.Log(www.downloadHandler.text);
@@ -172,7 +172,7 @@ public class UserDataManager : Singleton<UserDataManager>
         Debug.Log(user.nickname);
         Debug.Log(score);
 
-        UnityWebRequest www = UnityWebRequest.Post("http://15.165.160.44:3000/game_end", form);
+        UnityWebRequest www = UnityWebRequest.Post("http://10.120.74.70:3000/game_end", form);
         yield return www.Send();
 
         Debug.Log("게임 점수 보내기 완료");
